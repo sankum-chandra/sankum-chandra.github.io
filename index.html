@@ -32,156 +32,41 @@
     }
 
     .container {
-      max-width: 900px;
+      max-width: 820px;
       margin: auto;
       padding: 60px 20px;
     }
 
-    /* NAVBAR */
+    /* NAVIGATION */
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 30px;
+      padding: 18px 20px;
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       background: var(--bg);
+      flex-wrap: wrap;
+    }
+
+    .nav strong {
+      font-size: 18px;
+      color: var(--accent);
     }
 
     .nav a {
       text-decoration: none;
       color: var(--text);
-      margin-left: 20px;
-      font-weight: 500;
+      margin-left: 18px;
+      font-size: 15px;
     }
 
     .nav button {
-      margin-left: 20px;
-      padding: 6px 12px;
+      margin-left: 18px;
+      padding: 5px 12px;
       border-radius: 20px;
       border: 1px solid var(--border);
       background: none;
       cursor: pointer;
-      color: var(--text);
-    }
-
-    h1 { font-size: 42px; margin-bottom: 10px; }
-    h2 {
-      font-size: 26px;
-      margin-top: 70px;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    p { font-size: 18px; color: var(--subtext); }
-    ul { padding-left: 20px; }
-    li { margin-bottom: 8px; }
-
-    .subtitle {
-      font-size: 18px;
-      color: var(--subtext);
-      margin-bottom: 20px;
-    }
-
-    .project { margin-bottom: 25px; }
-    .project h3 { margin-bottom: 6px; }
-
-    .blog-post { margin-bottom: 25px; }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .footer {
-      margin-top: 80px;
-      padding-top: 30px;
-      border-top: 1px solid var(--border);
-      font-size: 16px;
-      color: var(--subtext);
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- Navigation -->
-  <div class="nav">
-    <div><strong>Santhosh K C</strong></div>
-    <div>
-      <a href="#about">About</a>
-      <a href="#expertise">Expertise</a>
-      <a href="#work">Work</a>
-      <a href="#blog">Thought Leadership</a>
-      <a href="#contact">Contact</a>
-      <button onclick="toggleDarkMode()">🌙</button>
-    </div>
-  </div>
-
-  <div class="container">
-    <h1>Santhosh Kumar Chandrashekar</h1>
-    <div class="subtitle">
-      Portfolio Architect (Enterprise Architecture) | Cloud, DevOps & Solution Architecture | Azure & AWS
-    </div>
-    <p>
-      I work within the Enterprise Architecture function as a Portfolio Architect, shaping enterprise-scale cloud platforms, solution architectures, and DevOps ecosystems. I lead cloud migration and modernization programs that help organizations build secure, scalable, and future-ready digital foundations.
-    </p>
-
-    <h2 id="about">About</h2>
-    <p>
-      With 13+ years of experience in cloud, DevOps, and solution architecture, I operate at the intersection of Enterprise Architecture, platform strategy, and large-scale transformation across Azure and AWS environments.
-    </p>
-
-    <h2 id="expertise">Core Expertise</h2>
-    <ul>
-      <li>Enterprise & Solution Architecture</li>
-      <li>Cloud Migration & Modernization</li>
-      <li>Cloud Landing Zones & Platform Engineering</li>
-      <li>DevOps Transformation & CI/CD Strategy</li>
-      <li>Cloud Governance, Security & Compliance</li>
-      <li>FinOps & Cost Optimization</li>
-    </ul>
-
-    <h2 id="work">Selected Work</h2>
-    <div class="project">
-      <h3>Enterprise Cloud Landing Zone</h3>
-      <p>Designed and implemented a secure Azure landing zone across multiple business units.</p>
-    </div>
-    <div class="project">
-      <h3>Cloud Migration & Modernization</h3>
-      <p>Led enterprise migrations to Azure and AWS, modernizing legacy workloads.</p>
-    </div>
-    <div class="project">
-      <h3>DevOps Transformation</h3>
-      <p>Introduced CI/CD and IaC practices across 40+ applications.</p>
-    </div>
-
-    <h2 id="blog">Thought Leadership</h2>
-    <div class="blog-post">
-      <h3>Designing Enterprise Cloud Landing Zones</h3>
-      <p>Key principles for building scalable, governed, and secure cloud foundations in large enterprises.</p>
-    </div>
-    <div class="blog-post">
-      <h3>Cloud Migration Beyond Lift-and-Shift</h3>
-      <p>Why modernization and architecture refactoring are essential for long-term cloud value.</p>
-    </div>
-    <div class="blog-post">
-      <h3>DevOps as an Enterprise Capability</h3>
-      <p>How platform engineering and automation transform delivery at scale.</p>
-    </div>
-
-    <div class="footer" id="contact">
-      <strong>Contact</strong><br>
-      LinkedIn: <a href="https://linkedin.com/in/sankum-chandra" target="_blank">View Profile</a><br>
-      Email: <a href="mailto:sankum.chandra@outlook.com">sankum.chandra@outlook.com</a>
-    </div>
-  </div>
-
-  <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark");
-    }
-  </script>
-
-</body>
-</html>
+      color: var
