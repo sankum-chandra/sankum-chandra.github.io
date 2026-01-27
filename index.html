@@ -4,16 +4,31 @@
   <title>Santhosh Kumar Chandrashekar | Portfolio Architect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --subtext: #555;
+      --accent: #0a66c2;
+      --border: #eaeaea;
+    }
+
+    body.dark {
+      --bg: #0f172a;
+      --text: #f1f5f9;
+      --subtext: #cbd5e1;
+      --border: #1e293b;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
-      background-color: #ffffff;
-      color: #1a1a1a;
+      background-color: var(--bg);
+      color: var(--text);
       line-height: 1.7;
+      transition: background 0.3s, color 0.3s;
     }
 
     .container {
@@ -22,76 +37,88 @@
       padding: 60px 20px;
     }
 
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+    /* NAVBAR */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
     }
 
+    .nav a {
+      text-decoration: none;
+      color: var(--text);
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    .nav button {
+      margin-left: 20px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: none;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    h1 { font-size: 42px; margin-bottom: 10px; }
     h2 {
       font-size: 26px;
       margin-top: 70px;
       margin-bottom: 20px;
       padding-bottom: 10px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--border);
     }
 
-    p {
-      font-size: 18px;
-      color: #444;
-    }
+    p { font-size: 18px; color: var(--subtext); }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 8px; }
 
     .subtitle {
       font-size: 18px;
-      color: #666;
+      color: var(--subtext);
       margin-bottom: 20px;
     }
 
-    .hero {
-      padding-top: 80px;
-      padding-bottom: 40px;
-    }
+    .project { margin-bottom: 25px; }
+    .project h3 { margin-bottom: 6px; }
 
-    ul {
-      padding-left: 20px;
-    }
+    .blog-post { margin-bottom: 25px; }
 
-    li {
-      margin-bottom: 8px;
-      font-size: 17px;
-      color: #444;
-    }
-
-    .project {
-      margin-bottom: 25px;
-    }
-
-    .project h3 {
-      margin-bottom: 6px;
-      font-size: 20px;
-    }
-
-    a {
-      color: #0a66c2;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     .footer {
       margin-top: 80px;
       padding-top: 30px;
-      border-top: 1px solid #eee;
+      border-top: 1px solid var(--border);
       font-size: 16px;
-      color: #666;
+      color: var(--subtext);
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container hero">
+  <!-- Navigation -->
+  <div class="nav">
+    <div><strong>Santhosh K C</strong></div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#work">Work</a>
+      <a href="#blog">Thought Leadership</a>
+      <a href="#contact">Contact</a>
+      <button onclick="toggleDarkMode()">🌙</button>
+    </div>
+  </div>
+
+  <div class="container">
     <h1>Santhosh Kumar Chandrashekar</h1>
     <div class="subtitle">
       Portfolio Architect (Enterprise Architecture) | Cloud, DevOps & Solution Architecture | Azure & AWS
@@ -99,15 +126,13 @@
     <p>
       I work within the Enterprise Architecture function as a Portfolio Architect, shaping enterprise-scale cloud platforms, solution architectures, and DevOps ecosystems. I lead cloud migration and modernization programs that help organizations build secure, scalable, and future-ready digital foundations.
     </p>
-  </div>
 
-  <div class="container">
-    <h2>About</h2>
+    <h2 id="about">About</h2>
     <p>
-      With 13+ years of experience in cloud, DevOps, and solution architecture, I operate at the intersection of Enterprise Architecture, platform strategy, and large-scale transformation. My work focuses on aligning technology platforms with business strategy while ensuring governance, scalability, and operational excellence across Azure and AWS environments.
+      With 13+ years of experience in cloud, DevOps, and solution architecture, I operate at the intersection of Enterprise Architecture, platform strategy, and large-scale transformation across Azure and AWS environments.
     </p>
 
-    <h2>Core Expertise</h2>
+    <h2 id="expertise">Core Expertise</h2>
     <ul>
       <li>Enterprise & Solution Architecture</li>
       <li>Cloud Migration & Modernization</li>
@@ -115,45 +140,48 @@
       <li>DevOps Transformation & CI/CD Strategy</li>
       <li>Cloud Governance, Security & Compliance</li>
       <li>FinOps & Cost Optimization</li>
-      <li>Enterprise Architecture Alignment</li>
     </ul>
 
-    <h2>Selected Work</h2>
-
+    <h2 id="work">Selected Work</h2>
     <div class="project">
-      <h3>Enterprise Cloud Landing Zone (Azure)</h3>
-      <p>
-        Designed and implemented a secure, scalable Azure landing zone enabling standardized networking, identity, governance, and subscription management across multiple business units.
-      </p>
+      <h3>Enterprise Cloud Landing Zone</h3>
+      <p>Designed and implemented a secure Azure landing zone across multiple business units.</p>
     </div>
-
     <div class="project">
-      <h3>Cloud Migration & Modernization Program</h3>
-      <p>
-        Led enterprise-scale migration and modernization initiatives, transforming legacy workloads into cloud-native architectures across Azure and AWS with improved resilience and operational efficiency.
-      </p>
+      <h3>Cloud Migration & Modernization</h3>
+      <p>Led enterprise migrations to Azure and AWS, modernizing legacy workloads.</p>
     </div>
-
     <div class="project">
       <h3>DevOps Transformation</h3>
-      <p>
-        Drove DevOps enablement across 40+ applications by introducing CI/CD pipelines, infrastructure as code, and automated governance, significantly improving deployment reliability and speed.
-      </p>
+      <p>Introduced CI/CD and IaC practices across 40+ applications.</p>
     </div>
 
-    <div class="project">
-      <h3>Multi-Cloud Architecture Strategy</h3>
-      <p>
-        Defined and governed a multi-cloud operating model covering workload placement, cost optimization, security baselines, and platform consistency across Azure and AWS.
-      </p>
+    <h2 id="blog">Thought Leadership</h2>
+    <div class="blog-post">
+      <h3>Designing Enterprise Cloud Landing Zones</h3>
+      <p>Key principles for building scalable, governed, and secure cloud foundations in large enterprises.</p>
+    </div>
+    <div class="blog-post">
+      <h3>Cloud Migration Beyond Lift-and-Shift</h3>
+      <p>Why modernization and architecture refactoring are essential for long-term cloud value.</p>
+    </div>
+    <div class="blog-post">
+      <h3>DevOps as an Enterprise Capability</h3>
+      <p>How platform engineering and automation transform delivery at scale.</p>
     </div>
 
-    <div class="footer">
+    <div class="footer" id="contact">
       <strong>Contact</strong><br>
       LinkedIn: <a href="https://linkedin.com/in/sankum-chandra" target="_blank">View Profile</a><br>
       Email: <a href="mailto:sankum.chandra@outlook.com">sankum.chandra@outlook.com</a>
     </div>
   </div>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
 
 </body>
 </html>
