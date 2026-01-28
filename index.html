@@ -1,231 +1,115 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Santhosh Kumar Chandrashekar | Portfolio Architect</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Santhosh Kumar Chandrashekar | Portfolio Architect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio Architect specializing in Enterprise Architecture, Cloud (Azure & AWS), DevOps, and Solution Architecture. Leading cloud platform strategy, migration, and modernization." />
+
+  <!-- Preconnect & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #1a1a1a;
-      --subtext: #555;
-      --accent: #0a66c2;
-      --border: #eaeaea;
-    }
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
 
-    body.dark {
-      --bg: #0f172a;
-      --text: #f1f5f9;
-      --subtext: #cbd5e1;
-      --border: #1e293b;
-    }
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Santhosh Kumar Chandrashekar | Portfolio Architect" />
+  <meta property="og:description" content="Enterprise & Solution Architecture · Cloud (Azure & AWS) · DevOps · Platform Engineering" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sankum.in/" />
+  <meta property="og:image" content="https://sankum.in/assets/images/profile-social.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Santhosh Kumar Chandrashekar | Portfolio Architect" />
+  <meta name="twitter:description" content="Leading cloud migration and modernization across Azure & AWS." />
+  <meta name="twitter:image" content="https://sankum.in/assets/images/profile-social.jpg" />
 
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 60px 20px;
-    }
-
-    /* NAVIGATION */
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 20px;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: var(--bg);
-      flex-wrap: wrap;
-    }
-
-    .nav strong {
-      font-size: 18px;
-      color: var(--accent);
-    }
-
-    .nav a {
-      text-decoration: none;
-      color: var(--text);
-      margin-left: 18px;
-      font-size: 15px;
-    }
-
-    .nav button {
-      margin-left: 18px;
-      padding: 5px 12px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: none;
-      cursor: pointer;
-      color: var(--text);
-    }
-
-    /* HERO WITH PHOTO */
-    .hero {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      margin-top: 30px;
-      flex-wrap: wrap;
-    }
-
-    .profile-pic {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--accent);
-    }
-
-    h1 {
-      font-size: 40px;
-      line-height: 1.2;
-      margin-bottom: 12px;
-      color: var(--accent);
-    }
-
-    h2 {
-      font-size: 24px;
-      margin-top: 70px;
-      margin-bottom: 18px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    p {
-      font-size: 17px;
-      color: var(--subtext);
-      max-width: 720px;
-    }
-
-    ul {
-      padding-left: 20px;
-      max-width: 720px;
-    }
-
-    .subtitle {
-      font-size: 17px;
-      color: var(--subtext);
-      margin-bottom: 18px;
-      max-width: 720px;
-    }
-
-    .project, .blog-post {
-      margin-bottom: 22px;
-      max-width: 720px;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .footer {
-      margin-top: 80px;
-      padding-top: 30px;
-      border-top: 1px solid var(--border);
-      font-size: 15px;
-      color: var(--subtext);
-      max-width: 720px;
-    }
-
-    /* MOBILE */
-    @media (max-width: 600px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
-      h1 { font-size: 32px; }
-    }
-  </style>
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="canonical" href="https://sankum.in/" />
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
-  <div class="nav">
-    <strong>Santhosh Kumar C</strong>
-    <div>
-      <a href="#about">About</a>
-      <a href="#expertise">Expertise</a>
-      <a href="#work">Work</a>
-      <a href="#blog">Thought Leadership</a>
-      <a href="#contact">Contact</a>
-      <button onclick="toggleDarkMode()">🌙</button>
-    </div>
-  </div>
+  <header>
+    <nav class="nav" aria-label="Primary">
+      <div class="brand">Santhosh Kumar C</div>
+      <div class="nav-controls">
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#work">Work</a>
+        <a href="#blog">Thought Leadership</a>
+        <a href="#contact">Contact</a>
+        <button type="button" class="toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+      </div>
+    </nav>
+  </header>
 
-  <div class="container">
-
-    <div class="hero">
-      <img src="profile.jpg" alt="Santhosh Kumar Chandrashekar" class="profile-pic">
-
+  <main id="main" class="container">
+    <section class="hero" aria-labelledby="name">
+      <img src="assets/images/profile.webp" alt="Santhosh Kumar Chandrashekar" class="profile-pic" width="140" height="140" loading="lazy" decoding="async" />
       <div>
-        <h1>Santhosh Kumar Chandrashekar</h1>
-        <div class="subtitle">
-          Portfolio Architect (Enterprise Architecture) | Cloud, DevOps & Solution Architecture | Azure & AWS
-        </div>
+        <h1 id="name">Santhosh Kumar Chandrashekar</h1>
+        <p class="subtitle">
+          Portfolio Architect (Enterprise Architecture) · Cloud, DevOps &amp; Solution Architecture · Azure &amp; AWS
+        </p>
         <p>
-          I work within the Enterprise Architecture function as a Portfolio Architect, shaping enterprise-scale cloud platforms, solution architectures, and DevOps ecosystems. I lead cloud migration and modernization programs that help organizations build secure, scalable, and future-ready digital foundations.
+          I work within the Enterprise Architecture function as a Portfolio Architect, shaping enterprise-scale cloud platforms,
+          solution architectures, and DevOps ecosystems. I lead cloud migration and modernization programs that help organizations
+          build secure, scalable, and future-ready digital foundations.
         </p>
       </div>
-    </div>
+    </section>
 
-    <h2 id="about">About</h2>
-    <p>
-      With 14 years of experience in cloud, DevOps, solution architecture, engineering and support background,I currently operate at the intersection of Enterprise Architecture, platform strategy, and large-scale transformation across Azure and AWS environments.
-    </p>
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <p>
+        With 14 years of experience in cloud, DevOps, solution architecture, engineering, and support background, I operate at the
+        intersection of Enterprise Architecture, platform strategy, and large-scale transformation across Azure and AWS environments.
+      </p>
+    </section>
 
-    <h2 id="expertise">Core Expertise</h2>
-    <ul>
-      <li>Enterprise & Solution Architecture</li>
-      <li>Cloud Migration & Modernization</li>
-      <li>Cloud Landing Zones & Platform Engineering</li>
-      <li>DevOps Transformation & CI/CD Strategy</li>
-      <li>Cloud Governance, Security & Compliance</li>
-      <li>FinOps & Cost Optimization</li>
-    </ul>
+    <section id="expertise" aria-labelledby="expertise-title">
+      <h2 id="expertise-title">Core Expertise</h2>
+      <ul>
+        <li>Enterprise &amp; Solution Architecture</li>
+        <li>Cloud Migration &amp; Modernization</li>
+        <li>Cloud Landing Zones &amp; Platform Engineering</li>
+        <li>DevOps Transformation &amp; CI/CD Strategy</li>
+        <li>Cloud Governance, Security &amp; Compliance</li>
+        <li>FinOps &amp; Cost Optimization</li>
+      </ul>
+    </section>
 
-    <h2 id="work">Selected Work</h2>
-    <div class="project">
-      <h3>Enterprise Cloud Landing Zone</h3>
-      <p>Designed and implemented a secure Azure landing zone across multiple business units.</p>
-    </div>
+    <section id="work" aria-labelledby="work-title">
+      <h2 id="work-title">Selected Work</h2>
+      <article class="project">
+        <h3>Enterprise Cloud Landing Zone</h3>
+        <p>Designed and implemented a secure Azure landing zone across multiple business units.</p>
+      </article>
+    </section>
 
-    <h2 id="blog">Thought Leadership</h2>
-    <div class="blog-post">
-      <h3><a href="landing-zone-principles.html">Designing Enterprise Cloud Landing Zones</a></h3>
-      <p>Key principles for building scalable, governed, and secure cloud foundations.</p>
-    </div>
+    <section id="blog" aria-labelledby="blog-title">
+      <h2 id="blog-title">Thought Leadership</h2>
+      <article class="blog-post">
+        <h3>
+          <a href="landing-zone-principles.html">Designing Enterprise Cloud Landing Zones</a>
+        </h3>
+        <p>Key principles for building scalable, governed, and secure cloud foundations.</p>
+      </article>
+    </section>
 
-    <div class="footer" id="contact">
-      <strong>Contact</strong><br>
-      LinkedIn: <a href="https://linkedin.com/in/sankum-chandra" target="_blank">View Profile</a><br>
-      Email: <a href="mailto:sankum.chandra@outlook.com">sankum.chandra@outlook.com</a>
-    </div>
+    <footer id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" style="margin-top:0;">Contact</h2>
+      <p>
+        LinkedIn: <a href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer">View LinkedIn Profile</a><br />
+        Email: <a href="mailto:sankum.chandra@outlook.com">sankum.chandra@outlook.com</a>
+      </p>
+    </footer>
+  </main>
 
-  </div>
-
-  <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark");
-    }
-  </script>
-
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
