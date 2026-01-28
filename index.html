@@ -7,19 +7,19 @@
   <meta name="description"
         content="Portfolio Architect specializing in Enterprise Architecture, Cloud (Azure & AWS), DevOps, and Solution Architecture. Leading cloud platform strategy, migration, and modernization." />
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts (preconnect + stylesheet) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <style>
     /* =========================================================
        1) DESIGN TOKENS (LIGHT DEFAULTS)
        ========================================================= */
     :root{
-      --header-height: 56px;       /* keep in sync with header padding/line-height */
+      --header-height: 56px;       /* Will be dynamically updated by JS to match actual header height */
       --page-bg: #f5f6f8;          /* light gray page background */
-      --bg: #ffffff;               /* card/section white if needed */
+      --bg: #ffffff;               /* neutral white if you need cards later */
       --text: #111827;             /* neutral-900 */
       --subtext: #4b5563;          /* neutral-600 */
       --accent: #0a66c2;           /* brand blue */
@@ -39,7 +39,7 @@
        ========================================================= */
     @media (prefers-color-scheme: dark){
       :root{
-        --page-bg: #0b1223;        /* subtle dark for page background */
+        --page-bg: #0b1223;        /* subtle dark page background */
         --bg: #0f172a;             /* slate-900 */
         --text: #e5e7eb;           /* neutral-200 */
         --subtext: #cbd5e1;        /* slate-300 */
@@ -83,14 +83,13 @@
        ========================================================= */
     html{
       scroll-behavior: smooth;
-      /* This makes in-page anchors land below the sticky header. */
+      /* Offset anchor scrolling so headings sit below sticky header */
       scroll-padding-top: var(--header-height);
-      /* For Safari iOS < 15 as a fallback, we also set scroll-margin on sections. */
     }
     body{
       margin:0;
       font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
-      background-color: var(--page-bg); /* ← light gray background for the whole page */
+      background-color: var(--page-bg); /* ← light gray page background */
       color: var(--text);
       line-height: 1.7;
       transition: background-color .3s ease, color .3s ease;
@@ -113,31 +112,74 @@
     }
 
     /* =========================================================
-       5) HEADER (GRADIENT)
+       5) HEADER (GRADIENT) + RESPONSIVE NAV
        ========================================================= */
     header{
-      position: sticky; top: 0; z-index: 10;
-      height: var(--header-height);
+      position: sticky; top: 0; z-index: 20;
       color: var(--header-text);
       background-image: linear-gradient(90deg, var(--header-start), var(--header-end));
-      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+      box-shadow: 0 2px 10px rgba(0,0,0,.15);
+      padding: 10px 16px;
     }
+
     .nav{
-      display:flex; justify-content:space-between; align-items:center;
-      padding: 0 20px; gap: 12px; flex-wrap: wrap; height: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
     }
-    .brand{ font-weight: 700; font-size: 18px; color: var(--header-text); }
-    .nav a{
-      color: var(--header-text); margin-left: 18px; font-size: 15px; opacity:.95;
+
+    .brand{
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--header-text);
+      white-space: nowrap;
     }
-    .nav a:hover{ opacity:1; text-decoration: underline; }
-    .nav-controls{ display:flex; align-items:center; flex-wrap:wrap; }
-    .toggle{
-      margin-left: 12px; padding: 6px 12px; border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.4);
-      background: rgba(255,255,255,.12);
-      color: var(--header-text); cursor: pointer;
+
+    .nav-links{
+      display: flex;
+      gap: 18px;
+    }
+
+    .nav-links a{
+      color: var(--header-text);
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .theme-btn{
+      margin-left: 12px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 6px 12px;
+      border-radius: 20px;
+      color: var(--header-text);
+      cursor: pointer;
       backdrop-filter: blur(6px);
+    }
+
+    /* --- Mobile adjustments --- */
+    @media (max-width: 768px){
+      .nav{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      .brand{ font-size: 18px; }
+
+      /* Scroll-friendly nav strip */
+      .nav-links{
+        display: flex;
+        gap: 18px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .nav-links::-webkit-scrollbar{ display: none; }
+
+      .theme-btn{ align-self: flex-end; margin-top: 4px; }
     }
 
     /* =========================================================
@@ -168,31 +210,34 @@
       font-size:15px; color: var(--subtext);
     }
 
-    /* Mobile */
+    /* Mobile content tweaks */
     @media (max-width: 600px){
-      h1{ font-size:32px; }
-      .hero{ flex-direction:column; text-align:center; }
-      .nav a{ margin-left:12px; }
+      .hero{ flex-direction: column; text-align: center; }
+      h1{ font-size: 32px; }
     }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
+  <!-- ================= HEADER ================= -->
   <header>
     <nav class="nav" aria-label="Primary">
       <div class="brand">Santhosh Kumar C</div>
-      <div class="nav-controls">
+
+      <div class="nav-links">
         <a href="#about">About</a>
         <a href="#expertise">Expertise</a>
         <a href="#work">Work</a>
         <a href="#blog">Thought Leadership</a>
         <a href="#contact">Contact</a>
-        <button type="button" class="toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
       </div>
+
+      <button type="button" class="theme-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
     </nav>
   </header>
 
+  <!-- ================= MAIN ================= -->
   <main id="main" class="container">
     <section class="hero" aria-labelledby="name">
       <img src="assets/images/profile.webp" alt="Santhosh Kumar Chandrashekar" class="profile-pic" width="140" height="140" loading="lazy" decoding="async" />
@@ -255,21 +300,20 @@
     </footer>
   </main>
 
+  <!-- ================= JS: Theme + Accurate Anchor Scrolling ================= -->
   <script>
-    // =========================================================
-    // Robust theme controller that always honors user clicks
-    // =========================================================
     (function () {
       const STORAGE_KEY = 'site-theme';          // 'light' | 'dark' | null (follow system)
       const USER_LOCK   = 'site-theme-userlock'; // 'true' once user clicks (stops following OS)
-      const btn = document.getElementById('themeToggle');
+      const btn  = document.getElementById('themeToggle');
       const root = document.documentElement;
+      const header = document.querySelector('header');
 
       function prefersDark(){
         return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       }
 
-      function apply(theme){
+      function applyTheme(theme){
         root.classList.remove('theme-light', 'theme-dark');
         if (theme === 'dark') {
           root.classList.add('theme-dark');
@@ -282,41 +326,76 @@
           btn.textContent = '🌙';
           btn.title = 'Switch to dark mode';
         } else {
-          // follow system: remove classes so media query drives tokens
+          // follow system
           btn.textContent = prefersDark() ? '☀️' : '🌙';
           btn.setAttribute('aria-pressed', prefersDark() ? 'true' : 'false');
         }
       }
 
-      // Init
+      // Dynamically set --header-height to the header's actual height (desktop & mobile)
+      function setHeaderHeight(){
+        if (!header) return;
+        const h = header.offsetHeight;
+        root.style.setProperty('--header-height', h + 'px');
+      }
+
+      // Smoothly scroll to an element with current header offset taken into account
+      function scrollToId(id){
+        const el = document.getElementById(id);
+        if (!el) return;
+        // Using scrollIntoView with scroll-margin-top set in CSS gives correct offset
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Init theme from storage or system
       const stored = localStorage.getItem(STORAGE_KEY);           // 'light' | 'dark' | null
       const locked = localStorage.getItem(USER_LOCK) === 'true';
-      apply(stored || null);
+      applyTheme(stored || null);
 
-      // React to OS changes only if not user-locked AND no explicit stored theme
+      // Update header height on load/resize/font load
+      function initHeights() { setHeaderHeight(); }
+      window.addEventListener('resize', () => { setHeaderHeight(); });
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(setHeaderHeight); }
+      window.addEventListener('load', initHeights);
+      setHeaderHeight();
+
+      // React to OS theme changes only when not user-locked and no explicit theme
       if (!locked && window.matchMedia) {
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
           if (!localStorage.getItem(USER_LOCK) && !localStorage.getItem(STORAGE_KEY)) {
-            apply(null);
+            applyTheme(null);
           }
         });
       }
 
-      // Toggle button behavior
+      // Toggle behavior: set explicit user choice and lock
       btn.addEventListener('click', () => {
         const isDark = root.classList.contains('theme-dark') || (!root.classList.contains('theme-light') && prefersDark());
         const next = isDark ? 'light' : 'dark';
         localStorage.setItem(STORAGE_KEY, next);
         localStorage.setItem(USER_LOCK, 'true');
-        apply(next);
+        applyTheme(next);
+        setHeaderHeight(); // recalc if header height changes due to font render tweaks
       });
 
-      // Optional: expose a reset to follow system again
-      // window.resetThemeToSystem = function(){
-      //   localStorage.removeItem(STORAGE_KEY);
-      //   localStorage.removeItem(USER_LOCK);
-      //   apply(null);
-      // };
+      // Intercept nav hash clicks for consistent scrolling
+      document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          const hash = a.getAttribute('href').replace('#','').trim();
+          if (hash) {
+            e.preventDefault();
+            scrollToId(hash);
+            history.pushState(null, '', '#' + hash);
+          }
+        });
+      });
+
+      // If page loads with a hash, ensure position is corrected after header height is measured
+      if (location.hash) {
+        const id = location.hash.replace('#','');
+        // Delay slightly to ensure layout is settled
+        setTimeout(() => scrollToId(id), 50);
+      }
     })();
   </script>
 </body>
