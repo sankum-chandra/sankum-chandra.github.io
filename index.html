@@ -8,7 +8,7 @@
         content="Portfolio Architect specializing in Enterprise Architecture, Cloud (Azure & AWS), DevOps, and Solution Architecture. Leading cloud platform strategy, migration, and modernization." />
   <meta name="theme-color" content="#0ea5e9" />
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts (preconnect + stylesheet) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
@@ -126,11 +126,18 @@
       min-height: 56px;
     }
 
-    .brand{
+    /* Brand as a link (Home) */
+    .brand.home-link{
       font-weight: 700;
       font-size: 20px;
       color: var(--header-text);
       white-space: nowrap;
+      text-decoration: none;
+    }
+    .brand.home-link:hover,
+    .brand.home-link:focus{
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     /* Desktop nav links */
@@ -174,7 +181,7 @@
       }
       .nav-links{ display: none; } /* hide desktop links */
       .menu-btn{ display: inline-flex; }
-      .brand{ font-size: 18px; }
+      .brand.home-link{ font-size: 18px; }
     }
 
     /* --- Mobile Drawer --- */
@@ -193,7 +200,7 @@
       padding: 16px;
       transform: translateX(100%);
       transition: transform .25s ease;
-      display: grid; grid-template-rows: auto 1fr;
+      display: grid; grid-template-rows: auto 1fr auto; /* top | nav | cta */
       gap: 12px;
     }
     .mobile-menu[data-open="true"] .mobile-panel{ transform: translateX(0%); }
@@ -215,7 +222,37 @@
     .mobile-nav a:active{ background: rgba(255,255,255,.08); }
 
     /* =========================================================
-       6) CONTENT
+       6) CONTACT CTA (LinkedIn)
+       ========================================================= */
+    .btn-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      color: #ffffff;                 /* text/icon color */
+      background: #0A66C2;            /* LinkedIn brand blue */
+      border: 1px solid rgba(255,255,255,.2);
+      text-decoration: none;
+      transition: transform .08s ease, filter .15s ease, box-shadow .15s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    }
+    .btn-linkedin:hover { filter: brightness(1.05); }
+    .btn-linkedin:active { transform: translateY(1px); }
+    .btn-linkedin .li-icon { width: 20px; height: 20px; }
+
+    html.theme-dark .btn-linkedin { box-shadow: 0 2px 10px rgba(0,0,0,.35); }
+
+    .contact-cta { margin: 16px 0 8px; }
+    .contact-email { color: var(--subtext); }
+
+    /* Drawer CTA area */
+    .mobile-cta { padding-top: 8px; border-top: 1px solid var(--drawer-border); }
+    .mobile-cta .btn-linkedin { width: 100%; justify-content: center; }
+
+    /* =========================================================
+       7) CONTENT
        ========================================================= */
     /* Ensure sections offset when targeted (helps older Safari) */
     section[id]{ scroll-margin-top: calc(var(--header-height) + 10px); }
@@ -250,12 +287,15 @@
   </style>
 </head>
 <body>
+  <!-- Top anchor for Home scroll -->
+  <a id="top" tabindex="-1"></a>
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- ================= HEADER ================= -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
-      <div class="brand">SANTHOSH KUMAR C</div>
+      <!-- Brand links to top -->
+      <a href="#top" class="brand home-link" id="homeLink" aria-label="Go to top">Santhosh Kumar C</a>
 
       <!-- Desktop links -->
       <nav class="nav-links" aria-label="Primary">
@@ -282,6 +322,7 @@
         <div class="mobile-title" id="mobileMenuTitle">Menu</div>
         <button type="button" class="mobile-close" data-close="true" aria-label="Close menu">✕</button>
       </div>
+
       <nav class="mobile-nav" aria-label="Mobile Primary">
         <a href="#about">About</a>
         <a href="#expertise">Expertise</a>
@@ -289,13 +330,25 @@
         <a href="#blog">Thought Leadership</a>
         <a href="#contact">Contact</a>
       </nav>
+
+      <!-- Drawer CTA -->
+      <div class="mobile-cta">
+        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer"
+           aria-label="Connect with me on LinkedIn">
+          <svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor"
+              d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.67H9.33V9.75h3.41v1.47h.05c.48-.9 1.66-1.86 3.42-1.86 3.66 0 4.34 2.41 4.34 5.55v5.54ZM5.34 8.28a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13Zm-1.78 12.17h3.56V9.75H3.56v10.7ZM22.23 0H1.77C.8 0 0 .8 0 1.77v20.46C0 23.2.8 24 1.77 24h20.46c.97 0 1.77-.8 1.77-1.77V1.77C24 .8 23.2 0 22.23 0Z"/>
+          </svg>
+          <span>Connect with me</span>
+        </a>
+      </div>
     </aside>
   </div>
 
   <!-- ================= MAIN ================= -->
   <main id="main" class="container">
     <section class="hero" aria-labelledby="name">
-      <img src="profile.jpg" alt="Santhosh Kumar Chandrashekar" class="profile-pic" width="140" height="140" loading="lazy" decoding="async" />
+      <img src="assets/images/profile.webp" alt="Santhosh Kumar Chandrashekar" class="profile-pic" width="140" height="140" loading="lazy" decoding="async" />
       <div>
         <h1 id="name">Santhosh Kumar Chandrashekar</h1>
         <p class="subtitle">
@@ -348,9 +401,21 @@
 
     <footer id="contact" aria-labelledby="contact-title">
       <h2 id="contact-title" style="margin-top:0;">Contact</h2>
-      <p>
-        LinkedIn: <a href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer">View LinkedIn Profile</a><br />
-        Email: <a href="mailto:sankum.chandra@outlook.com">sankum.chandra@outlook.com</a>
+
+      <p class="contact-cta">
+        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer"
+           aria-label="Connect with me on LinkedIn">
+          <svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor"
+              d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.67H9.33V9.75h3.41v1.47h.05c.48-.9 1.66-1.86 3.42-1.86 3.66 0 4.34 2.41 4.34 5.55v5.54ZM5.34 8.28a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13Zm-1.78 12.17h3.56V9.75H3.56v10.7ZM22.23 0H1.77C.8 0 0 .8 0 1.77v20.46C0 23.2.8 24 1.77 24h20.46c.97 0 1.77-.8 1.77-1.77V1.77C24 .8 23.2 0 22.23 0Z"/>
+          </svg>
+          <span>Connect with me</span>
+        </a>
+      </p>
+
+      <p class="contact-email">
+        <strong>Email:</strong>
+        <a href="mailto:sankum.chandra@outlook.com">sankum.chandra@outlook.com</a>
       </p>
     </footer>
   </main>
@@ -407,7 +472,7 @@
         localStorage.setItem(STORAGE_KEY, next);
         localStorage.setItem(USER_LOCK, 'true');
         applyTheme(next);
-        setHeaderHeight(); // in case metrics shift slightly
+        setHeaderHeight(); // recalc if metrics shift slightly
       });
 
       /* ---------- HEADER HEIGHT & ANCHOR OFFSET ---------- */
@@ -427,7 +492,6 @@
         mobileMenu.setAttribute('data-open', 'true');
         menuBtn.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
-        // focus first link
         const first = mobileMenu.querySelector('.mobile-nav a');
         first && first.focus();
       }
@@ -435,7 +499,6 @@
         mobileMenu.removeAttribute('data-open');
         menuBtn.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
-        // small delay to allow transition before hiding for screen readers
         setTimeout(() => { mobileMenu.hidden = true; }, 220);
         menuBtn.focus();
       }
@@ -444,12 +507,22 @@
         const isOpen = mobileMenu.getAttribute('data-open') === 'true';
         isOpen ? closeMenu() : openMenu();
       });
-      // Close on scrim tap or ✕
       closeEls.forEach(el => el.addEventListener('click', closeMenu));
-      // Close on Esc
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && mobileMenu.getAttribute('data-open') === 'true') closeMenu();
       });
+
+      // Brand link: smooth scroll to top, and close drawer if open
+      const homeLink = document.getElementById('homeLink');
+      if (homeLink) {
+        homeLink.addEventListener('click', (e) => {
+          if (mobileMenu.getAttribute('data-open') === 'true') {
+            e.preventDefault();
+            closeMenu();
+            setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 10);
+          }
+        });
+      }
 
       // Anchor links (desktop & mobile) — smooth scroll and close menu if open
       function scrollToId(id){
