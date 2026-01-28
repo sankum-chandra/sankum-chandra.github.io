@@ -4,11 +4,10 @@
   <meta charset="utf-8" />
   <title>Santhosh Kumar Chandrashekar | Portfolio Architect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description"
-        content="Portfolio Architect specializing in Enterprise Architecture, Cloud (Azure & AWS), DevOps, and Solution Architecture. Leading cloud platform strategy, migration, and modernization." />
+  <meta name="description" content="Portfolio Architect specializing in Enterprise Architecture, Cloud (Azure & AWS), DevOps, and Solution Architecture. Leading cloud platform strategy, migration, and modernization." />
   <meta name="theme-color" content="#0ea5e9" />
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts (preconnect + stylesheet) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
@@ -33,10 +32,10 @@
       --header-end:   #6366f1; /* indigo-500 */
       --header-text:  #ffffff;
 
-      /* Mobile drawer colors */
-      --drawer-bg: rgba(15, 23, 42, 0.96);
-      --drawer-border: rgba(255,255,255,.08);
-      --scrim: rgba(0,0,0,.42);
+      /* Drawer colors */
+      --scrim: rgba(0,0,0,.55);
+      --panel: #0B1220;            /* solid to avoid see-through artifacts */
+      --panel-edge: rgba(255,255,255,.06);
     }
 
     /* =========================================================
@@ -55,9 +54,9 @@
         --header-end:   #7c3aed;
         --header-text:  #ffffff;
 
-        --drawer-bg: rgba(2, 6, 23, 0.96);
-        --drawer-border: rgba(255,255,255,.12);
         --scrim: rgba(0,0,0,.5);
+        --panel: #0A0F1A;
+        --panel-edge: rgba(255,255,255,.10);
       }
     }
 
@@ -67,12 +66,12 @@
     html.theme-light{
       --page-bg: #f5f6f8; --bg:#fff; --text:#111827; --subtext:#4b5563; --border:#e5e7eb; --shadow:0 1px 0 var(--border);
       --header-start:#0ea5e9; --header-end:#6366f1; --header-text:#fff;
-      --drawer-bg: rgba(15, 23, 42, 0.96); --drawer-border: rgba(255,255,255,.08); --scrim: rgba(0,0,0,.42);
+      --scrim: rgba(0,0,0,.55); --panel:#0B1220; --panel-edge: rgba(255,255,255,.06);
     }
     html.theme-dark{
       --page-bg:#0b1223; --bg:#0f172a; --text:#e5e7eb; --subtext:#cbd5e1; --border:#1f2937; --shadow:0 1px 0 var(--border);
       --header-start:#0ea5e9; --header-end:#7c3aed; --header-text:#fff;
-      --drawer-bg: rgba(2, 6, 23, 0.96); --drawer-border: rgba(255,255,255,.12); --scrim: rgba(0,0,0,.5);
+      --scrim: rgba(0,0,0,.5); --panel:#0A0F1A; --panel-edge: rgba(255,255,255,.10);
     }
 
     /* =========================================================
@@ -175,52 +174,72 @@
       .brand.home-link{ font-size: 18px; }
     }
 
-    /* --- Mobile Drawer --- */
+    /* --- Mobile Drawer (RIGHT) --- */
     .mobile-menu{
       position: fixed; inset: 0; z-index: 50;
-      display: grid; grid-template-columns: 1fr min(84vw, 340px);
+      display: grid; grid-template-columns: 1fr var(--panel-w, 340px);
       background: var(--scrim);
+      overflow: hidden;                 /* hide any subpixel seams */
       opacity: 0; pointer-events: none; transition: opacity .2s ease;
+      will-change: opacity;
     }
     .mobile-menu[data-open="true"]{ opacity: 1; pointer-events: auto; }
     .mobile-menu-scrim{ width: 100%; height: 100%; }
 
     .mobile-panel{
       height: 100%;
-      background: var(--drawer-bg);
-      border-left: 1px solid var(--drawer-border);
-      /* Safe-area padding for notches and rounded corners */
-      padding: max(12px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+      width: var(--panel-w, 340px);
+      max-width: 84vw;
+      background: var(--panel);         /* solid to avoid background artifacts */
+      color: #fff;
+      box-shadow: -1px 0 0 var(--panel-edge);
+      padding:
+        max(14px, env(safe-area-inset-top))
+        max(16px, env(safe-area-inset-right))
+        calc(max(16px, env(safe-area-inset-bottom)) + 6px)
+        max(16px, env(safe-area-inset-left));
       transform: translateX(100%);
       transition: transform .25s ease;
       display: grid;
-      grid-template-rows: 48px 1fr auto; /* top row | nav | cta */
+      grid-template-rows: 48px 1fr auto; /* header row | links | bottom CTA */
       row-gap: 12px;
+      will-change: transform;
+      contain: paint;
     }
     .mobile-menu[data-open="true"] .mobile-panel{ transform: translateX(0%); }
 
     .mobile-top{
       display: grid;
-      grid-template-columns: 1fr 24px; /* title | close */
+      grid-template-columns: 1fr 24px;  /* title | close */
       align-items: center;
       column-gap: 8px;
     }
     .mobile-title{
-      font-weight: 700; color: #fff; letter-spacing: .02em;
-      font-size: 18px;
+      font-weight: 700; font-size: 18px; letter-spacing: .02em;
     }
     .mobile-close{
       appearance: none; background: transparent; border: 0; color: #fff;
       font-size: 24px; line-height: 1; cursor: pointer; justify-self: end;
     }
+
     .mobile-nav{
-      display: grid; align-content: start; row-gap: 20px; margin: 4px 0 0;
+      display: grid; align-content: start;
+      row-gap: 18px; margin-top: 6px;
     }
     .mobile-nav a{
-      color: #fff; text-decoration: none; font-size: 18px; padding: 6px 2px; border-radius: 8px;
+      color: #fff; text-decoration: none;
+      font-size: 18px; line-height: 1.4;
+      padding: 6px 2px; border-radius: 8px;
     }
     .mobile-nav a:active{ background: rgba(255,255,255,.06); }
-    .mobile-cta { padding-top: 12px; border-top: 1px solid var(--drawer-border); }
+
+    .mobile-cta{
+      padding-top: 12px; border-top: 1px solid var(--panel-edge);
+    }
+
+    @media (max-width: 360px){
+      .mobile-menu{ --panel-w: 310px; }
+    }
 
     /* =========================================================
        6) CONTACT CTA (LinkedIn) — accurate brand mark
@@ -243,17 +262,11 @@
     .btn-linkedin:hover { filter: brightness(1.05); }
     .btn-linkedin:active { transform: translateY(1px); }
     .btn-linkedin .li-icon { width: 20px; height: 20px; flex: 0 0 20px; display: block; }
-
-    /* The accurate 'in' logo: blue rounded square + white glyph */
-    .li-square { fill: #0A66C2; }
-    .li-glyph  { fill: #ffffff; }
-
-    html.theme-dark .btn-linkedin { box-shadow: 0 2px 10px rgba(0,0,0,.35); }
+    /* Optional micro‑tweak if needed on certain Android fonts: */
+    /* .btn-linkedin .li-icon { vertical-align: -2px; } */
 
     .contact-cta { margin: 16px 0 8px; }
     .contact-email { color: var(--subtext); }
-
-    /* Drawer CTA button fills width, centered content */
     .mobile-cta .btn-linkedin { width: 100%; justify-content: center; }
 
     /* =========================================================
@@ -289,18 +302,21 @@
       .hero{ flex-direction: column; text-align: center; }
       h1{ font-size: 32px; }
     }
+
+    /* Prevent background scroll-jank on Android while drawer is open */
+    body[data-lock="true"]{ height: 100svh; overflow: hidden; }
   </style>
 </head>
 <body>
   <!-- Top anchor for Home scroll -->
   <a id="top" tabindex="-1"></a>
-  <a class="skip-link" href="#main">Skip to main content</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <!-- ================= HEADER ================= -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
       <!-- Brand links to top -->
-      <a class="brand home-link" id="homeLink" href="#top" aria-label="Go to top">Santhosh Kumar C</a>
+      <a id="homeLink" href="#top" class="brand home-link">Santhosh Kumar C</a>
 
       <!-- Desktop links -->
       <nav class="nav-links" aria-label="Primary">
@@ -338,13 +354,14 @@
 
       <!-- Drawer CTA -->
       <div class="mobile-cta">
-        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer"
-           aria-label="Connect with me on LinkedIn">
-          <!-- Accurate LinkedIn icon: rounded square + 'in' glyph -->
+        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer" aria-label="Connect with me on LinkedIn">
+          <!-- Accurate LinkedIn icon: blue rounded square + 'in' glyph -->
           <svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <rect class="li-square" x="2" y="2" width="20" height="20" rx="4" ry="4"/>
-            <path class="li-glyph"
-              d="M7.55 17.5H5.2V9.93h2.35V17.5ZM6.38 8.9c-.75 0-1.36-.61-1.36-1.36s.61-1.36 1.36-1.36 1.36.61 1.36 1.36S7.14 8.9 6.38 8.9Zm12.42 8.6h-2.34v-3.94c0-.94-.02-2.15-1.31-2.15-1.31 0-1.51 1.02-1.51 2.08v4.01h-2.34V9.93h2.24v1.04h.03c.31-.58 1.08-1.2 2.21-1.2 2.36 0 2.75 1.55 2.75 3.56v4.17Z"/>
+            <rect x="2" y="2" width="20" height="20" rx="4" ry="4" fill="#0A66C2"/>
+            <path fill="#ffffff"
+              d="M7.55 17.5H5.2V9.93h2.35V17.5ZM6.38 8.9c-.75 0-1.36-.61-1.36-1.36s.61-1.36 1.36-1.36
+                 1.36.61 1.36 1.36S7.14 8.9 6.38 8.9Zm12.42 8.6h-2.34v-3.94c0-.94-.02-2.15-1.31-2.15-1.31 0-1.51 1.02-1.51 2.08v4.01H9.3V9.93h2.24v1.04h.03
+                 c.31-.58 1.08-1.2 2.21-1.2 2.36 0 2.75 1.55 2.75 3.56v4.17Z"/>
           </svg>
           <span>Connect with me</span>
         </a>
@@ -355,7 +372,7 @@
   <!-- ================= MAIN ================= -->
   <main id="main" class="container">
     <section class="hero" aria-labelledby="name">
-      <img src="assets/images/profile.webp" alt="Profile photo" class="profile-pic" width="140" height="140" loading="lazy" decoding="async" />
+      <img src="assets/images/profile.webp" alt="Santhosh Kumar Chandrashekar" class="profile-pic" width="140" height="140" loading="lazy" decoding="async" />
       <div>
         <h1 id="name">Santhosh Kumar Chandrashekar</h1>
         <p class="subtitle">
@@ -410,12 +427,14 @@
       <h2 id="contact-title" style="margin-top:0;">Contact</h2>
 
       <p class="contact-cta">
-        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer"
-           aria-label="Connect with me on LinkedIn">
+        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer" aria-label="Connect with me on LinkedIn">
+          <!-- Accurate LinkedIn icon: blue rounded square + 'in' glyph -->
           <svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <rect class="li-square" x="2" y="2" width="20" height="20" rx="4" ry="4"/>
-            <path class="li-glyph"
-              d="M7.55 17.5H5.2V9.93h2.35V17.5ZM6.38 8.9c-.75 0-1.36-.61-1.36-1.36s.61-1.36 1.36-1.36 1.36.61 1.36 1.36S7.14 8.9 6.38 8.9Zm12.42 8.6h-2.34v-3.94c0-.94-.02-2.15-1.31-2.15-1.31 0-1.51 1.02-1.51 2.08v4.01h-2.34V9.93h2.24v1.04h.03c.31-.58 1.08-1.2 2.21-1.2 2.36 0 2.75 1.55 2.75 3.56v4.17Z"/>
+            <rect x="2" y="2" width="20" height="20" rx="4" ry="4" fill="#0A66C2"/>
+            <path fill="#ffffff"
+              d="M7.55 17.5H5.2V9.93h2.35V17.5ZM6.38 8.9c-.75 0-1.36-.61-1.36-1.36s.61-1.36 1.36-1.36
+                 1.36.61 1.36 1.36S7.14 8.9 6.38 8.9Zm12.42 8.6h-2.34v-3.94c0-.94-.02-2.15-1.31-2.15-1.31 0-1.51 1.02-1.51 2.08v4.01H9.3V9.93h2.24v1.04h.03
+                 c.31-.58 1.08-1.2 2.21-1.2 2.36 0 2.75 1.55 2.75 3.56v4.17Z"/>
           </svg>
           <span>Connect with me</span>
         </a>
@@ -499,14 +518,14 @@
         mobileMenu.hidden = false;
         mobileMenu.setAttribute('data-open', 'true');
         menuBtn.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
+        document.body.setAttribute('data-lock','true');  // stop background scroll
         const first = mobileMenu.querySelector('.mobile-nav a');
         first && first.focus();
       }
       function closeMenu(){
         mobileMenu.removeAttribute('data-open');
         menuBtn.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+        document.body.removeAttribute('data-lock');
         setTimeout(() => { mobileMenu.hidden = true; }, 220);
         menuBtn.focus();
       }
@@ -568,4 +587,3 @@
   </script>
 </body>
 </html>
-``
