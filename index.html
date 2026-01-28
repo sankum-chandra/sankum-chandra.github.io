@@ -1,35 +1,149 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <title>Santhosh Kumar Chandrashekar | Portfolio Architect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio Architect specializing in Enterprise Architecture, Cloud (Azure & AWS), DevOps, and Solution Architecture. Leading cloud platform strategy, migration, and modernization." />
+  <meta name="description"
+        content="Portfolio Architect specializing in Enterprise Architecture, Cloud (Azure & AWS), DevOps, and Solution Architecture. Leading cloud platform strategy, migration, and modernization." />
 
-  <!-- Preconnect & Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    :root{
+      --bg: #ffffff;
+      --text: #111827;        /* neutral-900 */
+      --subtext: #4b5563;     /* neutral-600 */
+      --accent: #0a66c2;      /* brand blue */
+      --border: #e5e7eb;      /* neutral-200 */
+      --shadow: 0 1px 0 var(--border);
+      --focus: 2px solid #0a66c2;
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Santhosh Kumar Chandrashekar | Portfolio Architect" />
-  <meta property="og:description" content="Enterprise & Solution Architecture · Cloud (Azure & AWS) · DevOps · Platform Engineering" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://sankum.in/" />
-  <meta property="og:image" content="https://sankum.in/assets/images/profile-social.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Santhosh Kumar Chandrashekar | Portfolio Architect" />
-  <meta name="twitter:description" content="Leading cloud migration and modernization across Azure & AWS." />
-  <meta name="twitter:image" content="https://sankum.in/assets/images/profile-social.jpg" />
+      /* Header gradient (light) */
+      --header-start: #0ea5e9; /* sky-500 */
+      --header-end:   #6366f1; /* indigo-500 */
+      --header-text:  #ffffff;
+    }
 
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="canonical" href="https://sankum.in/" />
+    /* Respect system dark preference */
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0f172a;        /* slate-900 */
+        --text: #e5e7eb;      /* neutral-200 */
+        --subtext: #cbd5e1;   /* slate-300 */
+        --border: #1f2937;    /* gray-800 */
+        --shadow: 0 1px 0 var(--border);
+
+        /* Header gradient (dark) */
+        --header-start: #0ea5e9; /* sky-500 */
+        --header-end:   #7c3aed; /* violet-600 */
+        --header-text:  #ffffff;
+      }
+    }
+
+    /* Explicit dark class overrides */
+    body.dark{
+      --bg: #0f172a;
+      --text: #e5e7eb;
+      --subtext: #cbd5e1;
+      --border: #1f2937;
+      --shadow: 0 1px 0 var(--border);
+      --header-start: #0ea5e9;
+      --header-end:   #7c3aed;
+      --header-text:  #ffffff;
+    }
+
+    /* Base */
+    html{ scroll-behavior: smooth; }
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background-color .3s ease, color .3s ease;
+    }
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+    a:focus-visible, button:focus-visible{ outline: var(--focus); outline-offset: 3px; }
+
+    .container{ max-width: 900px; margin: auto; padding: 60px 20px; }
+
+    /* Skip link */
+    .skip-link{
+      position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+    }
+    .skip-link:focus{
+      position: fixed; left: 16px; top: 16px;
+      width: auto; height: auto; padding: 8px 12px;
+      background: var(--bg); border: 1px solid var(--border); box-shadow: 0 4px 10px rgba(0,0,0,.08); z-index: 1000;
+    }
+
+    /* Header with gradient */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      color: var(--header-text);
+      background-image: linear-gradient(90deg, var(--header-start), var(--header-end));
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    }
+    .nav{
+      display:flex; justify-content:space-between; align-items:center;
+      padding: 14px 20px; gap: 12px; flex-wrap: wrap;
+    }
+    .brand{
+      font-weight: 700; font-size: 18px;
+      color: var(--header-text);
+    }
+    .nav a{
+      color: var(--header-text); margin-left: 18px; font-size: 15px;
+      opacity:.95;
+    }
+    .nav a:hover{ opacity:1; text-decoration: underline; }
+    .nav-controls{ display:flex; align-items:center; flex-wrap:wrap; }
+    .toggle{
+      margin-left: 12px; padding: 6px 12px; border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.4);
+      background: rgba(255,255,255,.12);
+      color: var(--header-text); cursor: pointer;
+      backdrop-filter: blur(6px);
+    }
+
+    /* Hero */
+    .hero{
+      display:flex; align-items:center; gap:30px; margin-top:30px; flex-wrap:wrap;
+    }
+    .profile-pic{
+      width:140px; height:140px; border-radius:50%; object-fit:cover;
+      border:4px solid var(--accent);
+    }
+
+    h1{ font-size:40px; line-height:1.2; margin:0 0 12px; color: var(--accent); }
+    h2{
+      font-size:24px; margin:70px 0 18px; padding-bottom:8px;
+      border-bottom:1px solid var(--border);
+    }
+    p, ul{ font-size:17px; color: var(--subtext); max-width:720px; }
+    .subtitle{ font-size:17px; color: var(--subtext); margin-bottom:18px; max-width:720px; }
+    .project,.blog-post{ margin-bottom:22px; max-width:720px; }
+
+    footer{
+      margin-top:80px; padding-top:30px; border-top:1px solid var(--border);
+      font-size:15px; color: var(--subtext);
+    }
+
+    /* Mobile */
+    @media (max-width: 600px){
+      .hero{ flex-direction:column; text-align:center; }
+      h1{ font-size:32px; }
+      .nav a{ margin-left:12px; }
+    }
+  </style>
 </head>
-
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -48,8 +162,9 @@
   </header>
 
   <main id="main" class="container">
+
     <section class="hero" aria-labelledby="name">
-      <img src="assets/images/profile.webp" alt="Santhosh Kumar Chandrashekar" class="profile-pic" width="140" height="140" loading="lazy" decoding="async" />
+      <img src="profile.webp" alt="Santhosh Kumar Chandrashekar" class="profile-pic" width="140" height="140" loading="lazy" decoding="async" />
       <div>
         <h1 id="name">Santhosh Kumar Chandrashekar</h1>
         <p class="subtitle">
@@ -94,9 +209,7 @@
     <section id="blog" aria-labelledby="blog-title">
       <h2 id="blog-title">Thought Leadership</h2>
       <article class="blog-post">
-        <h3>
-          <a href="landing-zone-principles.html">Designing Enterprise Cloud Landing Zones</a>
-        </h3>
+        <h3><a href="landing-zone-principles.html">Designing Enterprise Cloud Landing Zones</a></h3>
         <p>Key principles for building scalable, governed, and secure cloud foundations.</p>
       </article>
     </section>
@@ -110,6 +223,34 @@
     </footer>
   </main>
 
-  <script src="assets/js/main.js"></script>
+  <script>
+    // Persisted theme toggle with system preference as default
+    (function(){
+      const STORAGE_KEY = 'site-theme';
+      const btn = document.getElementById('themeToggle');
+
+      function applyTheme(theme){
+        document.body.classList.toggle('dark', theme === 'dark');
+        btn.setAttribute('aria-pressed', theme === 'dark');
+        btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+      }
+
+      const stored = localStorage.getItem(STORAGE_KEY);
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initialTheme = stored || (prefersDark ? 'dark' : 'light');
+      applyTheme(initialTheme);
+
+      btn.addEventListener('click', () => {
+        const next = document.body.classList.contains('dark') ? 'light' : 'dark';
+        localStorage.setItem(STORAGE_KEY, next);
+        applyTheme(next);
+      });
+
+      if (!stored && window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)')
+          .addEventListener('change', e => applyTheme(e.matches ? 'dark' : 'light'));
+      }
+    })();
+  </script>
 </body>
 </html>
