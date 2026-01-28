@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description"
         content="Portfolio Architect specializing in Enterprise Architecture, Cloud (Azure & AWS), DevOps, and Solution Architecture. Leading cloud platform strategy, migration, and modernization." />
+  <meta name="theme-color" content="#0ea5e9" />
 
-  <!-- Google Fonts (preconnect + stylesheet) -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
@@ -17,13 +18,13 @@
        1) DESIGN TOKENS (LIGHT DEFAULTS)
        ========================================================= */
     :root{
-      --header-height: 56px;       /* Will be dynamically updated by JS to match actual header height */
+      --header-height: 56px;       /* updated dynamically by JS to match the real header */
       --page-bg: #f5f6f8;          /* light gray page background */
-      --bg: #ffffff;               /* neutral white if you need cards later */
-      --text: #111827;             /* neutral-900 */
-      --subtext: #4b5563;          /* neutral-600 */
-      --accent: #0a66c2;           /* brand blue */
-      --border: #e5e7eb;           /* neutral-200 */
+      --bg: #ffffff;
+      --text: #111827;
+      --subtext: #4b5563;
+      --accent: #0a66c2;
+      --border: #e5e7eb;
       --shadow: 0 1px 0 var(--border);
       --focus: 2px solid #0a66c2;
 
@@ -31,24 +32,32 @@
       --header-start: #0ea5e9; /* sky-500 */
       --header-end:   #6366f1; /* indigo-500 */
       --header-text:  #ffffff;
+
+      /* Mobile drawer colors */
+      --drawer-bg: rgba(15, 23, 42, 0.92);
+      --drawer-border: rgba(255,255,255,.1);
+      --scrim: rgba(0,0,0,.35);
     }
 
     /* =========================================================
        2) FOLLOW SYSTEM PREFERENCE BY DEFAULT
-          (Overridden by explicit user themes below)
        ========================================================= */
     @media (prefers-color-scheme: dark){
       :root{
-        --page-bg: #0b1223;        /* subtle dark page background */
-        --bg: #0f172a;             /* slate-900 */
-        --text: #e5e7eb;           /* neutral-200 */
-        --subtext: #cbd5e1;        /* slate-300 */
-        --border: #1f2937;         /* gray-800 */
+        --page-bg: #0b1223;
+        --bg: #0f172a;
+        --text: #e5e7eb;
+        --subtext: #cbd5e1;
+        --border: #1f2937;
         --shadow: 0 1px 0 var(--border);
 
-        --header-start: #0ea5e9;   /* sky-500 */
-        --header-end:   #7c3aed;   /* violet-600 */
+        --header-start: #0ea5e9;
+        --header-end:   #7c3aed;
         --header-text:  #ffffff;
+
+        --drawer-bg: rgba(2,6,23,0.96);
+        --drawer-border: rgba(255,255,255,.15);
+        --scrim: rgba(0,0,0,.5);
       }
     }
 
@@ -56,26 +65,14 @@
        3) EXPLICIT USER THEME (ALWAYS WINS)
        ========================================================= */
     html.theme-light{
-      --page-bg: #f5f6f8;
-      --bg: #ffffff;
-      --text: #111827;
-      --subtext: #4b5563;
-      --border: #e5e7eb;
-      --shadow: 0 1px 0 var(--border);
-      --header-start: #0ea5e9;
-      --header-end:   #6366f1;
-      --header-text:  #ffffff;
+      --page-bg: #f5f6f8; --bg:#fff; --text:#111827; --subtext:#4b5563; --border:#e5e7eb; --shadow:0 1px 0 var(--border);
+      --header-start:#0ea5e9; --header-end:#6366f1; --header-text:#fff;
+      --drawer-bg: rgba(15, 23, 42, 0.92); --drawer-border: rgba(255,255,255,.1); --scrim: rgba(0,0,0,.35);
     }
     html.theme-dark{
-      --page-bg: #0b1223;
-      --bg: #0f172a;
-      --text: #e5e7eb;
-      --subtext: #cbd5e1;
-      --border: #1f2937;
-      --shadow: 0 1px 0 var(--border);
-      --header-start: #0ea5e9;
-      --header-end:   #7c3aed;
-      --header-text:  #ffffff;
+      --page-bg:#0b1223; --bg:#0f172a; --text:#e5e7eb; --subtext:#cbd5e1; --border:#1f2937; --shadow:0 1px 0 var(--border);
+      --header-start:#0ea5e9; --header-end:#7c3aed; --header-text:#fff;
+      --drawer-bg: rgba(2,6,23,0.96); --drawer-border: rgba(255,255,255,.15); --scrim: rgba(0,0,0,.5);
     }
 
     /* =========================================================
@@ -89,7 +86,7 @@
     body{
       margin:0;
       font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
-      background-color: var(--page-bg); /* ← light gray page background */
+      background-color: var(--page-bg);
       color: var(--text);
       line-height: 1.7;
       transition: background-color .3s ease, color .3s ease;
@@ -112,22 +109,21 @@
     }
 
     /* =========================================================
-       5) HEADER (GRADIENT) + RESPONSIVE NAV
+       5) HEADER (GRADIENT) + RESPONSIVE NAV WITH MOBILE DRAWER
        ========================================================= */
-    header{
-      position: sticky; top: 0; z-index: 20;
+    .site-header{
+      position: sticky; top: 0; z-index: 40;
       color: var(--header-text);
       background-image: linear-gradient(90deg, var(--header-start), var(--header-end));
       box-shadow: 0 2px 10px rgba(0,0,0,.15);
-      padding: 10px 16px;
     }
-
-    .nav{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+    .header-inner{
+      display: grid;
+      grid-template-columns: 1fr auto auto;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
+      padding: 10px 16px;
+      min-height: 56px;
     }
 
     .brand{
@@ -137,19 +133,19 @@
       white-space: nowrap;
     }
 
+    /* Desktop nav links */
     .nav-links{
       display: flex;
       gap: 18px;
     }
-
     .nav-links a{
       color: var(--header-text);
       font-size: 15px;
       white-space: nowrap;
     }
 
-    .theme-btn{
-      margin-left: 12px;
+    .theme-btn, .menu-btn{
+      appearance: none;
       background: rgba(255,255,255,0.15);
       border: 1px solid rgba(255,255,255,0.4);
       padding: 6px 12px;
@@ -158,34 +154,70 @@
       cursor: pointer;
       backdrop-filter: blur(6px);
     }
-
-    /* --- Mobile adjustments --- */
-    @media (max-width: 768px){
-      .nav{
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-      }
-
-      .brand{ font-size: 18px; }
-
-      /* Scroll-friendly nav strip */
-      .nav-links{
-        display: flex;
-        gap: 18px;
-        overflow-x: auto;
-        padding-bottom: 4px;
-        -webkit-overflow-scrolling: touch;
-      }
-      .nav-links::-webkit-scrollbar{ display: none; }
-
-      .theme-btn{ align-self: flex-end; margin-top: 4px; }
+    .menu-btn{
+      display: none; /* hidden on desktop */
+      font-weight: 700;
+      line-height: 1;
     }
+
+    .header-actions{
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    /* --- Mobile layout --- */
+    @media (max-width: 768px){
+      .header-inner{
+        grid-template-columns: 1fr auto auto; /* brand | theme | menu */
+      }
+      .nav-links{ display: none; } /* hide desktop links */
+      .menu-btn{ display: inline-flex; }
+      .brand{ font-size: 18px; }
+    }
+
+    /* --- Mobile Drawer --- */
+    .mobile-menu{
+      position: fixed; inset: 0; z-index: 50;
+      display: grid; grid-template-columns: 1fr min(78vw, 320px);
+      background: var(--scrim);
+      opacity: 0; pointer-events: none; transition: opacity .2s ease;
+    }
+    .mobile-menu[data-open="true"]{ opacity: 1; pointer-events: auto; }
+    .mobile-menu-scrim{ width: 100%; height: 100%; }
+
+    .mobile-panel{
+      height: 100%; background: var(--drawer-bg);
+      border-left: 1px solid var(--drawer-border);
+      padding: 16px;
+      transform: translateX(100%);
+      transition: transform .25s ease;
+      display: grid; grid-template-rows: auto 1fr;
+      gap: 12px;
+    }
+    .mobile-menu[data-open="true"] .mobile-panel{ transform: translateX(0%); }
+
+    .mobile-top{
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .mobile-title{ font-weight: 700; color: #fff; letter-spacing: .02em; }
+    .mobile-close{
+      appearance: none; background: transparent; border: 0; color: #fff;
+      font-size: 22px; cursor: pointer;
+    }
+    .mobile-nav{
+      display: grid; align-content: start; gap: 8px; margin-top: 8px;
+    }
+    .mobile-nav a{
+      color: #fff; text-decoration: none; font-size: 16px; padding: 10px 8px; border-radius: 8px;
+    }
+    .mobile-nav a:active{ background: rgba(255,255,255,.08); }
 
     /* =========================================================
        6) CONTENT
        ========================================================= */
-    /* Ensure sections also offset when targeted (helps older Safari) */
+    /* Ensure sections offset when targeted (helps older Safari) */
     section[id]{ scroll-margin-top: calc(var(--header-height) + 10px); }
 
     .hero{
@@ -221,26 +253,49 @@
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- ================= HEADER ================= -->
-  <header>
-    <nav class="nav" aria-label="Primary">
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
       <div class="brand">Santhosh Kumar C</div>
 
-      <div class="nav-links">
+      <!-- Desktop links -->
+      <nav class="nav-links" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#expertise">Expertise</a>
         <a href="#work">Work</a>
         <a href="#blog">Thought Leadership</a>
         <a href="#contact">Contact</a>
-      </div>
+      </nav>
 
-      <button type="button" class="theme-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
-    </nav>
+      <div class="header-actions">
+        <button type="button" class="theme-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+        <button type="button" class="menu-btn" id="menuToggle"
+                aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">≡</button>
+      </div>
+    </div>
   </header>
+
+  <!-- ================= MOBILE MENU DRAWER ================= -->
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <div class="mobile-menu-scrim" data-close="true" aria-hidden="true"></div>
+    <aside class="mobile-panel" role="dialog" aria-modal="true" aria-labelledby="mobileMenuTitle">
+      <div class="mobile-top">
+        <div class="mobile-title" id="mobileMenuTitle">Menu</div>
+        <button type="button" class="mobile-close" data-close="true" aria-label="Close menu">✕</button>
+      </div>
+      <nav class="mobile-nav" aria-label="Mobile Primary">
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#work">Work</a>
+        <a href="#blog">Thought Leadership</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </aside>
+  </div>
 
   <!-- ================= MAIN ================= -->
   <main id="main" class="container">
     <section class="hero" aria-labelledby="name">
-      <img src="assets/images/profile.webp" alt="Santhosh Kumar Chandrashekar" class="profile-pic" width="140" height="140" loading="lazy" decoding="async" />
+      <img src="profile.jpg" alt="Santhosh Kumar Chandrashekar" class="profile-pic" width="140" height="140" loading="lazy" decoding="async" />
       <div>
         <h1 id="name">Santhosh Kumar Chandrashekar</h1>
         <p class="subtitle">
@@ -300,92 +355,125 @@
     </footer>
   </main>
 
-  <!-- ================= JS: Theme + Accurate Anchor Scrolling ================= -->
+  <!-- ================= JS: Theme + Accurate Anchor Scrolling + Mobile Drawer ================= -->
   <script>
     (function () {
       const STORAGE_KEY = 'site-theme';          // 'light' | 'dark' | null (follow system)
       const USER_LOCK   = 'site-theme-userlock'; // 'true' once user clicks (stops following OS)
-      const btn  = document.getElementById('themeToggle');
-      const root = document.documentElement;
-      const header = document.querySelector('header');
 
+      const root       = document.documentElement;
+      const header     = document.getElementById('siteHeader');
+      const themeBtn   = document.getElementById('themeToggle');
+
+      const menuBtn    = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const closeEls   = mobileMenu.querySelectorAll('[data-close="true"]');
+      const mobileLinks= mobileMenu.querySelectorAll('.mobile-nav a');
+
+      /* ---------- THEME ---------- */
       function prefersDark(){
         return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       }
-
       function applyTheme(theme){
         root.classList.remove('theme-light', 'theme-dark');
         if (theme === 'dark') {
           root.classList.add('theme-dark');
-          btn.setAttribute('aria-pressed', 'true');
-          btn.textContent = '☀️';
-          btn.title = 'Switch to light mode';
+          themeBtn.setAttribute('aria-pressed', 'true');
+          themeBtn.textContent = '☀️';
+          themeBtn.title = 'Switch to light mode';
         } else if (theme === 'light') {
           root.classList.add('theme-light');
-          btn.setAttribute('aria-pressed', 'false');
-          btn.textContent = '🌙';
-          btn.title = 'Switch to dark mode';
+          themeBtn.setAttribute('aria-pressed', 'false');
+          themeBtn.textContent = '🌙';
+          themeBtn.title = 'Switch to dark mode';
         } else {
           // follow system
-          btn.textContent = prefersDark() ? '☀️' : '🌙';
-          btn.setAttribute('aria-pressed', prefersDark() ? 'true' : 'false');
+          themeBtn.textContent = prefersDark() ? '☀️' : '🌙';
+          themeBtn.setAttribute('aria-pressed', prefersDark() ? 'true' : 'false');
         }
       }
-
-      // Dynamically set --header-height to the header's actual height (desktop & mobile)
-      function setHeaderHeight(){
-        if (!header) return;
-        const h = header.offsetHeight;
-        root.style.setProperty('--header-height', h + 'px');
-      }
-
-      // Smoothly scroll to an element with current header offset taken into account
-      function scrollToId(id){
-        const el = document.getElementById(id);
-        if (!el) return;
-        // Using scrollIntoView with scroll-margin-top set in CSS gives correct offset
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      // Init theme from storage or system
-      const stored = localStorage.getItem(STORAGE_KEY);           // 'light' | 'dark' | null
+      const stored = localStorage.getItem(STORAGE_KEY);
       const locked = localStorage.getItem(USER_LOCK) === 'true';
       applyTheme(stored || null);
 
-      // Update header height on load/resize/font load
-      function initHeights() { setHeaderHeight(); }
-      window.addEventListener('resize', () => { setHeaderHeight(); });
-      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(setHeaderHeight); }
-      window.addEventListener('load', initHeights);
-      setHeaderHeight();
-
-      // React to OS theme changes only when not user-locked and no explicit theme
       if (!locked && window.matchMedia) {
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-          if (!localStorage.getItem(USER_LOCK) && !localStorage.getItem(STORAGE_KEY)) {
-            applyTheme(null);
-          }
+          if (!localStorage.getItem(USER_LOCK) && !localStorage.getItem(STORAGE_KEY)) applyTheme(null);
         });
       }
-
-      // Toggle behavior: set explicit user choice and lock
-      btn.addEventListener('click', () => {
+      themeBtn.addEventListener('click', () => {
         const isDark = root.classList.contains('theme-dark') || (!root.classList.contains('theme-light') && prefersDark());
         const next = isDark ? 'light' : 'dark';
         localStorage.setItem(STORAGE_KEY, next);
         localStorage.setItem(USER_LOCK, 'true');
         applyTheme(next);
-        setHeaderHeight(); // recalc if header height changes due to font render tweaks
+        setHeaderHeight(); // in case metrics shift slightly
       });
 
-      // Intercept nav hash clicks for consistent scrolling
+      /* ---------- HEADER HEIGHT & ANCHOR OFFSET ---------- */
+      function setHeaderHeight(){
+        if (!header) return;
+        const h = header.offsetHeight;
+        root.style.setProperty('--header-height', h + 'px');
+      }
+      window.addEventListener('resize', setHeaderHeight);
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(setHeaderHeight); }
+      window.addEventListener('load', setHeaderHeight);
+      setHeaderHeight();
+
+      /* ---------- MOBILE DRAWER ---------- */
+      function openMenu(){
+        mobileMenu.hidden = false;
+        mobileMenu.setAttribute('data-open', 'true');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        // focus first link
+        const first = mobileMenu.querySelector('.mobile-nav a');
+        first && first.focus();
+      }
+      function closeMenu(){
+        mobileMenu.removeAttribute('data-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        // small delay to allow transition before hiding for screen readers
+        setTimeout(() => { mobileMenu.hidden = true; }, 220);
+        menuBtn.focus();
+      }
+
+      menuBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.getAttribute('data-open') === 'true';
+        isOpen ? closeMenu() : openMenu();
+      });
+      // Close on scrim tap or ✕
+      closeEls.forEach(el => el.addEventListener('click', closeMenu));
+      // Close on Esc
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.getAttribute('data-open') === 'true') closeMenu();
+      });
+
+      // Anchor links (desktop & mobile) — smooth scroll and close menu if open
+      function scrollToId(id){
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Desktop header links
       document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => {
         a.addEventListener('click', (e) => {
-          const hash = a.getAttribute('href').replace('#','').trim();
-          if (hash) {
-            e.preventDefault();
-            scrollToId(hash);
-            history.pushState(null, '', '#' + hash);
+          const id = a.getAttribute('href').slice(1);
+          if (id) {
+            e.preventDefault(); scrollToId(id); history.pushState(null, '', '#' + id);
+          }
+        });
+      });
+
+      // Mobile drawer links
+      mobileLinks.forEach(a => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href').slice(1);
+          if (id) {
+            e.preventDefault(); closeMenu(); setTimeout(() => { scrollToId(id); history.pushState(null, '', '#' + id); }, 10);
           }
         });
       });
@@ -393,7 +481,6 @@
       // If page loads with a hash, ensure position is corrected after header height is measured
       if (location.hash) {
         const id = location.hash.replace('#','');
-        // Delay slightly to ensure layout is settled
         setTimeout(() => scrollToId(id), 50);
       }
     })();
