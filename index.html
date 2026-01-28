@@ -8,9 +8,9 @@
   <meta name="theme-color" content="#0ea5e9" />
 
   <!-- Google Fonts (preconnect + stylesheet) -->
-  https://fonts.googleapis.com
-  https://fonts.gstatic.com
-  https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <style>
     /* =========================================================
@@ -22,7 +22,7 @@
       --bg: #ffffff;
       --text: #111827;
       --subtext: #4b5563;
-      --accent: #0a66c2;           /* LinkedIn brand blue */
+      --accent: #0a66c2;
       --border: #e5e7eb;
       --shadow: 0 1px 0 var(--border);
       --focus: 2px solid #0a66c2;
@@ -242,38 +242,32 @@
     }
 
     /* =========================================================
-       6) CONTACT CTA (LinkedIn) — accurate mark + alignment
+       6) CONTACT CTA (LinkedIn) — accurate brand mark
        ========================================================= */
     .btn-linkedin {
       display: inline-flex;
       align-items: center;
-      justify-content: center;           /* center icon + text */
-      gap: 12px;                         /* spacing between icon and text */
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 16px;
-      letter-spacing: .01em;
-      color: #ffffff;                    /* text/icon color */
-      background: #0A66C2;               /* LinkedIn brand blue */
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      color: #ffffff;                 /* text/icon color */
+      background: #0A66C2;            /* LinkedIn brand blue */
       border: 1px solid rgba(255,255,255,.18);
       text-decoration: none;
       transition: transform .08s ease, filter .15s ease, box-shadow .15s ease;
       box-shadow: 0 2px 10px rgba(0,0,0,.08);
-      line-height: 1;                    /* eliminate baseline drift */
+      line-height: 1;
     }
     .btn-linkedin:hover { filter: brightness(1.05); }
     .btn-linkedin:active { transform: translateY(1px); }
-
-    /* Icon is an inline SVG; lock metrics so it centers perfectly */
-    .btn-linkedin .li-icon {
-      width: 20px; height: 20px;
-      display: block; flex: 0 0 20px;
-    }
+    .btn-linkedin .li-icon { width: 20px; height: 20px; flex: 0 0 20px; display: block; }
+    /* Optional micro‑tweak if needed on certain Android fonts: */
+    /* .btn-linkedin .li-icon { vertical-align: -2px; } */
 
     .contact-cta { margin: 16px 0 8px; }
     .contact-email { color: var(--subtext); }
-    .mobile-cta .btn-linkedin { width: 100%; }
+    .mobile-cta .btn-linkedin { width: 100%; justify-content: center; }
 
     /* =========================================================
        7) CONTENT
@@ -316,21 +310,21 @@
 <body>
   <!-- Top anchor for Home scroll -->
   <a id="top" tabindex="-1"></a>
-  #mainSkip to main content</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <!-- ================= HEADER ================= -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
       <!-- Brand links to top -->
-      #topSanthosh Kumar C</a>
+      <a id="homeLink" href="#top" class="brand home-link">Santhosh Kumar C</a>
 
       <!-- Desktop links -->
       <nav class="nav-links" aria-label="Primary">
-        #aboutAbout</a>
-        #expertiseExpertise</a>
-        #workWork</a>
-        #blogThought Leadership</a>
-        #contactContact</a>
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#work">Work</a>
+        <a href="#blog">Thought Leadership</a>
+        <a href="#contact">Contact</a>
       </nav>
 
       <div class="header-actions">
@@ -351,21 +345,19 @@
       </div>
 
       <nav class="mobile-nav" aria-label="Mobile Primary">
-        #aboutAbout</a>
-        #expertiseExpertise</a>
-        #workWork</a>
-        #blogThought Leadership</a>
-        #contactContact</a>
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#work">Work</a>
+        <a href="#blog">Thought Leadership</a>
+        <a href="#contact">Contact</a>
       </nav>
 
       <!-- Drawer CTA -->
       <div class="mobile-cta">
-        https://linkedin.com/in/sankum-chandra
-          <!-- Accurate LinkedIn mark: blue rounded square + white 'in' -->
+        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer" aria-label="Connect with me on LinkedIn">
+          <!-- Accurate LinkedIn icon: blue rounded square + 'in' glyph -->
           <svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <!-- Blue rounded square -->
             <rect x="2" y="2" width="20" height="20" rx="4" ry="4" fill="#0A66C2"/>
-            <!-- White 'in' glyph -->
             <path fill="#ffffff"
               d="M7.55 17.5H5.2V9.93h2.35V17.5ZM6.38 8.9c-.75 0-1.36-.61-1.36-1.36s.61-1.36 1.36-1.36
                  1.36.61 1.36 1.36S7.14 8.9 6.38 8.9Zm12.42 8.6h-2.34v-3.94c0-.94-.02-2.15-1.31-2.15-1.31 0-1.51 1.02-1.51 2.08v4.01H9.3V9.93h2.24v1.04h.03
@@ -380,7 +372,7 @@
   <!-- ================= MAIN ================= -->
   <main id="main" class="container">
     <section class="hero" aria-labelledby="name">
-      assets/images/profile.webp
+      <img src="assets/images/profile.webp" alt="Santhosh Kumar Chandrashekar" class="profile-pic" width="140" height="140" loading="lazy" decoding="async" />
       <div>
         <h1 id="name">Santhosh Kumar Chandrashekar</h1>
         <p class="subtitle">
@@ -426,7 +418,7 @@
     <section id="blog" aria-labelledby="blog-title">
       <h2 id="blog-title">Thought Leadership</h2>
       <article class="blog-post">
-        <h3>landing-zone-principles.htmlDesigning Enterprise Cloud Landing Zones</a></h3>
+        <h3><a href="landing-zone-principles.html">Designing Enterprise Cloud Landing Zones</a></h3>
         <p>Key principles for building scalable, governed, and secure cloud foundations.</p>
       </article>
     </section>
@@ -435,7 +427,8 @@
       <h2 id="contact-title" style="margin-top:0;">Contact</h2>
 
       <p class="contact-cta">
-        https://linkedin.com/in/sankum-chandra
+        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer" aria-label="Connect with me on LinkedIn">
+          <!-- Accurate LinkedIn icon: blue rounded square + 'in' glyph -->
           <svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <rect x="2" y="2" width="20" height="20" rx="4" ry="4" fill="#0A66C2"/>
             <path fill="#ffffff"
@@ -449,7 +442,7 @@
 
       <p class="contact-email">
         <strong>Email:</strong>
-        mailto:sankum.chandra@outlook.comsankum.chandra@outlook.com</a>
+        <a href="mailto:sankum.chandra@outlook.com">sankum.chandra@outlook.com</a>
       </p>
     </footer>
   </main>
