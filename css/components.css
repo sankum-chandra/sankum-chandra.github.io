@@ -26,38 +26,59 @@ body[data-lock="true"]{height:100svh;overflow:hidden}
 
 
 /* =========================
-   Strategic Initiatives — Compact Cards (no images)
+   Unified Card Grid (Initiatives + Insights)
    ========================= */
-.case-grid-compact .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.case-mini{border:1px solid var(--border);background:var(--bg);border-radius:14px;padding:14px 14px 12px;text-align:left;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.06);min-height:124px}
-.case-title{margin:0 0 6px;font-size:16.25px;line-height:1.25;color:var(--text)}
-.case-desc{margin:0;color:var(--subtext);font-size:14.5px;line-height:1.55;max-width:none}
-.case-more{margin-top:12px;display:inline-flex;align-items:center;gap:8px;border:0;background:transparent;color:var(--accent);font-weight:700;font-size:14px;padding:0;cursor:pointer}
-.case-more:hover{text-decoration:underline;text-underline-offset:3px}
-.case-more-arrow{transition:transform .18s ease}
-.case-more:hover .case-more-arrow{transform:translateX(2px)}
+.card-grid .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card-link{appearance:none;display:block;width:100%;text-align:left;border:1px solid var(--border);background:var(--bg);border-radius:14px;padding:14px 14px 12px;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.06);cursor:pointer;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+.card-link:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.10);border-color:rgba(14,165,233,.85)}
+.card-link:focus-visible{outline:var(--focus);outline-offset:3px}
+.card-title{margin:0 0 6px;font-size:16.25px;line-height:1.25;color:var(--text)}
+.card-desc{margin:0;color:var(--subtext);font-size:14.5px;line-height:1.55;max-width:none}
+.card-cta{display:inline-flex;margin-top:12px;color:var(--accent);font-weight:700;font-size:14px}
 .section-note{margin:-10px 0 20px;font-size:14px;color:var(--subtext)}
+
+/* Slightly subtler hover for Insights cards */
+.card-link--insight:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.09);border-color:rgba(14,165,233,.65)}
+
+@media (max-width:480px){
+  .card-grid .grid{grid-template-columns:1fr}
+}
 
 
 /* =========================
-   Modal as a full page section (blended)
+   Detail Overlay (full-width, in-page)
    ========================= */
-.modal{position:fixed;inset:0;z-index:60;display:grid;grid-template-columns:1fr;align-items:center;justify-items:center;padding:16px}
-.modal[hidden]{display:none}
-.modal-scrim{position:absolute;inset:0;background:rgba(0,0,0,.45)}
-.modal-panel{position:relative;width:min(900px,100%);max-height:min(86vh,820px);overflow:auto;background:var(--bg);border:1px solid var(--border);border-radius:18px;box-shadow:0 24px 70px rgba(0,0,0,.35);padding:0}
+.detail-overlay{position:fixed;inset:var(--header-height) 0 0 0;z-index:35;background:var(--page-bg)}
+.detail-overlay[hidden]{display:none}
+.detail-scroll{height:100%;overflow:auto}
 
-.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border)}
-.modal-head-left{min-width:0}
-.modal-back{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:600;text-decoration:none;margin-bottom:10px}
-.modal-back:hover{text-decoration:underline;text-underline-offset:3px}
+.detail{width:100%;padding:26px 20px 70px}
+.detail[hidden]{display:none}
 
-.modal-title{margin:0;font-size:28px;line-height:1.2;color:var(--text)}
-.modal-close{appearance:none;border:1px solid var(--border);background:transparent;color:var(--text);border-radius:12px;width:40px;height:40px;font-size:20px;cursor:pointer}
+.detail-head{position:relative;max-width:100%;}
+.detail-back{display:inline-flex;gap:8px;align-items:center;color:var(--accent);font-weight:600;text-decoration:none;margin-bottom:10px}
+.detail-back:hover{text-decoration:underline;text-underline-offset:3px}
 
-.modal-body{padding:14px 16px 18px}
-.modal-body .modal-section{font-size:18px;margin:22px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--text)}
-.modal-body .modal-section:first-of-type{margin-top:10px}
-.modal-body p,.modal-body ul{max-width:none;font-size:16px}
+.detail-close{position:fixed;top:calc(var(--header-height) + 14px);right:16px;z-index:41;appearance:none;border:1px solid var(--border);background:rgba(255,255,255,.10);color:var(--text);border-radius:12px;width:44px;height:44px;font-size:22px;cursor:pointer;backdrop-filter:blur(6px)}
 
-@media (max-width:600px){.modal{align-items:end;padding:10px}.modal-title{font-size:22px}.modal-panel{max-height:88vh}}
+.detail-title{margin:0;font-size:30px;line-height:1.15;color:var(--accent)}
+.detail-subtitle{margin:10px 0 0;color:var(--subtext);font-size:14.5px;max-width:none}
+
+.detail-body{margin-top:18px;max-width:100%}
+.detail-body h2{margin:28px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);font-size:18px;color:var(--text)}
+.detail-body p,.detail-body ul{max-width:none;font-size:16px;color:var(--subtext)}
+.detail-body ul{padding-left:18px}
+.detail-body li{margin:6px 0}
+
+.detail-nav{display:flex;justify-content:space-between;gap:12px;margin-top:26px;padding-top:16px;border-top:1px solid var(--border)}
+.nav-btn{flex:1;appearance:none;border:1px solid var(--border);background:var(--bg);border-radius:14px;padding:12px 14px;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.06);cursor:pointer;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;font-weight:700}
+.nav-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.10);border-color:rgba(14,165,233,.85)}
+.nav-btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+
+@media (max-width:700px){
+  .detail-nav{flex-direction:column}
+}
+@media (max-width:600px){
+  .detail-title{font-size:24px}
+  .detail-close{right:12px}
+}
