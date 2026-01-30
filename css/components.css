@@ -26,59 +26,43 @@ body[data-lock="true"]{height:100svh;overflow:hidden}
 
 
 /* =========================
-   Unified Card Grid (Initiatives + Insights)
+   Strategic Initiatives — Compact Link Cards (separate pages)
    ========================= */
-.card-grid .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.card-link{appearance:none;display:block;width:100%;text-align:left;border:1px solid var(--border);background:var(--bg);border-radius:14px;padding:14px 14px 12px;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.06);cursor:pointer;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
-.card-link:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.10);border-color:rgba(14,165,233,.85)}
-.card-link:focus-visible{outline:var(--focus);outline-offset:3px}
-.card-title{margin:0 0 6px;font-size:16.25px;line-height:1.25;color:var(--text)}
-.card-desc{margin:0;color:var(--subtext);font-size:14.5px;line-height:1.55;max-width:none}
-.card-cta{display:inline-flex;margin-top:12px;color:var(--accent);font-weight:700;font-size:14px}
+.case-grid-compact .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.case-link{display:block;border:1px solid var(--border);background:var(--bg);border-radius:14px;padding:14px 14px 12px;text-align:left;color:var(--text);text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.06);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;min-height:124px}
+.case-link:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.10);border-color:rgba(14,165,233,.85)}
+.case-link:focus-visible{outline:var(--focus);outline-offset:3px}
+.case-link .case-title{margin:0 0 6px;font-size:16.25px;line-height:1.25;color:var(--text)}
+.case-link .case-desc{margin:0;color:var(--subtext);font-size:14.5px;line-height:1.55;max-width:none}
+.case-cta{display:inline-flex;margin-top:12px;color:var(--accent);font-weight:700;font-size:14px}
 .section-note{margin:-10px 0 20px;font-size:14px;color:var(--subtext)}
-
-/* Slightly subtler hover for Insights cards */
-.card-link--insight:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.09);border-color:rgba(14,165,233,.65)}
-
-@media (max-width:480px){
-  .card-grid .grid{grid-template-columns:1fr}
-}
 
 
 /* =========================
-   Detail Overlay (full-width, in-page)
+   Insights & Thought Leadership — Card Grid
+   Reuses .case-link styles with a subtle hover to differentiate from Initiatives.
    ========================= */
-.detail-overlay{position:fixed;inset:var(--header-height) 0 0 0;z-index:35;background:var(--page-bg)}
-.detail-overlay[hidden]{display:none}
-.detail-scroll{height:100%;overflow:auto}
+.insights-grid .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.insights-grid .case-link:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.09);border-color:rgba(14,165,233,.65)}
 
-.detail{width:100%;padding:26px 20px 70px}
-.detail[hidden]{display:none}
 
-.detail-head{position:relative;max-width:100%;}
-.detail-back{display:inline-flex;gap:8px;align-items:center;color:var(--accent);font-weight:600;text-decoration:none;margin-bottom:10px}
-.detail-back:hover{text-decoration:underline;text-underline-offset:3px}
+/* =========================
+   Case Study Pages
+   ========================= */
+.case-back{display:inline-flex;gap:8px;align-items:center;margin-top:8px}
+.case-tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.case-tag{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.02);color:var(--subtext);font-size:12.5px;font-weight:600}
+.case-page h1{margin-top:10px}
 
-.detail-close{position:fixed;top:calc(var(--header-height) + 14px);right:16px;z-index:41;appearance:none;border:1px solid var(--border);background:rgba(255,255,255,.10);color:var(--text);border-radius:12px;width:44px;height:44px;font-size:22px;cursor:pointer;backdrop-filter:blur(6px)}
 
-.detail-title{margin:0;font-size:30px;line-height:1.15;color:var(--accent)}
-.detail-subtitle{margin:10px 0 0;color:var(--subtext);font-size:14.5px;max-width:none}
-
-.detail-body{margin-top:18px;max-width:100%}
-.detail-body h2{margin:28px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);font-size:18px;color:var(--text)}
-.detail-body p,.detail-body ul{max-width:none;font-size:16px;color:var(--subtext)}
-.detail-body ul{padding-left:18px}
-.detail-body li{margin:6px 0}
-
-.detail-nav{display:flex;justify-content:space-between;gap:12px;margin-top:26px;padding-top:16px;border-top:1px solid var(--border)}
-.nav-btn{flex:1;appearance:none;border:1px solid var(--border);background:var(--bg);border-radius:14px;padding:12px 14px;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.06);cursor:pointer;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;font-weight:700}
-.nav-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.10);border-color:rgba(14,165,233,.85)}
-.nav-btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
-
-@media (max-width:700px){
-  .detail-nav{flex-direction:column}
-}
-@media (max-width:600px){
-  .detail-title{font-size:24px}
-  .detail-close{right:12px}
-}
+/* =========================
+   Case Study Navigation (Prev / Next)
+   ========================= */
+.case-nav{display:flex;justify-content:space-between;gap:12px;margin-top:26px;padding-top:16px;border-top:1px solid var(--border)}
+.case-nav a{flex:1;display:block;border:1px solid var(--border);background:var(--bg);border-radius:14px;padding:12px 14px;text-decoration:none;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.06);transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+.case-nav a:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.10);border-color:rgba(14,165,233,.85)}
+.case-nav a:focus-visible{outline:var(--focus);outline-offset:3px}
+.case-nav .nav-kicker{display:block;font-size:12px;font-weight:800;letter-spacing:.10em;text-transform:uppercase;color:var(--subtext);margin-bottom:6px}
+.case-nav .nav-title{display:block;font-size:15.5px;font-weight:700;line-height:1.25}
+.case-nav .nav-spacer{flex:1}
+@media (max-width:700px){.case-nav{flex-direction:column}}
