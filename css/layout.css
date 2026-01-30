@@ -1,15 +1,23 @@
 .site-header{position:sticky;top:0;z-index:40;color:var(--header-text);background-image:linear-gradient(90deg,var(--header-start),var(--header-end));box-shadow:0 2px 10px rgba(0,0,0,.15)}
 .header-inner{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;padding:10px 16px;min-height:56px}
-.brand.home-link{font-weight:700;font-size:20px;color:var(--header-text);white-space:nowrap;text-decoration:none}.brand.home-link:hover,.brand.home-link:focus{text-decoration:underline;text-underline-offset:3px}
+.brand.home-link{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:20px;color:var(--header-text);white-space:nowrap;text-decoration:none}.brand.home-link:hover,.brand.home-link:focus{text-decoration:underline;text-underline-offset:3px}
+.brand-avatar{width:32px;height:32px;border-radius:999px;object-fit:cover;flex:0 0 auto;border:2px solid rgba(255,255,255,.22);box-shadow:0 0 0 2px rgba(14,165,233,.18)}
+.brand-text{line-height:1;letter-spacing:.06em}
+
 .nav-links{display:flex;gap:18px}.nav-links a{color:var(--header-text);font-size:15px;white-space:nowrap}
 .theme-btn,.menu-btn{appearance:none;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);padding:6px 12px;border-radius:20px;color:var(--header-text);cursor:pointer;backdrop-filter:blur(6px)}.menu-btn{display:none;font-weight:700;line-height:1}
 .header-actions{display:flex;gap:8px;justify-content:flex-end;align-items:center}
-@media (max-width:768px){.header-inner{grid-template-columns:1fr auto auto}.nav-links{display:none}.menu-btn{display:inline-flex}.brand.home-link{font-size:18px}}
+@media (max-width:768px){.header-inner{grid-template-columns:1fr auto auto}.nav-links{display:none}.menu-btn{display:inline-flex}.brand.home-link{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:20px;color:var(--header-text);white-space:nowrap;text-decoration:none}}
 .mobile-menu{position:fixed;inset:0;z-index:50;display:grid;grid-template-columns:1fr var(--panel-w,340px);background:var(--scrim);overflow:hidden;opacity:0;pointer-events:none;transition:opacity .2s ease;will-change:opacity}
 .mobile-menu[data-open="true"]{opacity:1;pointer-events:auto}.mobile-menu-scrim{width:100%;height:100%}
 .mobile-panel{height:100%;width:var(--panel-w,340px);max-width:84vw;background:var(--panel);color:#fff;box-shadow:-1px 0 0 var(--panel-edge);padding:max(14px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) calc(max(16px,env(safe-area-inset-bottom))+6px) max(16px,env(safe-area-inset-left));transform:translateX(100%);transition:transform .25s ease;display:grid;grid-template-rows:48px 1fr auto;row-gap:12px;will-change:transform;contain:paint}
 .mobile-menu[data-open="true"] .mobile-panel{transform:translateX(0%)}
-.mobile-top{display:grid;grid-template-columns:1fr 24px;align-items:center;column-gap:8px}.mobile-title{font-weight:700;font-size:18px;letter-spacing:.02em}.mobile-close{appearance:none;background:transparent;border:0;color:#fff;font-size:24px;line-height:1;cursor:pointer;justify-self:end}
+.mobile-top{display:grid;grid-template-columns:1fr 24px;align-items:center;column-gap:8px}
+.mobile-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.mobile-brand-text{min-width:0}
+.mobile-brand-name{font-weight:800;font-size:14px;letter-spacing:.08em;line-height:1.1;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:52vw}
+.mobile-title{opacity:.9;font-size:13px;margin-top:2px}
+.mobile-title{font-weight:700;font-size:18px;letter-spacing:.02em}.mobile-close{appearance:none;background:transparent;border:0;color:#fff;font-size:24px;line-height:1;cursor:pointer;justify-self:end}
 .mobile-nav{display:grid;align-content:start;row-gap:18px;margin-top:6px}.mobile-nav a{color:#fff;text-decoration:none;font-size:18px;line-height:1.4;padding:6px 2px;border-radius:8px}.mobile-nav a:active{background:rgba(255,255,255,.06)}
 .mobile-cta{padding-top:12px;border-top:1px solid var(--panel-edge)}
 section[id]{scroll-margin-top:calc(var(--header-height) + 10px)}

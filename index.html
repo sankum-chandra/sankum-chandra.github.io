@@ -24,7 +24,10 @@
 
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
-      <a id="homeLink" href="#top" class="brand home-link">SANTHOSH KUMAR</a>
+      <a id="homeLink" href="#top" class="brand home-link" aria-label="Go to top">
+  <img src="assets/images/profile.webp" alt="Santhosh Kumar" class="brand-avatar" width="32" height="32" decoding="async" />
+  <span class="brand-text">SANTHOSH KUMAR</span>
+</a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#expertise">Strategic Focus Areas</a>
@@ -43,9 +46,15 @@
     <div class="mobile-menu-scrim" data-close="true" aria-hidden="true"></div>
     <aside class="mobile-panel" role="dialog" aria-modal="true" aria-labelledby="mobileMenuTitle">
       <div class="mobile-top">
-        <div class="mobile-title" id="mobileMenuTitle">Menu</div>
-        <button type="button" class="mobile-close" data-close="true" aria-label="Close menu">✕</button>
-      </div>
+  <div class="mobile-brand">
+    <img src="assets/images/profile.webp" alt="Santhosh Kumar" class="brand-avatar" width="32" height="32" decoding="async" />
+    <div class="mobile-brand-text">
+      <div class="mobile-brand-name">SANTHOSH KUMAR</div>
+      <div class="mobile-title" id="mobileMenuTitle">Menu</div>
+    </div>
+  </div>
+  <button type="button" class="mobile-close" data-close="true" aria-label="Close menu">✕</button>
+</div>
       <nav class="mobile-nav" aria-label="Mobile Primary">
         <a href="#about">About</a>
         <a href="#expertise">Strategic Focus Areas</a>
@@ -54,13 +63,10 @@
         <a href="#contact">Contact</a>
       </nav>
       <div class="mobile-cta">
-        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer" aria-label="Connect with me on LinkedIn">
-          <svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <rect x="2" y="2" width="20" height="20" rx="4" ry="4" fill="#0A66C2"/>
-            <path fill="#ffffff" d="M7.55 17.5H5.2V9.93h2.35V17.5ZM6.38 8.9c-.75 0-1.36-.61-1.36-1.36s.61-1.36 1.36-1.36 1.36.61 1.36 1.36S7.14 8.9 6.38 8.9Zm12.42 8.6h-2.34v-3.94c0-.94-.02-2.15-1.31-2.15-1.31 0-1.51 1.02-1.51 2.08v4.01H9.3V9.93h2.24v1.04h.03c.31-.58 1.08-1.2 2.21-1.2 2.36 0 2.75 1.55 2.75 3.56v4.17Z"/>
-          </svg>
-          <span>Connect with me</span>
-        </a>
+        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer" aria-label="Let’s Connect on LinkedIn">
+  <img class="li-icon" src="assets/images/in.webp" alt="" aria-hidden="true" width="20" height="20" decoding="async" />
+  <span>Let’s Connect</span>
+</a>
       </div>
     </aside>
   </div>
@@ -141,13 +147,10 @@
     <footer id="contact" aria-labelledby="contact-title">
       <h2 id="contact-title" style="margin-top:0;">Contact</h2>
       <p class="contact-cta">
-        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer" aria-label="Connect with me on LinkedIn">
-          <svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <rect x="2" y="2" width="20" height="20" rx="4" ry="4" fill="#0A66C2"/>
-            <path fill="#ffffff" d="M7.55 17.5H5.2V9.93h2.35V17.5ZM6.38 8.9c-.75 0-1.36-.61-1.36-1.36s.61-1.36 1.36-1.36 1.36.61 1.36 1.36S7.14 8.9 6.38 8.9Zm12.42 8.6h-2.34v-3.94c0-.94-.02-2.15-1.31-2.15-1.31 0-1.51 1.02-1.51 2.08v4.01H9.3V9.93h2.24v1.04h.03c.31-.58 1.08-1.2 2.21-1.2 2.36 0 2.75 1.55 2.75 3.56v4.17Z"/>
-          </svg>
-          <span>Connect with me</span>
-        </a>
+        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer" aria-label="Let’s Connect on LinkedIn">
+  <img class="li-icon" src="assets/images/in.webp" alt="" aria-hidden="true" width="20" height="20" decoding="async" />
+  <span>Let’s Connect</span>
+</a>
       </p>
       <p class="contact-email"><strong>Email:</strong> <a href="mailto:sankum.chandra@outlook.com">sankum.chandra@outlook.com</a></p>
     </footer>
