@@ -1,4 +1,3 @@
-/* ================= GLOBAL SAFETY ================= */
 html, body {
   overflow-x: hidden;
   max-width: 100%;
@@ -8,12 +7,12 @@ html, body {
   box-sizing: border-box;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  width: 100ளம்;
+  width: 100%;
   color: var(--header-text);
   background-image: linear-gradient(90deg, var(--header-start), var(--header-end));
   box-shadow: 0 2px 10px rgba(0,0,0,.15);
@@ -28,42 +27,9 @@ html, body {
   justify-content: space-between;
 }
 
-.brand.home-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--header-text);
-  text-decoration: none;
-  white-space: nowrap;
-}
-
 .nav-links {
   display: flex;
   gap: 22px;
-}
-
-.nav-links a {
-  color: var(--header-text);
-  font-size: 15px;
-  text-decoration: none;
-}
-
-.header-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.theme-btn,
-.menu-btn {
-  appearance: none;
-  background: rgba(255,255,255,.15);
-  border: 1px solid rgba(255,255,255,.35);
-  padding: 6px 12px;
-  border-radius: 20px;
-  color: var(--header-text);
-  cursor: pointer;
 }
 
 .menu-btn { display: none; }
@@ -73,67 +39,47 @@ html, body {
   .menu-btn { display: inline-flex; }
 }
 
-/* ================= MOBILE MENU (BELOW HEADER) ================= */
+/* MOBILE MENU */
 .mobile-menu {
   position: fixed;
-  top: 60px; /* height of header */
+  top: 64px;
+  left: 0;
   right: 0;
   bottom: 0;
-  left: 0;
-  z-index: 900;
-  pointer-events: none;
+  z-index: 999;
+  display: none;
 }
 
 .mobile-menu[data-open="true"] {
-  pointer-events: auto;
+  display: block;
 }
 
-/* Dark overlay */
 .mobile-menu-scrim {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,.55);
-  opacity: 0;
-  transition: opacity .25s ease;
 }
 
-.mobile-menu[data-open="true"] .mobile-menu-scrim {
-  opacity: 1;
-}
-
-/* Slide panel */
 .mobile-panel {
   position: absolute;
   top: 0;
   right: 0;
-  width: 320px;
-  max-width: 85%;
+  width: 85%;
+  max-width: 340px;
   height: 100%;
   background: var(--panel);
-  color: #fff;
   padding: 24px;
   display: flex;
   flex-direction: column;
-  transform: translateX(100%);
-  transition: transform .3s ease;
+  animation: slideIn .25s ease forwards;
 }
 
-.mobile-menu[data-open="true"] .mobile-panel {
-  transform: translateX(0);
-}
-
-/* Remove profile area */
 .mobile-top {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 20px;
 }
 
-.mobile-brand { display: none; }
-
-.mobile-title { display: none; }
-
-/* Close button */
 .mobile-close {
   background: none;
   border: 1px solid rgba(255,255,255,.4);
@@ -144,7 +90,6 @@ html, body {
   cursor: pointer;
 }
 
-/* Vertical menu links */
 .mobile-nav {
   display: flex;
   flex-direction: column;
@@ -157,14 +102,18 @@ html, body {
   text-decoration: none;
 }
 
-/* LinkedIn at bottom */
 .mobile-cta {
   margin-top: auto;
   padding-top: 20px;
   border-top: 1px solid rgba(255,255,255,.2);
 }
 
-/* ================= CONTENT WIDTH FIX ================= */
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* CONTENT WIDTH */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -172,7 +121,7 @@ html, body {
   padding: 0 16px;
 }
 
-/* ================= HERO ================= */
+/* HERO */
 .hero {
   display: flex;
   align-items: center;
@@ -196,7 +145,6 @@ html, body {
   }
 }
 
-/* ================= FOOTER ================= */
 footer {
   margin-top: 80px;
   padding-top: 30px;
