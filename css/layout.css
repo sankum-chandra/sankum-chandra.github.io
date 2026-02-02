@@ -11,7 +11,7 @@ html, body {
 }
 
 /* =========================
-   HEADER — CORRECT LAYOUT
+   HEADER
    ========================= */
 .site-header{
   position:sticky;
@@ -33,7 +33,6 @@ html, body {
   gap:16px;
 }
 
-/* Brand */
 .brand.home-link{
   display:flex;
   align-items:center;
@@ -45,7 +44,6 @@ html, body {
   white-space:nowrap;
 }
 
-/* Desktop Navigation */
 .nav-links{
   display:flex;
   align-items:center;
@@ -60,7 +58,6 @@ html, body {
   white-space:nowrap;
 }
 
-/* Header Buttons */
 .header-actions{
   display:flex;
   align-items:center;
@@ -89,48 +86,43 @@ html, body {
 }
 
 /* =========================
-   MOBILE MENU PANEL
+   MOBILE MENU — FIXED
    ========================= */
-.mobile-menu{
-  position:fixed;
-  inset:0;
-  z-index:50;
-  display:grid;
-  grid-template-columns:1fr var(--panel-w,340px);
-  background:var(--scrim);
-  overflow:hidden;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .2s ease;
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: none;
+  grid-template-columns: 1fr var(--panel-w,340px);
+  background: var(--scrim);
 }
 
-.mobile-menu[data-open="true"]{
-  opacity:1;
-  pointer-events:auto;
+.mobile-menu[data-open="true"] {
+  display: grid;
 }
 
-.mobile-menu-scrim{
-  width:100%;
-  height:100%;
+.mobile-menu-scrim {
+  width: 100%;
+  height: 100%;
 }
 
-.mobile-panel{
-  height:100%;
-  width:var(--panel-w,340px);
-  max-width:84vw;
-  background:var(--panel);
-  color:#fff;
-  box-shadow:-1px 0 0 var(--panel-edge);
-  padding:16px;
-  transform:translateX(100%);
-  transition:transform .25s ease;
-  display:grid;
-  grid-template-rows:48px 1fr auto;
-  row-gap:12px;
+.mobile-panel {
+  height: 100%;
+  width: var(--panel-w,340px);
+  max-width: 84vw;
+  background: var(--panel);
+  color: #fff;
+  box-shadow: -1px 0 0 var(--panel-edge);
+  padding: 16px;
+  transform: translateX(100%);
+  transition: transform .25s ease;
+  display: grid;
+  grid-template-rows: 48px 1fr auto;
+  row-gap: 12px;
 }
 
-.mobile-menu[data-open="true"] .mobile-panel{
-  transform:translateX(0%);
+.mobile-menu[data-open="true"] .mobile-panel {
+  transform: translateX(0);
 }
 
 /* =========================
