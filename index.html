@@ -1,11 +1,150 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Santhosh Kumar</title>
+  <meta charset="utf-8" />
+  <title>Santhosh Kumar Chandrashekar | Portfolio Architect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Leading cloud platform strategy, migration, and modernization." />
+  <meta name="theme-color" content="#0ea5e9" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/utilities.css" />
 </head>
 <body>
-  <h1>Site is rebuilding…</h1>
-  <p>If you see this, GitHub Pages is now working.</p>
+
+<a id="top" tabindex="-1"></a>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a id="homeLink" href="#top" class="brand home-link">
+      <img src="assets/images/profile.webp" alt="Santhosh Kumar" class="brand-avatar" width="32" height="32" />
+      <span class="brand-text">SANTHOSH KUMAR</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#expertise">Strategic Focus Areas</a>
+      <a href="#work">Strategic Initiatives Led</a>
+      <a href="#blog">Insights & Thought Leadership</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" class="theme-btn" id="themeToggle">🌙</button>
+      <button type="button" class="menu-btn" id="menuToggle">≡</button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= MOBILE MENU ================= -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-scrim" data-close="true"></div>
+  <aside class="mobile-panel" role="dialog" aria-modal="true">
+    <div class="mobile-top">
+      <button type="button" class="mobile-close" data-close="true" aria-label="Close menu">✕</button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="#about" data-close="true">About</a>
+      <a href="#expertise" data-close="true">Strategic Focus Areas</a>
+      <a href="#work" data-close="true">Strategic Initiatives Led</a>
+      <a href="#blog" data-close="true">Insights</a>
+      <a href="#contact" data-close="true">Contact</a>
+    </nav>
+    <div class="mobile-cta">
+      <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer">
+        <img class="li-icon" src="assets/images/in.webp" alt="" width="20" height="20">
+        <span>Let’s Connect</span>
+      </a>
+    </div>
+  </aside>
+</div>
+
+<!-- ================= MAIN CONTENT ================= -->
+<main id="main" class="container">
+
+<!-- HERO -->
+<section class="hero">
+  <img src="assets/images/profile.webp" alt="Santhosh Kumar Chandrashekar" class="profile-pic" />
+  <div>
+    <h1>Santhosh Kumar Chandrashekar</h1>
+    <p class="subtitle">TOGAF® Certified Architect<br />Cloud & DevOps Portfolio Strategy Leader</p>
+    <p>I help organisations modernize with confidence by shaping cloud, platform, and DevOps strategy that enables scale, resilience, and long-term business value. With a blended foundation in enterprise architecture, solution architecture, platform engineering, and operations, I bring a holistic, outcome-driven approach to technology transformation, ensuring architectural decisions translate into real business impact.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About</h2>
+  <p>I’m a TOGAF®-certified Architect with 14+ years of experience across cloud, DevOps, solution architecture, platform engineering, and operations. Today, I specialise in Cloud & DevOps Portfolio Architecture within the Enterprise Architecture structure, focusing on target-state design, technology roadmapping, and platform strategies that reduce complexity and enable sustainable enterprise transformation.</p>
+  <p><strong><em>At the centre of my approach is a belief that architecture should provide clarity, direction, and enablement — not friction.</em></strong></p>
+  <p>My goal is to design technology foundations and roadmaps that evolve with the organisation, support modern ways of working, and deliver long-term business value.</p>
+</section>
+
+<!-- STRATEGIC FOCUS AREAS -->
+<section id="expertise" class="focus-grid">
+  <h2>Strategic Focus Areas</h2>
+  <div class="grid">
+    <article class="card"><img src="assets/images/focus-ea.webp"><h3>Enterprise Architecture & Target-State Design</h3><p>Defining future-state architectures and guiding organisations toward scalable, secure digital foundations.</p></article>
+    <article class="card"><img src="assets/images/focus-cloud-strategy.webp"><h3>Cloud Strategy, Migration & Modernisation</h3><p>Shaping cloud adoption and modernising digital platforms for resilience, security, and scale.</p></article>
+    <article class="card"><img src="assets/images/focus-landing-zones.webp"><h3>Cloud Landing Zones & Platform Engineering</h3><p>Designing secure, compliant cloud platforms that accelerate delivery across portfolios.</p></article>
+    <article class="card"><img src="assets/images/focus-devsecops.webp"><h3>DevSecOps & Delivery Enablement</h3><p>Standardising pipelines and enabling teams through secure, automated delivery practices.</p></article>
+    <article class="card"><img src="assets/images/focus-governance.webp"><h3>Cloud Governance, Security & Compliance</h3><p>Establishing guardrails, policy, and cost controls for responsible, sustainable cloud operations.</p></article>
+    <article class="card"><img src="assets/images/focus-roadmapping.webp"><h3>Technology Roadmapping & Portfolio Advisory</h3><p>Creating multi-year roadmaps that align platform strategy with business outcomes.</p></article>
+  </div>
+</section>
+
+<!-- INITIATIVES -->
+<section id="work" class="case-grid-compact">
+  <h2>Strategic Initiatives Led</h2>
+  <p class="section-note">Selected initiatives — click a card for details.</p>
+  <div class="grid fade-grid" id="initiativesContainer"></div>
+  <div class="pagination-controls">
+    <button id="initPrev" disabled>← Previous</button>
+    <span id="initPageInfo" class="page-info"></span>
+    <button id="initNext">Next →</button>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section id="blog" class="insights-grid">
+  <h2>Insights & Thought Leadership</h2>
+  <p class="section-note">Selected articles — click a card for details.</p>
+  <div class="grid fade-grid" id="articlesContainer"></div>
+  <div class="pagination-controls">
+    <button id="artPrev" disabled>← Previous</button>
+    <span id="artPageInfo" class="page-info"></span>
+    <button id="artNext">Next →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <h2>Contact</h2>
+  <p class="contact-cta">
+    <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank">
+      <img class="li-icon" src="assets/images/in.webp" alt="" width="20" height="20">
+      <span>Let’s Connect</span>
+    </a>
+  </p>
+  <p class="contact-email"><strong>Email:</strong> <a href="mailto:sankum.chandra@outlook.com">sankum.chandra@outlook.com</a></p>
+  <hr style="margin:30px 0; opacity:0.2;">
+  <p style="text-align:center; font-weight:600;">SANTHOSH KUMAR CHANDRASHEKAR</p>
+  <p style="text-align:center; font-size:13px; opacity:0.7;">Cloud & DevOps Portfolio Architect • Enterprise Technology Leader</p>
+</footer>
+
+</main>
+
+<script src="js/theme.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/scroll.js"></script>
+
 </body>
 </html>
