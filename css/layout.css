@@ -24,3 +24,5 @@ footer{margin-top:80px;padding-top:30px;border-top:1px solid var(--border);font-
 
 .brand-avatar{width:32px;height:32px;border-radius:999px;object-fit:cover;flex:0 0 auto;border:2px solid rgba(255,255,255,.22);box-shadow:0 0 0 2px rgba(14,165,233,.18)}
 .brand-text{line-height:1;letter-spacing:.06em}
+
+.page-content, .article-content { width:100%; margin:0; padding:60px 0; }
