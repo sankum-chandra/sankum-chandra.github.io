@@ -6,13 +6,12 @@ html, body {
   max-width: 100%;
 }
 
-/* Ensure all layout boxes respect screen width */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 /* =========================
-   SITE HEADER
+   HEADER — CORRECT LAYOUT
    ========================= */
 .site-header{
   position:sticky;
@@ -21,22 +20,123 @@ html, body {
   width:100%;
   color:var(--header-text);
   background-image:linear-gradient(90deg,var(--header-start),var(--header-end));
-  box-shadow:0 2px 10px rgba(0,0,0,.15)
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
 }
 
 .header-inner{
-  display:grid;
-  grid-template-columns:1fr auto auto;
-  align-items:center;
-  gap:12px;
+  max-width:1200px;
+  margin:0 auto;
   padding:10px 16px;
-  min-height:56px
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+/* Brand */
+.brand.home-link{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+  font-size:18px;
+  color:var(--header-text);
+  text-decoration:none;
+  white-space:nowrap;
+}
+
+/* Desktop Navigation */
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:nowrap;
+}
+
+.nav-links a{
+  color:var(--header-text);
+  font-size:15px;
+  text-decoration:none;
+  white-space:nowrap;
+}
+
+/* Header Buttons */
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.theme-btn,
+.menu-btn{
+  appearance:none;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.35);
+  padding:6px 12px;
+  border-radius:20px;
+  color:var(--header-text);
+  cursor:pointer;
+}
+
+.menu-btn{display:none}
+
+/* =========================
+   MOBILE HEADER
+   ========================= */
+@media (max-width:900px){
+  .nav-links{display:none}
+  .menu-btn{display:inline-flex}
+}
+
+/* =========================
+   MOBILE MENU PANEL
+   ========================= */
+.mobile-menu{
+  position:fixed;
+  inset:0;
+  z-index:50;
+  display:grid;
+  grid-template-columns:1fr var(--panel-w,340px);
+  background:var(--scrim);
+  overflow:hidden;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .2s ease;
+}
+
+.mobile-menu[data-open="true"]{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.mobile-menu-scrim{
+  width:100%;
+  height:100%;
+}
+
+.mobile-panel{
+  height:100%;
+  width:var(--panel-w,340px);
+  max-width:84vw;
+  background:var(--panel);
+  color:#fff;
+  box-shadow:-1px 0 0 var(--panel-edge);
+  padding:16px;
+  transform:translateX(100%);
+  transition:transform .25s ease;
+  display:grid;
+  grid-template-rows:48px 1fr auto;
+  row-gap:12px;
+}
+
+.mobile-menu[data-open="true"] .mobile-panel{
+  transform:translateX(0%);
 }
 
 /* =========================
    MAIN CONTAINER
    ========================= */
-.container {
+.container{
   width:100%;
   max-width:1200px;
   margin:0 auto;
@@ -44,31 +144,47 @@ html, body {
 }
 
 /* =========================
-   EXISTING LAYOUT RULES
+   HERO SECTION
    ========================= */
-.brand.home-link{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:20px;color:var(--header-text);white-space:nowrap;text-decoration:none}
-.nav-links{display:flex;gap:18px}
-.theme-btn,.menu-btn{appearance:none;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);padding:6px 12px;border-radius:20px;color:var(--header-text);cursor:pointer}
-.menu-btn{display:none;font-weight:700;line-height:1}
-.header-actions{display:flex;gap:8px;justify-content:flex-end;align-items:center}
-
-@media (max-width:768px){
-  .nav-links{display:none}
-  .menu-btn{display:inline-flex}
+.hero{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  margin-top:30px;
+  flex-wrap:wrap;
 }
 
-/* HERO */
-.hero{display:flex;align-items:center;gap:30px;margin-top:30px;flex-wrap:wrap}
-.profile-pic{width:140px;height:140px;border-radius:50%;object-fit:cover;border:4px solid var(--accent)}
+.profile-pic{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid var(--accent);
+}
 
-/* FOOTER */
-footer{margin-top:80px;padding-top:30px;border-top:1px solid var(--border);font-size:15px;color:var(--subtext)}
+@media (max-width:600px){
+  .hero{
+    flex-direction:column;
+    text-align:center;
+  }
+}
 
 /* =========================
-   CONTENT WIDTH FIX FOR ALL INNER PAGES
+   FOOTER
+   ========================= */
+footer{
+  margin-top:80px;
+  padding-top:30px;
+  border-top:1px solid var(--border);
+  font-size:15px;
+  color:var(--subtext);
+}
+
+/* =========================
+   CONTENT WIDTH FIX FOR INNER PAGES
    ========================= */
 .page-content,
-.article-content {
+.article-content{
   width:100%;
   margin:0;
   padding:60px 0;
