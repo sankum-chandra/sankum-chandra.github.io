@@ -40,26 +40,30 @@
   </div>
 </header>
 
-<div class="mobile-menu" id="mobileMenu" hidden>
+
+ <!-- ===== MOBILE MENU ===== -->
+<div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-scrim" data-close="true"></div>
+
   <aside class="mobile-panel" role="dialog" aria-modal="true">
     <div class="mobile-top">
-      <div class="mobile-brand">
-        <img src="assets/images/profile.webp" alt="Santhosh Kumar" class="brand-avatar" width="32" height="32" />
-        <div>
-          <div class="mobile-brand-name">SANTHOSH KUMAR</div>
-          <div class="mobile-title">Menu</div>
-        </div>
-      </div>
-      <button type="button" class="mobile-close" data-close="true">✕</button>
+      <button type="button" class="mobile-close" data-close="true" aria-label="Close menu">✕</button>
     </div>
+
     <nav class="mobile-nav">
-      <a href="#about">About</a>
-      <a href="#expertise">Strategic Focus Areas</a>
-      <a href="#work">Strategic Initiatives Led</a>
-      <a href="#blog">Insights</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" data-close="true">About</a>
+      <a href="#expertise" data-close="true">Strategic Focus Areas</a>
+      <a href="#work" data-close="true">Strategic Initiatives Led</a>
+      <a href="#blog" data-close="true">Insights</a>
+      <a href="#contact" data-close="true">Contact</a>
     </nav>
+
+    <div class="mobile-cta">
+      <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer">
+        <img class="li-icon" src="assets/images/in.webp" alt="" width="20" height="20" />
+        <span>Let’s Connect</span>
+      </a>
+    </div>
   </aside>
 </div>
 
