@@ -23,7 +23,7 @@
   </header>
 
   <section class="case-grid-compact">
-    <div class="grid" id="initiativesContainer"></div>
+    <div class="grid" id="initiativesContainer"><p class="section-note">Loading initiatives…</p></div>
     <div class="pagination-controls">
       <button id="initPrev" disabled>← Previous</button>
       <span id="initPageInfo" class="page-info"></span>
@@ -38,9 +38,7 @@
   <script src="/js/menu.js"></script>
   <script src="/js/nav-active.js"></script>
   <script src="/js/pagination.js"></script>
-  <script>
-    setupPagination({dataUrl:'/data/initiatives.json',containerId:'initiativesContainer',prevBtnId:'initPrev',nextBtnId:'initNext',pageInfoId:'initPageInfo',ctaText:'More details →',perPage:6});
-  </script>
+  <script>setupPagination({dataUrl:'/data/initiatives.json',containerId:'initiativesContainer',prevBtnId:'initPrev',nextBtnId:'initNext',pageInfoId:'initPageInfo',ctaText:'More details →',perPage:6});</script>
 
 </body>
 </html>

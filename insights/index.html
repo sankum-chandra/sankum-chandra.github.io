@@ -23,7 +23,7 @@
   </header>
 
   <section class="insights-grid">
-    <div class="grid" id="articlesContainer"></div>
+    <div class="grid" id="articlesContainer"><p class="section-note">Loading insights…</p></div>
     <div class="pagination-controls">
       <button id="artPrev" disabled>← Previous</button>
       <span id="artPageInfo" class="page-info"></span>
@@ -38,9 +38,7 @@
   <script src="/js/menu.js"></script>
   <script src="/js/nav-active.js"></script>
   <script src="/js/pagination.js"></script>
-  <script>
-    setupPagination({dataUrl:'/data/articles.json',containerId:'articlesContainer',prevBtnId:'artPrev',nextBtnId:'artNext',pageInfoId:'artPageInfo',ctaText:'Read article →',perPage:6});
-  </script>
+  <script>setupPagination({dataUrl:'/data/articles.json',containerId:'articlesContainer',prevBtnId:'artPrev',nextBtnId:'artNext',pageInfoId:'artPageInfo',ctaText:'Read article →',perPage:6});</script>
 
 </body>
 </html>
