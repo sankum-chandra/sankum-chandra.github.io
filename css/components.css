@@ -169,3 +169,31 @@ body[data-lock="true"]{height:100svh;overflow:hidden}
     display: none;
   }
 }
+/* ===============================
+   HOME ICON VISIBILITY FIX
+   =============================== */
+
+.home-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 10px;
+  color: white;              /* ensures icon is visible */
+  text-decoration: none;
+  margin-right: 8px;         /* space before profile pic */
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+
+.home-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;      /* force stroke to be visible */
+}
+
+.home-icon:hover {
+  background: rgba(255,255,255,0.12);
+}
