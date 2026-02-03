@@ -11,7 +11,7 @@ function renderTopN({dataUrl,containerId,ctaText,n=3}){
       card.innerHTML=`<h3 class="case-title">${item.title}</h3><p class="case-desc">${item.description}</p><span class="case-cta">${ctaText}</span>`;
       el.appendChild(card);
     });
-  }).catch(()=>{el.innerHTML='<p class="section-note">Unable to load content right now.</p>';});
+  }).catch(()=>{ el.innerHTML='<p class="section-note">Unable to load content right now.</p>'; });
 }
 document.addEventListener('DOMContentLoaded',()=>{
   renderTopN({dataUrl:'/data/initiatives.json',containerId:'homeInitiatives',ctaText:'More details →',n:3});

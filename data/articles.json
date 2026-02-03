@@ -3,5 +3,15 @@
     "title": "Enterprise Platform Strategy: A Practical View",
     "description": "How to connect platform strategy to measurable business outcomes.",
     "url": "/insights/enterprise-platform-strategy.html"
+  },
+  {
+    "title": "Landing Zones: Design Principles",
+    "description": "Key principles for scalable, secure cloud landing zones.",
+    "url": "/insights/landing-zones-principles.html"
+  },
+  {
+    "title": "DevSecOps as an Enabler",
+    "description": "Framing DevSecOps as enablement rather than gatekeeping.",
+    "url": "/insights/devsecops-enabler.html"
   }
 ]
