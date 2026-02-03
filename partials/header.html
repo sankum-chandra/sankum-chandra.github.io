@@ -8,7 +8,7 @@
       <span class="brand-text">SANTHOSH KUMAR</span>
     </a>
 
-    <nav class="nav-links">
+    <nav class="nav-links" aria-label="Primary">
       <a href="/about/">About</a>
       <a href="/focus/">Focus</a>
       <a href="/initiatives/">Initiatives</a>
@@ -18,26 +18,46 @@
 
     <div class="header-actions">
       <button type="button" class="theme-btn" id="themeToggle" aria-label="Toggle theme">🌙</button>
-      <button type="button" class="menu-btn" id="menuToggle" aria-label="Open menu" aria-expanded="false">≡</button>
+
+      <!-- ADD aria-controls -->
+      <button type="button"
+              class="menu-btn"
+              id="menuToggle"
+              aria-label="Open menu"
+              aria-expanded="false"
+              aria-controls="mobileMenu">≡</button>
     </div>
   </div>
 </header>
 
-<div class="mobile-menu" id="mobileMenu" hidden>
+<!-- ADD aria-hidden -->
+<div class="mobile-menu" id="mobileMenu" hidden aria-hidden="true">
   <div class="mobile-menu-scrim" data-close="true"></div>
 
-  <aside class="mobile-panel" role="dialog" aria-modal="true">
+  <aside class="mobile-panel" role="dialog" aria-modal="true" aria-label="Mobile menu">
     <div class="mobile-top">
       <div class="mobile-title">Menu</div>
-      <button type="button" class="mobile-close" data-close="true" aria-label="Close menu">✕</button>
+      <button type="button"
+              class="mobile-close"
+              data-close="true"
+              aria-label="Close menu">✕</button>
     </div>
 
-    <nav class="mobile-nav">
+    <nav class="mobile-nav" aria-label="Mobile">
       <a href="/about/">About</a>
       <a href="/focus/">Focus</a>
       <a href="/initiatives/">Initiatives</a>
       <a href="/insights/">Insights</a>
       <a href="/contact/">Contact</a>
     </nav>
+
+    <div class="mobile-footer">
+      <a href="https://www.linkedin.com/in/sankum-chandra"
+         target="_blank"
+         rel="noopener"
+         class="linkedin-btn">
+        Let’s Connect on LinkedIn →
+      </a>
+    </div>
   </aside>
 </div>
