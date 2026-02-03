@@ -1,38 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#0ea5e9" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/css/base.css" />
-<link rel="stylesheet" href="/css/layout.css" />
-<link rel="stylesheet" href="/css/components.css" />
-<link rel="stylesheet" href="/css/utilities.css" />
-<title>About | Santhosh Kumar</title>
-<meta name="description" content="About Santhosh Kumar Chandrashekar." />
-</head>
-<body>
-  <div data-include="partials/header.html"></div>
-  <main id="main" class="container">
-  <header class="page-header">
-    <h1>About</h1>
-    <p class="subtitle">Background, principles, and what I optimize for.</p>
-  </header>
-  <section>
-    <p>I’m a TOGAF®-certified Architect with 14+ years of experience across cloud, DevOps, solution architecture, platform engineering, and operations. Today, I specialise in Cloud &amp; DevOps Portfolio Architecture within the Enterprise Architecture structure, focusing on target-state design, technology roadmapping, and platform strategies that reduce complexity and enable sustainable enterprise transformation.</p>
-    <p><strong><em>At the centre of my approach is a belief that architecture should provide clarity, direction, and enablement — not friction.</em></strong></p>
-    <p>My goal is to design technology foundations and roadmaps that evolve with the organisation, support modern ways of working, and deliver long-term business value.</p>
-  </section>
+  <meta charset="utf-8" />
+  <title>Contact | Santhosh Kumar Chandrashekar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Get in touch with Santhosh Kumar Chandrashekar." />
+  <meta name="theme-color" content="#0ea5e9" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Use root-relative paths (since you deploy to sankum.in root) -->
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/utilities.css" />
+</head>
+
+<body>
+  <!-- Shared header injected here -->
+  <div data-include="partials/header.html"></div>
+
+  <main id="main" class="container">
+    <header class="page-header">
+      <h1>Get in Touch</h1>
+      <p class="subtitle">
+        Please fill the form below or connect via
+        <a href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
+      </p>
+    </header>
+
+    <section class="contact-form-wrap">
+      <form
+        id="contactForm"
+        class="contact-form"
+        action="https://formspree.io/f/xykpaerr"
+        method="POST"
+        novalidate
+      >
+        <input type="hidden" name="_subject" value="New message from sankum.in" />
+
+        <!-- Honeypot (spam trap) -->
+        <label class="sr-only" for="company">Company</label>
+        <input class="sr-only" id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="firstName">First name</label>
+            <input
+              id="firstName"
+              name="firstName"
+              type="text"
+              placeholder="Enter your first name"
+              required
+              autocomplete="given-name"
+            />
+          </div>
+
+          <div class="field">
+            <label for="lastName">Last name</label>
+            <input
+              id="lastName"
+              name="lastName"
+              type="text"
+              placeholder="Enter your last name"
+              required
+              autocomplete="family-name"
+            />
+          </div>
+
+          <div class="field full">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="example@gmail.com"
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="field full">
+            <label for="subject">Subject</label>
+            <input
+              id="subject"
+              name="subject"
+              type="text"
+              placeholder="Subject"
+              required
+            />
+          </div>
+
+          <div class="field full">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              placeholder="Type here"
+              required
+            ></textarea>
+          </div>
+        </div>
+
+        <button class="btn-submit" id="submitBtn" type="submit">
+          <span class="btn-label">Submit</span>
+          <span class="btn-spinner" aria-hidden="true"></span>
+        </button>
+
+        <p class="form-note">
+          Prefer email?
+          <a href="mailto:sankum.chandra@outlook.com">sankum.chandra@outlook.com</a>
+        </p>
+      </form>
+
+      <!-- Toast (animated by your CSS + JS) -->
+      <div class="toast" id="formToast" role="status" aria-live="polite" aria-atomic="true">
+        <span class="toast-icon" aria-hidden="true">✓</span>
+        <span class="toast-text" id="toastText">Message sent!</span>
+      </div>
+    </section>
   </main>
+
+  <!-- Shared footer injected here -->
   <div data-include="partials/footer.html"></div>
+
+  <!-- Scripts -->
   <script src="/js/include.js"></script>
+
+  <!-- Site scripts (keep your existing ones) -->
   <script src="/js/theme.js"></script>
   <script src="/js/menu.js"></script>
   <script src="/js/nav-active.js"></script>
 
+  <!-- ✅ Contact form handler (AJAX + toast animation) -->
+  <script src="/js/contact-form.js"></script>
 </body>
 </html>
