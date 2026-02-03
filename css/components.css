@@ -1,3 +1,12 @@
+/* Prevent horizontal overflow on mobile */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
 h1{font-size:40px;line-height:1.2;margin:0 0 12px;color:var(--accent)}
 h2{font-size:24px;margin:70px 0 18px;padding-bottom:8px;border-bottom:1px solid var(--border)}
 p,ul{font-size:17px;color:var(--subtext);max-width:720px}
@@ -89,3 +98,42 @@ body[data-lock="true"]{height:100svh;overflow:hidden}
 .mobile-nav a{display:block;padding:14px 16px;border-radius:12px;font-size:18px;text-decoration:none;color:#e5e7eb;background:rgba(255,255,255,.04)}
 .mobile-footer{margin-top:auto;padding-top:18px}
 .linkedin-btn{display:block;text-align:center;padding:14px;border-radius:12px;font-weight:600;text-decoration:none;color:white;background:linear-gradient(90deg,#0077b5,#0ea5e9)}
+/* ===============================
+   HEADER RESPONSIVE FIX
+   =============================== */
+
+.site-header {
+  width: 100%;
+  max-width: 100%;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0; /* allows shrinking */
+}
+
+.brand-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 45vw; /* prevents pushing menu off screen */
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0; /* keeps icons visible */
+}
