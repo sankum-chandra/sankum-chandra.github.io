@@ -26,14 +26,13 @@ footer{margin-top:80px;padding-top:30px;border-top:1px solid var(--border);font-
 .brand-text{line-height:1;letter-spacing:.06em}
 
 
-/* ===== Final: Header alignment (Option 1) ===== */
+/* ===== Fix: header full-width, aligned padding ===== */
 .header-inner{max-width:none !important;margin:0 !important;width:100%;padding:10px 20px !important}
+.site-header{width:100%}
 
-/* ===== Final: Footer isolation ===== */
+/* ===== Fix: avoid width overflow from overlay menu ===== */
+.mobile-menu{width:100%}
+
+
+/* ===== Fix: isolate generic footer styles ===== */
 footer:not(.site-footer){margin-top:80px;padding-top:30px;border-top:1px solid var(--border);font-size:15px;color:var(--subtext)}
-
-/* ===== Final: Page rhythm ===== */
-main.container{padding-top:44px;padding-bottom:90px}
-.page-header{margin:18px 0 26px;max-width:720px}
-.page-header h1{margin-bottom:10px}
-.page-header .subtitle{margin:0;opacity:.92}

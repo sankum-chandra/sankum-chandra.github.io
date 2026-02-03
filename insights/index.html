@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#0ea5e9" />
@@ -13,31 +12,20 @@
 <link rel="stylesheet" href="/css/utilities.css" />
 <title>Insights | Santhosh Kumar</title>
 <meta name="description" content="Insights and thought leadership." />
-</head>
-<body>
-  <div data-include="partials/header.html"></div>
-  <main id="main" class="container">
-  <header class="page-header">
-    <h1>Insights</h1>
-    <p class="subtitle">Thought leadership and practical guidance.</p>
-  </header>
-  <section class="insights-grid">
-    <div class="grid" id="articlesContainer"><p class="section-note">Loading insights…</p></div>
-    <div class="pagination-controls">
-      <button id="artPrev" disabled>← Previous</button>
-      <span id="artPageInfo" class="page-info"></span>
-      <button id="artNext">Next →</button>
-    </div>
-  </section>
+</head><body>
+<div data-include="partials/header.html"></div>
+<main id="main" class="container">
+<header class="page-header"><h1>Insights</h1><p class="subtitle">Thought leadership and practical guidance.</p></header>
+<section class="insights-grid">
+  <div class="grid" id="articlesContainer"><p class="section-note">Loading insights…</p></div>
+  <div class="pagination-controls"><button id="artPrev" disabled>← Previous</button><span id="artPageInfo" class="page-info"></span><button id="artNext">Next →</button></div>
+</section>
 
-  </main>
-  <div data-include="partials/footer.html"></div>
-  <script src="/js/include.js"></script>
-  <script src="/js/theme.js"></script>
-  <script src="/js/menu.js"></script>
-  <script src="/js/nav-active.js"></script>
-  <script src="/js/pagination.js"></script>
-  <script>setupPagination({dataUrl:'/data/articles.json',containerId:'articlesContainer',prevBtnId:'artPrev',nextBtnId:'artNext',pageInfoId:'artPageInfo',ctaText:'Read article →',perPage:6});</script>
-
-</body>
-</html>
+</main>
+<div data-include="partials/footer.html"></div>
+<script src="/js/include.js"></script>
+<script src="/js/theme.js"></script>
+<script src="/js/menu.js"></script>
+<script src="/js/nav-active.js"></script>
+<script src="/js/pagination.js"></script><script>setupPagination({dataUrl:'/data/articles.json',containerId:'articlesContainer',prevBtnId:'artPrev',nextBtnId:'artNext',pageInfoId:'artPageInfo',ctaText:'Read article →',perPage:6});</script>
+</body></html>

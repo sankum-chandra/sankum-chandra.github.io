@@ -3,7 +3,7 @@ async function loadIncludes(){
   await Promise.all([...nodes].map(async node=>{
     const file=node.getAttribute('data-include');
     const url='/' + file.replace(/^\/+/, '');
-    const res=await fetch(url);
+    const res=await fetch(url,{cache:'no-cache'});
     if(!res.ok) throw new Error(`Failed to load include: ${url}`);
     node.outerHTML=await res.text();
   }));

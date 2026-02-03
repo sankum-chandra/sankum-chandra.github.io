@@ -8,3 +8,13 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 a:focus-visible,button:focus-visible{outline:var(--focus);outline-offset:3px}
 .container{max-width:900px;margin:auto;padding:60px 20px}
 .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}.skip-link:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:8px 12px;background:var(--bg);border:1px solid var(--border);box-shadow:0 4px 10px rgba(0,0,0,.08);z-index:1000}
+
+
+/* ===== Fix: prevent horizontal scrolling ===== */
+*,*::before,*::after{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+img,svg,video,canvas{max-width:100%;height:auto}
+
+/* ===== Fix: sticky footer ===== */
+body{display:flex;flex-direction:column}
+main.container{flex:1 0 auto}
