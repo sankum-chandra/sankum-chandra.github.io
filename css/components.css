@@ -454,3 +454,8 @@ html.theme-light .li-icon-wrap {
   margin-right: auto;
   text-align: center !important;
 }
+/* Give contact layout more presence on large screens */
+.contact-layout {
+  max-width: 1000px;
+  margin: 18px auto 0;
+}
