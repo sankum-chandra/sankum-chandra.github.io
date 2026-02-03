@@ -1,20 +1,15 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const menu = document.getElementById("mobileMenu");
-  const toggle = document.getElementById("menuToggle");
-  const closeTriggers = document.querySelectorAll("[data-close]");
+const menu = document.getElementById("mobileMenu");
+const toggle = document.getElementById("menuToggle");
+const closeBtns = document.querySelectorAll("[data-close]");
 
-  if (!menu || !toggle) return;
+toggle.addEventListener("click", () => {
+  menu.classList.add("active");
+  document.body.style.overflow = "hidden";
+});
 
-  function openMenu() {
-    menu.classList.add("open");
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeMenu() {
-    menu.classList.remove("open");
+closeBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    menu.classList.remove("active");
     document.body.style.overflow = "";
-  }
-
-  toggle.addEventListener("click", openMenu);
-  closeTriggers.forEach(el => el.addEventListener("click", closeMenu));
+  });
 });
