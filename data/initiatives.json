@@ -1,38 +1,17 @@
 [
   {
-    "title": "Enterprise Cloud Landing Zone",
-    "description": "Defined an enterprise Azure landing zone strategy with governance, security guardrails, and platform standards.",
-    "url": "initiatives/enterprise-cloud-landing-zone.html"
+    "title": "Cloud Platform Strategy & Roadmap",
+    "description": "Defined a multi-year platform roadmap aligning cloud foundations with portfolio outcomes.",
+    "url": "/initiatives/cloud-platform-strategy.html"
   },
   {
-    "title": "DevSecOps Delivery Standardisation",
-    "description": "Built reusable CI/CD patterns and security controls to accelerate delivery while reducing operational risk.",
-    "url": "initiatives/devsecops-delivery-standardisation.html"
+    "title": "Landing Zone Standardization",
+    "description": "Designed secure landing zones and guardrails to accelerate delivery across teams.",
+    "url": "/initiatives/landing-zone-standardization.html"
   },
   {
-    "title": "Cloud Migration Beyond Lift-and-Shift",
-    "description": "Modernisation-led migration approach focused on outcomes, platform readiness, and sustainable operations.",
-    "url": "initiatives/cloud-migration-modernisation.html"
-  },
-  {
-    "title": "Cloud Governance & Cost Controls (FinOps)",
-    "description": "Established guardrails and cost practices to improve accountability, sustainability, and spend visibility.",
-    "url": "initiatives/cloud-governance-cost-control.html"
-  },
-  {
-    "title": "Platform Engineering & Self-Service Enablement",
-    "description": "Designed platform capabilities that reduce cognitive load and enable teams to deliver securely at scale.",
-    "url": "initiatives/platform-engineering-self-service.html"
-  },
-  {
-    "title": "Technology Roadmapping & Portfolio Advisory",
-    "description": "Created multi-year roadmaps aligning platform strategy with business priorities and measurable outcomes.",
-    "url": "initiatives/technology-roadmap-portfolio-advisory.html"
-  },
-  {
-    "title": "test",
-    "description": "test.",
-    "url": "initiatives/technology-roadmap-portfolio-advisory.html"
+    "title": "DevSecOps Enablement",
+    "description": "Standardized pipelines and security controls to improve delivery flow and governance.",
+    "url": "/initiatives/devsecops-enablement.html"
   }
 ]
-

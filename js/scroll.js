@@ -1,1 +1,2 @@
-// Reserved for scroll-related enhancements.
+// scroll.js (optional)
+// Reserved for future enhancements such as scroll-to-top, progress indicator, etc.

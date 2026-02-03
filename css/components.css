@@ -16,18 +16,10 @@ body[data-lock="true"]{height:100svh;overflow:hidden}
 .focus-grid .card h3{margin:6px 0 6px;font-size:18px;line-height:1.35;color:var(--text)}
 .focus-grid .card p{margin:0;max-width:none;color:var(--subtext);font-size:15.5px}
 @media (max-width:480px){.focus-grid .card img{height:160px}.focus-grid .card h3{font-size:17px}.focus-grid .card p{font-size:15px}}
-
-
-/* =========================
-   Focus Areas: informational only (no hover/highlight)
-   ========================= */
+/* Focus Areas: informational only (no hover/highlight) */
 .focus-grid .card{transition:none;cursor:default}
 .focus-grid .card:hover{transform:none;box-shadow:0 4px 14px rgba(0,0,0,.06);border-color:var(--border)}
-
-
-/* =========================
-   Strategic Initiatives — Compact Link Cards (separate pages)
-   ========================= */
+/* Strategic Initiatives — Compact Link Cards */
 .case-grid-compact .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .case-link{display:block;border:1px solid var(--border);background:var(--bg);border-radius:14px;padding:14px 14px 12px;text-align:left;color:var(--text);text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.06);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;min-height:124px}
 .case-link:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.10);border-color:rgba(14,165,233,.85)}
@@ -36,33 +28,14 @@ body[data-lock="true"]{height:100svh;overflow:hidden}
 .case-link .case-desc{margin:0;color:var(--subtext);font-size:14.5px;line-height:1.55;max-width:none}
 .case-cta{display:inline-flex;margin-top:12px;color:var(--accent);font-weight:700;font-size:14px}
 .section-note{margin:-10px 0 20px;font-size:14px;color:var(--subtext)}
-
-
-/* =========================
-   Insights & Thought Leadership — Card Grid
-   Reuses .case-link styles with a subtle hover to differentiate from Initiatives.
-   ========================= */
+/* Insights grid */
 .insights-grid .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .insights-grid .case-link:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.09);border-color:rgba(14,165,233,.65)}
-
-
-/* =========================
-   Case Study Pages
-   ========================= */
-.case-back{display:inline-flex;gap:8px;align-items:center;margin-top:8px}
-.case-tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
-.case-tag{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.02);color:var(--subtext);font-size:12.5px;font-weight:600}
-.case-page h1{margin-top:10px}
-
-
-/* =========================
-   Case Study Navigation (Prev / Next)
-   ========================= */
-.case-nav{display:flex;justify-content:space-between;gap:12px;margin-top:26px;padding-top:16px;border-top:1px solid var(--border)}
-.case-nav a{flex:1;display:block;border:1px solid var(--border);background:var(--bg);border-radius:14px;padding:12px 14px;text-decoration:none;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.06);transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
-.case-nav a:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.10);border-color:rgba(14,165,233,.85)}
-.case-nav a:focus-visible{outline:var(--focus);outline-offset:3px}
-.case-nav .nav-kicker{display:block;font-size:12px;font-weight:800;letter-spacing:.10em;text-transform:uppercase;color:var(--subtext);margin-bottom:6px}
-.case-nav .nav-title{display:block;font-size:15.5px;font-weight:700;line-height:1.25}
-.case-nav .nav-spacer{flex:1}
-@media (max-width:700px){.case-nav{flex-direction:column}}
+/* Pagination controls */
+.pagination-controls{display:flex;gap:10px;align-items:center;justify-content:center;margin-top:16px}
+.pagination-controls button{appearance:none;border:1px solid var(--border);background:var(--bg);color:var(--text);padding:8px 12px;border-radius:10px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.pagination-controls button[disabled]{opacity:.5;cursor:not-allowed;box-shadow:none}
+.page-info{font-size:13px;color:var(--subtext)}
+/* Active nav styling */
+.nav-links a.is-active{text-decoration:underline;text-underline-offset:4px;font-weight:700}
+.mobile-nav a.is-active{background:rgba(255,255,255,.08)}
