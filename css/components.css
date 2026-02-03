@@ -137,3 +137,35 @@ body[data-lock="true"]{height:100svh;overflow:hidden}
   gap: 8px;
   flex-shrink: 0; /* keeps icons visible */
 }
+/* ===============================
+   HEADER VISIBILITY CONTROLS
+   =============================== */
+
+/* Home icon always visible */
+.home-icon {
+  display: flex;
+}
+
+/* Theme toggle always visible */
+.theme-btn {
+  display: flex;
+}
+
+/* Menu button hidden on desktop */
+.menu-btn {
+  display: flex;
+}
+
+/* Hide menu button on larger screens */
+@media (min-width: 900px) {
+  .menu-btn {
+    display: none;
+  }
+}
+
+/* Desktop nav links visible only on desktop */
+@media (max-width: 899px) {
+  .nav-links {
+    display: none;
+  }
+}
