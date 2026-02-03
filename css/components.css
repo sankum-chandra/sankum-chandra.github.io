@@ -67,7 +67,13 @@ body[data-lock="true"]{height:100svh;overflow:hidden}
 .case-nav .nav-spacer{flex:1}
 @media (max-width:700px){.case-nav{flex-direction:column}}
 
-/* ===== v2 typography rhythm overrides ===== */
+
+/* ===== Final: Minimal centered footer ===== */
+.site-footer{margin-top:80px;padding:32px 20px 40px;text-align:center;border-top:1px solid var(--border);color:var(--subtext);font-size:14px;opacity:.92}
+.site-footer .footer-name{margin:0;font-weight:700;letter-spacing:.03em;color:var(--text)}
+.site-footer .footer-role{margin:6px 0 0;font-size:13px;opacity:.8}
+
+/* ===== Final: Typography rhythm overrides ===== */
 h2{font-size:24px;margin:44px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
 .page-header + section h2,
 .page-header + .focus-grid h2{margin-top:26px}
