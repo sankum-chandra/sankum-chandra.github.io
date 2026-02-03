@@ -8,3 +8,26 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 a:focus-visible,button:focus-visible{outline:var(--focus);outline-offset:3px}
 .container{max-width:900px;margin:auto;padding:60px 20px}
 .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}.skip-link:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:8px 12px;background:var(--bg);border:1px solid var(--border);box-shadow:0 4px 10px rgba(0,0,0,.08);z-index:1000}
+/* ===== HARD STOP horizontal overflow ===== */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Prevent any element from creating horizontal scroll */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Media safety */
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Long strings / links */
+a, p, h1, h2, h3, .card, .case-link {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
