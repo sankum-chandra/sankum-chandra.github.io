@@ -4,42 +4,30 @@ p,ul{font-size:17px;color:var(--subtext);max-width:720px}
 .subtitle{font-size:17px;color:var(--subtext);margin-bottom:18px;max-width:720px}
 .project,.blog-post{margin-bottom:22px;max-width:720px}
 #about p,#about ul{max-width:none}
-
-/* =========================
-   LINKEDIN BUTTON
-========================= */
 .btn-linkedin{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;font-weight:600;color:#fff;background:#0A66C2;border:1px solid rgba(255,255,255,.18);text-decoration:none;transition:transform .08s ease,filter .15s ease,box-shadow .15s ease;box-shadow:0 2px 10px rgba(0,0,0,.08);line-height:1}
-.btn-linkedin:hover{filter:brightness(1.05)}
-.btn-linkedin:active{transform:translateY(1px)}
-.btn-linkedin .li-icon{width:20px;height:20px;flex:0 0 20px;display:block;object-fit:contain;border:2px solid #fff;border-radius:6px;background:transparent;box-sizing:border-box}
-
-.contact-cta{margin:16px 0 8px}
-.contact-email{color:var(--subtext)}
-.mobile-cta .btn-linkedin{width:100%;justify-content:center}
-
-/* =========================
-   LOCK SCROLL WHEN MENU OPEN
-========================= */
-body[data-lock="true"]{overflow:hidden}
-
-/* =========================
-   STRATEGIC FOCUS GRID
-========================= */
+.btn-linkedin:hover{filter:brightness(1.05)}.btn-linkedin:active{transform:translateY(1px)}.btn-linkedin .li-icon{width:20px;height:20px;flex:0 0 20px;display:block;object-fit:contain;border:2px solid #fff;border-radius:6px;background:transparent;box-sizing:border-box}
+.contact-cta{margin:16px 0 8px}.contact-email{color:var(--subtext)}.mobile-cta .btn-linkedin{width:100%;justify-content:center}
+body[data-lock="true"]{height:100svh;overflow:hidden}
+/* Strategic Focus Areas Grid */
 .focus-grid .grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.focus-grid .card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:0 4px 14px rgba(0,0,0,.06);transition:none;cursor:default}
+.focus-grid .card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:0 4px 14px rgba(0,0,0,.06);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.focus-grid .card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08);border-color:var(--accent)}
 .focus-grid .card img{width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:14px}
 .focus-grid .card h3{margin:6px 0 6px;font-size:18px;line-height:1.35;color:var(--text)}
 .focus-grid .card p{margin:0;max-width:none;color:var(--subtext);font-size:15.5px}
+@media (max-width:480px){.focus-grid .card img{height:160px}.focus-grid .card h3{font-size:17px}.focus-grid .card p{font-size:15px}}
 
-@media (max-width:480px){
-  .focus-grid .card img{height:160px}
-  .focus-grid .card h3{font-size:17px}
-  .focus-grid .card p{font-size:15px}
-}
 
 /* =========================
-   INITIATIVE CARDS
-========================= */
+   Focus Areas: informational only (no hover/highlight)
+   ========================= */
+.focus-grid .card{transition:none;cursor:default}
+.focus-grid .card:hover{transform:none;box-shadow:0 4px 14px rgba(0,0,0,.06);border-color:var(--border)}
+
+
+/* =========================
+   Strategic Initiatives — Compact Link Cards (separate pages)
+   ========================= */
 .case-grid-compact .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .case-link{display:block;border:1px solid var(--border);background:var(--bg);border-radius:14px;padding:14px 14px 12px;text-align:left;color:var(--text);text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.06);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;min-height:124px}
 .case-link:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.10);border-color:rgba(14,165,233,.85)}
@@ -47,26 +35,29 @@ body[data-lock="true"]{overflow:hidden}
 .case-link .case-title{margin:0 0 6px;font-size:16.25px;line-height:1.25;color:var(--text)}
 .case-link .case-desc{margin:0;color:var(--subtext);font-size:14.5px;line-height:1.55;max-width:none}
 .case-cta{display:inline-flex;margin-top:12px;color:var(--accent);font-weight:700;font-size:14px}
-
 .section-note{margin:-10px 0 20px;font-size:14px;color:var(--subtext)}
 
+
 /* =========================
-   INSIGHTS GRID
-========================= */
+   Insights & Thought Leadership — Card Grid
+   Reuses .case-link styles with a subtle hover to differentiate from Initiatives.
+   ========================= */
 .insights-grid .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .insights-grid .case-link:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.09);border-color:rgba(14,165,233,.65)}
 
+
 /* =========================
-   CASE STUDY PAGES
-========================= */
+   Case Study Pages
+   ========================= */
 .case-back{display:inline-flex;gap:8px;align-items:center;margin-top:8px}
 .case-tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
 .case-tag{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.02);color:var(--subtext);font-size:12.5px;font-weight:600}
 .case-page h1{margin-top:10px}
 
+
 /* =========================
-   CASE NAVIGATION
-========================= */
+   Case Study Navigation (Prev / Next)
+   ========================= */
 .case-nav{display:flex;justify-content:space-between;gap:12px;margin-top:26px;padding-top:16px;border-top:1px solid var(--border)}
 .case-nav a{flex:1;display:block;border:1px solid var(--border);background:var(--bg);border-radius:14px;padding:12px 14px;text-decoration:none;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.06);transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
 .case-nav a:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.10);border-color:rgba(14,165,233,.85)}
@@ -75,24 +66,3 @@ body[data-lock="true"]{overflow:hidden}
 .case-nav .nav-title{display:block;font-size:15.5px;font-weight:700;line-height:1.25}
 .case-nav .nav-spacer{flex:1}
 @media (max-width:700px){.case-nav{flex-direction:column}}
-
-/* =========================
-   PAGINATION
-========================= */
-.pagination-controls{display:flex;justify-content:space-between;align-items:center;margin-top:20px}
-.pagination-controls button{background:transparent;border:1px solid rgba(255,255,255,.2);color:white;padding:8px 16px;border-radius:6px;cursor:pointer}
-.pagination-controls button:disabled{opacity:.3;cursor:not-allowed}
-.page-info{font-size:14px;opacity:.7}
-
-/* =========================
-   FADE ANIMATION
-========================= */
-.fade-grid{transition:opacity .3s ease}
-.fade-out{opacity:0}
-.fade-in{opacity:1}
-
-/* =========================
-   OVERFLOW SAFETY (FIXES MOBILE SIDE SCROLL)
-========================= */
-html,body{overflow-x:hidden}
-img, .grid, .card, .case-link {max-width:100%}

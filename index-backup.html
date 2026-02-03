@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Santhosh Kumar Chandrashekar | Portfolio Architect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Leading cloud platform strategy, migration, and modernization." />
+  <meta name="theme-color" content="#0ea5e9" />
+
+  <!-- Google Fonts (preconnect + stylesheet) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       1) DESIGN TOKENS (LIGHT DEFAULTS)
+       ========================================================= */
+    :root{
+      --header-height: 56px;       /* updated dynamically by JS to match the real header */
+      --page-bg: #f5f6f8;          /* light gray page background */
+      --bg: #ffffff;
+      --text: #111827;
+      --subtext: #4b5563;
+      --accent: #0a66c2;
+      --border: #e5e7eb;
+      --shadow: 0 1px 0 var(--border);
+      --focus: 2px solid #0a66c2;
+
+      /* Header gradient (light) */
+      --header-start: #0ea5e9; /* sky-500 */
+      --header-end:   #6366f1; /* indigo-500 */
+      --header-text:  #ffffff;
+
+      /* Drawer colors */
+      --scrim: rgba(0,0,0,.55);
+      --panel: #0B1220;            /* solid to avoid see-through artifacts */
+      --panel-edge: rgba(255,255,255,.06);
+    }
+
+    /* =========================================================
+       2) FOLLOW SYSTEM PREFERENCE BY DEFAULT
+       ========================================================= */
+    @media (prefers-color-scheme: dark){
+      :root{
+        --page-bg: #0b1223;
+        --bg: #0f172a;
+        --text: #e5e7eb;
+        --subtext: #cbd5e1;
+        --border: #1f2937;
+        --shadow: 0 1px 0 var(--border);
+
+        --header-start: #0ea5e9;
+        --header-end:   #7c3aed;
+        --header-text:  #ffffff;
+
+        --scrim: rgba(0,0,0,.5);
+        --panel: #0A0F1A;
+        --panel-edge: rgba(255,255,255,.10);
+      }
+    }
+
+    /* =========================================================
+       3) EXPLICIT USER THEME (ALWAYS WINS)
+       ========================================================= */
+    html.theme-light{
+      --page-bg: #f5f6f8; --bg:#fff; --text:#111827; --subtext:#4b5563; --border:#e5e7eb; --shadow:0 1px 0 var(--border);
+      --header-start:#0ea5e9; --header-end:#6366f1; --header-text:#fff;
+      --scrim: rgba(0,0,0,.55); --panel:#0B1220; --panel-edge: rgba(255,255,255,.06);
+    }
+    html.theme-dark{
+      --page-bg:#0b1223; --bg:#0f172a; --text:#e5e7eb; --subtext:#cbd5e1; --border:#1f2937; --shadow:0 1px 0 var(--border);
+      --header-start:#0ea5e9; --header-end:#7c3aed; --header-text:#fff;
+      --scrim: rgba(0,0,0,.5); --panel:#0A0F1A; --panel-edge: rgba(255,255,255,.10);
+    }
+
+    /* =========================================================
+       4) BASE & SCROLL BEHAVIOR
+       ========================================================= */
+    html{
+      scroll-behavior: smooth;
+      /* Offset anchor scrolling so headings sit below sticky header */
+      scroll-padding-top: var(--header-height);
+    }
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--page-bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background-color .3s ease, color .3s ease;
+      min-height: 100svh;
+    }
+
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+    a:focus-visible, button:focus-visible{ outline: var(--focus); outline-offset: 3px; }
+
+    .container{ max-width: 900px; margin: auto; padding: 60px 20px; }
+
+    /* Skip link */
+    .skip-link{
+      position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+    }
+    .skip-link:focus{
+      position: fixed; left: 16px; top: 16px;
+      width: auto; height: auto; padding: 8px 12px;
+      background: var(--bg); border: 1px solid var(--border); box-shadow: 0 4px 10px rgba(0,0,0,.08); z-index: 1000;
+    }
+
+    /* =========================================================
+       5) HEADER (GRADIENT) + RESPONSIVE NAV WITH MOBILE DRAWER
+       ========================================================= */
+    .site-header{
+      position: sticky; top: 0; z-index: 40;
+      color: var(--header-text);
+      background-image: linear-gradient(90deg, var(--header-start), var(--header-end));
+      box-shadow: 0 2px 10px rgba(0,0,0,.15);
+    }
+    .header-inner{
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      min-height: 56px;
+    }
+
+    /* Brand as a link (Home) */
+    .brand.home-link{
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--header-text);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .brand.home-link:hover,
+    .brand.home-link:focus{
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Desktop nav links */
+    .nav-links{ display: flex; gap: 18px; }
+    .nav-links a{
+      color: var(--header-text);
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .theme-btn, .menu-btn{
+      appearance: none;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 6px 12px;
+      border-radius: 20px;
+      color: var(--header-text);
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+    }
+    .menu-btn{
+      display: none; /* hidden on desktop */
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .header-actions{ display: flex; gap: 8px; justify-content: flex-end; align-items: center; }
+
+    /* --- Mobile layout --- */
+    @media (max-width: 768px){
+      .header-inner{ grid-template-columns: 1fr auto auto; /* brand | theme | menu */ }
+      .nav-links{ display: none; } /* hide desktop links */
+      .menu-btn{ display: inline-flex; }
+      .brand.home-link{ font-size: 18px; }
+    }
+
+    /* --- Mobile Drawer (RIGHT) --- */
+    .mobile-menu{
+      position: fixed; inset: 0; z-index: 50;
+      display: grid; grid-template-columns: 1fr var(--panel-w, 340px);
+      background: var(--scrim);
+      overflow: hidden;                 /* hide any subpixel seams */
+      opacity: 0; pointer-events: none; transition: opacity .2s ease;
+      will-change: opacity;
+    }
+    .mobile-menu[data-open="true"]{ opacity: 1; pointer-events: auto; }
+    .mobile-menu-scrim{ width: 100%; height: 100%; }
+
+    .mobile-panel{
+      height: 100%;
+      width: var(--panel-w, 340px);
+      max-width: 84vw;
+      background: var(--panel);         /* solid to avoid background artifacts */
+      color: #fff;
+      box-shadow: -1px 0 0 var(--panel-edge);
+      padding:
+        max(14px, env(safe-area-inset-top))
+        max(16px, env(safe-area-inset-right))
+        calc(max(16px, env(safe-area-inset-bottom)) + 6px)
+        max(16px, env(safe-area-inset-left));
+      transform: translateX(100%);
+      transition: transform .25s ease;
+      display: grid;
+      grid-template-rows: 48px 1fr auto; /* header row | links | bottom CTA */
+      row-gap: 12px;
+      will-change: transform;
+      contain: paint;
+    }
+    .mobile-menu[data-open="true"] .mobile-panel{ transform: translateX(0%); }
+
+    .mobile-top{
+      display: grid;
+      grid-template-columns: 1fr 24px;  /* title | close */
+      align-items: center;
+      column-gap: 8px;
+    }
+    .mobile-title{
+      font-weight: 700; font-size: 18px; letter-spacing: .02em;
+    }
+    .mobile-close{
+      appearance: none; background: transparent; border: 0; color: #fff;
+      font-size: 24px; line-height: 1; cursor: pointer; justify-self: end;
+    }
+
+    .mobile-nav{
+      display: grid; align-content: start;
+      row-gap: 18px; margin-top: 6px;
+    }
+    .mobile-nav a{
+      color: #fff; text-decoration: none;
+      font-size: 18px; line-height: 1.4;
+      padding: 6px 2px; border-radius: 8px;
+    }
+    .mobile-nav a:active{ background: rgba(255,255,255,.06); }
+
+    .mobile-cta{
+      padding-top: 12px; border-top: 1px solid var(--panel-edge);
+    }
+
+    @media (max-width: 360px){
+      .mobile-menu{ --panel-w: 310px; }
+    }
+
+    /* =========================================================
+       6) CONTACT CTA (LinkedIn) — accurate brand mark
+       ========================================================= */
+    .btn-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      color: #ffffff;                 /* text/icon color */
+      background: #0A66C2;            /* LinkedIn brand blue */
+      border: 1px solid rgba(255,255,255,.18);
+      text-decoration: none;
+      transition: transform .08s ease, filter .15s ease, box-shadow .15s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+      line-height: 1;
+    }
+    .btn-linkedin:hover { filter: brightness(1.05); }
+    .btn-linkedin:active { transform: translateY(1px); }
+    .btn-linkedin .li-icon { width: 20px; height: 20px; flex: 0 0 20px; display: block; }
+    /* Optional micro‑tweak if needed on certain Android fonts: */
+    /* .btn-linkedin .li-icon { vertical-align: -2px; } */
+
+    .contact-cta { margin: 16px 0 8px; }
+    .contact-email { color: var(--subtext); }
+    .mobile-cta .btn-linkedin { width: 100%; justify-content: center; }
+
+    /* =========================================================
+       7) CONTENT
+       ========================================================= */
+    /* Ensure sections offset when targeted (helps older Safari) */
+    section[id]{ scroll-margin-top: calc(var(--header-height) + 10px); }
+
+    .hero{
+      display:flex; align-items:center; gap:30px; margin-top:30px; flex-wrap:wrap;
+    }
+    .profile-pic{
+      width:140px; height:140px; border-radius:50%; object-fit:cover;
+      border:4px solid var(--accent);
+    }
+
+    h1{ font-size:40px; line-height:1.2; margin:0 0 12px; color: var(--accent); }
+    h2{
+      font-size:24px; margin:70px 0 18px; padding-bottom:8px;
+      border-bottom:1px solid var(--border);
+    }
+    p, ul{ font-size:17px; color: var(--subtext); max-width:720px; }
+    .subtitle{ font-size:17px; color: var(--subtext); margin-bottom:18px; max-width:720px; }
+    .project, .blog-post{ margin-bottom:22px; max-width:720px; }
+
+    footer{
+      margin-top:80px; padding-top:30px; border-top:1px solid var(--border);
+      font-size:15px; color: var(--subtext);
+    }
+
+    /* Mobile content tweaks */
+    @media (max-width: 600px){
+      .hero{ flex-direction: column; text-align: center; }
+      h1{ font-size: 32px; }
+    }
+
+    /* Prevent background scroll-jank on Android while drawer is open */
+    body[data-lock="true"]{ height: 100svh; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <!-- Top anchor for Home scroll -->
+  <a id="top" tabindex="-1"></a>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <!-- Brand links to top -->
+      <a id="homeLink" href="#top" class="brand home-link">SANTHOSH KUMAR</a>
+
+      <!-- Desktop links -->
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#expertise">Strategic Focus Areas</a>
+        <a href="#work">Strategic Initiaves Led</a>
+        <a href="#blog">Insights & Thought Leadership</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="theme-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+        <button type="button" class="menu-btn" id="menuToggle"
+                aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">≡</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MOBILE MENU DRAWER (right) ================= -->
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <div class="mobile-menu-scrim" data-close="true" aria-hidden="true"></div>
+    <aside class="mobile-panel" role="dialog" aria-modal="true" aria-labelledby="mobileMenuTitle">
+      <div class="mobile-top">
+        <div class="mobile-title" id="mobileMenuTitle">Menu</div>
+        <button type="button" class="mobile-close" data-close="true" aria-label="Close menu">✕</button>
+      </div>
+
+      <nav class="mobile-nav" aria-label="Mobile Primary">
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#work">Work</a>
+        <a href="#blog">Thought Leadership</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- Drawer CTA -->
+      <div class="mobile-cta">
+        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer" aria-label="Connect with me on LinkedIn">
+          <!-- Accurate LinkedIn icon: blue rounded square + 'in' glyph -->
+          <svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="2" y="2" width="20" height="20" rx="4" ry="4" fill="#0A66C2"/>
+            <path fill="#ffffff"
+              d="M7.55 17.5H5.2V9.93h2.35V17.5ZM6.38 8.9c-.75 0-1.36-.61-1.36-1.36s.61-1.36 1.36-1.36
+                 1.36.61 1.36 1.36S7.14 8.9 6.38 8.9Zm12.42 8.6h-2.34v-3.94c0-.94-.02-2.15-1.31-2.15-1.31 0-1.51 1.02-1.51 2.08v4.01H9.3V9.93h2.24v1.04h.03
+                 c.31-.58 1.08-1.2 2.21-1.2 2.36 0 2.75 1.55 2.75 3.56v4.17Z"/>
+          </svg>
+          <span>Connect with me</span>
+        </a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ================= MAIN ================= -->
+  <main id="main" class="container">
+    <section class="hero" aria-labelledby="name">
+      <img src="assets/images/profile.webp" alt="Santhosh Kumar Chandrashekar" class="profile-pic" width="140" height="140" loading="lazy" decoding="async" />
+      <div>
+        <h1 id="name">Santhosh Kumar Chandrashekar</h1>
+        <p class="subtitle">
+          TOGAF® Certified Architect<br />
+          Cloud & DevOps Portfolio Strategy Leader
+        </p>
+        <p>
+          I help organisations modernize with confidence by shaping cloud, platform, and DevOps strategy that enables scale, resilience, and long‑term business value.
+          With a blended foundation in enterprise architecture, solution architecture, platform engineering, and operations,
+          I bring a holistic, outcome‑driven approach to technology transformation, ensuring architectural decisions translate into real business impact.
+        </p>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+
+      <!-- Paragraph 1 -->
+      <p>
+        I’m a TOGAF®‑certified Architect with 14+ years of experience across cloud, DevOps, solution architecture, platform engineering, and operations.
+        Today, I specialise in Cloud & DevOps Portfolio Architecture within the Enterprise Architecture structure, focusing on target‑state design, technology roadmapping,
+        and platform strategies that reduce complexity and enable sustainable enterprise transformation.
+      </p>
+
+      <!-- Paragraph 2: the quote, italic and on its own line -->
+      <p><strong><em>"At the centre of my approach is a belief that architecture should provide clarity, direction, and enablement — not friction."</em></strong></p>
+
+      <!-- Paragraph 3: the next line on a new line -->
+      <p>
+        My goal is to design technology foundations and roadmaps that evolve with the organisation, support modern ways of working, and deliver long‑term business value.
+      </p>
+    </section>
+
+    <section id="expertise" aria-labelledby="expertise-title">
+      <h2 id="expertise-title">Strategic Focus Areas</h2>
+      <ul>
+        <li>Enterprise Architecture & Target-State Design</li>
+        <li>Cloud Strategy, Migration & Modernization</li>
+        <li>Cloud Landing Zones & Architecture Patterns</li>
+        <li>DevSecOps Transformation</li>
+        <li>Cloud Governance, Risk & Compliance Frameworks</li>
+        <li>Cloud Financial Management (FinOps) Strategy</li>
+      </ul>
+    </section>
+
+    <section id="work" aria-labelledby="work-title">
+      <h2 id="work-title">Strategic Initiatives Led</h2>
+      <article class="project">
+        <h3>Enterprise Cloud Landing Zone</h3>
+        <p>Led the definition of an enterprise Azure landing zone strategy, establishing governance, security guardrails, and platform standards.</p>
+      </article>
+    </section>
+
+    <section id="blog" aria-labelledby="blog-title">
+      <h2 id="blog-title">Insights & Thought Leadership</h2>
+      <article class="blog-post">
+        <h3><a href="landing-zone-principles.html">Designing Enterprise Cloud Landing Zones</a></h3>
+        <p>Key principles for building scalable, governed, and secure cloud foundations.</p>
+
+        <div class="blog-post">
+          <h3><a href="cloud-modernization-strategy.html">Cloud Migration Beyond Lift-and-Shift</a></h3>
+          <p>Why modernization — not just migration — unlocks real cloud value.</p>
+        </div>
+      </article>
+    </section>
+
+    <footer id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" style="margin-top:0;">Contact</h2>
+
+      <p class="contact-cta">
+        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer" aria-label="Connect with me on LinkedIn">
+          <!-- Accurate LinkedIn icon: blue rounded square + 'in' glyph -->
+          <svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="2" y="2" width="20" height="20" rx="4" ry="4" fill="#0A66C2"/>
+            <path fill="#ffffff"
+              d="M7.55 17.5H5.2V9.93h2.35V17.5ZM6.38 8.9c-.75 0-1.36-.61-1.36-1.36s.61-1.36 1.36-1.36
+                 1.36.61 1.36 1.36S7.14 8.9 6.38 8.9Zm12.42 8.6h-2.34v-3.94c0-.94-.02-2.15-1.31-2.15-1.31 0-1.51 1.02-1.51 2.08v4.01H9.3V9.93h2.24v1.04h.03
+                 c.31-.58 1.08-1.2 2.21-1.2 2.36 0 2.75 1.55 2.75 3.56v4.17Z"/>
+          </svg>
+          <span>Connect with me</span>
+        </a>
+      </p>
+
+      <p class="contact-email">
+        <strong>Email:</strong>
+        <a href="mailto:sankum.chandra@outlook.com">sankum.chandra@outlook.com</a>
+      </p>
+    </footer>
+  </main>
+
+  <!-- ================= JS: Theme + Accurate Anchor Scrolling + Mobile Drawer ================= -->
+  <script>
+    (function () {
+      const STORAGE_KEY = 'site-theme';          // 'light' | 'dark' | null (follow system)
+      const USER_LOCK   = 'site-theme-userlock'; // 'true' once user clicks (stops following OS)
+
+      const root       = document.documentElement;
+      const header     = document.getElementById('siteHeader');
+      const themeBtn   = document.getElementById('themeToggle');
+
+      const menuBtn    = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const closeEls   = mobileMenu.querySelectorAll('[data-close="true"]');
+      const mobileLinks= mobileMenu.querySelectorAll('.mobile-nav a');
+
+      /* ---------- THEME ---------- */
+      function prefersDark(){
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      function applyTheme(theme){
+        root.classList.remove('theme-light', 'theme-dark');
+        if (theme === 'dark') {
+          root.classList.add('theme-dark');
+          themeBtn.setAttribute('aria-pressed', 'true');
+          themeBtn.textContent = '☀️';
+          themeBtn.title = 'Switch to light mode';
+        } else if (theme === 'light') {
+          root.classList.add('theme-light');
+          themeBtn.setAttribute('aria-pressed', 'false');
+          themeBtn.textContent = '🌙';
+          themeBtn.title = 'Switch to dark mode';
+        } else {
+          // follow system
+          themeBtn.textContent = prefersDark() ? '☀️' : '🌙';
+          themeBtn.setAttribute('aria-pressed', prefersDark() ? 'true' : 'false');
+        }
+      }
+      const stored = localStorage.getItem(STORAGE_KEY);
+      const locked = localStorage.getItem(USER_LOCK) === 'true';
+      applyTheme(stored || null);
+
+      if (!locked && window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+          if (!localStorage.getItem(USER_LOCK) && !localStorage.getItem(STORAGE_KEY)) applyTheme(null);
+        });
+      }
+      themeBtn.addEventListener('click', () => {
+        const isDark = root.classList.contains('theme-dark') || (!root.classList.contains('theme-light') && prefersDark());
+        const next = isDark ? 'light' : 'dark';
+        localStorage.setItem(STORAGE_KEY, next);
+        localStorage.setItem(USER_LOCK, 'true');
+        applyTheme(next);
+        setHeaderHeight(); // recalc if metrics shift slightly
+      });
+
+      /* ---------- HEADER HEIGHT & ANCHOR OFFSET ---------- */
+      function setHeaderHeight(){
+        if (!header) return;
+        const h = header.offsetHeight;
+        root.style.setProperty('--header-height', h + 'px');
+      }
+      window.addEventListener('resize', setHeaderHeight);
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(setHeaderHeight); }
+      window.addEventListener('load', setHeaderHeight);
+      setHeaderHeight();
+
+      /* ---------- MOBILE DRAWER ---------- */
+      function openMenu(){
+        mobileMenu.hidden = false;
+        mobileMenu.setAttribute('data-open', 'true');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        document.body.setAttribute('data-lock','true');  // stop background scroll
+        const first = mobileMenu.querySelector('.mobile-nav a');
+        first && first.focus();
+      }
+      function closeMenu(){
+        mobileMenu.removeAttribute('data-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.removeAttribute('data-lock');
+        setTimeout(() => { mobileMenu.hidden = true; }, 220);
+        menuBtn.focus();
+      }
+
+      menuBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.getAttribute('data-open') === 'true';
+        isOpen ? closeMenu() : openMenu();
+      });
+      closeEls.forEach(el => el.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.getAttribute('data-open') === 'true') closeMenu();
+      });
+
+      // Brand link: smooth scroll to top, and close drawer if open
+      const homeLink = document.getElementById('homeLink');
+      if (homeLink) {
+        homeLink.addEventListener('click', (e) => {
+          if (mobileMenu.getAttribute('data-open') === 'true') {
+            e.preventDefault();
+            closeMenu();
+            setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 10);
+          }
+        });
+      }
+
+      // Anchor links (desktop & mobile) — smooth scroll and close menu if open
+      function scrollToId(id){
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Desktop header links
+      document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href').slice(1);
+          if (id) {
+            e.preventDefault(); scrollToId(id); history.pushState(null, '', '#' + id);
+          }
+        });
+      });
+
+      // Mobile drawer links
+      mobileLinks.forEach(a => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href').slice(1);
+          if (id) {
+            e.preventDefault(); closeMenu(); setTimeout(() => { scrollToId(id); history.pushState(null, '', '#' + id); }, 10);
+          }
+        });
+      });
+
+      // If page loads with a hash, ensure position is corrected after header height is measured
+      if (location.hash) {
+        const id = location.hash.replace('#','');
+        setTimeout(() => scrollToId(id), 50);
+      }
+    })();
+  </script>
+</body>
+</html>
+``

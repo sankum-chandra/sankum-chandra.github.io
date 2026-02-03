@@ -17,18 +17,15 @@
   <link rel="stylesheet" href="css/utilities.css" />
 </head>
 <body>
-
 <a id="top" tabindex="-1"></a>
 <a href="#main" class="skip-link">Skip to main content</a>
 
-<!-- ================= HEADER ================= -->
 <header class="site-header" id="siteHeader">
   <div class="header-inner">
     <a id="homeLink" href="#top" class="brand home-link">
       <img src="assets/images/profile.webp" alt="Santhosh Kumar" class="brand-avatar" width="32" height="32" />
       <span class="brand-text">SANTHOSH KUMAR</span>
     </a>
-
     <nav class="nav-links">
       <a href="#about">About</a>
       <a href="#expertise">Strategic Focus Areas</a>
@@ -36,7 +33,6 @@
       <a href="#blog">Insights & Thought Leadership</a>
       <a href="#contact">Contact</a>
     </nav>
-
     <div class="header-actions">
       <button type="button" class="theme-btn" id="themeToggle">🌙</button>
       <button type="button" class="menu-btn" id="menuToggle">≡</button>
@@ -44,33 +40,31 @@
   </div>
 </header>
 
-<!-- ================= MOBILE MENU ================= -->
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu" id="mobileMenu" hidden>
   <div class="mobile-menu-scrim" data-close="true"></div>
   <aside class="mobile-panel" role="dialog" aria-modal="true">
     <div class="mobile-top">
-      <button type="button" class="mobile-close" data-close="true" aria-label="Close menu">✕</button>
+      <div class="mobile-brand">
+        <img src="assets/images/profile.webp" alt="Santhosh Kumar" class="brand-avatar" width="32" height="32" />
+        <div>
+          <div class="mobile-brand-name">SANTHOSH KUMAR</div>
+          <div class="mobile-title">Menu</div>
+        </div>
+      </div>
+      <button type="button" class="mobile-close" data-close="true">✕</button>
     </div>
     <nav class="mobile-nav">
-      <a href="#about" data-close="true">About</a>
-      <a href="#expertise" data-close="true">Strategic Focus Areas</a>
-      <a href="#work" data-close="true">Strategic Initiatives Led</a>
-      <a href="#blog" data-close="true">Insights</a>
-      <a href="#contact" data-close="true">Contact</a>
+      <a href="#about">About</a>
+      <a href="#expertise">Strategic Focus Areas</a>
+      <a href="#work">Strategic Initiatives Led</a>
+      <a href="#blog">Insights</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <div class="mobile-cta">
-      <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer">
-        <img class="li-icon" src="assets/images/in.webp" alt="" width="20" height="20">
-        <span>Let’s Connect</span>
-      </a>
-    </div>
   </aside>
 </div>
 
-<!-- ================= MAIN CONTENT ================= -->
 <main id="main" class="container">
 
-<!-- HERO -->
 <section class="hero">
   <img src="assets/images/profile.webp" alt="Santhosh Kumar Chandrashekar" class="profile-pic" />
   <div>
@@ -80,7 +74,6 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <h2>About</h2>
   <p>I’m a TOGAF®-certified Architect with 14+ years of experience across cloud, DevOps, solution architecture, platform engineering, and operations. Today, I specialise in Cloud & DevOps Portfolio Architecture within the Enterprise Architecture structure, focusing on target-state design, technology roadmapping, and platform strategies that reduce complexity and enable sustainable enterprise transformation.</p>
@@ -88,20 +81,42 @@
   <p>My goal is to design technology foundations and roadmaps that evolve with the organisation, support modern ways of working, and deliver long-term business value.</p>
 </section>
 
-<!-- STRATEGIC FOCUS AREAS -->
 <section id="expertise" class="focus-grid">
   <h2>Strategic Focus Areas</h2>
   <div class="grid">
-    <article class="card"><img src="assets/images/focus-ea.webp"><h3>Enterprise Architecture & Target-State Design</h3><p>Defining future-state architectures and guiding organisations toward scalable, secure digital foundations.</p></article>
-    <article class="card"><img src="assets/images/focus-cloud-strategy.webp"><h3>Cloud Strategy, Migration & Modernisation</h3><p>Shaping cloud adoption and modernising digital platforms for resilience, security, and scale.</p></article>
-    <article class="card"><img src="assets/images/focus-landing-zones.webp"><h3>Cloud Landing Zones & Platform Engineering</h3><p>Designing secure, compliant cloud platforms that accelerate delivery across portfolios.</p></article>
-    <article class="card"><img src="assets/images/focus-devsecops.webp"><h3>DevSecOps & Delivery Enablement</h3><p>Standardising pipelines and enabling teams through secure, automated delivery practices.</p></article>
-    <article class="card"><img src="assets/images/focus-governance.webp"><h3>Cloud Governance, Security & Compliance</h3><p>Establishing guardrails, policy, and cost controls for responsible, sustainable cloud operations.</p></article>
-    <article class="card"><img src="assets/images/focus-roadmapping.webp"><h3>Technology Roadmapping & Portfolio Advisory</h3><p>Creating multi-year roadmaps that align platform strategy with business outcomes.</p></article>
+    <article class="card">
+      <img src="assets/images/focus-ea.webp" alt="Enterprise Architecture & Target-State Design">
+      <h3>Enterprise Architecture & Target-State Design</h3>
+      <p>Defining future-state architectures and guiding organisations toward scalable, secure digital foundations.</p>
+    </article>
+    <article class="card">
+      <img src="assets/images/focus-cloud-strategy.webp" alt="Cloud Strategy, Migration & Modernisation">
+      <h3>Cloud Strategy, Migration & Modernisation</h3>
+      <p>Shaping cloud adoption and modernising digital platforms for resilience, security, and scale.</p>
+    </article>
+    <article class="card">
+      <img src="assets/images/focus-landing-zones.webp" alt="Cloud Landing Zones & Platform Engineering">
+      <h3>Cloud Landing Zones & Platform Engineering</h3>
+      <p>Designing secure, compliant cloud platforms that accelerate delivery across portfolios.</p>
+    </article>
+    <article class="card">
+      <img src="assets/images/focus-devsecops.webp" alt="DevSecOps & Delivery Enablement">
+      <h3>DevSecOps & Delivery Enablement</h3>
+      <p>Standardising pipelines and enabling teams through secure, automated delivery practices.</p>
+    </article>
+    <article class="card">
+      <img src="assets/images/focus-governance.webp" alt="Cloud Governance, Security & Compliance">
+      <h3>Cloud Governance, Security & Compliance</h3>
+      <p>Establishing guardrails, policy, and cost controls for responsible, sustainable cloud operations.</p>
+    </article>
+    <article class="card">
+      <img src="assets/images/focus-roadmapping.webp" alt="Technology Roadmapping & Portfolio Advisory">
+      <h3>Technology Roadmapping & Portfolio Advisory</h3>
+      <p>Creating multi-year roadmaps that align platform strategy with business outcomes.</p>
+    </article>
   </div>
 </section>
 
-<!-- INITIATIVES -->
 <section id="work" class="case-grid-compact">
   <h2>Strategic Initiatives Led</h2>
   <p class="section-note">Selected initiatives — click a card for details.</p>
@@ -113,7 +128,6 @@
   </div>
 </section>
 
-<!-- INSIGHTS -->
 <section id="blog" class="insights-grid">
   <h2>Insights & Thought Leadership</h2>
   <p class="section-note">Selected articles — click a card for details.</p>
@@ -125,11 +139,10 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer id="contact">
   <h2>Contact</h2>
   <p class="contact-cta">
-    <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank">
+    <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer">
       <img class="li-icon" src="assets/images/in.webp" alt="" width="20" height="20">
       <span>Let’s Connect</span>
     </a>
@@ -141,6 +154,53 @@
 </footer>
 
 </main>
+
+<script>
+function setupPagination(dataUrl, containerId, prevBtnId, nextBtnId, pageInfoId, ctaText) {
+  const container = document.getElementById(containerId);
+  const prevBtn = document.getElementById(prevBtnId);
+  const nextBtn = document.getElementById(nextBtnId);
+  const pageInfo = document.getElementById(pageInfoId);
+  let items = [], page = 0, perPage = 3, touchStartX = 0;
+
+  function render() {
+    container.classList.add("fade-out");
+    setTimeout(() => {
+      container.innerHTML = "";
+      const start = page * perPage;
+      items.slice(start, start + perPage).forEach(item => {
+        const card = document.createElement("a");
+        card.className = "case-link";
+        card.href = item.url;
+        card.innerHTML = `<h3 class="case-title">${item.title}</h3>
+                          <p class="case-desc">${item.description}</p>
+                          <span class="case-cta">${ctaText}</span>`;
+        container.appendChild(card);
+      });
+      prevBtn.disabled = page === 0;
+      nextBtn.disabled = start + perPage >= items.length;
+      pageInfo.textContent = `Page ${page + 1} of ${Math.ceil(items.length / perPage)}`;
+      container.classList.remove("fade-out");
+      container.classList.add("fade-in");
+      setTimeout(() => container.classList.remove("fade-in"), 300);
+    }, 150);
+  }
+
+  fetch(dataUrl).then(r => r.json()).then(data => { items = data.reverse(); render(); });
+  prevBtn.onclick = () => { if (page > 0) { page--; render(); } };
+  nextBtn.onclick = () => { if ((page + 1) * perPage < items.length) { page++; render(); } };
+
+  container.addEventListener("touchstart", e => touchStartX = e.changedTouches[0].screenX);
+  container.addEventListener("touchend", e => {
+    let diff = e.changedTouches[0].screenX - touchStartX;
+    if (diff > 50 && page > 0) { page--; render(); }
+    if (diff < -50 && (page + 1) * perPage < items.length) { page++; render(); }
+  });
+}
+
+setupPagination('data/initiatives.json','initiativesContainer','initPrev','initNext','initPageInfo','More details →');
+setupPagination('data/articles.json','articlesContainer','artPrev','artNext','artPageInfo','Read article →');
+</script>
 
 <script src="js/theme.js"></script>
 <script src="js/menu.js"></script>
