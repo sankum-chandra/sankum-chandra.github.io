@@ -4,20 +4,23 @@
 <header class="site-header" id="siteHeader">
   <div class="header-inner">
 
-  <!-- HOME ICON -->
-  <a href="/" class="home-icon" aria-label="Home">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-         stroke-linecap="round" stroke-linejoin="round">
-      <path d="M3 11l9-8 9 8"></path>
-      <path d="M9 21V9h6v12"></path>
-    </svg>
-  </a>
+    <!-- HOME BUTTON (matches menu/toggle style) -->
+    <a href="/" class="icon-btn home-btn" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 11l9-8 9 8"></path>
+        <path d="M9 21V9h6v12"></path>
+      </svg>
+    </a>
 
-  <a id="homeLink" href="/" class="brand home-link">
-    <img src="/assets/images/profile.webp" alt="Santhosh Kumar" class="brand-avatar" width="32" height="32" />
-    <span class="brand-text">SANTHOSH KUMAR</span>
-  </a>
+    <!-- BRAND -->
+    <a id="homeLink" href="/" class="brand home-link">
+      <img src="/assets/images/profile.webp" alt="Santhosh Kumar"
+           class="brand-avatar" width="32" height="32" />
+      <span class="brand-text">SANTHOSH KUMAR</span>
+    </a>
 
+    <!-- DESKTOP NAV -->
     <nav class="nav-links" aria-label="Primary">
       <a href="/about/">About</a>
       <a href="/focus/">Focus</a>
@@ -26,31 +29,29 @@
       <a href="/contact/">Contact</a>
     </nav>
 
+    <!-- RIGHT SIDE ACTIONS -->
     <div class="header-actions">
-      <button type="button" class="theme-btn" id="themeToggle" aria-label="Toggle theme">🌙</button>
+      <button type="button" class="theme-btn icon-btn" id="themeToggle" aria-label="Toggle theme">🌙</button>
 
-      <!-- ADD aria-controls -->
       <button type="button"
-              class="menu-btn"
+              class="menu-btn icon-btn"
               id="menuToggle"
               aria-label="Open menu"
               aria-expanded="false"
               aria-controls="mobileMenu">≡</button>
     </div>
+
   </div>
 </header>
 
-<!-- ADD aria-hidden -->
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu" hidden aria-hidden="true">
   <div class="mobile-menu-scrim" data-close="true"></div>
 
   <aside class="mobile-panel" role="dialog" aria-modal="true" aria-label="Mobile menu">
     <div class="mobile-top">
       <div class="mobile-title">Menu</div>
-      <button type="button"
-              class="mobile-close"
-              data-close="true"
-              aria-label="Close menu">✕</button>
+      <button type="button" class="mobile-close" data-close="true" aria-label="Close menu">✕</button>
     </div>
 
     <nav class="mobile-nav" aria-label="Mobile">
