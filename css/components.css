@@ -441,4 +441,16 @@ html.theme-light .li-icon-wrap {
   background: rgba(10,102,194,0.14);
   border: 1px solid rgba(10,102,194,0.28);
 }
-``
+
+/* ===== Footer forced center ===== */
+.site-footer {
+  width: 100%;
+  text-align: center !important;
+  display: block;
+}
+
+.site-footer p {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center !important;
+}
