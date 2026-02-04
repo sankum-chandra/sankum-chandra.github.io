@@ -669,4 +669,13 @@ html.theme-light .li-icon-wrap {
     max-width:none;
   }
 }
+/* Prevent any header child from forcing horizontal overflow */
+.site-header,
+.header-inner{
+  max-width: 100%;
+}
+
+.header-inner > *{
+  min-width: 0; /* allows flex children (brand/nav/actions) to shrink */
+}
 
