@@ -606,3 +606,67 @@ html.theme-light .li-icon-wrap {
   align-items: center;
   gap: 10px;
 }
+/* =========================================================
+   HEADER LAYOUT PATCH (Desktop + Mobile behavior)
+   Paste at END of components.css
+   ========================================================= */
+
+/* 0) Fix the stray leading character at file start if present
+   If your CSS starts with: 5/* ... *\/  remove the "5"
+   (otherwise the first rule can be parsed unreliably) */
+
+/* 1) Ensure header has 3 zones: Brand (left), Nav (middle), Actions (right) */
+.site-header .header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+/* Brand always left */
+.site-header .brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+  min-width:0;
+}
+
+/* Nav in the middle on desktop */
+@media (min-width: 900px){
+  .site-header .nav-links{
+    display:flex !important;
+    justify-content:center;
+    gap:18px;
+    flex:1 1 auto;
+  }
+}
+
+/* Actions always right */
+.site-header .header-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+}
+
+/* 2) Home icon styling: your element is .home-btn (not .home-icon) */
+.site-header .home-btn{
+  margin-right:0;     /* remove old left-side spacing behavior */
+  margin-left:0;
+}
+
+/* 3) Mobile menu button MUST be mobile-only */
+@media (min-width: 900px){
+  .site-header .menu-btn{
+    display:none !important;   /* force hide on desktop */
+  }
+}
+
+/* 4) Optional: let brand text expand more on desktop */
+@media (min-width: 900px){
+  .brand-text{
+    max-width:none;
+  }
+}
+
