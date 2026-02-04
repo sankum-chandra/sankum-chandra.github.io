@@ -1,4 +1,4 @@
-5/* Prevent horizontal overflow on mobile */
+/* Prevent horizontal overflow on mobile */
 html, body {
   max-width: 100%;
   overflow-x: hidden;
@@ -669,6 +669,30 @@ html.theme-light .li-icon-wrap {
     max-width:none;
   }
 }
+/* =========================================================
+   MOBILE MENU: CENTERING + FULL VISIBILITY FIX
+   Paste at END of components.css
+   ========================================================= */
+
+.mobile-menu{
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;              /* ensure it spans the viewport */
+  width: auto;           /* avoid weird width calc issues */
+  padding: 0 14px;       /* gives breathing room on small screens */
+  display: flex;
+  justify-content: center;
+  z-index: 999;          /* keep as you already have */
+}
+
+.mobile-panel{
+  width: 100%;           /* take full available width inside padding */
+  max-width: 420px;      /* keep your design cap */
+  margin: 12px auto 0;   /* force horizontal centering */
+  box-sizing: border-box;
+}
+
 /* Prevent any header child from forcing horizontal overflow */
 .site-header,
 .header-inner{
