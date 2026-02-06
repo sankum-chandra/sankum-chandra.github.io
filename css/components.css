@@ -702,4 +702,15 @@ html.theme-light .li-icon-wrap {
 .header-inner > *{
   min-width: 0; /* allows flex children (brand/nav/actions) to shrink */
 }
+.focus-grid .card > img{
+  width: 100%;
+  aspect-ratio: 16 / 9;   /* consistent hero-ish slot */
+  height: auto;           /* aspect-ratio controls height */
+  object-fit: contain;
+  display: block;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  padding: 12px;
+}
+
 
