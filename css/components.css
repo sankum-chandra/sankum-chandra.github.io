@@ -766,3 +766,21 @@ html.theme-light .li-icon-wrap {
   display: inline-block;
   margin: 24px auto 0 auto;
 }
+
+/* Center CTA and prevent wrapping */
+.cta-focus {
+  display: block;
+  width: fit-content;
+  margin: 24px auto 0 auto;
+  padding: 14px 28px;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+/* Optional: slightly tighter on very small screens */
+@media (max-width: 400px) {
+  .cta-focus {
+    font-size: 0.9rem;
+    padding: 12px 22px;
+  }
+}
