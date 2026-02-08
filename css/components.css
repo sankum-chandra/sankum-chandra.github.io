@@ -748,3 +748,21 @@ html.theme-light .li-icon-wrap {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
 }
+
+
+.focus-card {
+  padding: 0 !important;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.focus-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cta-focus {
+  display: inline-block;
+  margin: 24px auto 0 auto;
+}
