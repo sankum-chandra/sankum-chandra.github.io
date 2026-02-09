@@ -933,7 +933,7 @@ html.theme-light .li-icon-wrap {
   gap: 0; /* remove spacing */
 }
 /* =========================================
-   FINAL VERTICAL LOGO HEADER (POLISHED)
+   FINAL HEADER – TIGHT BRAND ALIGNMENT
    ========================================= */
 
 .site-header {
@@ -944,25 +944,25 @@ html.theme-light .li-icon-wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 14px;          /* horizontal only */
+  padding: 0 14px;
 }
 
 /* Brand container */
 .brand {
   display: flex;
   align-items: center;
-  gap: 4px;                 /* tightened spacing */
-  padding-left: 4px;        /* subtle edge breathing */
+  gap: 0;                 /* remove flex gap entirely */
   height: 100%;
 }
 
 /* Vertical logo */
 .brand-vertical {
-  height: 60px;             /* visually balanced */
+  height: 60px;
   width: auto;
   object-fit: contain;
   display: block;
-  margin-right: -3px;       /* compensates image padding */
+
+  margin-right: -8px;     /* pull name closer to visible logo */
 }
 
 /* Name block */
@@ -971,6 +971,8 @@ html.theme-light .li-icon-wrap {
   flex-direction: column;
   justify-content: center;
   line-height: 1.1;
+
+  margin-left: 4px;       /* controlled spacing instead of gap */
 }
 
 .brand-name .line1 {
