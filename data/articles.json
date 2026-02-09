@@ -1,9 +1,4 @@
 [
-    {
-    "title": "FinOps",
-    "description": "FinOps.",
-    "url": "/insights/enterprise-platform-strategy.html"
-  },
   {
     "title": "Enterprise Platform Strategy: A Practical View",
     "description": "How to connect platform strategy to measurable business outcomes.",
@@ -18,5 +13,10 @@
     "title": "DevSecOps as an Enabler",
     "description": "Framing DevSecOps as enablement rather than gatekeeping.",
     "url": "/insights/devsecops-enabler.html"
+  },
+    {
+    "title": "FinOps",
+    "description": "FinOps.",
+    "url": "/insights/enterprise-finops-strategy.html"
   }
 ]
