@@ -930,38 +930,48 @@ html.theme-light .li-icon-wrap {
   text-decoration: none;
   gap: 0; /* remove spacing */
 }
-/* ===============================
-   VERTICAL LOGO HEADER CLEAN FIX
-   =============================== */
+/* =========================================
+   FINAL VERTICAL LOGO HEADER (STABLE)
+   ========================================= */
 
+/* Header height */
 .site-header {
-  min-height: 76px; /* controls header height */
+  min-height: 72px;                 /* tighter, more premium */
 }
 
+/* Layout */
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 14px; /* no vertical padding */
+  padding: 0 14px;                  /* horizontal only */
 }
 
+/* Brand container */
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 6px;                        /* slightly tighter */
+  padding-left: 6px;                /* subtle breathing room */
   height: 100%;
 }
 
-/* Vertical logo fits header height */
+/* Vertical logo (balanced size) */
 .brand-vertical {
-  height: 100%;
-  max-height: 76px; /* prevents overflow */
+  height: 60px;                     /* slightly smaller than header */
   width: auto;
   object-fit: contain;
   display: block;
 }
 
-/* Slightly tighten name */
+/* Name styling */
+.brand-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.15;
+}
+
 .brand-name .line1 {
   font-size: 15px;
   font-weight: 600;
@@ -969,5 +979,6 @@ html.theme-light .li-icon-wrap {
 
 .brand-name .line2 {
   font-size: 13px;
+  font-weight: 400;
   opacity: 0.85;
 }
