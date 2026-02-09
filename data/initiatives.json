@@ -1,5 +1,10 @@
 [
   {
+    "title": "FinOps",
+    "description": "FinOps",
+    "url": "/initiatives/cloud-platform-strategy.html"
+  },
+  {
     "title": "Cloud Platform Strategy & Roadmap",
     "description": "Defined a multi-year platform roadmap aligning cloud foundations with portfolio outcomes.",
     "url": "/initiatives/cloud-platform-strategy.html"
