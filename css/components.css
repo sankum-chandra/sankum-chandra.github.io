@@ -565,27 +565,30 @@ html.theme-light .li-icon-wrap {
   background: rgba(255,255,255,0.12);
 }
 /* ===============================
-   HEADER ICON BUTTONS (Home / Toggle / Menu)
+   HEADER ICON BUTTONS (Rounded Square Version)
    =============================== */
 
 .icon-btn {
-  width: 44px;
-  height: 44px;
+  width: 42px;                     /* slightly tighter */
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
+
+  border-radius: 12px;             /* rounded square instead of circle */
+
   border: 1px solid rgba(255,255,255,0.25);
   background: rgba(255,255,255,0.06);
   color: white;
   text-decoration: none;
+
   backdrop-filter: blur(6px);
   transition: background .2s ease, transform .15s ease;
 }
 
 .icon-btn svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;                     /* slightly smaller icon */
+  height: 18px;
 }
 
 .icon-btn:hover {
@@ -595,7 +598,6 @@ html.theme-light .li-icon-wrap {
 .icon-btn:active {
   transform: scale(0.96);
 }
-
 /* Spacing */
 .home-btn {
   margin-right: 6px;
