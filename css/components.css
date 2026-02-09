@@ -986,7 +986,7 @@ html.theme-light .li-icon-wrap {
   opacity: 0.85;
 }
 /* ==================================
-   Logo Minimal Frame – Clean
+   Logo Image – Subtle Curve Only
    ================================== */
 
 .brand-vertical {
@@ -994,8 +994,6 @@ html.theme-light .li-icon-wrap {
   width: auto;
   display: block;
 
-  padding: 4px;
-  border-radius: 10px;          /* subtle curve (not pill) */
-  border: 1px solid rgba(255,255,255,0.25);  /* thin line only */
-  background: transparent;      /* remove glass */
+  border-radius: 3px;                 /* very slight curve */
+  border: 1px solid rgba(255,255,255,0.25);
 }
