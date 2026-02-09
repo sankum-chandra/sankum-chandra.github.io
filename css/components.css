@@ -905,3 +905,65 @@ html.theme-light .li-icon-wrap {
   font-weight: 400;
   color: rgba(255,255,255,0.8);
 }
+/* =====================================
+   FULL-HEIGHT BRAND BLOCK HEADER
+   ===================================== */
+
+.site-header {
+  height: 72px;
+  padding: 0 !important;
+}
+
+.header-inner {
+  display: flex;
+  align-items: stretch !important; /* critical */
+  justify-content: space-between;
+  padding: 0 !important; /* remove side padding */
+  height: 100%;
+}
+
+/* BRAND WRAPPER */
+.brand {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  text-decoration: none;
+  gap: 0; /* remove spacing */
+}
+
+/* FULL HEIGHT LOGO BOX */
+.brand-box {
+  width: 72px;
+  height: 100%;
+  background: #0b1220; /* darker than gradient */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo image inside */
+.brand-box img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Name block */
+.brand-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 14px;
+}
+
+.brand-name .line1 {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.brand-name .line2 {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.8);
+}
