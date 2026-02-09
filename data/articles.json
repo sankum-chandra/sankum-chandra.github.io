@@ -10,13 +10,13 @@
     "url": "/insights/landing-zones-principles.html"
   },
   {
+    "title": "Enterprise Cloud FinOps Strategy",
+    "description": "Aligning cloud spend with business value through FinOps.",
+    "url": "/insights/enterprise-finops-strategy.html"
+  },
+  {
     "title": "DevSecOps as an Enabler",
     "description": "Framing DevSecOps as enablement rather than gatekeeping.",
     "url": "/insights/devsecops-enabler.html"
-  },
-    {
-    "title": "FinOps",
-    "description": "FinOps.",
-    "url": "/insights/enterprise-finops-strategy.html"
   }
 ]
