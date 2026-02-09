@@ -986,18 +986,17 @@ html.theme-light .li-icon-wrap {
   opacity: 0.85;
 }
 /* ==================================
-   Logo Rounded Rectangle (Final)
+   Logo Glass Container – Refined
    ================================== */
 
 .brand-vertical {
-  height: 60px;                  /* fits nicely in 72px header */
+  height: 56px;               /* slightly tighter */
   width: auto;
   display: block;
 
-  padding: 6px;                  /* space inside shape */
-  border-radius: 16px;           /* rounded rectangle */
+  padding: 4px;               /* reduce bulk */
+  border-radius: 12px;        /* match menu buttons */
 
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.22);
-  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
 }
