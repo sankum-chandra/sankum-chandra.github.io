@@ -985,3 +985,19 @@ html.theme-light .li-icon-wrap {
   font-weight: 400;
   opacity: 0.85;
 }
+/* ==================================
+   Logo Rounded Rectangle (Final)
+   ================================== */
+
+.brand-vertical {
+  height: 60px;                  /* fits nicely in 72px header */
+  width: auto;
+  display: block;
+
+  padding: 6px;                  /* space inside shape */
+  border-radius: 16px;           /* rounded rectangle */
+
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(8px);
+}
