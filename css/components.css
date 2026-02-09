@@ -972,7 +972,7 @@ html.theme-light .li-icon-wrap {
   justify-content: center;
   line-height: 1.1;
 
-  margin-left: 4px;       /* controlled spacing instead of gap */
+  margin-left: -10px;       /* controlled spacing instead of gap */
 }
 
 .brand-name .line1 {
