@@ -78,7 +78,7 @@ body[data-lock="true"]{height:100svh;overflow:hidden}
 @media (max-width:700px){.case-nav{flex-direction:column}}
 
 /* Footer */
-.site-footer{margin-top:80px;padding:32px 20px 40px;text-align:center;border-top:1px solid var(--border);color:var(--subtext);font-size:14px;opacity:.92}
+.site-footer{margin-top:40px;padding:32px 20px 40px;text-align:center;border-top:1px solid var(--border);color:var(--subtext);font-size:14px;opacity:.92}
 
 /* ===============================
    CONTACT FORM (Underline style)
