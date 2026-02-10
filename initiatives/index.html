@@ -22,30 +22,24 @@
 
 <div data-include="partials/header.html"></div>
 
-<main id="main">
+<main id="main" class="container">
 
-  <section class="page-header">
-    <div class="page-container">
-      <h1>Initiatives</h1>
-      <p class="subtitle">
-        Strategic initiatives led — click a card for details.
-      </p>
-    </div>
-  </section>
+  <header class="page-header">
+    <h1>Initiatives</h1>
+    <p class="subtitle">
+      Strategic initiatives led — click a card for details.
+    </p>
+  </header>
 
   <section class="case-grid-compact">
-    <div class="page-container">
+    <div class="grid" id="initiativesContainer">
+      <p class="section-note">Loading initiatives…</p>
+    </div>
 
-      <div class="grid" id="initiativesContainer">
-        <p class="section-note">Loading initiatives…</p>
-      </div>
-
-      <div class="pagination-controls">
-        <button id="initPrev" disabled>← Previous</button>
-        <span id="initPageInfo" class="page-info"></span>
-        <button id="initNext">Next →</button>
-      </div>
-
+    <div class="pagination-controls">
+      <button id="initPrev" disabled>← Previous</button>
+      <span id="initPageInfo" class="page-info"></span>
+      <button id="initNext">Next →</button>
     </div>
   </section>
 
@@ -57,7 +51,7 @@
 <script src="/js/theme.js"></script>
 <script src="/js/menu.js"></script>
 <script src="/js/nav-active.js"></script>
-<script src="/js/pagination.js"></script>  <!-- 🔥 THIS WAS MISSING -->
+<script src="/js/pagination.js"></script>
 
 <script>
 setupPagination({
