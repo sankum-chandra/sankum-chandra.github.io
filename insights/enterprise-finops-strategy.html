@@ -1,75 +1,25 @@
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Enterprise Cloud FinOps Strategy | Santhosh Kumar Chandrashekar</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="A strategic approach to Enterprise Cloud FinOps that aligns technology, finance, and business value." />
-  <meta name="theme-color" content="#0ea5e9" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="../css/base.css" />
-  <link rel="stylesheet" href="../css/layout.css" />
-  <link rel="stylesheet" href="../css/components.css" />
-  <link rel="stylesheet" href="../css/utilities.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0ea5e9" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" href="/css/layout.css" />
+<link rel="stylesheet" href="/css/components.css" />
+<link rel="stylesheet" href="/css/utilities.css" />
+<title>DevSecOps as an Enabler | Insights</title>
+<meta name="description" content="Framing DevSecOps as enablement rather than gatekeeping." />
 </head>
-
 <body>
-<a id="top" tabindex="-1"></a>
-<a href="#main" class="skip-link">Skip to main content</a>
-
-<!-- HEADER -->
-<header class="site-header" id="siteHeader">
-  <div class="header-inner">
-    <a href="../index.html#top" class="brand home-link">
-      <img src="../assets/images/profile.webp" alt="Santhosh Kumar" class="brand-avatar" width="32" height="32" />
-      <span class="brand-text">SANTHOSH KUMAR</span>
-    </a>
-    <nav class="nav-links">
-      <a href="../index.html#about">About</a>
-      <a href="../index.html#expertise">Strategic Focus Areas</a>
-      <a href="../index.html#work">Strategic Initiatives Led</a>
-      <a href="../index.html#blog">Insights</a>
-      <a href="../index.html#contact">Contact</a>
-    </nav>
-    <div class="header-actions">
-      <button type="button" class="theme-btn" id="themeToggle">🌙</button>
-      <button type="button" class="menu-btn" id="menuToggle">≡</button>
-    </div>
-  </div>
-</header>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu" hidden>
-  <div class="mobile-menu-scrim" data-close="true"></div>
-  <aside class="mobile-panel" role="dialog" aria-modal="true">
-    <div class="mobile-top">
-      <div class="mobile-brand">
-        <img src="../assets/images/profile.webp" alt="Santhosh Kumar" class="brand-avatar" width="32" height="32" />
-        <div>
-          <div class="mobile-brand-name">SANTHOSH KUMAR</div>
-          <div class="mobile-title">Menu</div>
-        </div>
-      </div>
-      <button type="button" class="mobile-close" data-close="true">✕</button>
-    </div>
-    <nav class="mobile-nav">
-      <a href="../index.html#about">About</a>
-      <a href="../index.html#expertise">Strategic Focus Areas</a>
-      <a href="../index.html#work">Strategic Initiatives</a>
-      <a href="../index.html#blog">Insights</a>
-      <a href="../index.html#contact">Contact</a>
-    </nav>
-  </aside>
-</div>
-
-<!-- ARTICLE -->
-<main id="main" class="container" style="width:100%; overflow:visible;">
-
-    <p><a href="../#blog">← Back to Insights</a></p>
+  <div data-include="partials/header.html"></div>
+  <main id="main" class="container">
+  <div class="case-page">
+    <a class="case-back" href="/insights/">← Back</a>
 
     <h1>Enterprise Cloud FinOps Strategy</h1>
     <p class="subtitle">Cloud Governance | Financial Management | Enterprise Strategy</p>
@@ -128,15 +78,6 @@
 
   </article>
 
-  <footer>
-    <hr style="margin:40px 0; opacity:0.2;">
-    <p style="text-align:center; font-weight:600;">SANTHOSH KUMAR CHANDRASHEKAR</p>
-    <p style="text-align:center; font-size:13px; opacity:0.7;">
-      Cloud & DevOps Portfolio Architect • Enterprise Technology Leader
-    </p>
-  </footer>
-</main>
-
 <script>
 fetch('../data/articles.json')
   .then(res => res.json())
@@ -157,9 +98,13 @@ fetch('../data/articles.json')
   });
 </script>
 
-<script src="../js/theme.js"></script>
-<script src="../js/menu.js"></script>
-<script src="../js/scroll.js"></script>
+</div>
+  </main>
+  <div data-include="partials/footer.html"></div>
+  <script src="/js/include.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/menu.js"></script>
+  <script src="/js/nav-active.js"></script>
 
 </body>
 </html>
