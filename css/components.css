@@ -115,13 +115,36 @@ body[data-lock="true"]{height:100svh;overflow:hidden}
 .case-nav .nav-spacer{flex:1}
 @media (max-width:700px){.case-nav{flex-direction:column}}
 
-/* Footer */
+/* ===============================
+   FOOTER – EXECUTIVE VERSION
+   =============================== */
+
 .site-footer {
-  margin-top: 15px;
-  padding: 24px 18px 32px;
+  margin-top: 30px; /* tighter separation from last section */
+  padding: 28px 20px 24px;
   text-align: center;
-  border-top: 1px solid var(--border);color:var(--subtext);font-size:14px;opacity:.99;
+
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.015);
 }
+
+.site-footer p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: var(--subtext);
+  opacity: 0.85;
+  letter-spacing: 0.02em;
+}
+
+/* Optional subtle divider spacing */
+.site-footer p:first-child {
+  margin-top: 4px;
+}
+
+.site-footer p:last-child {
+  margin-bottom: 0;
+}
+
 
 /* ===============================
    CONTACT FORM (Underline style)
