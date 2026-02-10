@@ -1098,3 +1098,17 @@ main > section:last-of-type {
   color: var(--subtext);
 }
 
+
+/* =========================
+   Signature Statement Block
+   ========================= */
+
+.signature-quote {
+  border-left: 4px solid var(--accent);
+  padding-left: 18px;
+  margin: 32px 0;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.6;
+}
