@@ -124,7 +124,7 @@ body[data-lock="true"]{height:100svh;overflow:hidden}
   padding: 28px 20px 24px;
   text-align: center;
 
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid var(--border);
   background: rgba(255,255,255,0.015);
 }
 
