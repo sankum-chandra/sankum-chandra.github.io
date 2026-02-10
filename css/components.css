@@ -116,71 +116,6 @@ body[data-lock="true"]{height:100svh;overflow:hidden}
 @media (max-width:700px){.case-nav{flex-direction:column}}
 
 /* ===============================
-   FOOTER – EXECUTIVE VERSION
-   =============================== */
-
-.site-footer {
-  margin-top: 30px; /* tighter separation from last section */
-  padding: 28px 20px 24px;
-  text-align: center;
-
-  border-top: 1px solid var(--border);
-  background: rgba(255,255,255,0.015);
-}
-
-.site-footer p {
-  margin: 6px 0;
-  font-size: 14px;
-  color: var(--subtext);
-  opacity: 0.85;
-  letter-spacing: 0.02em;
-}
-
-/* Optional subtle divider spacing */
-.site-footer p:first-child {
-  margin-top: 4px;
-}
-
-.site-footer p:last-child {
-  margin-bottom: 0;
-}
-
-/* ==================================
-   FOOTER WITH LINKEDIN ICON
-   ================================== */
-
-.footer-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-
-.footer-linkedin img {
-  width: 22px;
-  height: 22px;
-  opacity: 0.8;
-  transition: opacity .2s ease, transform .15s ease;
-}
-
-.footer-linkedin:hover img {
-  opacity: 1;
-  transform: translateY(-2px);
-}
-
-.footer-name {
-  margin: 0;
-  font-size: 14px;
-  letter-spacing: 0.05em;
-}
-
-.footer-sub {
-  margin: 0;
-  font-size: 13px;
-  color: var(--subtext);
-}
-
-/* ===============================
    CONTACT FORM (Underline style)
    =============================== */
 
@@ -1107,3 +1042,59 @@ html.theme-light .li-icon-wrap {
   border-radius: 3px;                 /* very slight curve */
   border: 1px solid rgba(255,255,255,0.25);
 }
+/* =========================================
+   FINAL CLEAN EXECUTIVE FOOTER
+   ========================================= */
+
+/* Remove excessive spacing from last section */
+main > section:last-of-type {
+  margin-bottom: 40px;
+}
+
+/* Footer container */
+.site-footer {
+  margin-top: 40px;
+  padding: 28px 20px 32px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+/* Inner wrapper */
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* LinkedIn icon */
+.footer-linkedin {
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.footer-linkedin img {
+  width: 22px;
+  height: 22px;
+  opacity: 0.85;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-linkedin:hover img {
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+/* Name — single line always */
+.footer-name {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;     /* 🔥 prevents breaking */
+}
+
+/* Tagline */
+.footer-tagline {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--subtext);
+}
+
