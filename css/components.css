@@ -28,8 +28,8 @@ h1 {
 
 h2 {
   font-size: 24px;
-  margin: 50px 0 20px;     /* reduced from 70px */
-  padding-bottom: 8px;
+  margin: 30px 0 20px;     /* reduced from 70px */
+  padding-bottom: 6px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -45,7 +45,7 @@ ul {
 .subtitle {
   font-size: 17px;
   color: var(--subtext);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   max-width: 850px;        /* wider than 720px */
 }
 
