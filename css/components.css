@@ -117,8 +117,8 @@ body[data-lock="true"]{height:100svh;overflow:hidden}
 
 /* Footer */
 .site-footer {
-  margin-top: 30px;
-  padding: 28px 20px 36px;
+  margin-top: 15px;
+  padding: 24px 18px 32px;
   text-align: center;
   border-top: 1px solid var(--border);color:var(--subtext);font-size:14px;opacity:.99;
 }
