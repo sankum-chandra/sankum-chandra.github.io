@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Enterprise Cloud FinOps Strategy",
+    "description": "Aligning cloud spend with business value through FinOps governance and enterprise strategy.",
+    "url": "/insights/enterprise-finops-strategy.html"
+  },
+  {
+    "title": "Cloud Migration Beyond Lift-and-Shift",
+    "description": "Why lift-and-shift alone limits enterprise cloud value — and how modernization unlocks strategic advantage.",
+    "url": "/insights/cloud-migration-beyond-lift-and-shift.html"
+  },
+  {
+    "title": "Zero Trust in the Cloud: Architecture Beyond Buzzwords",
+    "description": "Moving beyond Zero Trust buzzwords to practical enterprise architecture, identity-centric security, and resilient cloud design.",
+    "url": "/insights/zero-trust-cloud-architecture.html"
+  }
+]
