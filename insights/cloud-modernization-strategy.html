@@ -1,130 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Cloud Migration Beyond Lift-and-Shift | Santhosh Kumar Chandrashekar</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="Why modernization — not just migration — unlocks real cloud value." />
-  <meta name="theme-color" content="#0ea5e9" />
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZN9DGYGE9E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZN9DGYGE9E');
+</script>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0ea5e9" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" href="/css/layout.css" />
+<link rel="stylesheet" href="/css/components.css" />
+<link rel="stylesheet" href="/css/utilities.css" />
 
-  <!-- Global Site CSS -->
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/layout.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/utilities.css" />
+<title>Cloud Migration Beyond Lift-and-Shift | Enterprise Perspective</title>
+<meta name="description" content="Why lift-and-shift alone limits enterprise cloud value — and how modernization unlocks strategic advantage." />
 </head>
 
 <body>
-  <a id="top" tabindex="-1"></a>
-  <a href="#main" class="skip-link">Skip to main content</a>
+<div data-include="partials/header.html"></div>
 
-  <!-- ===== HEADER (Same as Homepage) ===== -->
-  <header class="site-header" id="siteHeader">
-    <div class="header-inner">
-      <a href="index.html#top" class="brand home-link" aria-label="Go to top">
-        <img src="assets/images/profile.webp" alt="Santhosh Kumar" class="brand-avatar" width="32" height="32" decoding="async" />
-        <span class="brand-text">SANTHOSH KUMAR</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="index.html#about">About</a>
-        <a href="index.html#expertise">Strategic Focus Areas</a>
-        <a href="index.html#work">Strategic Initiatives Led</a>
-        <a href="index.html#blog">Insights & Thought Leadership</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-      <div class="header-actions">
-        <button type="button" class="theme-btn" id="themeToggle" aria-label="Toggle theme">🌙</button>
-        <button type="button" class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">≡</button>
-      </div>
-    </div>
-  </header>
+<main id="main" class="container">
+<div class="case-page">
 
-  <!-- ===== MOBILE MENU ===== -->
-  <div class="mobile-menu" id="mobileMenu" hidden>
-    <div class="mobile-menu-scrim" data-close="true" aria-hidden="true"></div>
-    <aside class="mobile-panel" role="dialog" aria-modal="true" aria-labelledby="mobileMenuTitle">
-      <div class="mobile-top">
-        <div class="mobile-brand">
-          <img src="assets/images/profile.webp" alt="Santhosh Kumar" class="brand-avatar" width="32" height="32" decoding="async" />
-          <div class="mobile-brand-text">
-            <div class="mobile-brand-name">SANTHOSH KUMAR</div>
-            <div class="mobile-title" id="mobileMenuTitle">Menu</div>
-          </div>
-        </div>
-        <button type="button" class="mobile-close" data-close="true" aria-label="Close menu">✕</button>
-      </div>
-      <nav class="mobile-nav" aria-label="Mobile Primary">
-        <a href="index.html#about">About</a>
-        <a href="index.html#expertise">Strategic Focus Areas</a>
-        <a href="index.html#work">Strategic Initiatives Led</a>
-        <a href="index.html#blog">Insights & Thought Leadership</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-    </aside>
-  </div>
+<a class="case-back" href="/insights/">← Back</a>
 
-  <!-- ===== ARTICLE CONTENT ===== -->
-  <main id="main" class="container">
-    <article class="article" style="max-width: 820px; margin: auto; padding: 60px 20px;">
-      <p><a href="index.html#blog">← Back to Insights</a></p>
+<h1>Cloud Migration Beyond Lift-and-Shift</h1>
+<p class="subtitle">Enterprise Strategy | Cloud Architecture | Modernization</p>
 
-      <h1>Cloud Migration Beyond Lift-and-Shift</h1>
+<figure style="margin:40px 0; text-align:center;">
+  <img src="../assets/images/cloud-beyond-lift-shift.png"
+       alt="Cloud migration beyond lift and shift conceptual diagram"
+       style="width:100%; border-radius:12px;"
+       loading="lazy" decoding="async">
+  <figcaption style="font-size:14px; opacity:0.7; margin-top:8px;">
+    Moving workloads is easy. Unlocking value requires architectural evolution.
+  </figcaption>
+</figure>
 
-      <p>Cloud migration is often seen as a technical exercise — move servers, copy data, and go live. But true cloud transformation requires more than lift-and-shift. Enterprises that treat migration as a modernization opportunity unlock far greater long-term value.</p>
+<p>
+Cloud migration is often framed as a technical milestone — move workloads, decommission data centers, and declare success. 
+At enterprise scale, this mindset is incomplete.
+</p>
 
-      <h2>Why Lift-and-Shift Isn’t Enough</h2>
-      <p>Simply moving workloads to the cloud without re-architecting can lead to higher costs, underutilized services, and limited scalability. Legacy architectures often carry inefficiencies that cloud platforms are designed to eliminate.</p>
+<p>
+Lift-and-shift can accelerate exit from legacy infrastructure, but it rarely delivers the agility, resilience, and cost efficiency that cloud promises. In many cases, it simply relocates inefficiencies.
+</p>
 
-      <h2>Modernization as a Strategic Goal</h2>
-      <p>Cloud migration should align with business and digital strategy. This means rethinking architectures to improve agility, resilience, and operational efficiency. Modernization turns migration into transformation.</p>
+<blockquote class="signature-quote">
+Lift-and-shift at enterprise scale often becomes a financial liability if not followed by modernization.
+</blockquote>
 
-      <h2>Key Modernization Opportunities</h2>
+<h2>Why Lift-and-Shift Falls Short</h2>
 
-      <h3>1. Re-Architect for Cloud-Native Services</h3>
-      <p>Instead of replicating on-premise designs, organizations should adopt managed services, serverless computing, and container platforms where appropriate. These reduce operational overhead and improve scalability.</p>
+<p>
+Legacy architectures were not designed for elastic, distributed environments. When replicated directly in the cloud, they often result in:
+</p>
 
-      <h3>2. Improve Resilience and Availability</h3>
-      <p>Cloud-native architectures support multi-zone and multi-region deployments. Designing for resilience ensures business continuity and improves user experience.</p>
+<ul>
+  <li>Over-provisioned infrastructure</li>
+  <li>Underutilized managed services</li>
+  <li>Operational complexity</li>
+  <li>Escalating operational expenditure</li>
+</ul>
 
-      <h3>3. Automate Everything</h3>
-      <p>Infrastructure as Code, CI/CD pipelines, and automated governance transform operations. Automation reduces human error and accelerates delivery cycles.</p>
+<p>
+The cloud amplifies architectural decisions — good and bad. Without rethinking design principles, enterprises may see cost increases without proportional performance or innovation gains.
+</p>
 
-      <h3>4. Optimize for Cost and Performance</h3>
-      <p>Modern cloud architectures leverage right-sizing, auto-scaling, and consumption-based services. Continuous cost optimization (FinOps) becomes a core operational discipline.</p>
+<h2>Modernization as a Strategic Inflection Point</h2>
 
-      <h3>5. Strengthen Security Posture</h3>
-      <p>Cloud platforms provide advanced security services that should be integrated into application design. Modernization is an opportunity to implement zero-trust and improved monitoring.</p>
+<p>
+Cloud migration should be treated as a strategic inflection point, not an infrastructure relocation exercise. Modernization aligns technology transformation with business outcomes.
+</p>
 
-      <h2>The Role of Enterprise Architecture</h2>
-      <p>Migration and modernization must be guided by enterprise architecture principles to ensure alignment with governance, platform standards, and long-term scalability. Architecture provides the blueprint that prevents fragmented cloud adoption.</p>
+<p>
+This includes:
+</p>
 
-      <h2>Final Thoughts</h2>
-      <p>Cloud migration is not just about changing infrastructure — it is about evolving the technology landscape. Organizations that modernize during migration build platforms that are more agile, resilient, and ready for future innovation.</p>
-    </article>
+<ul>
+  <li>Adopting cloud-native services where they add value</li>
+  <li>Designing for resilience across availability zones and regions</li>
+  <li>Embedding automation into provisioning and deployment workflows</li>
+  <li>Integrating cost governance from day one</li>
+  <li>Strengthening identity-centric security models</li>
+</ul>
 
-    <!-- ===== FOOTER ===== -->
-    <footer id="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title" style="margin-top:0;">Contact</h2>
-      <p class="contact-cta">
-        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer">
-          <img class="li-icon" src="assets/images/in.webp" alt="" width="20" height="20" />
-          <span>Let’s Connect</span>
-        </a>
-      </p>
-      <p class="contact-email"><strong>Email:</strong> 
-        <a href="mailto:sankum.chandra@outlook.com">sankum.chandra@outlook.com</a>
-      </p>
-    </footer>
-  </main>
+<p>
+Modernization transforms cloud from a hosting platform into a growth platform.
+</p>
 
-  <!-- ===== GLOBAL SCRIPTS ===== -->
-  <script src="js/theme.js"></script>
-  <script src="js/menu.js"></script>
-  <script src="js/scroll.js"></script>
+<h2>The Enterprise Architecture Imperative</h2>
+
+<p>
+At enterprise scale, fragmentation is the biggest risk. Without architectural guardrails, product teams may optimize locally while creating systemic inefficiencies globally.
+</p>
+
+<p>
+Enterprise architecture must provide:
+</p>
+
+<ul>
+  <li>Target-state reference architectures</li>
+  <li>Platform standards and reusable patterns</li>
+  <li>Clear governance without slowing innovation</li>
+  <li>Interoperability across hybrid and multi-cloud ecosystems</li>
+</ul>
+
+<p>
+Architecture should not block modernization — it should accelerate it through clarity and consistency.
+</p>
+
+<h2>From Migration to Transformation</h2>
+
+<p>
+Migration is a milestone. Modernization is a capability shift. The difference lies in intent.
+</p>
+
+<p>
+Organizations that treat migration as the end goal often plateau. Those that view it as the beginning of architectural evolution build platforms that are scalable, secure, and economically sustainable.
+</p>
+
+<h2>Final Thoughts</h2>
+
+<p>
+Cloud success is not measured by how quickly workloads move — but by how effectively they evolve.
+</p>
+
+<p>
+Enterprises that move beyond lift-and-shift position themselves not just for operational efficiency, but for sustained digital advantage.
+</p>
+
+<hr style="margin:50px 0; opacity:0.2;">
+<nav id="articleNav" style="display:flex; justify-content:space-between; gap:20px;"></nav>
+
+<script>
+fetch('../data/articles.json')
+  .then(res => res.json())
+  .then(articles => {
+    const currentPath = window.location.pathname.split('/').pop();
+    const nav = document.getElementById('articleNav');
+    const index = articles.findIndex(a => a.url.endsWith(currentPath));
+    if (index > 0) {
+      const prev = articles[index - 1];
+      nav.innerHTML += `<a href="../${prev.url}">← <strong>${prev.title}</strong></a>`;
+    } else {
+      nav.innerHTML += `<span></span>`;
+    }
+    if (index < articles.length - 1) {
+      const next = articles[index + 1];
+      nav.innerHTML += `<a href="../${next.url}" style="text-align:right;"><strong>${next.title}</strong> →</a>`;
+    }
+  });
+</script>
+
+</div>
+</main>
+
+<div data-include="partials/footer.html"></div>
+
+<script src="/js/include.js"></script>
+<script src="/js/theme.js"></script>
+<script src="/js/menu.js"></script>
+<script src="/js/nav-active.js"></script>
+
 </body>
 </html>
