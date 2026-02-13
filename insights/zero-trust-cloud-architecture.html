@@ -167,13 +167,13 @@ fetch('../data/articles.json')
     const index = articles.findIndex(a => a.url.endsWith(currentPath));
     if (index > 0) {
       const prev = articles[index - 1];
-      nav.innerHTML += `<a href="../${prev.url}">← <strong>${prev.title}</strong></a>`;
+      nav.innerHTML += `<a href="/${prev.url}">← <strong>${prev.title}</strong></a>`;
     } else {
       nav.innerHTML += `<span></span>`;
     }
     if (index < articles.length - 1) {
       const next = articles[index + 1];
-      nav.innerHTML += `<a href="../${next.url}" style="text-align:right;"><strong>${next.title}</strong> →</a>`;
+      nav.innerHTML += `<a href="/${next.url}" style="text-align:right;"><strong>${next.title}</strong> →</a>`;
     }
   });
 </script>
