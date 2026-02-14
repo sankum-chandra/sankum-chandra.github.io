@@ -1117,7 +1117,7 @@ main > section:last-of-type {
   .cta-hero-secondary {
     display: block;
     width: fit-content;
-    margin: 16px auto 0 auto;
+    margin: 14px auto 0 auto;
   }
 }
 
