@@ -1113,10 +1113,12 @@ main > section:last-of-type {
   line-height: 1.6;
 }
 
-/* Center hero CTA only */
-.cta-hero-secondary {
-  display: block;
-  width: fit-content;
-  margin: 20px auto 0 auto;
+@media (max-width: 600px) {
+  .cta-hero-secondary {
+    display: block;
+    width: fit-content;
+    margin: 16px auto 0 auto;
+  }
 }
+
 
