@@ -1,108 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Cloud Migration Beyond Lift-and-Shift — Case Study</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="Case study: Cloud Migration Beyond Lift-and-Shift." />
-  <meta name="theme-color" content="#0ea5e9" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/layout.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/utilities.css" />
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZN9DGYGE9E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZN9DGYGE9E');
+</script>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0ea5e9" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" href="/css/layout.css" />
+<link rel="stylesheet" href="/css/components.css" />
+<link rel="stylesheet" href="/css/utilities.css" />
+
+<title>Azure Hybrid Migration & Workload Modernization | Case Study</title>
+<meta name="description" content="Azure hybrid cloud migration and workload modernization case study covering VM rehosting, App Services, AKS, Terraform, and Azure DevOps automation." />
 </head>
-<body>
-<body>
-  <a id="top" tabindex="-1"></a>
-  <a href="index.html#main" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" id="siteHeader">
-    <div class="header-inner">
-      <a id="homeLink" href="index.html#top" class="brand home-link" aria-label="Go to top">
-  <img src="assets/images/profile.webp" alt="Santhosh Kumar" class="brand-avatar" width="32" height="32" decoding="async" />
-  <span class="brand-text">SANTHOSH KUMAR</span>
-</a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="index.html#about">About</a>
-        <a href="index.html#expertise">Strategic Focus Areas</a>
-        <a href="index.html#work">Strategic Initiatives Led</a>
-        <a href="index.html#blog">Insights &amp; Thought Leadership</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-      <div class="header-actions">
-        <button type="button" class="theme-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
-        <button type="button" class="menu-btn" id="menuToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">≡</button>
-      </div>
-    </div>
-  </header>
+<body>
+<div data-include="partials/header.html"></div>
 
-  <div class="mobile-menu" id="mobileMenu" hidden>
-    <div class="mobile-menu-scrim" data-close="true" aria-hidden="true"></div>
-    <aside class="mobile-panel" role="dialog" aria-modal="true" aria-labelledby="mobileMenuTitle">
-      <div class="mobile-top">
-  <div class="mobile-brand">
-    <img src="assets/images/profile.webp" alt="Santhosh Kumar" class="brand-avatar" width="32" height="32" decoding="async" />
-    <div class="mobile-brand-text">
-      <div class="mobile-brand-name">SANTHOSH KUMAR</div>
-      <div class="mobile-title" id="mobileMenuTitle">Menu</div>
-    </div>
-  </div>
-  <button type="button" class="mobile-close" data-close="true" aria-label="Close menu">✕</button>
+<main id="main" class="container">
+<div class="case-page">
+
+<a class="case-back" href="/insights/">← Back</a>
+
+<h1>Azure Hybrid Migration & Workload Modernization</h1>
+<p class="subtitle">Cloud Solutions Architecture | Azure | DevOps | Kubernetes</p>
+
+<figure style="margin:40px 0; text-align:center;">
+  <img src="../assets/images/azure-hybrid-architecture.png"
+       alt="Azure hybrid migration architecture diagram with VMs, App Services, AKS and DevOps automation"
+       style="width:100%; border-radius:12px;"
+       loading="lazy" decoding="async">
+  <figcaption style="font-size:14px; opacity:0.7; margin-top:8px;">
+    Hybrid Azure architecture with workload-specific modernization and DevOps automation.
+  </figcaption>
+</figure>
+
+<p>
+This engagement focused on migrating and modernizing a revenue-generating business unit’s application landscape from on-premises infrastructure to Microsoft Azure using a secure hybrid connectivity model.
+</p>
+
+<p>
+The objective was not only infrastructure relocation, but enabling scalable architecture patterns, automated delivery pipelines, and improved cost governance.
+</p>
+
+<blockquote class="signature-quote">
+Migration speed was balanced with architectural integrity and long-term scalability.
+</blockquote>
+
+<h2>Scope & Environment</h2>
+
+<ul>
+  <li>35+ business-critical applications</li>
+  <li>250+ virtual machines</li>
+  <li>15+ databases</li>
+  <li>Hybrid Azure + on-prem connectivity</li>
+  <li>Multi-environment setup (Dev / QA / Prod)</li>
+</ul>
+
+<h2>Hybrid Architecture Design</h2>
+
+<p>
+The target architecture was designed using a hub-spoke network topology with secure connectivity to on-prem systems via VPN / ExpressRoute.
+</p>
+
+<ul>
+  <li>Environment isolation across Dev, QA, and Production</li>
+  <li>Azure AD integration with enterprise identity</li>
+  <li>Role-Based Access Control (RBAC)</li>
+  <li>Azure Policy guardrails</li>
+  <li>Centralized logging and monitoring</li>
+</ul>
+
+<p>
+This approach ensured secure integration with legacy systems while enabling independent cloud scaling.
+</p>
+
+<h2>Workload Migration Strategy</h2>
+
+<p>
+Applications were evaluated individually and aligned to the most appropriate Azure hosting model.
+</p>
+
+<ul>
+  <li><strong>Rehost – Azure Virtual Machines:</strong> Legacy tightly coupled applications requiring minimal code change.</li>
+  <li><strong>Replatform – Azure App Services:</strong> Web and API workloads benefiting from managed runtime services.</li>
+  <li><strong>Modernize – Azure Kubernetes Service (AKS):</strong> Containerized services requiring elastic scaling and resilience.</li>
+</ul>
+
+<p>
+This selective modernization avoided unnecessary refactoring while enabling scalability for growth-critical services.
+</p>
+
+<h2>Kubernetes Adoption</h2>
+
+<ul>
+  <li>Containerization of targeted services</li>
+  <li>Deployment to Azure Kubernetes Service (AKS)</li>
+  <li>Horizontal Pod Autoscaling (HPA)</li>
+  <li>Blue-green and rolling deployment strategies</li>
+  <li>Security integration within CI/CD workflows</li>
+</ul>
+
+<p>
+AKS was introduced selectively where scalability and resilience requirements justified container orchestration.
+</p>
+
+<h2>DevOps & Infrastructure Automation</h2>
+
+<p>
+Infrastructure provisioning and deployment automation were central to the transformation.
+</p>
+
+<ul>
+  <li>Infrastructure as Code using Terraform</li>
+  <li>Reusable Terraform modules for environment consistency</li>
+  <li>CI/CD pipelines implemented in Azure DevOps</li>
+  <li>Automated validation and promotion workflows</li>
+  <li>Reduced manual deployment dependencies</li>
+</ul>
+
+<p>
+Infrastructure provisioning time reduced from several weeks to under two hours.
+</p>
+
+<h2>Cost Engineering & TCO Analysis</h2>
+
+<p>
+Total Cost of Ownership analysis was conducted for critical workloads using Azure cost modeling tools.
+</p>
+
+<ul>
+  <li>5-year CapEx vs OpEx comparison</li>
+  <li>Right-sizing recommendations</li>
+  <li>Reserved Instance strategy for stable workloads</li>
+  <li>Tagging framework for business unit-level cost visibility</li>
+</ul>
+
+<p>
+The projected outcome included approximately 20% infrastructure cost reduction and avoidance of hardware refresh investments.
+</p>
+
+<h2>Measured Outcomes</h2>
+
+<ul>
+  <li>Infrastructure provisioning reduced from 3–5 weeks to under 2 hours</li>
+  <li>Deployment frequency improved from quarterly to bi-weekly</li>
+  <li>Availability improved from 98% to 99.9%</li>
+  <li>Disaster recovery time reduced from 6–8 hours to under 1 hour</li>
+  <li>Improved cost transparency at application level</li>
+</ul>
+
+<h2>Architectural Trade-Offs</h2>
+
+<ul>
+  <li>Rehosted legacy systems to reduce migration risk</li>
+  <li>Adopted App Services to minimize operational overhead</li>
+  <li>Selected AKS selectively based on scalability needs</li>
+  <li>Executed phased migration to avoid business disruption</li>
+</ul>
+
+<h2>Lessons Learned</h2>
+
+<ul>
+  <li>Early network validation is critical in hybrid architectures</li>
+  <li>Containerization suitability must be assessed per workload</li>
+  <li>Phased modernization reduces operational risk</li>
+  <li>Early cost modeling strengthens executive alignment</li>
+</ul>
+
+<hr style="margin:50px 0; opacity:0.2;">
+<nav id="articleNav" style="display:flex; justify-content:space-between; gap:20px;"></nav>
+
+<script>
+fetch('../data/articles.json')
+  .then(res => res.json())
+  .then(articles => {
+    const currentPath = window.location.pathname.split('/').pop();
+    const nav = document.getElementById('articleNav');
+    const index = articles.findIndex(a => a.url.endsWith(currentPath));
+    if (index > 0) {
+      const prev = articles[index - 1];
+      nav.innerHTML += `<a href="${prev.url}">← <strong>${prev.title}</strong></a>`;
+    } else {
+      nav.innerHTML += `<span></span>`;
+    }
+    if (index < articles.length - 1) {
+      const next = articles[index + 1];
+      nav.innerHTML += `<a href="${next.url}" style="text-align:right;"><strong>${next.title}</strong> →</a>`;
+    }
+  });
+</script>
+
 </div>
-      <nav class="mobile-nav" aria-label="Mobile Primary">
-        <a href="index.html#about">About</a>
-        <a href="index.html#expertise">Strategic Focus Areas</a>
-        <a href="index.html#work">Strategic Initiatives Led</a>
-        <a href="index.html#blog">Insights &amp; Thought Leadership</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-      <div class="mobile-cta">
-        <a class="btn-linkedin" href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener noreferrer" aria-label="Let’s Connect on LinkedIn">
-  <img class="li-icon" src="assets/images/in.webp" alt="" aria-hidden="true" width="20" height="20" decoding="async" />
-  <span>Let’s Connect</span>
-</a>
-      </div>
-    </aside>
-  </div>
-
-  
-<main id="main" class="container case-page">
-  <a class="case-back" href="index.html#work">← Back to Strategic Initiatives</a>
-  <h1>Cloud Migration Beyond Lift-and-Shift</h1>
-  <p class="subtitle">Modernisation Strategy | Wave Planning | Readiness</p>
-  <div class="case-tags" aria-label="Tags"><span class="case-tag">Rationalisation</span><span class="case-tag">Modernisation patterns</span><span class="case-tag">Operational readiness</span></div>
-<section aria-labelledby="contextTitle">
-  <h2 id="contextTitle">Context</h2>
-  <p>Migration needed to deliver business outcomes, not just move infrastructure.</p>
-</section>
-<section aria-labelledby="myroleTitle">
-  <h2 id="myroleTitle">My Role</h2>
-  <ul>
-    <li>Defined modernization-first decision framework and pattern catalogue.</li><li>Coordinated wave planning and readiness across platform and operations.</li>
-  </ul>
-</section>
-<section aria-labelledby="outcomesTitle">
-  <h2 id="outcomesTitle">Outcomes</h2>
-  <ul>
-    <li>Wave planning and dependency mapping</li><li>Modernisation patterns and reference architectures</li><li>Operational readiness and reliability practices</li>
-  </ul>
-</section>
-<nav class="case-nav" aria-label="Case study navigation">
-  <a class="case-prev" href="case-devsecops-delivery-standardisation.html">
-    <span class="nav-kicker">Previous</span>
-    <span class="nav-title">DevSecOps Delivery Standardisation</span>
-  </a>
-  <a class="case-next" href="case-cloud-governance-cost-control.html">
-    <span class="nav-kicker">Next</span>
-    <span class="nav-title">Cloud Governance & Cost Controls (FinOps)</span>
-  </a>
-</nav>
 </main>
-<script src="js/theme.js"></script>
-<script src="js/menu.js"></script>
-<script src="js/scroll.js"></script>
+
+<div data-include="partials/footer.html"></div>
+
+<script src="/js/include.js"></script>
+<script src="/js/theme.js"></script>
+<script src="/js/menu.js"></script>
+<script src="/js/nav-active.js"></script>
+
 </body>
 </html>
