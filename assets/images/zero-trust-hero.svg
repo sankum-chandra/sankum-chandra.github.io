@@ -1,0 +1,281 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" font-family="'Georgia', serif">
+  <defs>
+    <!-- Background gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0d1829"/>
+      <stop offset="100%" stop-color="#060c14"/>
+    </radialGradient>
+
+    <!-- Centre glow -->
+    <radialGradient id="centreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Node glow -->
+    <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Grid pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#0ea5e9" stroke-width="0.3" opacity="0.12"/>
+    </pattern>
+
+    <!-- Pulse animation filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="strongGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Dash animation -->
+    <style>
+      .pulse1 { animation: pulse 3s ease-in-out infinite; }
+      .pulse2 { animation: pulse 3s ease-in-out 1s infinite; }
+      .pulse3 { animation: pulse 3s ease-in-out 2s infinite; }
+      .flowLine { stroke-dasharray: 6 4; animation: flow 2s linear infinite; }
+      .flowLine2 { stroke-dasharray: 6 4; animation: flow 2.5s linear infinite; }
+      .flowLine3 { stroke-dasharray: 6 4; animation: flow 1.8s linear infinite; }
+      .ring1 { animation: ringPulse 4s ease-out infinite; }
+      .ring2 { animation: ringPulse 4s ease-out 1.3s infinite; }
+      .ring3 { animation: ringPulse 4s ease-out 2.6s infinite; }
+      .nodePulse { animation: nodeBeat 2.5s ease-in-out infinite; }
+      .labelFade { animation: labelIn 0.8s ease forwards; }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 0.15; }
+        50% { opacity: 0.5; }
+      }
+      @keyframes flow {
+        from { stroke-dashoffset: 20; }
+        to { stroke-dashoffset: 0; }
+      }
+      @keyframes ringPulse {
+        0% { r: 80; opacity: 0.6; }
+        100% { r: 160; opacity: 0; }
+      }
+      @keyframes nodeBeat {
+        0%, 100% { opacity: 0.7; r: 6; }
+        50% { opacity: 1; r: 8; }
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Subtle vignette -->
+  <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+    <stop offset="60%" stop-color="transparent"/>
+    <stop offset="100%" stop-color="#060c14" stop-opacity="0.7"/>
+  </radialGradient>
+  <rect width="1200" height="630" fill="url(#vignette)"/>
+
+  <!-- Centre ambient glow -->
+  <circle cx="600" cy="315" r="200" fill="url(#centreGlow)"/>
+
+  <!-- Pulse rings from centre -->
+  <circle class="ring1" cx="600" cy="315" r="80" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.6"/>
+  <circle class="ring2" cx="600" cy="315" r="80" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.6"/>
+  <circle class="ring3" cx="600" cy="315" r="80" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.6"/>
+
+  <!-- Orbit rings (static) -->
+  <circle cx="600" cy="315" r="130" fill="none" stroke="#0ea5e9" stroke-width="0.5" opacity="0.2" stroke-dasharray="4 8"/>
+  <circle cx="600" cy="315" r="220" fill="none" stroke="#0ea5e9" stroke-width="0.5" opacity="0.15" stroke-dasharray="4 12"/>
+  <circle cx="600" cy="315" r="310" fill="none" stroke="#38bdf8" stroke-width="0.5" opacity="0.1" stroke-dasharray="2 14"/>
+
+  <!-- ============================================ -->
+  <!-- CONNECTION LINES to outer nodes             -->
+  <!-- ============================================ -->
+
+  <!-- Top left: Users -->
+  <line x1="600" y1="315" x2="220" y2="120" stroke="#0ea5e9" stroke-width="1" opacity="0.3" class="flowLine"/>
+  <!-- Top: Devices -->
+  <line x1="600" y1="315" x2="480" y2="80" stroke="#0ea5e9" stroke-width="1" opacity="0.3" class="flowLine2"/>
+  <!-- Top right: APIs -->
+  <line x1="600" y1="315" x2="780" y2="80" stroke="#0ea5e9" stroke-width="1" opacity="0.3" class="flowLine3"/>
+  <!-- Right: Workloads -->
+  <line x1="600" y1="315" x2="980" y2="200" stroke="#38bdf8" stroke-width="1" opacity="0.3" class="flowLine"/>
+  <!-- Bottom right: Data -->
+  <line x1="600" y1="315" x2="970" y2="430" stroke="#38bdf8" stroke-width="1" opacity="0.3" class="flowLine2"/>
+  <!-- Bottom: Services -->
+  <line x1="600" y1="315" x2="720" y2="540" stroke="#0ea5e9" stroke-width="1" opacity="0.3" class="flowLine3"/>
+  <!-- Bottom left: Partners -->
+  <line x1="600" y1="315" x2="430" y2="540" stroke="#0ea5e9" stroke-width="1" opacity="0.3" class="flowLine"/>
+  <!-- Left: On-prem -->
+  <line x1="600" y1="315" x2="220" y2="430" stroke="#38bdf8" stroke-width="1" opacity="0.3" class="flowLine2"/>
+
+  <!-- Mid-ring verification nodes (inner orbit) -->
+  <!-- Top -->
+  <circle cx="600" cy="185" r="5" fill="#0ea5e9" opacity="0.6" filter="url(#softGlow)"/>
+  <!-- Right -->
+  <circle cx="730" cy="315" r="5" fill="#0ea5e9" opacity="0.6" filter="url(#softGlow)"/>
+  <!-- Bottom -->
+  <circle cx="600" cy="445" r="5" fill="#0ea5e9" opacity="0.6" filter="url(#softGlow)"/>
+  <!-- Left -->
+  <circle cx="470" cy="315" r="5" fill="#0ea5e9" opacity="0.6" filter="url(#softGlow)"/>
+
+  <!-- Verification tick marks on inner orbit -->
+  <g opacity="0.5">
+    <!-- Top tick -->
+    <line x1="597" y1="183" x2="600" y2="187" stroke="#0ea5e9" stroke-width="1.5"/>
+    <line x1="600" y1="187" x2="604" y2="182" stroke="#0ea5e9" stroke-width="1.5"/>
+    <!-- Right tick -->
+    <line x1="728" y1="317" x2="731" y2="314" stroke="#0ea5e9" stroke-width="1.5"/>
+    <line x1="731" y1="314" x2="735" y2="318" stroke="#0ea5e9" stroke-width="1.5"/>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- OUTER NODES                                 -->
+  <!-- ============================================ -->
+
+  <!-- Node: Users (top-left) -->
+  <g filter="url(#softGlow)">
+    <rect x="148" y="88" width="144" height="64" rx="6" fill="#0a1628" stroke="#0ea5e9" stroke-width="1" opacity="0.9"/>
+    <rect x="148" y="88" width="144" height="64" rx="6" fill="#0ea5e9" opacity="0.05"/>
+    <!-- User icon -->
+    <circle cx="172" cy="112" r="7" fill="none" stroke="#0ea5e9" stroke-width="1.5"/>
+    <path d="M160 148 Q172 136 184 148" fill="none" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="186" y="108" font-size="11" fill="#94a3b8" font-family="Georgia, serif" letter-spacing="0.05em">IDENTITY</text>
+    <text x="186" y="124" font-size="13" fill="#e2e8f0" font-family="Georgia, serif" font-weight="bold">Users</text>
+    <text x="186" y="139" font-size="9" fill="#38bdf8" font-family="Georgia, serif" letter-spacing="0.08em">VERIFIED</text>
+  </g>
+
+  <!-- Node: Devices (top-centre-left) -->
+  <g filter="url(#softGlow)">
+    <rect x="408" y="48" width="144" height="64" rx="6" fill="#0a1628" stroke="#0ea5e9" stroke-width="1" opacity="0.9"/>
+    <rect x="408" y="48" width="144" height="64" rx="6" fill="#0ea5e9" opacity="0.05"/>
+    <rect x="426" y="62" width="20" height="14" rx="2" fill="none" stroke="#0ea5e9" stroke-width="1.5"/>
+    <line x1="436" y1="76" x2="436" y2="80" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="454" y="68" font-size="11" fill="#94a3b8" font-family="Georgia, serif" letter-spacing="0.05em">ENDPOINT</text>
+    <text x="454" y="84" font-size="13" fill="#e2e8f0" font-family="Georgia, serif" font-weight="bold">Devices</text>
+    <text x="454" y="99" font-size="9" fill="#38bdf8" font-family="Georgia, serif" letter-spacing="0.08em">POSTURE CHECK</text>
+  </g>
+
+  <!-- Node: APIs (top-centre-right) -->
+  <g filter="url(#softGlow)">
+    <rect x="648" y="48" width="144" height="64" rx="6" fill="#0a1628" stroke="#38bdf8" stroke-width="1" opacity="0.9"/>
+    <rect x="648" y="48" width="144" height="64" rx="6" fill="#38bdf8" opacity="0.04"/>
+    <text x="666" y="68" font-size="11" fill="#94a3b8" font-family="Georgia, serif" letter-spacing="0.05em">WORKLOAD</text>
+    <text x="666" y="84" font-size="13" fill="#e2e8f0" font-family="Georgia, serif" font-weight="bold">APIs</text>
+    <text x="666" y="99" font-size="9" fill="#38bdf8" font-family="Georgia, serif" letter-spacing="0.08em">mTLS · OAUTH2</text>
+  </g>
+
+  <!-- Node: Cloud Workloads (right) -->
+  <g filter="url(#softGlow)">
+    <rect x="908" y="168" width="160" height="64" rx="6" fill="#0a1628" stroke="#38bdf8" stroke-width="1" opacity="0.9"/>
+    <rect x="908" y="168" width="160" height="64" rx="6" fill="#38bdf8" opacity="0.04"/>
+    <text x="928" y="188" font-size="11" fill="#94a3b8" font-family="Georgia, serif" letter-spacing="0.05em">CLOUD</text>
+    <text x="928" y="204" font-size="13" fill="#e2e8f0" font-family="Georgia, serif" font-weight="bold">Workloads</text>
+    <text x="928" y="219" font-size="9" fill="#38bdf8" font-family="Georgia, serif" letter-spacing="0.08em">LEAST PRIVILEGE</text>
+  </g>
+
+  <!-- Node: Data (bottom-right) -->
+  <g filter="url(#softGlow)">
+    <rect x="900" y="398" width="144" height="64" rx="6" fill="#0a1628" stroke="#0ea5e9" stroke-width="1" opacity="0.9"/>
+    <rect x="900" y="398" width="144" height="64" rx="6" fill="#0ea5e9" opacity="0.05"/>
+    <text x="920" y="418" font-size="11" fill="#94a3b8" font-family="Georgia, serif" letter-spacing="0.05em">CLASSIFIED</text>
+    <text x="920" y="434" font-size="13" fill="#e2e8f0" font-family="Georgia, serif" font-weight="bold">Data</text>
+    <text x="920" y="449" font-size="9" fill="#38bdf8" font-family="Georgia, serif" letter-spacing="0.08em">ENCRYPTED · TAGGED</text>
+  </g>
+
+  <!-- Node: Services (bottom-centre-right) -->
+  <g filter="url(#softGlow)">
+    <rect x="648" y="518" width="144" height="64" rx="6" fill="#0a1628" stroke="#0ea5e9" stroke-width="1" opacity="0.9"/>
+    <rect x="648" y="518" width="144" height="64" rx="6" fill="#0ea5e9" opacity="0.05"/>
+    <text x="668" y="538" font-size="11" fill="#94a3b8" font-family="Georgia, serif" letter-spacing="0.05em">MICRO-SEG</text>
+    <text x="668" y="554" font-size="13" fill="#e2e8f0" font-family="Georgia, serif" font-weight="bold">Services</text>
+    <text x="668" y="569" font-size="9" fill="#38bdf8" font-family="Georgia, serif" letter-spacing="0.08em">SEGMENTED</text>
+  </g>
+
+  <!-- Node: Partners (bottom-centre-left) -->
+  <g filter="url(#softGlow)">
+    <rect x="408" y="518" width="144" height="64" rx="6" fill="#0a1628" stroke="#38bdf8" stroke-width="1" opacity="0.9"/>
+    <rect x="408" y="518" width="144" height="64" rx="6" fill="#38bdf8" opacity="0.04"/>
+    <text x="428" y="538" font-size="11" fill="#94a3b8" font-family="Georgia, serif" letter-spacing="0.05em">FEDERATED</text>
+    <text x="428" y="554" font-size="13" fill="#e2e8f0" font-family="Georgia, serif" font-weight="bold">Partners</text>
+    <text x="428" y="569" font-size="9" fill="#38bdf8" font-family="Georgia, serif" letter-spacing="0.08em">CONDITIONAL ACCESS</text>
+  </g>
+
+  <!-- Node: On-Prem (left) -->
+  <g filter="url(#softGlow)">
+    <rect x="132" y="398" width="160" height="64" rx="6" fill="#0a1628" stroke="#38bdf8" stroke-width="1" opacity="0.9"/>
+    <rect x="132" y="398" width="160" height="64" rx="6" fill="#38bdf8" opacity="0.04"/>
+    <text x="152" y="418" font-size="11" fill="#94a3b8" font-family="Georgia, serif" letter-spacing="0.05em">HYBRID</text>
+    <text x="152" y="434" font-size="13" fill="#e2e8f0" font-family="Georgia, serif" font-weight="bold">On-Premises</text>
+    <text x="152" y="449" font-size="9" fill="#38bdf8" font-family="Georgia, serif" letter-spacing="0.08em">VALIDATED TRUST</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- CENTRE IDENTITY NODE                        -->
+  <!-- ============================================ -->
+
+  <!-- Centre outer ring -->
+  <circle cx="600" cy="315" r="72" fill="#060c14" stroke="#0ea5e9" stroke-width="1.5" opacity="0.8"/>
+  <!-- Centre fill -->
+  <circle cx="600" cy="315" r="65" fill="#0a1e35"/>
+  <circle cx="600" cy="315" r="65" fill="url(#nodeGlow)" opacity="0.4"/>
+  <!-- Inner ring -->
+  <circle cx="600" cy="315" r="58" fill="none" stroke="#0ea5e9" stroke-width="0.5" opacity="0.4" stroke-dasharray="3 6"/>
+
+  <!-- IAM label inside centre -->
+  <text x="600" y="302" font-size="9" fill="#38bdf8" text-anchor="middle" font-family="Georgia, serif" letter-spacing="0.14em" opacity="0.9">IDENTITY</text>
+  <text x="600" y="320" font-size="16" fill="#e2e8f0" text-anchor="middle" font-family="Georgia, serif" font-weight="bold">Control</text>
+  <text x="600" y="337" font-size="16" fill="#e2e8f0" text-anchor="middle" font-family="Georgia, serif" font-weight="bold">Plane</text>
+  <text x="600" y="354" font-size="8" fill="#0ea5e9" text-anchor="middle" font-family="Georgia, serif" letter-spacing="0.12em">CONTINUOUS VERIFY</text>
+
+  <!-- Centre pulsing dot -->
+  <circle cx="600" cy="315" r="4" fill="#0ea5e9" class="nodePulse" filter="url(#strongGlow)"/>
+
+  <!-- ============================================ -->
+  <!-- GOVERNANCE BAND at bottom                   -->
+  <!-- ============================================ -->
+  <rect x="80" y="598" width="1040" height="1" fill="#0ea5e9" opacity="0.2"/>
+  <rect x="80" y="600" width="1040" height="22" rx="0" fill="#0a1628" opacity="0.6"/>
+
+  <!-- Governance pillars -->
+  <text x="140" y="616" font-size="9" fill="#38bdf8" font-family="Georgia, serif" letter-spacing="0.1em" opacity="0.8">ENTERPRISE ARCHITECTURE GOVERNANCE</text>
+  <line x1="420" y1="600" x2="420" y2="622" stroke="#0ea5e9" stroke-width="0.5" opacity="0.3"/>
+  <text x="440" y="616" font-size="9" fill="#64748b" font-family="Georgia, serif" letter-spacing="0.08em">POLICY AS CODE</text>
+  <line x1="600" y1="600" x2="600" y2="622" stroke="#0ea5e9" stroke-width="0.5" opacity="0.3"/>
+  <text x="620" y="616" font-size="9" fill="#64748b" font-family="Georgia, serif" letter-spacing="0.08em">CONTINUOUS TELEMETRY</text>
+  <line x1="820" y1="600" x2="820" y2="622" stroke="#0ea5e9" stroke-width="0.5" opacity="0.3"/>
+  <text x="840" y="616" font-size="9" fill="#64748b" font-family="Georgia, serif" letter-spacing="0.08em">ASSUME BREACH</text>
+
+  <!-- ============================================ -->
+  <!-- TITLE + BRANDING                            -->
+  <!-- ============================================ -->
+  <text x="600" y="34" font-size="11" fill="#38bdf8" text-anchor="middle" font-family="Georgia, serif" letter-spacing="0.2em" opacity="0.7">ENTERPRISE ARCHITECTURE PERSPECTIVE</text>
+
+  <!-- Author credit -->
+  <text x="1118" y="590" font-size="9" fill="#334155" text-anchor="end" font-family="Georgia, serif" letter-spacing="0.08em">SANTHOSH KUMAR CHANDRASHEKAR</text>
+  <text x="1118" y="602" font-size="8" fill="#1e3a5f" text-anchor="end" font-family="Georgia, serif" letter-spacing="0.06em">Cloud. Platform. Business Impact.</text>
+
+  <!-- Decorative corner accents -->
+  <path d="M 40 40 L 40 20 L 60 20" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.3"/>
+  <path d="M 1160 40 L 1160 20 L 1140 20" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.3"/>
+  <path d="M 40 590 L 40 610 L 60 610" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.3"/>
+  <path d="M 1160 590 L 1160 610 L 1140 610" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.3"/>
+
+</svg>
