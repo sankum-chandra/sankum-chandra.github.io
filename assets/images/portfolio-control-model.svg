@@ -1,181 +1,339 @@
 <svg width="100%" height="720" viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg">
 
   <defs>
-    <!-- Arrow -->
-    <marker id="arrowSoft" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-      <path d="M0,0 L6,3 L0,6 Z" fill="var(--stroke-strong)"></path>
+    <!-- Light mode arrow -->
+    <marker id="arrowLight" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="rgba(14,165,233,0.7)"/>
+    </marker>
+    
+    <!-- Dark mode arrow -->
+    <marker id="arrowDark" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="rgba(56,189,248,0.9)"/>
     </marker>
   </defs>
 
   <style>
-    :root {
-      --bg: rgba(255,255,255,0.92);
-      --text: #1e3a5f;
-      --subtext: #475569;
-      --stroke-soft: rgba(14,165,233,0.25);
-      --stroke-strong: rgba(14,165,233,0.7);
-      --loop: #0ea5e9;
-      --platform: rgba(255,255,255,0.96);
-    }
+    /* Light mode - default */
+    .light-mode { display: block; }
+    .dark-mode { display: none; }
 
+    /* Dark mode */
     @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: rgba(10,22,40,0.9);
-        --text: #e2e8f0;
-        --subtext: #94a3b8;
-        --stroke-soft: rgba(56,189,248,0.25);
-        --stroke-strong: rgba(56,189,248,0.9);
-        --loop: #38bdf8;
-        --platform: rgba(10,22,40,0.96);
-      }
+      .light-mode { display: none; }
+      .dark-mode { display: block; }
     }
 
-    .dark svg, [data-theme="dark"] svg {
-      --bg: rgba(10,22,40,0.9);
-      --text: #e2e8f0;
-      --subtext: #94a3b8;
-      --stroke-soft: rgba(56,189,248,0.25);
-      --stroke-strong: rgba(56,189,248,0.9);
-      --loop: #38bdf8;
-      --platform: rgba(10,22,40,0.96);
-    }
+    /* Manual override for theme classes */
+    svg.theme-light .light-mode,
+    .theme-light svg .light-mode { display: block !important; }
+    svg.theme-light .dark-mode,
+    .theme-light svg .dark-mode { display: none !important; }
+    
+    svg.theme-dark .light-mode,
+    .theme-dark svg .light-mode { display: none !important; }
+    svg.theme-dark .dark-mode,
+    .theme-dark svg .dark-mode { display: block !important; }
 
-    .box { fill: var(--bg); stroke: var(--stroke-soft); stroke-width: 1.2; rx: 14; }
-    .box-strong { fill: var(--platform); stroke: var(--stroke-strong); stroke-width: 1.6; rx: 16; }
-
-    .title { font: 600 20px system-ui; fill: var(--text); }
-    .subtitle { font: 400 14px system-ui; fill: var(--subtext); }
-    .center { text-anchor: middle; }
-
-    .arrow {
-      stroke: var(--stroke-strong);
-      stroke-width: 1.4;
-      marker-end: url(#arrowSoft);
-    }
-
-    .line-strong {
-      stroke: var(--stroke-strong);
-      stroke-width: 1.6;
-    }
-
-    .band {
-      fill: rgba(14,165,233,0.06);
-      stroke: var(--stroke-soft);
-      stroke-width: 1;
-      rx: 10;
-    }
-
-    .foundation {
-      fill: rgba(14,165,233,0.05);
-      stroke: var(--stroke-soft);
-      stroke-width: 1;
-      rx: 10;
-    }
-
-    .foundation-text {
-      fill: var(--text);
-      font: 600 14px system-ui;
-    }
-
+    /* Animation */
     .loop {
-      stroke: var(--loop);
-      stroke-width: 1.5;
       stroke-dasharray: 6,8;
       fill: none;
       opacity: 0.8;
       animation: flow 6s linear infinite;
-      marker-end: url(#arrowSoft);
     }
 
     @keyframes flow {
       from { stroke-dashoffset: 0; }
       to { stroke-dashoffset: -28; }
     }
-
-    .model-title {
-      font: 600 18px system-ui;
-      fill: var(--text);
-    }
   </style>
 
-  <g transform="translate(0,24)">
+  <!-- LIGHT MODE -->
+  <g class="light-mode">
+    <g transform="translate(0,24)">
 
-    <!-- Business Outcomes -->
-    <rect x="380" y="20" width="440" height="50" class="box"></rect>
-    <text x="600" y="52" class="title center">Business Outcomes &amp; Enterprise Value</text>
+      <!-- Business Outcomes -->
+      <rect x="380" y="20" width="440" height="50" 
+            fill="rgba(255,255,255,0.92)" stroke="rgba(14,165,233,0.25)" 
+            stroke-width="1.2" rx="14"/>
+      <text x="600" y="52" text-anchor="middle" 
+            font-family="system-ui" font-size="20" font-weight="600" fill="#1e3a5f">
+        Business Outcomes &amp; Enterprise Value
+      </text>
 
-    <!-- Strategy -->
-    <rect x="140" y="95" width="340" height="70" class="box"></rect>
-    <text x="310" y="125" class="title center">Enterprise Architecture</text>
-    <text x="310" y="145" class="subtitle center">&amp; Target-State Design</text>
+      <!-- Strategy Layer -->
+      <rect x="140" y="95" width="340" height="70" 
+            fill="rgba(255,255,255,0.92)" stroke="rgba(14,165,233,0.25)" 
+            stroke-width="1.2" rx="14"/>
+      <text x="310" y="125" text-anchor="middle" 
+            font-family="system-ui" font-size="20" font-weight="600" fill="#1e3a5f">
+        Enterprise Architecture
+      </text>
+      <text x="310" y="145" text-anchor="middle" 
+            font-family="system-ui" font-size="14" font-weight="400" fill="#475569">
+        &amp; Target-State Design
+      </text>
 
-    <rect x="720" y="95" width="340" height="70" class="box"></rect>
-    <text x="890" y="125" class="title center">Cloud Strategy</text>
-    <text x="890" y="145" class="subtitle center">Migration, Modernization &amp; Investment Alignment</text>
+      <rect x="720" y="95" width="340" height="70" 
+            fill="rgba(255,255,255,0.92)" stroke="rgba(14,165,233,0.25)" 
+            stroke-width="1.2" rx="14"/>
+      <text x="890" y="125" text-anchor="middle" 
+            font-family="system-ui" font-size="20" font-weight="600" fill="#1e3a5f">
+        Cloud Strategy
+      </text>
+      <text x="890" y="145" text-anchor="middle" 
+            font-family="system-ui" font-size="14" font-weight="400" fill="#475569">
+        Migration, Modernization &amp; Investment Alignment
+      </text>
 
-    <!-- Roadmap -->
-    <rect x="260" y="185" width="680" height="80" class="box"></rect>
-    <text x="600" y="218" class="title center">Technology Roadmap &amp; Portfolio Alignment</text>
-    <text x="600" y="238" class="subtitle center">
-      Outcome-driven planning, dependency management, value realization &amp; cost optimization
+      <!-- Technology Roadmap -->
+      <rect x="260" y="185" width="680" height="80" 
+            fill="rgba(255,255,255,0.92)" stroke="rgba(14,165,233,0.25)" 
+            stroke-width="1.2" rx="14"/>
+      <text x="600" y="218" text-anchor="middle" 
+            font-family="system-ui" font-size="20" font-weight="600" fill="#1e3a5f">
+        Technology Roadmap &amp; Portfolio Alignment
+      </text>
+      <text x="600" y="238" text-anchor="middle" 
+            font-family="system-ui" font-size="14" font-weight="400" fill="#475569">
+        Outcome-driven planning, dependency management, value realization &amp; cost optimization
+      </text>
+
+      <!-- Platform - emphasized -->
+      <rect x="260" y="285" width="680" height="90" 
+            fill="rgba(255,255,255,0.96)" stroke="rgba(14,165,233,0.7)" 
+            stroke-width="1.6" rx="16"/>
+      <text x="600" y="320" text-anchor="middle" 
+            font-family="system-ui" font-size="20" font-weight="600" fill="#1e3a5f">
+        Cloud Landing Zones &amp; Platform Engineering
+      </text>
+      <text x="600" y="342" text-anchor="middle" 
+            font-family="system-ui" font-size="14" font-weight="400" fill="#475569">
+        Enterprise platform, paved paths &amp; scalable cloud adoption
+      </text>
+
+      <!-- DevSecOps -->
+      <rect x="260" y="395" width="680" height="75" 
+            fill="rgba(255,255,255,0.92)" stroke="rgba(14,165,233,0.25)" 
+            stroke-width="1.2" rx="14"/>
+      <text x="600" y="428" text-anchor="middle" 
+            font-family="system-ui" font-size="20" font-weight="600" fill="#1e3a5f">
+        DevSecOps &amp; Delivery Enablement
+      </text>
+      <text x="600" y="448" text-anchor="middle" 
+            font-family="system-ui" font-size="14" font-weight="400" fill="#475569">
+        Integrated security, compliance &amp; automation in delivery pipelines
+      </text>
+
+      <!-- Feedback Band -->
+      <rect x="260" y="485" width="680" height="48" 
+            fill="rgba(14,165,233,0.06)" stroke="rgba(14,165,233,0.25)" 
+            stroke-width="1" rx="10"/>
+      <text x="600" y="513" text-anchor="middle" 
+            font-family="system-ui" font-size="14" font-weight="400" fill="#475569">
+        Continuous Feedback, FinOps &amp; Value Optimization Across Delivery, Platform &amp; Governance
+      </text>
+
+      <!-- Governance Foundation -->
+      <rect x="120" y="540" width="960" height="52" 
+            fill="rgba(14,165,233,0.05)" stroke="rgba(14,165,233,0.25)" 
+            stroke-width="1" rx="10"/>
+      <text x="600" y="570" text-anchor="middle" 
+            font-family="system-ui" font-size="14" font-weight="600" fill="#1e3a5f">
+        Governance, Security &amp; Compliance Fabric — Embedded Across All Layers
+      </text>
+
+      <!-- Flow Arrows -->
+      <line x1="600" y1="70" x2="310" y2="95" 
+            stroke="rgba(14,165,233,0.7)" stroke-width="1.4" 
+            marker-end="url(#arrowLight)"/>
+      <line x1="600" y1="70" x2="890" y2="95" 
+            stroke="rgba(14,165,233,0.7)" stroke-width="1.4" 
+            marker-end="url(#arrowLight)"/>
+
+      <line x1="480" y1="130" x2="720" y2="130" 
+            stroke="rgba(14,165,233,0.7)" stroke-width="1.6"/>
+
+      <line x1="310" y1="165" x2="600" y2="185" 
+            stroke="rgba(14,165,233,0.7)" stroke-width="1.4" 
+            marker-end="url(#arrowLight)"/>
+      <line x1="890" y1="165" x2="600" y2="185" 
+            stroke="rgba(14,165,233,0.7)" stroke-width="1.4" 
+            marker-end="url(#arrowLight)"/>
+
+      <line x1="600" y1="265" x2="600" y2="285" 
+            stroke="rgba(14,165,233,0.7)" stroke-width="1.4" 
+            marker-end="url(#arrowLight)"/>
+      <line x1="600" y1="375" x2="600" y2="395" 
+            stroke="rgba(14,165,233,0.7)" stroke-width="1.4" 
+            marker-end="url(#arrowLight)"/>
+
+      <!-- Feedback Loop -->
+      <path d="M900 510 Q1100 500 1100 240 Q1100 140 1020 130" 
+            stroke="#0ea5e9" stroke-width="1.5" 
+            marker-end="url(#arrowLight)" class="loop"/>
+
+    </g>
+
+    <!-- Title -->
+    <text x="600" y="665" text-anchor="middle" 
+          font-family="system-ui" font-size="18" font-weight="600" fill="#1e3a5f">
+      Governed Enterprise Cloud Transformation Model
     </text>
 
-    <!-- Platform -->
-    <rect x="260" y="285" width="680" height="90" class="box-strong"></rect>
-    <text x="600" y="320" class="title center">Cloud Landing Zones &amp; Platform Engineering</text>
-    <text x="600" y="342" class="subtitle center">Enterprise platform, paved paths &amp; scalable cloud adoption</text>
-
-    <!-- DevSecOps -->
-    <rect x="260" y="395" width="680" height="75" class="box"></rect>
-    <text x="600" y="428" class="title center">DevSecOps &amp; Delivery Enablement</text>
-    <text x="600" y="448" class="subtitle center">
-      Integrated security, compliance &amp; automation in delivery pipelines
+    <!-- Watermark -->
+    <text x="1118" y="685" text-anchor="end" 
+          font-family="Georgia, serif" font-size="9" fill="#64748b">
+      SANTHOSH KUMAR CHANDRASHEKAR
     </text>
-
-    <!-- Feedback -->
-    <rect x="260" y="485" width="680" height="48" class="band"></rect>
-    <text x="600" y="513" class="subtitle center">
-      Continuous Feedback, FinOps &amp; Value Optimization Across Delivery, Platform &amp; Governance
+    <text x="1118" y="698" text-anchor="end" 
+          font-family="Georgia, serif" font-size="8" fill="#0ea5e9" opacity="0.6">
+      Cloud. Platform. Business Impact.
     </text>
-
-    <!-- Governance -->
-    <rect x="120" y="540" width="960" height="52" class="foundation"></rect>
-    <text x="600" y="570" class="foundation-text center">
-      Governance, Security &amp; Compliance Fabric — Embedded Across All Layers
-    </text>
-
-    <!-- Flow -->
-    <line x1="600" y1="70" x2="310" y2="95" class="arrow"></line>
-    <line x1="600" y1="70" x2="890" y2="95" class="arrow"></line>
-
-    <line x1="480" y1="130" x2="720" y2="130" class="line-strong"></line>
-
-    <line x1="310" y1="165" x2="600" y2="185" class="arrow"></line>
-    <line x1="890" y1="165" x2="600" y2="185" class="arrow"></line>
-
-    <line x1="600" y1="265" x2="600" y2="285" class="arrow"></line>
-    <line x1="600" y1="375" x2="600" y2="395" class="arrow"></line>
-
-    <!-- ✅ CORRECT FEEDBACK LOOP -->
-    <path d="
-      M900 510
-      Q1100 500 1100 240
-      Q1100 140 1020 130
-    " class="loop"></path>
-
   </g>
 
-  <!-- Title -->
-  <text x="600" y="665" class="model-title center">
-    Governed Enterprise Cloud Transformation Model
-  </text>
+  <!-- DARK MODE -->
+  <g class="dark-mode">
+    <g transform="translate(0,24)">
 
-  <!-- Watermark -->
-  <text x="1118" y="685" font-size="9" fill="#64748b" text-anchor="end" font-family="Georgia, serif">
-    SANTHOSH KUMAR CHANDRASHEKAR
-  </text>
-  <text x="1118" y="698" font-size="8" fill="#0ea5e9" text-anchor="end" font-family="Georgia, serif" opacity="0.6">
-    Cloud. Platform. Business Impact.
-  </text>
+      <!-- Business Outcomes -->
+      <rect x="380" y="20" width="440" height="50" 
+            fill="rgba(10,22,40,0.9)" stroke="rgba(56,189,248,0.25)" 
+            stroke-width="1.2" rx="14"/>
+      <text x="600" y="52" text-anchor="middle" 
+            font-family="system-ui" font-size="20" font-weight="600" fill="#e2e8f0">
+        Business Outcomes &amp; Enterprise Value
+      </text>
+
+      <!-- Strategy Layer -->
+      <rect x="140" y="95" width="340" height="70" 
+            fill="rgba(10,22,40,0.9)" stroke="rgba(56,189,248,0.25)" 
+            stroke-width="1.2" rx="14"/>
+      <text x="310" y="125" text-anchor="middle" 
+            font-family="system-ui" font-size="20" font-weight="600" fill="#e2e8f0">
+        Enterprise Architecture
+      </text>
+      <text x="310" y="145" text-anchor="middle" 
+            font-family="system-ui" font-size="14" font-weight="400" fill="#94a3b8">
+        &amp; Target-State Design
+      </text>
+
+      <rect x="720" y="95" width="340" height="70" 
+            fill="rgba(10,22,40,0.9)" stroke="rgba(56,189,248,0.25)" 
+            stroke-width="1.2" rx="14"/>
+      <text x="890" y="125" text-anchor="middle" 
+            font-family="system-ui" font-size="20" font-weight="600" fill="#e2e8f0">
+        Cloud Strategy
+      </text>
+      <text x="890" y="145" text-anchor="middle" 
+            font-family="system-ui" font-size="14" font-weight="400" fill="#94a3b8">
+        Migration, Modernization &amp; Investment Alignment
+      </text>
+
+      <!-- Technology Roadmap -->
+      <rect x="260" y="185" width="680" height="80" 
+            fill="rgba(10,22,40,0.9)" stroke="rgba(56,189,248,0.25)" 
+            stroke-width="1.2" rx="14"/>
+      <text x="600" y="218" text-anchor="middle" 
+            font-family="system-ui" font-size="20" font-weight="600" fill="#e2e8f0">
+        Technology Roadmap &amp; Portfolio Alignment
+      </text>
+      <text x="600" y="238" text-anchor="middle" 
+            font-family="system-ui" font-size="14" font-weight="400" fill="#94a3b8">
+        Outcome-driven planning, dependency management, value realization &amp; cost optimization
+      </text>
+
+      <!-- Platform - emphasized -->
+      <rect x="260" y="285" width="680" height="90" 
+            fill="rgba(10,22,40,0.96)" stroke="rgba(56,189,248,0.9)" 
+            stroke-width="1.6" rx="16"/>
+      <text x="600" y="320" text-anchor="middle" 
+            font-family="system-ui" font-size="20" font-weight="600" fill="#e2e8f0">
+        Cloud Landing Zones &amp; Platform Engineering
+      </text>
+      <text x="600" y="342" text-anchor="middle" 
+            font-family="system-ui" font-size="14" font-weight="400" fill="#94a3b8">
+        Enterprise platform, paved paths &amp; scalable cloud adoption
+      </text>
+
+      <!-- DevSecOps -->
+      <rect x="260" y="395" width="680" height="75" 
+            fill="rgba(10,22,40,0.9)" stroke="rgba(56,189,248,0.25)" 
+            stroke-width="1.2" rx="14"/>
+      <text x="600" y="428" text-anchor="middle" 
+            font-family="system-ui" font-size="20" font-weight="600" fill="#e2e8f0">
+        DevSecOps &amp; Delivery Enablement
+      </text>
+      <text x="600" y="448" text-anchor="middle" 
+            font-family="system-ui" font-size="14" font-weight="400" fill="#94a3b8">
+        Integrated security, compliance &amp; automation in delivery pipelines
+      </text>
+
+      <!-- Feedback Band -->
+      <rect x="260" y="485" width="680" height="48" 
+            fill="rgba(56,189,248,0.06)" stroke="rgba(56,189,248,0.25)" 
+            stroke-width="1" rx="10"/>
+      <text x="600" y="513" text-anchor="middle" 
+            font-family="system-ui" font-size="14" font-weight="400" fill="#94a3b8">
+        Continuous Feedback, FinOps &amp; Value Optimization Across Delivery, Platform &amp; Governance
+      </text>
+
+      <!-- Governance Foundation -->
+      <rect x="120" y="540" width="960" height="52" 
+            fill="rgba(56,189,248,0.05)" stroke="rgba(56,189,248,0.25)" 
+            stroke-width="1" rx="10"/>
+      <text x="600" y="570" text-anchor="middle" 
+            font-family="system-ui" font-size="14" font-weight="600" fill="#e2e8f0">
+        Governance, Security &amp; Compliance Fabric — Embedded Across All Layers
+      </text>
+
+      <!-- Flow Arrows -->
+      <line x1="600" y1="70" x2="310" y2="95" 
+            stroke="rgba(56,189,248,0.9)" stroke-width="1.4" 
+            marker-end="url(#arrowDark)"/>
+      <line x1="600" y1="70" x2="890" y2="95" 
+            stroke="rgba(56,189,248,0.9)" stroke-width="1.4" 
+            marker-end="url(#arrowDark)"/>
+
+      <line x1="480" y1="130" x2="720" y2="130" 
+            stroke="rgba(56,189,248,0.9)" stroke-width="1.6"/>
+
+      <line x1="310" y1="165" x2="600" y2="185" 
+            stroke="rgba(56,189,248,0.9)" stroke-width="1.4" 
+            marker-end="url(#arrowDark)"/>
+      <line x1="890" y1="165" x2="600" y2="185" 
+            stroke="rgba(56,189,248,0.9)" stroke-width="1.4" 
+            marker-end="url(#arrowDark)"/>
+
+      <line x1="600" y1="265" x2="600" y2="285" 
+            stroke="rgba(56,189,248,0.9)" stroke-width="1.4" 
+            marker-end="url(#arrowDark)"/>
+      <line x1="600" y1="375" x2="600" y2="395" 
+            stroke="rgba(56,189,248,0.9)" stroke-width="1.4" 
+            marker-end="url(#arrowDark)"/>
+
+      <!-- Feedback Loop -->
+      <path d="M900 510 Q1100 500 1100 240 Q1100 140 1020 130" 
+            stroke="#38bdf8" stroke-width="1.5" 
+            marker-end="url(#arrowDark)" class="loop"/>
+
+    </g>
+
+    <!-- Title -->
+    <text x="600" y="665" text-anchor="middle" 
+          font-family="system-ui" font-size="18" font-weight="600" fill="#e2e8f0">
+      Governed Enterprise Cloud Transformation Model
+    </text>
+
+    <!-- Watermark -->
+    <text x="1118" y="685" text-anchor="end" 
+          font-family="Georgia, serif" font-size="9" fill="#94a3b8">
+      SANTHOSH KUMAR CHANDRASHEKAR
+    </text>
+    <text x="1118" y="698" text-anchor="end" 
+          font-family="Georgia, serif" font-size="8" fill="#38bdf8" opacity="0.6">
+      Cloud. Platform. Business Impact.
+    </text>
+  </g>
 
 </svg>
