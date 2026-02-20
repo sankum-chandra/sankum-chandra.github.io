@@ -1,363 +1,169 @@
-<svg viewBox="0 0 1400 1050" xmlns="http://www.w3.org/2000/svg">
+<svg width="100%" height="720" viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #0f172a;
+      --subtext: #475569;
+      --stroke: #cbd5e1;
+      --stroke-strong: #94a3b8;
+      --band: #f1f5f9;
+      --foundation: #e2e8f0;
+      --foundation-text: #0f172a;
+      --loop: #64748b;
+      --platform: #f8fafc;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1220;
+        --text: #e2e8f0;
+        --subtext: #94a3b8;
+        --stroke: #334155;
+        --stroke-strong: #64748b;
+        --band: #020617;
+        --foundation: #020617;
+        --foundation-text: #cbd5f5;
+        --loop: #94a3b8;
+        --platform: #020617;
+      }
+    }
+
+    .box { fill: var(--bg); stroke: var(--stroke); stroke-width: 1.2; rx: 14; }
+    .box-strong { fill: var(--platform); stroke: var(--stroke-strong); stroke-width: 1.6; rx: 16; }
+
+    .title { font: 600 20px system-ui; fill: var(--text); }
+    .subtitle { font: 400 14.5px system-ui; fill: var(--subtext); }
+    .center { text-anchor: middle; }
+
+    .arrow { stroke: var(--stroke-strong); stroke-width: 1.3; marker-end: url(#arrowSoft); }
+    .line-strong { stroke: var(--stroke-strong); stroke-width: 1.6; }
+
+    .band { fill: var(--band); stroke: var(--stroke); stroke-width: 1; rx: 10; }
+
+    /* Softer governance */
+    .foundation {
+      fill: var(--foundation);
+      stroke: var(--stroke);
+      stroke-width: 1;
+      rx: 10;
+    }
+    .foundation-text {
+      fill: var(--foundation-text);
+      font: 600 14px system-ui;
+    }
+
+    .loop {
+      stroke: var(--loop);
+      stroke-width: 1.4;
+      stroke-dasharray: 6,8;
+      fill: none;
+      animation: flow 6s linear infinite;
+    }
+
+    @keyframes flow {
+      from { stroke-dashoffset: 0; }
+      to { stroke-dashoffset: -28; }
+    }
+
+    .model-title { font: 600 18px system-ui; fill: var(--text); }
+  </style>
+
   <defs>
-    <!-- Light mode gradients -->
-    <linearGradient id="grad-ea-light" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#7dd3c0;stop-opacity:0.2" />
-      <stop offset="100%" style="stop-color:#7dd3c0;stop-opacity:0.08" />
-    </linearGradient>
-    <linearGradient id="grad-cloud-light" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#6b9bd1;stop-opacity:0.2" />
-      <stop offset="100%" style="stop-color:#6b9bd1;stop-opacity:0.08" />
-    </linearGradient>
-    <linearGradient id="grad-platform-light" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#9b8fc9;stop-opacity:0.2" />
-      <stop offset="100%" style="stop-color:#9b8fc9;stop-opacity:0.08" />
-    </linearGradient>
-    <linearGradient id="grad-devsec-light" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#5a8a9f;stop-opacity:0.2" />
-      <stop offset="100%" style="stop-color:#5a8a9f;stop-opacity:0.08" />
-    </linearGradient>
-    <linearGradient id="grad-gov-light" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#7cb894;stop-opacity:0.2" />
-      <stop offset="100%" style="stop-color:#7cb894;stop-opacity:0.08" />
-    </linearGradient>
-    <linearGradient id="grad-roadmap-light" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#c9a76b;stop-opacity:0.2" />
-      <stop offset="100%" style="stop-color:#c9a76b;stop-opacity:0.08" />
-    </linearGradient>
-    
-    <!-- Dark mode gradients -->
-    <linearGradient id="grad-ea-dark" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#7dd3c0;stop-opacity:0.35" />
-      <stop offset="100%" style="stop-color:#7dd3c0;stop-opacity:0.2" />
-    </linearGradient>
-    <linearGradient id="grad-cloud-dark" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#6b9bd1;stop-opacity:0.35" />
-      <stop offset="100%" style="stop-color:#6b9bd1;stop-opacity:0.2" />
-    </linearGradient>
-    <linearGradient id="grad-platform-dark" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#9b8fc9;stop-opacity:0.35" />
-      <stop offset="100%" style="stop-color:#9b8fc9;stop-opacity:0.2" />
-    </linearGradient>
-    <linearGradient id="grad-devsec-dark" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#5a8a9f;stop-opacity:0.35" />
-      <stop offset="100%" style="stop-color:#5a8a9f;stop-opacity:0.2" />
-    </linearGradient>
-    <linearGradient id="grad-gov-dark" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#7cb894;stop-opacity:0.35" />
-      <stop offset="100%" style="stop-color:#7cb894;stop-opacity:0.2" />
-    </linearGradient>
-    <linearGradient id="grad-roadmap-dark" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#c9a76b;stop-opacity:0.35" />
-      <stop offset="100%" style="stop-color:#c9a76b;stop-opacity:0.2" />
-    </linearGradient>
-    
-    <!-- Arrow markers - lighter colors -->
-    <marker id="arrow-light" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-      <polygon points="0 0, 8 4, 0 8" fill="#94a3b8" />
-    </marker>
-    <marker id="arrow-dark" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-      <polygon points="0 0, 8 4, 0 8" fill="#cbd5e1" />
+    <marker id="arrowSoft" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"></path>
     </marker>
   </defs>
-  
-  <!-- Light mode -->
-  <g class="light-mode">
-    <!-- Main oval container -->
-    <ellipse cx="700" cy="500" rx="650" ry="430" 
-             fill="none" stroke="#cbd5e1" stroke-width="2.5" stroke-dasharray="10,5"/>
-    
-    <!-- Business Outcomes at top -->
-    <rect x="400" y="50" width="600" height="80" rx="10" 
-          fill="white" stroke="#64748b" stroke-width="3"/>
-    <text x="700" y="85" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" 
-          fill="#0f172a">Business Outcomes &amp;</text>
-    <text x="700" y="112" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" 
-          fill="#0f172a">Enterprise Value</text>
-    
-    <!-- Top row: Enterprise Architecture & Cloud Strategy -->
-    <rect x="120" y="200" width="340" height="120" rx="10" 
-          fill="url(#grad-ea-light)" stroke="#7dd3c0" stroke-width="2.5"/>
-    <text x="290" y="245" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" 
-          fill="#0f172a">Enterprise Architecture</text>
-    <text x="290" y="275" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" 
-          fill="#475569">&amp; Target-State Design</text>
-    
-    <rect x="940" y="200" width="340" height="120" rx="10" 
-          fill="url(#grad-cloud-light)" stroke="#6b9bd1" stroke-width="2.5"/>
-    <text x="1110" y="245" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" 
-          fill="#0f172a">Cloud Strategy, Migration</text>
-    <text x="1110" y="275" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" 
-          fill="#475569">&amp; Modernisation</text>
-    
-    <!-- Bidirectional arrow between EA and Cloud Strategy - lighter -->
-    <path d="M 465 240 L 935 240" stroke="#94a3b8" stroke-width="2.5" 
-          marker-end="url(#arrow-light)" fill="none"/>
-    <path d="M 935 280 L 465 280" stroke="#94a3b8" stroke-width="2.5" 
-          marker-end="url(#arrow-light)" fill="none"/>
-    
-    <!-- Strategic Direction label -->
-    <text x="700" y="375" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="16" font-style="italic" 
-          fill="#94a3b8" font-weight="500">Strategic Direction</text>
-    
-    <!-- Arrows from Business Outcomes to EA and Cloud Strategy - lighter -->
-    <path d="M 550 130 Q 400 165 330 200" stroke="#94a3b8" stroke-width="2.5" 
-          stroke-dasharray="8,5" marker-end="url(#arrow-light)" fill="none"/>
-    <path d="M 850 130 Q 1000 165 1070 200" stroke="#94a3b8" stroke-width="2.5" 
-          stroke-dasharray="8,5" marker-end="url(#arrow-light)" fill="none"/>
-    
-    <!-- Center: Cloud Landing Zones & Platform Engineering -->
-    <rect x="350" y="420" width="700" height="140" rx="12" 
-          fill="url(#grad-platform-light)" stroke="#9b8fc9" stroke-width="3.5"/>
-    <text x="700" y="470" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" 
-          fill="#0f172a">Cloud Landing Zones &amp;</text>
-    <text x="700" y="505" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="500" 
-          fill="#475569">Platform Engineering</text>
-    
-    <!-- Arrows from EA and Cloud Strategy to Platform - lighter -->
-    <path d="M 290 320 L 450 420" stroke="#94a3b8" stroke-width="2.5" 
-          stroke-dasharray="8,5" marker-end="url(#arrow-light)" fill="none"/>
-    <path d="M 1110 320 L 950 420" stroke="#94a3b8" stroke-width="2.5" 
-          stroke-dasharray="8,5" marker-end="url(#arrow-light)" fill="none"/>
-    
-    <!-- Bottom row: DevSecOps, Governance, Roadmapping -->
-    <rect x="70" y="660" width="320" height="110" rx="10" 
-          fill="url(#grad-devsec-light)" stroke="#5a8a9f" stroke-width="2.5"/>
-    <text x="230" y="700" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" 
-          fill="#0f172a">DevSecOps &amp; Delivery</text>
-    <text x="230" y="730" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" 
-          fill="#475569">Enablement</text>
-    
-    <rect x="1010" y="660" width="320" height="110" rx="10" 
-          fill="url(#grad-gov-light)" stroke="#7cb894" stroke-width="2.5"/>
-    <text x="1170" y="700" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" 
-          fill="#0f172a">Governance, Security</text>
-    <text x="1170" y="730" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" 
-          fill="#475569">&amp; Compliance</text>
-    
-    <rect x="465" y="660" width="470" height="110" rx="10" 
-          fill="url(#grad-roadmap-light)" stroke="#c9a76b" stroke-width="2.5"/>
-    <text x="700" y="700" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" 
-          fill="#0f172a">Technology Roadmapping</text>
-    <text x="700" y="730" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" 
-          fill="#475569">&amp; Portfolio Alignment</text>
-    
-    <!-- Arrows from Platform to bottom three - lighter -->
-    <path d="M 450 560 L 270 660" stroke="#94a3b8" stroke-width="2.5" 
-          stroke-dasharray="8,5" marker-end="url(#arrow-light)" fill="none"/>
-    <path d="M 950 560 L 1130 660" stroke="#94a3b8" stroke-width="2.5" 
-          stroke-dasharray="8,5" marker-end="url(#arrow-light)" fill="none"/>
-    <path d="M 700 560 L 700 660" stroke="#94a3b8" stroke-width="2.5" 
-          stroke-dasharray="8,5" marker-end="url(#arrow-light)" fill="none"/>
-    
-    <!-- Bidirectional arrows between bottom three - lighter -->
-    <path d="M 395 705 L 460 705" stroke="#94a3b8" stroke-width="2" 
-          marker-end="url(#arrow-light)" fill="none"/>
-    <path d="M 460 725 L 395 725" stroke="#94a3b8" stroke-width="2" 
-          marker-end="url(#arrow-light)" fill="none"/>
-    
-    <path d="M 940 705 L 1005 705" stroke="#94a3b8" stroke-width="2" 
-          marker-end="url(#arrow-light)" fill="none"/>
-    <path d="M 1005 725 L 940 725" stroke="#94a3b8" stroke-width="2" 
-          marker-end="url(#arrow-light)" fill="none"/>
-    
-    <!-- Feedback Loop - moved down to avoid overlap, lighter color -->
-    <path d="M 230 770 Q 80 880 80 490 Q 80 280 200 220" 
-          stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="10,5" 
-          marker-end="url(#arrow-light)" fill="none"/>
-    <path d="M 1170 770 Q 1320 880 1320 490 Q 1320 280 1200 220" 
-          stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="10,5" 
-          marker-end="url(#arrow-light)" fill="none"/>
-    
-    <!-- Feedback Loop label - more spacing -->
-    <text x="700" y="915" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="17" font-style="italic" 
-          fill="#94a3b8" font-weight="500">Feedback Loop</text>
-    
-    <!-- Bottom title - more spacing -->
-    <text x="700" y="960" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" 
-          fill="#64748b">Enterprise Cloud Architecture Portfolio Control Model</text>
-    
-    <!-- Branding watermark - bottom right -->
-    <text x="1350" y="1005" text-anchor="end" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" 
-          fill="#64748b" letter-spacing="0.5">SANTHOSH KUMAR CHANDRASHEKAR</text>
-    <text x="1350" y="1030" text-anchor="end" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" 
-          fill="#60a5fa" letter-spacing="0.5">Cloud. Platform. Business Impact.</text>
+
+  <!-- Content shifted for balance -->
+  <g transform="translate(0,24)">
+
+    <!-- Business Outcomes -->
+    <rect x="380" y="20" width="440" height="50" class="box"></rect>
+    <text x="600" y="52" class="title center">
+      Business Outcomes &amp; Enterprise Value
+    </text>
+
+    <!-- Strategy -->
+    <rect x="140" y="95" width="340" height="70" class="box"></rect>
+    <text x="310" y="125" class="title center">Enterprise Architecture</text>
+    <text x="310" y="145" class="subtitle center">&amp; Target-State Design</text>
+
+    <rect x="720" y="95" width="340" height="70" class="box"></rect>
+    <text x="890" y="125" class="title center">Cloud Strategy</text>
+    <text x="890" y="145" class="subtitle center">
+      Migration, Modernization &amp; Investment Alignment
+    </text>
+
+    <!-- Roadmap -->
+    <rect x="260" y="185" width="680" height="80" class="box"></rect>
+    <text x="600" y="218" class="title center">
+      Technology Roadmap &amp; Portfolio Alignment
+    </text>
+    <text x="600" y="238" class="subtitle center">
+      Outcome-driven planning, dependency management, value realisation &amp; cost optimisation
+    </text>
+
+    <!-- Platform -->
+    <rect x="260" y="285" width="680" height="90" class="box-strong"></rect>
+    <text x="600" y="320" class="title center">
+      Cloud Landing Zones &amp; Platform Engineering
+    </text>
+    <text x="600" y="342" class="subtitle center">
+      Enterprise platform, paved paths &amp; scalable cloud adoption
+    </text>
+
+    <!-- DevSecOps -->
+    <rect x="260" y="395" width="680" height="75" class="box"></rect>
+    <text x="600" y="428" class="title center">
+      DevSecOps &amp; Delivery Enablement
+    </text>
+    <text x="600" y="448" class="subtitle center">
+      Integrated security, compliance &amp; automation in delivery pipelines
+    </text>
+
+    <!-- Feedback Band -->
+    <rect x="260" y="485" width="680" height="48" class="band"></rect>
+    <text x="600" y="513" class="subtitle center">
+      Continuous Feedback, FinOps &amp; Value Optimisation Across Delivery, Platform &amp; Governance
+    </text>
+
+    <!-- Softer Governance -->
+    <rect x="120" y="540" width="960" height="52" class="foundation"></rect>
+    <text x="600" y="570" class="foundation-text center">
+      Governance, Security &amp; Compliance Fabric — Embedded Across All Layers
+    </text>
+
+    <!-- Flow -->
+    <line x1="600" y1="70" x2="310" y2="95" class="arrow"></line>
+    <line x1="600" y1="70" x2="890" y2="95" class="arrow"></line>
+
+    <line x1="480" y1="130" x2="720" y2="130" class="line-strong"></line>
+
+    <line x1="310" y1="165" x2="600" y2="185" class="arrow"></line>
+    <line x1="890" y1="165" x2="600" y2="185" class="arrow"></line>
+
+    <line x1="600" y1="265" x2="600" y2="285" class="arrow"></line>
+    <line x1="600" y1="375" x2="600" y2="395" class="arrow"></line>
+
+    <!-- Loop -->
+    <path d="M940 255 
+             Q1100 220 1100 140 
+             Q1100 120 1040 120" class="loop" marker-end="url(#arrowSoft)"></path>
+
   </g>
-  
-  <!-- Dark mode -->
-  <g class="dark-mode">
-    <!-- Main oval container -->
-    <ellipse cx="700" cy="500" rx="650" ry="430" 
-             fill="none" stroke="#64748b" stroke-width="2.5" stroke-dasharray="10,5"/>
-    
-    <!-- Business Outcomes at top -->
-    <rect x="400" y="50" width="600" height="80" rx="10" 
-          fill="#1e293b" stroke="#cbd5e1" stroke-width="3"/>
-    <text x="700" y="85" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" 
-          fill="#ffffff">Business Outcomes &amp;</text>
-    <text x="700" y="112" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" 
-          fill="#ffffff">Enterprise Value</text>
-    
-    <!-- Top row -->
-    <rect x="120" y="200" width="340" height="120" rx="10" 
-          fill="url(#grad-ea-dark)" stroke="#7dd3c0" stroke-width="3"/>
-    <text x="290" y="245" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" 
-          fill="#ffffff">Enterprise Architecture</text>
-    <text x="290" y="275" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" 
-          fill="#f1f5f9">&amp; Target-State Design</text>
-    
-    <rect x="940" y="200" width="340" height="120" rx="10" 
-          fill="url(#grad-cloud-dark)" stroke="#6b9bd1" stroke-width="3"/>
-    <text x="1110" y="245" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" 
-          fill="#ffffff">Cloud Strategy, Migration</text>
-    <text x="1110" y="275" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" 
-          fill="#f1f5f9">&amp; Modernisation</text>
-    
-    <!-- Bidirectional arrows -->
-    <path d="M 465 240 L 935 240" stroke="#cbd5e1" stroke-width="2.5" 
-          marker-end="url(#arrow-dark)" fill="none"/>
-    <path d="M 935 280 L 465 280" stroke="#cbd5e1" stroke-width="2.5" 
-          marker-end="url(#arrow-dark)" fill="none"/>
-    
-    <!-- Strategic Direction label -->
-    <text x="700" y="375" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="16" font-style="italic" 
-          fill="#cbd5e1" font-weight="500">Strategic Direction</text>
-    
-    <!-- Arrows from Business Outcomes -->
-    <path d="M 550 130 Q 400 165 330 200" stroke="#cbd5e1" stroke-width="2.5" 
-          stroke-dasharray="8,5" marker-end="url(#arrow-dark)" fill="none"/>
-    <path d="M 850 130 Q 1000 165 1070 200" stroke="#cbd5e1" stroke-width="2.5" 
-          stroke-dasharray="8,5" marker-end="url(#arrow-dark)" fill="none"/>
-    
-    <!-- Center: Cloud Landing Zones -->
-    <rect x="350" y="420" width="700" height="140" rx="12" 
-          fill="url(#grad-platform-dark)" stroke="#9b8fc9" stroke-width="4"/>
-    <text x="700" y="470" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" 
-          fill="#ffffff">Cloud Landing Zones &amp;</text>
-    <text x="700" y="505" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="500" 
-          fill="#f1f5f9">Platform Engineering</text>
-    
-    <!-- Arrows to Platform -->
-    <path d="M 290 320 L 450 420" stroke="#cbd5e1" stroke-width="2.5" 
-          stroke-dasharray="8,5" marker-end="url(#arrow-dark)" fill="none"/>
-    <path d="M 1110 320 L 950 420" stroke="#cbd5e1" stroke-width="2.5" 
-          stroke-dasharray="8,5" marker-end="url(#arrow-dark)" fill="none"/>
-    
-    <!-- Bottom row -->
-    <rect x="70" y="660" width="320" height="110" rx="10" 
-          fill="url(#grad-devsec-dark)" stroke="#5a8a9f" stroke-width="3"/>
-    <text x="230" y="700" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" 
-          fill="#ffffff">DevSecOps &amp; Delivery</text>
-    <text x="230" y="730" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" 
-          fill="#f1f5f9">Enablement</text>
-    
-    <rect x="1010" y="660" width="320" height="110" rx="10" 
-          fill="url(#grad-gov-dark)" stroke="#7cb894" stroke-width="3"/>
-    <text x="1170" y="700" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" 
-          fill="#ffffff">Governance, Security</text>
-    <text x="1170" y="730" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" 
-          fill="#f1f5f9">&amp; Compliance</text>
-    
-    <rect x="465" y="660" width="470" height="110" rx="10" 
-          fill="url(#grad-roadmap-dark)" stroke="#c9a76b" stroke-width="3"/>
-    <text x="700" y="700" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" 
-          fill="#ffffff">Technology Roadmapping</text>
-    <text x="700" y="730" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" 
-          fill="#f1f5f9">&amp; Portfolio Alignment</text>
-    
-    <!-- All arrows -->
-    <path d="M 450 560 L 270 660" stroke="#cbd5e1" stroke-width="2.5" 
-          stroke-dasharray="8,5" marker-end="url(#arrow-dark)" fill="none"/>
-    <path d="M 950 560 L 1130 660" stroke="#cbd5e1" stroke-width="2.5" 
-          stroke-dasharray="8,5" marker-end="url(#arrow-dark)" fill="none"/>
-    <path d="M 700 560 L 700 660" stroke="#cbd5e1" stroke-width="2.5" 
-          stroke-dasharray="8,5" marker-end="url(#arrow-dark)" fill="none"/>
-    
-    <path d="M 395 705 L 460 705" stroke="#cbd5e1" stroke-width="2" 
-          marker-end="url(#arrow-dark)" fill="none"/>
-    <path d="M 460 725 L 395 725" stroke="#cbd5e1" stroke-width="2" 
-          marker-end="url(#arrow-dark)" fill="none"/>
-    
-    <path d="M 940 705 L 1005 705" stroke="#cbd5e1" stroke-width="2" 
-          marker-end="url(#arrow-dark)" fill="none"/>
-    <path d="M 1005 725 L 940 725" stroke="#cbd5e1" stroke-width="2" 
-          marker-end="url(#arrow-dark)" fill="none"/>
-    
-    <!-- Feedback Loop - moved down to avoid overlap -->
-    <path d="M 230 770 Q 80 880 80 490 Q 80 280 200 220" 
-          stroke="#cbd5e1" stroke-width="2.5" stroke-dasharray="10,5" 
-          marker-end="url(#arrow-dark)" fill="none"/>
-    <path d="M 1170 770 Q 1320 880 1320 490 Q 1320 280 1200 220" 
-          stroke="#cbd5e1" stroke-width="2.5" stroke-dasharray="10,5" 
-          marker-end="url(#arrow-dark)" fill="none"/>
-    
-    <!-- Labels - with proper spacing -->
-    <text x="700" y="915" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="17" font-style="italic" 
-          fill="#cbd5e1" font-weight="500">Feedback Loop</text>
-    
-    <text x="700" y="960" text-anchor="middle" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" 
-          fill="#cbd5e1">Enterprise Cloud Architecture Portfolio Control Model</text>
-    
-    <!-- Branding watermark - bottom right -->
-    <text x="1350" y="1005" text-anchor="end" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" 
-          fill="#cbd5e1" letter-spacing="0.5">SANTHOSH KUMAR CHANDRASHEKAR</text>
-    <text x="1350" y="1030" text-anchor="end" 
-          font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" 
-          fill="#60a5fa" letter-spacing="0.5">Cloud. Platform. Business Impact.</text>
-  </g>
-  
-  <style>
-    /* Default: show light mode, hide dark mode */
-    .light-mode { display: block; }
-    .dark-mode { display: none; }
-    
-    /* When system prefers dark mode */
-    @media (prefers-color-scheme: dark) {
-      .light-mode { display: none; }
-      .dark-mode { display: block; }
-    }
-    
-    /* Manual override classes */
-    svg.theme-light .light-mode { display: block !important; }
-    svg.theme-light .dark-mode { display: none !important; }
-    svg.theme-dark .light-mode { display: none !important; }
-    svg.theme-dark .dark-mode { display: block !important; }
-  </style>
+
+  <!-- Model Title -->
+  <text x="600" y="665" class="model-title center">
+    Governed Enterprise Cloud Transformation Model
+  </text>
+
+  <!-- Watermark -->
+  <text x="1118" y="685" font-size="9" text-anchor="end" font-family="Georgia, serif" fill="#64748b" letter-spacing="0.08em">
+    SANTHOSH KUMAR CHANDRASHEKAR
+  </text>
+  <text x="1118" y="698" font-size="8" fill="#0ea5e9" text-anchor="end" font-family="Georgia, serif" letter-spacing="0.06em" opacity="0.6">
+    Cloud. Platform. Business Impact.
+  </text>
+
 </svg>
