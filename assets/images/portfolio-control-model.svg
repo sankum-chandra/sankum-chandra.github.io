@@ -1,6 +1,7 @@
 <svg width="100%" height="720" viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg">
 
   <style>
+    /* LIGHT (default) */
     :root {
       --bg: #ffffff;
       --text: #0f172a;
@@ -14,6 +15,7 @@
       --platform: #f8fafc;
     }
 
+    /* OS fallback */
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #0b1220;
@@ -29,6 +31,22 @@
       }
     }
 
+    /* 🔥 CRITICAL: matches your working SVG pattern */
+    .dark svg,
+    [data-theme="dark"] svg,
+    html.dark svg {
+      --bg: #0b1220;
+      --text: #e2e8f0;
+      --subtext: #94a3b8;
+      --stroke: #334155;
+      --stroke-strong: #64748b;
+      --band: #020617;
+      --foundation: #020617;
+      --foundation-text: #cbd5f5;
+      --loop: #94a3b8;
+      --platform: #020617;
+    }
+
     .box { fill: var(--bg); stroke: var(--stroke); stroke-width: 1.2; rx: 14; }
     .box-strong { fill: var(--platform); stroke: var(--stroke-strong); stroke-width: 1.6; rx: 16; }
 
@@ -41,7 +59,6 @@
 
     .band { fill: var(--band); stroke: var(--stroke); stroke-width: 1; rx: 10; }
 
-    /* Softer governance */
     .foundation {
       fill: var(--foundation);
       stroke: var(--stroke);
@@ -75,7 +92,7 @@
     </marker>
   </defs>
 
-  <!-- Content shifted for balance -->
+  <!-- Balanced layout -->
   <g transform="translate(0,24)">
 
     <!-- Business Outcomes -->
@@ -122,13 +139,13 @@
       Integrated security, compliance &amp; automation in delivery pipelines
     </text>
 
-    <!-- Feedback Band -->
+    <!-- Feedback + FinOps -->
     <rect x="260" y="485" width="680" height="48" class="band"></rect>
     <text x="600" y="513" class="subtitle center">
       Continuous Feedback, FinOps &amp; Value Optimisation Across Delivery, Platform &amp; Governance
     </text>
 
-    <!-- Softer Governance -->
+    <!-- Governance -->
     <rect x="120" y="540" width="960" height="52" class="foundation"></rect>
     <text x="600" y="570" class="foundation-text center">
       Governance, Security &amp; Compliance Fabric — Embedded Across All Layers
@@ -146,20 +163,20 @@
     <line x1="600" y1="265" x2="600" y2="285" class="arrow"></line>
     <line x1="600" y1="375" x2="600" y2="395" class="arrow"></line>
 
-    <!-- Loop -->
+    <!-- Feedback Loop -->
     <path d="M940 255 
              Q1100 220 1100 140 
              Q1100 120 1040 120" class="loop" marker-end="url(#arrowSoft)"></path>
 
   </g>
 
-  <!-- Model Title -->
+  <!-- Title -->
   <text x="600" y="665" class="model-title center">
     Governed Enterprise Cloud Transformation Model
   </text>
 
   <!-- Watermark -->
-  <text x="1118" y="685" font-size="9" text-anchor="end" font-family="Georgia, serif" fill="#64748b" letter-spacing="0.08em">
+  <text x="1118" y="685" font-size="9" fill="#64748b" text-anchor="end" font-family="Georgia, serif" letter-spacing="0.08em">
     SANTHOSH KUMAR CHANDRASHEKAR
   </text>
   <text x="1118" y="698" font-size="8" fill="#0ea5e9" text-anchor="end" font-family="Georgia, serif" letter-spacing="0.06em" opacity="0.6">
