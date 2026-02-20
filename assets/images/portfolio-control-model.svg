@@ -1,186 +1,136 @@
 <svg width="100%" height="720" viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg">
 
-  <style>
-    /* LIGHT (default) */
-    :root {
-      --bg: #ffffff;
-      --text: #0f172a;
-      --subtext: #475569;
-      --stroke: #cbd5e1;
-      --stroke-strong: #94a3b8;
-      --band: #f1f5f9;
-      --foundation: #e2e8f0;
-      --foundation-text: #0f172a;
-      --loop: #64748b;
-      --platform: #f8fafc;
-    }
+<style>
+:root {
+  --zt-text-primary: #1e3a5f;
+  --zt-text-secondary: #475569;
+}
 
-    /* OS fallback */
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0b1220;
-        --text: #e2e8f0;
-        --subtext: #94a3b8;
-        --stroke: #334155;
-        --stroke-strong: #64748b;
-        --band: #020617;
-        --foundation: #020617;
-        --foundation-text: #cbd5f5;
-        --loop: #94a3b8;
-        --platform: #020617;
-      }
-    }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --zt-text-primary: #e2e8f0;
+    --zt-text-secondary: #94a3b8;
+  }
+}
 
-    /* 🔥 CRITICAL: matches your working SVG pattern */
-    .dark svg,
-    [data-theme="dark"] svg,
-    html.dark svg {
-      --bg: #0b1220;
-      --text: #e2e8f0;
-      --subtext: #94a3b8;
-      --stroke: #334155;
-      --stroke-strong: #64748b;
-      --band: #020617;
-      --foundation: #020617;
-      --foundation-text: #cbd5f5;
-      --loop: #94a3b8;
-      --platform: #020617;
-    }
+.dark svg, [data-theme="dark"] svg {
+  --zt-text-primary: #e2e8f0;
+  --zt-text-secondary: #94a3b8;
+}
 
-    .box { fill: var(--bg); stroke: var(--stroke); stroke-width: 1.2; rx: 14; }
-    .box-strong { fill: var(--platform); stroke: var(--stroke-strong); stroke-width: 1.6; rx: 16; }
+.title { font: 600 20px system-ui; fill: var(--zt-text-primary); }
+.subtitle { font: 400 14px system-ui; fill: var(--zt-text-secondary); }
+.center { text-anchor: middle; }
 
-    .title { font: 600 20px system-ui; fill: var(--text); }
-    .subtitle { font: 400 14.5px system-ui; fill: var(--subtext); }
-    .center { text-anchor: middle; }
+.box { fill: rgba(255,255,255,0.92); stroke: #0ea5e9; stroke-opacity: 0.25; rx: 14; }
+.box-strong { fill: rgba(255,255,255,0.95); stroke: #0ea5e9; stroke-opacity: 0.5; rx: 16; }
 
-    .arrow { stroke: var(--stroke-strong); stroke-width: 1.3; marker-end: url(#arrowSoft); }
-    .line-strong { stroke: var(--stroke-strong); stroke-width: 1.6; }
+.band { fill: rgba(14,165,233,0.06); stroke: #0ea5e9; stroke-opacity: 0.25; rx: 10; }
+.foundation { fill: rgba(14,165,233,0.05); stroke: #0ea5e9; stroke-opacity: 0.25; rx: 10; }
 
-    .band { fill: var(--band); stroke: var(--stroke); stroke-width: 1; rx: 10; }
+.line { stroke: #0ea5e9; stroke-opacity: 0.5; stroke-width: 1.2; }
+.line-strong { stroke: #0ea5e9; stroke-opacity: 0.6; stroke-width: 1.4; }
 
-    .foundation {
-      fill: var(--foundation);
-      stroke: var(--stroke);
-      stroke-width: 1;
-      rx: 10;
-    }
-    .foundation-text {
-      fill: var(--foundation-text);
-      font: 600 14px system-ui;
-    }
+.model-title { font: 600 18px system-ui; fill: var(--zt-text-primary); }
+</style>
 
-    .loop {
-      stroke: var(--loop);
-      stroke-width: 1.4;
-      stroke-dasharray: 6,8;
-      fill: none;
-      animation: flow 6s linear infinite;
-    }
+<g transform="translate(0,24)">
 
-    @keyframes flow {
-      from { stroke-dashoffset: 0; }
-      to { stroke-dashoffset: -28; }
-    }
+<!-- Business Outcomes -->
+<rect x="380" y="20" width="440" height="50" class="box"></rect>
+<text x="600" y="52" class="title center">
+Business Outcomes &amp; Enterprise Value
+</text>
 
-    .model-title { font: 600 18px system-ui; fill: var(--text); }
-  </style>
+<!-- Strategy -->
+<rect x="140" y="95" width="340" height="70" class="box"></rect>
+<text x="310" y="125" class="title center">Enterprise Architecture</text>
+<text x="310" y="145" class="subtitle center">&amp; Target-State Design</text>
 
-  <defs>
-    <marker id="arrowSoft" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-      <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"></path>
-    </marker>
-  </defs>
+<rect x="720" y="95" width="340" height="70" class="box"></rect>
+<text x="890" y="125" class="title center">Cloud Strategy</text>
+<text x="890" y="145" class="subtitle center">
+Migration, Modernization &amp; Investment Alignment
+</text>
 
-  <!-- Balanced layout -->
-  <g transform="translate(0,24)">
+<!-- Roadmap -->
+<rect x="260" y="185" width="680" height="80" class="box"></rect>
+<text x="600" y="218" class="title center">
+Technology Roadmap &amp; Portfolio Alignment
+</text>
+<text x="600" y="238" class="subtitle center">
+Outcome-driven planning, dependency management &amp; value realisation
+</text>
 
-    <!-- Business Outcomes -->
-    <rect x="380" y="20" width="440" height="50" class="box"></rect>
-    <text x="600" y="52" class="title center">
-      Business Outcomes &amp; Enterprise Value
-    </text>
+<!-- Platform -->
+<rect x="260" y="285" width="680" height="90" class="box-strong"></rect>
+<text x="600" y="320" class="title center">
+Cloud Landing Zones &amp; Platform Engineering
+</text>
+<text x="600" y="342" class="subtitle center">
+Enterprise platform, paved paths &amp; scalable adoption
+</text>
 
-    <!-- Strategy -->
-    <rect x="140" y="95" width="340" height="70" class="box"></rect>
-    <text x="310" y="125" class="title center">Enterprise Architecture</text>
-    <text x="310" y="145" class="subtitle center">&amp; Target-State Design</text>
+<!-- DevSecOps -->
+<rect x="260" y="395" width="680" height="75" class="box"></rect>
+<text x="600" y="428" class="title center">
+DevSecOps &amp; Delivery Enablement
+</text>
+<text x="600" y="448" class="subtitle center">
+Integrated security, compliance &amp; automation
+</text>
 
-    <rect x="720" y="95" width="340" height="70" class="box"></rect>
-    <text x="890" y="125" class="title center">Cloud Strategy</text>
-    <text x="890" y="145" class="subtitle center">
-      Migration, Modernization &amp; Investment Alignment
-    </text>
+<!-- Feedback Band (CORRECT) -->
+<rect x="260" y="485" width="680" height="48" class="band"></rect>
+<text x="600" y="513" class="subtitle center">
+Continuous Feedback, FinOps &amp; Value Optimisation Across Delivery, Platform &amp; Governance
+</text>
 
-    <!-- Roadmap -->
-    <rect x="260" y="185" width="680" height="80" class="box"></rect>
-    <text x="600" y="218" class="title center">
-      Technology Roadmap &amp; Portfolio Alignment
-    </text>
-    <text x="600" y="238" class="subtitle center">
-      Outcome-driven planning, dependency management, value realisation &amp; cost optimisation
-    </text>
+<!-- Governance -->
+<rect x="120" y="540" width="960" height="52" class="foundation"></rect>
+<text x="600" y="570" class="subtitle center">
+Governance, Security &amp; Compliance Fabric — Embedded Across All Layers
+</text>
 
-    <!-- Platform -->
-    <rect x="260" y="285" width="680" height="90" class="box-strong"></rect>
-    <text x="600" y="320" class="title center">
-      Cloud Landing Zones &amp; Platform Engineering
-    </text>
-    <text x="600" y="342" class="subtitle center">
-      Enterprise platform, paved paths &amp; scalable cloud adoption
-    </text>
+<!-- FLOW -->
 
-    <!-- DevSecOps -->
-    <rect x="260" y="395" width="680" height="75" class="box"></rect>
-    <text x="600" y="428" class="title center">
-      DevSecOps &amp; Delivery Enablement
-    </text>
-    <text x="600" y="448" class="subtitle center">
-      Integrated security, compliance &amp; automation in delivery pipelines
-    </text>
+<!-- Outcomes → Strategy -->
+<line x1="600" y1="70" x2="310" y2="95" class="line"></line>
+<polygon points="310,95 318,91 318,99" fill="#0ea5e9" opacity="0.6"></polygon>
 
-    <!-- Feedback + FinOps -->
-    <rect x="260" y="485" width="680" height="48" class="band"></rect>
-    <text x="600" y="513" class="subtitle center">
-      Continuous Feedback, FinOps &amp; Value Optimisation Across Delivery, Platform &amp; Governance
-    </text>
+<line x1="600" y1="70" x2="890" y2="95" class="line"></line>
+<polygon points="890,95 882,91 882,99" fill="#0ea5e9" opacity="0.6"></polygon>
 
-    <!-- Governance -->
-    <rect x="120" y="540" width="960" height="52" class="foundation"></rect>
-    <text x="600" y="570" class="foundation-text center">
-      Governance, Security &amp; Compliance Fabric — Embedded Across All Layers
-    </text>
+<!-- EA ↔ Strategy -->
+<line x1="480" y1="130" x2="720" y2="130" class="line-strong"></line>
 
-    <!-- Flow -->
-    <line x1="600" y1="70" x2="310" y2="95" class="arrow"></line>
-    <line x1="600" y1="70" x2="890" y2="95" class="arrow"></line>
+<!-- Strategy → Roadmap -->
+<line x1="310" y1="165" x2="600" y2="185" class="line"></line>
+<polygon points="600,185 592,181 592,189" fill="#0ea5e9" opacity="0.6"></polygon>
 
-    <line x1="480" y1="130" x2="720" y2="130" class="line-strong"></line>
+<line x1="890" y1="165" x2="600" y2="185" class="line"></line>
+<polygon points="600,185 608,181 608,189" fill="#0ea5e9" opacity="0.6"></polygon>
 
-    <line x1="310" y1="165" x2="600" y2="185" class="arrow"></line>
-    <line x1="890" y1="165" x2="600" y2="185" class="arrow"></line>
+<!-- Downstream -->
+<line x1="600" y1="265" x2="600" y2="285" class="line"></line>
+<polygon points="600,285 596,277 604,277" fill="#0ea5e9" opacity="0.6"></polygon>
 
-    <line x1="600" y1="265" x2="600" y2="285" class="arrow"></line>
-    <line x1="600" y1="375" x2="600" y2="395" class="arrow"></line>
+<line x1="600" y1="375" x2="600" y2="395" class="line"></line>
+<polygon points="600,395 596,387 604,387" fill="#0ea5e9" opacity="0.6"></polygon>
 
-    <!-- Feedback Loop -->
-    <path d="M940 255 
-             Q1100 220 1100 140 
-             Q1100 120 1040 120" class="loop" marker-end="url(#arrowSoft)"></path>
+</g>
 
-  </g>
+<!-- Title -->
+<text x="600" y="665" class="model-title center">
+Governed Enterprise Cloud Transformation Model
+</text>
 
-  <!-- Title -->
-  <text x="600" y="665" class="model-title center">
-    Governed Enterprise Cloud Transformation Model
-  </text>
-
-  <!-- Watermark -->
-  <text x="1118" y="685" font-size="9" fill="#64748b" text-anchor="end" font-family="Georgia, serif" letter-spacing="0.08em">
-    SANTHOSH KUMAR CHANDRASHEKAR
-  </text>
-  <text x="1118" y="698" font-size="8" fill="#0ea5e9" text-anchor="end" font-family="Georgia, serif" letter-spacing="0.06em" opacity="0.6">
-    Cloud. Platform. Business Impact.
-  </text>
+<!-- Watermark -->
+<text x="1118" y="685" font-size="9" class="zt-text-secondary" text-anchor="end" font-family="Georgia, serif">
+SANTHOSH KUMAR CHANDRASHEKAR
+</text>
+<text x="1118" y="698" font-size="8" fill="#0ea5e9" text-anchor="end" font-family="Georgia, serif" opacity="0.6">
+Cloud. Platform. Business Impact.
+</text>
 
 </svg>
