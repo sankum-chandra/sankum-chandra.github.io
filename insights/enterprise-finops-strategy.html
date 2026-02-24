@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="/css/components.css" />
 <link rel="stylesheet" href="/css/utilities.css" />
 
-<title>Enterprise Cloud FinOps Strategy | Insights</title>
+<title>Enterprise Cloud FinOps Strategy</title>
 <meta name="description" content="Most enterprise FinOps programs invest in dashboards and then discover no one acts on the data. A practitioner's view on why FinOps stalls and what it takes to make it work at enterprise scale." />
 </head>
 
@@ -37,7 +37,7 @@
 <p class="subtitle">Cloud Governance | Financial Management | Enterprise Strategy</p>
 
 <figure style="margin:40px 0; text-align:center;">
-  <img src="../assets/images/cloud-finops-strategy.png"
+  <img src="../assets/images/cloud-finops-strategy.svg"
        alt="Enterprise Cloud FinOps strategy diagram showing the intersection of engineering, finance and business leadership"
        style="width:100%; border-radius:12px;"
        loading="lazy" decoding="async">
@@ -169,7 +169,7 @@ This means enterprise architects must treat cost modeling as a first-class archi
 </p>
 
 <blockquote class="signature-quote">
-The most expensive FinOps mistakes are made in architecture reviews, not in the AWS console.
+The most expensive FinOps mistakes are made in architecture reviews, not in the AWS/Azure console.
 </blockquote>
 
 <h2>Strategic Impact When It Works</h2>
@@ -197,14 +197,14 @@ The question is not "how do we reduce our cloud bill?" It is "how do we build an
 </blockquote>
 
 <p>
-<em>What has your experience been with FinOps at enterprise scale? I am particularly interested in how organizations are handling the accountability gap between central platform teams and product engineering teams who own the spend. Connect with me on <a href="https://linkedin.com/in/sankum" target="_blank" rel="noopener">LinkedIn</a> or reach out directly.</em>
+<em>What has your experience been with FinOps at enterprise scale? I am particularly interested in how organizations are handling the accountability gap between central platform teams and product engineering teams who own the spend. Connect with me on <a href="https://linkedin.com/in/sankum-chandra" target="_blank" rel="noopener">LinkedIn</a> or reach out directly.</em>
 </p>
 
 <hr style="margin:50px 0; opacity:0.2;">
 <nav id="articleNav" style="display:flex; justify-content:space-between; gap:20px;"></nav>
 
 <script>
-fetch('../data/insights.json')
+fetch('../data/articles.json')
   .then(res => res.json())
   .then(articles => {
     const currentPath = window.location.pathname.split('/').pop();
