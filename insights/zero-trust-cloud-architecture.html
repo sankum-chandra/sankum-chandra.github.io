@@ -47,7 +47,7 @@
 </figure>
 
 <p>
-Zero Trust has become a board-level mandate. Yet in most organisations I have worked with, it remains a collection of vendor tools rather than a cohesive architectural strategy. Security teams get a budget, procure a set of products, and declare the programme complete. The architecture beneath it, covering identity models, network design, workload policy, and data classification, is rarely touched.
+Zero Trust has become a board-level mandate. Yet in most organizations I have worked with, it remains a collection of vendor tools rather than a cohesive architectural strategy. Security teams get a budget, procure a set of products, and declare the program complete. The architecture beneath it, covering identity models, network design, workload policy, and data classification, is rarely touched.
 </p>
 
 <p>
@@ -55,7 +55,7 @@ That is not Zero Trust. That is Zero Trust branding applied to perimeter securit
 </p>
 
 <p>
-In cloud-native and hybrid environments, traditional perimeter-based models collapse. Networks are fluid. Workloads are distributed. Users operate from anywhere. The perimeter is no longer a firewall. It is identity. And if your identity architecture is a mess, your Zero Trust programme is built on sand.
+In cloud-native and hybrid environments, traditional perimeter-based models collapse. Networks are fluid. Workloads are distributed. Users operate from anywhere. The perimeter is no longer a firewall. It is identity. And if your identity architecture is a mess, your Zero Trust program is built on sand.
 </p>
 
 <blockquote class="signature-quote">
@@ -69,19 +69,19 @@ This is the section most Zero Trust articles skip. Let me be direct about what I
 </p>
 
 <p>
-<strong>Identity sprawl is the silent killer.</strong> Organisations attempt Zero Trust while managing three or four identity providers: a legacy on-prem Active Directory, an Azure AD tenant from a cloud migration, a separate IdP inherited from an acquisition, and a handful of SaaS applications with their own local user stores. Conditional access policies are configured against one IdP. The others are effectively uncontrolled trust boundaries. The architecture looks like Zero Trust on a diagram. In practice, there are a dozen implicit trust paths no one has mapped.
+<strong>Identity sprawl is the silent killer.</strong> Organizations attempt Zero Trust while managing three or four identity providers: a legacy on-prem Active Directory, an Azure AD tenant from a cloud migration, a separate IdP inherited from an acquisition, and a handful of SaaS applications with their own local user stores. Conditional access policies are configured against one IdP. The others are effectively uncontrolled trust boundaries. The architecture looks like Zero Trust on a diagram. In practice, there are a dozen implicit trust paths no one has mapped.
 </p>
 
 <p>
-<strong>Micro-segmentation is over-prioritised relative to identity and data controls.</strong> Network segmentation is visible and deliverable. It shows up in diagrams, satisfies auditors, and gives security teams a tangible output. So organisations invest heavily in it while data classification remains aspirational and workload identity is an afterthought. The result is a well-segmented network where applications still run with over-privileged service accounts and sensitive data is encrypted at rest but unclassified in motion.
+<strong>Micro-segmentation is over-prioritized relative to identity and data controls.</strong> Network segmentation is visible and deliverable. It shows up in diagrams, satisfies auditors, and gives security teams a tangible output. So organizations invest heavily in it while data classification remains aspirational and workload identity is an afterthought. The result is a well-segmented network where applications still run with over-privileged service accounts and sensitive data is encrypted at rest but unclassified in motion.
 </p>
 
 <p>
-<strong>Zero Trust is treated as a procurement event, not an architecture programme.</strong> The decision gets made at the CISO level, a vendor is selected, and the rollout is handed to an implementation team. Enterprise architecture is rarely in the room. What gets built is a security overlay on top of an architecture that was never designed for it. The friction this creates slows delivery, frustrates engineering teams, and eventually gets bypassed through exceptions that quietly hollow out the programme.
+<strong>Zero Trust is treated as a procurement event, not an architecture program.</strong> The decision gets made at the CISO level, a vendor is selected, and the rollout is handed to an implementation team. Enterprise architecture is rarely in the room. What gets built is a security overlay on top of an architecture that was never designed for it. The friction this creates slows delivery, frustrates engineering teams, and eventually gets bypassed through exceptions that quietly hollow out the program.
 </p>
 
 <p>
-<strong>Governance does not keep pace with the platform.</strong> Policies defined at programme kick-off become stale within months as the cloud estate evolves. New workloads are onboarded outside the Zero Trust guardrails. Exceptions accumulate. Without a governance model that treats policy as living architecture rather than a one-time configuration, Zero Trust degrades faster than it was built.
+<strong>Governance does not keep pace with the platform.</strong> Policies defined at program kick-off become stale within months as the cloud estate evolves. New workloads are onboarded outside the Zero Trust guardrails. Exceptions accumulate. Without a governance model that treats policy as living architecture rather than a one-time configuration, Zero Trust degrades faster than it was built.
 </p>
 
 <h2>Why Zero Trust Matters Now</h2>
@@ -91,7 +91,7 @@ Cloud adoption, remote work, API ecosystems, and supply chain integrations have 
 </p>
 
 <p>
-Zero Trust replaces assumed trust with explicit, continuous validation. Every request from a user, a service, or a workload must be authenticated, authorised, and validated based on context. Not once at login. Continuously.
+Zero Trust replaces assumed trust with explicit, continuous validation. Every request from a user, a service, or a workload must be authenticated, authorized, and validated based on context. Not once at login. Continuously.
 </p>
 
 <p>
@@ -117,7 +117,7 @@ Least privilege is not just a user access principle. Applications, containers, s
 </p>
 
 <p>
-Zero Trust requires treating workload identity with the same rigour as user identity. Granular, time-bound, just-in-time access models for non-human identities are where the real risk reduction lies, and where most programmes have the largest gap.
+Zero Trust requires treating workload identity with the same rigor as user identity. Granular, time-bound, just-in-time access models for non-human identities are where the real risk reduction lies, and where most programs have the largest gap.
 </p>
 
 <h3>3. Micro-Segmentation and Workload Isolation</h3>
@@ -127,17 +127,17 @@ Network segmentation limits blast radius and enforces isolation between applicat
 </p>
 
 <p>
-Prioritise segmentation in proportion to data sensitivity and blast radius risk, not in proportion to what is easiest to diagram.
+Prioritize segmentation in proportion to data sensitivity and blast radius risk, not in proportion to what is easiest to diagram.
 </p>
 
 <h3>4. Continuous Monitoring and Telemetry</h3>
 
 <p>
-Zero Trust assumes breach is possible, probable even. The architecture must be designed to detect and respond, not just prevent. Real-time logging, behavioural analytics, and anomaly detection are not add-ons; they are structural requirements.
+Zero Trust assumes breach is possible, probable even. The architecture must be designed to detect and respond, not just prevent. Real-time logging, behavioral analytics, and anomaly detection are not add-ons; they are structural requirements.
 </p>
 
 <p>
-Observability must be designed into the platform from the outset, with centralised telemetry, defined retention policies, and automated alerting aligned to the threat model. Periodic audits are insufficient. Continuous validation is the operating model.
+Observability must be designed into the platform from the outset, with centralized telemetry, defined retention policies, and automated alerting aligned to the threat model. Periodic audits are insufficient. Continuous validation is the operating model.
 </p>
 
 <h3>5. Data-Centric Protection</h3>
@@ -149,7 +149,7 @@ Security must travel with the data, not just the network it traverses. Classific
 <h2>The Enterprise Architecture Imperative</h2>
 
 <p>
-Zero Trust adoption cannot be delegated solely to security teams, and it cannot succeed as a technology programme managed independently of enterprise architecture. The reason most implementations fall short is that they treat Zero Trust as a security layer to be added rather than an architectural principle to be embedded.
+Zero Trust adoption cannot be delegated solely to security teams, and it cannot succeed as a technology program managed independently of enterprise architecture. The reason most implementations fall short is that they treat Zero Trust as a security layer to be added rather than an architectural principle to be embedded.
 </p>
 
 <p>
@@ -178,17 +178,17 @@ When implemented as architecture rather than tooling, Zero Trust creates platfor
 </p>
 
 <p>
-Security maturity built on architectural foundations becomes a competitive advantage and an accelerant for the digital programmes that depend on it.
+Security maturity built on architectural foundations becomes a competitive advantage and an accelerant for the digital programs that depend on it.
 </p>
 
 <h2>Final Thoughts</h2>
 
 <p>
-Zero Trust in the cloud is achievable. But it requires starting with an honest assessment of where the real gaps are, which are almost never in tooling, and almost always in identity architecture, workload governance, and the organisational habit of treating security as someone else's problem.
+Zero Trust in the cloud is achievable. But it requires starting with an honest assessment of where the real gaps are, which are almost never in tooling, and almost always in identity architecture, workload governance, and the organizational habit of treating security as someone else's problem.
 </p>
 
 <p>
-The organisations that get this right do not buy their way to Zero Trust. They architect their way there, deliberately and systematically, with enterprise architecture playing a central role from day one.
+The organizations that get this right do not buy their way to Zero Trust. They architect their way there, deliberately and systematically, with enterprise architecture playing a central role from day one.
 </p>
 
 <blockquote class="signature-quote">
@@ -196,7 +196,7 @@ The question worth asking is not "do we have Zero Trust tools?" It is "does our 
 </blockquote>
 
 <p>
-<em>What is your experience with Zero Trust in enterprise environments? I am particularly interested in how organisations are handling identity consolidation and workload identity governance, as these are the two areas where I consistently see the largest gap between intent and implementation. Connect with me on <a href="https://linkedin.com/in/sankum" target="_blank" rel="noopener">LinkedIn</a> or reach out directly.</em>
+<em>What is your experience with Zero Trust in enterprise environments? I am particularly interested in how organizations are handling identity consolidation and workload identity governance, as these are the two areas where I consistently see the largest gap between intent and implementation. Connect with me on <a href="https://linkedin.com/in/sankum" target="_blank" rel="noopener">LinkedIn</a> or reach out directly.</em>
 </p>
 
 <hr style="margin:50px 0; opacity:0.2;">
