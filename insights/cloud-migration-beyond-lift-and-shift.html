@@ -37,7 +37,7 @@
 <p class="subtitle">Enterprise Strategy | Cloud Architecture | Modernization</p>
 
 <figure style="margin:40px 0; text-align:center;">
-  <img src="../assets/images/cloud-beyond-lift-shift.png"
+  <img src="../assets/images/cloud-migration-beyond-lift-and-shift.svg"
        alt="Cloud migration modernization strategy diagram showing the journey from lift-and-shift to cloud-native transformation"
        style="width:100%; border-radius:12px;"
        loading="lazy" decoding="async">
@@ -177,8 +177,11 @@ The question is not "are we in the cloud?" It is "are we building the platform t
 <hr style="margin:50px 0; opacity:0.2;">
 <nav id="articleNav" style="display:flex; justify-content:space-between; gap:20px;"></nav>
 
+<hr style="margin:50px 0; opacity:0.2;">
+<nav id="articleNav" style="display:flex; justify-content:space-between; gap:20px;"></nav>
+
 <script>
-fetch('../data/insights.json')
+fetch('../data/articles.json')
   .then(res => res.json())
   .then(articles => {
     const currentPath = window.location.pathname.split('/').pop();
