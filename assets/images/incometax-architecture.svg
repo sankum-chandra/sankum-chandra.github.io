@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="archsvg" viewBox="0 0 1100 1500" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <style>
+      /* ── LIGHT (default) ── */
+      #archsvg .bg-canvas      { fill: #f0f9ff; }
+      #archsvg .bg-card        { fill: #ffffff; }
+      #archsvg .bg-teal-tint   { fill: #f0fdfa; }
+      #archsvg .bg-blue-tint   { fill: #eff6ff; }
+      #archsvg .bg-purple-tint { fill: #f5f3ff; }
+      #archsvg .bg-red-tint    { fill: #fff1f2; }
+      #archsvg .bg-orange-tint { fill: #fff7ed; }
+      #archsvg .bg-green-tint  { fill: #f0fdf4; }
+      #archsvg .bg-gray-tint   { fill: #f8fafc; }
+      #archsvg .bg-amber-tint  { fill: #fffbeb; }
+      #archsvg .text-primary   { fill: #0f172a; }
+      #archsvg .text-secondary { fill: #475569; }
+      #archsvg .text-muted     { fill: #94a3b8; }
+      #archsvg .text-white     { fill: #ffffff; }
+      #archsvg .sep-line       { stroke: #e2e8f0; }
+
+      /* ── DARK (when SVG has class "svg-dark") ── */
+      #archsvg.svg-dark .bg-canvas      { fill: #0f172a; }
+      #archsvg.svg-dark .bg-card        { fill: #1e293b; }
+      #archsvg.svg-dark .bg-teal-tint   { fill: #134e4a; }
+      #archsvg.svg-dark .bg-blue-tint   { fill: #1e3a5f; }
+      #archsvg.svg-dark .bg-purple-tint { fill: #2e1065; }
+      #archsvg.svg-dark .bg-red-tint    { fill: #450a0a; }
+      #archsvg.svg-dark .bg-orange-tint { fill: #431407; }
+      #archsvg.svg-dark .bg-green-tint  { fill: #052e16; }
+      #archsvg.svg-dark .bg-gray-tint   { fill: #1e293b; }
+      #archsvg.svg-dark .bg-amber-tint  { fill: #451a03; }
+      #archsvg.svg-dark .text-primary   { fill: #f1f5f9; }
+      #archsvg.svg-dark .text-secondary { fill: #94a3b8; }
+      #archsvg.svg-dark .text-muted     { fill: #475569; }
+      #archsvg.svg-dark .text-white     { fill: #ffffff; }
+      #archsvg.svg-dark .sep-line       { stroke: #334155; }
+    </style>
+
+    <filter id="sh" x="-5%" y="-5%" width="115%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#00000020"/>
+    </filter>
+    <linearGradient id="hGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e3a5f"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ══════════════════════════════════════
+       THEME SYNC SCRIPT
+       Watches html.theme-dark / theme-light
+       and mirrors it onto the SVG element.
+  ══════════════════════════════════════ -->
+  <script><![CDATA[
+    (function () {
+      var svg = document.getElementById('archsvg');
+      if (!svg) return;
+
+      function sync() {
+        var isDark = document.documentElement.classList.contains('theme-dark');
+        if (isDark) {
+          svg.classList.add('svg-dark');
+        } else {
+          svg.classList.remove('svg-dark');
+        }
+      }
+
+      // Run immediately
+      sync();
+
+      // Watch for class changes on <html> (catches toggle button clicks)
+      var observer = new MutationObserver(sync);
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+    })();
+  ]]></script>
+
+  <!-- ── CANVAS ── -->
+  <rect width="1100" height="1500" class="bg-canvas"/>
+
+  <!-- ══════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════ -->
+  <rect x="30" y="20" width="1040" height="90" rx="14" fill="url(#hGrad)" filter="url(#sh)"/>
+  <text x="550" y="60"  text-anchor="middle" font-size="21" font-weight="800" class="text-white">Income Tax e-Filing Portal — Technical Architecture</text>
+  <text x="550" y="84"  text-anchor="middle" font-size="12" fill="#ffffffaa">incometax.gov.in  |  Platform, Stack, Integrations and Layers  |  Research</text>
+
+  <!-- ══════════════════════════════════════
+       LAYER 1: USER TYPES
+  ══════════════════════════════════════ -->
+  <rect x="30" y="130" width="680" height="130" rx="12" class="bg-card" stroke="#0d9488" stroke-width="2" filter="url(#sh)"/>
+  <rect x="30" y="130" width="680" height="34"  rx="12" fill="#0d9488"/>
+  <rect x="30" y="150" width="680" height="14"        fill="#0d9488"/>
+  <text x="50" y="154" font-size="13" font-weight="700" class="text-white">USER TYPES</text>
+
+  <rect x="44"  y="176" width="148" height="68" rx="8" class="bg-teal-tint" stroke="#0d9488" stroke-width="1.5"/>
+  <text x="118" y="202" text-anchor="middle" font-size="12" font-weight="700" fill="#0d9488">Individual / HUF</text>
+  <text x="118" y="218" text-anchor="middle" font-size="10" class="text-secondary">Salaried, NRI, Senior</text>
+
+  <rect x="204" y="176" width="148" height="68" rx="8" class="bg-teal-tint" stroke="#0d9488" stroke-width="1.5"/>
+  <text x="278" y="202" text-anchor="middle" font-size="12" font-weight="700" fill="#0d9488">Company</text>
+  <text x="278" y="218" text-anchor="middle" font-size="10" class="text-secondary">Domestic / Foreign</text>
+
+  <rect x="364" y="176" width="148" height="68" rx="8" class="bg-teal-tint" stroke="#0d9488" stroke-width="1.5"/>
+  <text x="438" y="202" text-anchor="middle" font-size="12" font-weight="700" fill="#0d9488">CA / Tax Pro</text>
+  <text x="438" y="218" text-anchor="middle" font-size="10" class="text-secondary">DSC-based login</text>
+
+  <rect x="524" y="176" width="174" height="68" rx="8" class="bg-teal-tint" stroke="#0d9488" stroke-width="1.5"/>
+  <text x="611" y="202" text-anchor="middle" font-size="12" font-weight="700" fill="#0d9488">Tax Deductor</text>
+  <text x="611" y="218" text-anchor="middle" font-size="10" class="text-secondary">TDS / TCS filers</text>
+
+  <!-- Arrow 1 -->
+  <line x1="370" y1="260" x2="370" y2="296" stroke="#2563eb" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="363,292 377,292 370,302" fill="#2563eb"/>
+  <text x="390" y="283" font-size="10" class="text-secondary" font-style="italic">HTTPS / Browser / Mobile App</text>
+
+  <!-- ══════════════════════════════════════
+       LAYER 2: PRESENTATION
+  ══════════════════════════════════════ -->
+  <rect x="30" y="302" width="680" height="145" rx="12" class="bg-card" stroke="#2563eb" stroke-width="2" filter="url(#sh)"/>
+  <rect x="30" y="302" width="680" height="34"  rx="12" fill="#2563eb"/>
+  <rect x="30" y="322" width="680" height="14"        fill="#2563eb"/>
+  <text x="50" y="326" font-size="13" font-weight="700" class="text-white">PRESENTATION LAYER (Frontend)</text>
+
+  <rect x="44"  y="350" width="200" height="82" rx="8" class="bg-blue-tint" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="144" y="375" text-anchor="middle" font-size="12" font-weight="700" fill="#2563eb">Drupal CMS</text>
+  <text x="144" y="393" text-anchor="middle" font-size="10" class="text-secondary">PHP 8 | Twig Templates</text>
+  <text x="144" y="408" text-anchor="middle" font-size="9"  class="text-muted">incometax.gov.in/iec/foportal/</text>
+  <text x="144" y="422" text-anchor="middle" font-size="9"  class="text-muted">14 Indian languages</text>
+
+  <rect x="258" y="350" width="200" height="82" rx="8" class="bg-purple-tint" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="358" y="375" text-anchor="middle" font-size="12" font-weight="700" fill="#7c3aed">Angular SPA</text>
+  <text x="358" y="393" text-anchor="middle" font-size="10" class="text-secondary">TypeScript | hash routing</text>
+  <text x="358" y="408" text-anchor="middle" font-size="9"  class="text-muted">eportal.incometax.gov.in</text>
+  <text x="358" y="422" text-anchor="middle" font-size="9"  class="text-muted">Infosys-built, 2021</text>
+
+  <rect x="472" y="350" width="224" height="82" rx="8" class="bg-red-tint" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="584" y="375" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">Auth Layer</text>
+  <text x="584" y="393" text-anchor="middle" font-size="10" class="text-secondary">OTP | Aadhaar | DSC</text>
+  <text x="584" y="408" text-anchor="middle" font-size="9"  class="text-muted">Net Banking | PAN verify</text>
+  <text x="584" y="422" text-anchor="middle" font-size="9"  class="text-muted">MFA for sensitive ops</text>
+
+  <!-- Arrow 2 -->
+  <line x1="370" y1="447" x2="370" y2="483" stroke="#2563eb" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="363,479 377,479 370,489" fill="#2563eb"/>
+  <text x="390" y="470" font-size="10" class="text-secondary" font-style="italic">REST API | JSON | HTTPS</text>
+
+  <!-- ══════════════════════════════════════
+       LAYER 3: APPLICATION
+  ══════════════════════════════════════ -->
+  <rect x="30" y="489" width="680" height="158" rx="12" class="bg-card" stroke="#ea580c" stroke-width="2" filter="url(#sh)"/>
+  <rect x="30" y="489" width="680" height="34"  rx="12" fill="#ea580c"/>
+  <rect x="30" y="509" width="680" height="14"        fill="#ea580c"/>
+  <text x="50" y="513" font-size="13" font-weight="700" class="text-white">APPLICATION LAYER (Backend Microservices | Java / Spring Boot)</text>
+
+  <rect x="44"  y="537" width="118" height="95" rx="8" class="bg-orange-tint" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="103" y="562" text-anchor="middle" font-size="11" font-weight="700" fill="#ea580c">API Gateway</text>
+  <text x="103" y="578" text-anchor="middle" font-size="9"  class="text-secondary">Spring Boot</text>
+  <text x="103" y="592" text-anchor="middle" font-size="9"  class="text-secondary">Java | REST | JWT</text>
+
+  <rect x="174" y="537" width="118" height="95" rx="8" class="bg-orange-tint" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="233" y="562" text-anchor="middle" font-size="11" font-weight="700" fill="#ea580c">ITR Processing</text>
+  <text x="233" y="578" text-anchor="middle" font-size="9"  class="text-secondary">Returns filing</text>
+  <text x="233" y="592" text-anchor="middle" font-size="9"  class="text-secondary">Validation engine</text>
+
+  <rect x="304" y="537" width="118" height="95" rx="8" class="bg-orange-tint" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="363" y="562" text-anchor="middle" font-size="11" font-weight="700" fill="#ea580c">e-Pay / Refunds</text>
+  <text x="363" y="578" text-anchor="middle" font-size="9"  class="text-secondary">Challan 280</text>
+  <text x="363" y="592" text-anchor="middle" font-size="9"  class="text-secondary">Payment service</text>
+
+  <rect x="434" y="537" width="118" height="95" rx="8" class="bg-orange-tint" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="493" y="562" text-anchor="middle" font-size="11" font-weight="700" fill="#ea580c">AIS / 26AS</text>
+  <text x="493" y="578" text-anchor="middle" font-size="9"  class="text-secondary">Annual Info Stmt</text>
+  <text x="493" y="592" text-anchor="middle" font-size="9"  class="text-secondary">SFT | TDS data</text>
+
+  <rect x="564" y="537" width="132" height="95" rx="8" class="bg-orange-tint" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="630" y="562" text-anchor="middle" font-size="11" font-weight="700" fill="#ea580c">Grievance Engine</text>
+  <text x="630" y="578" text-anchor="middle" font-size="9"  class="text-secondary">Notices</text>
+  <text x="630" y="592" text-anchor="middle" font-size="9"  class="text-secondary">e-Proceedings</text>
+
+  <!-- Arrow 3 -->
+  <line x1="370" y1="647" x2="370" y2="683" stroke="#2563eb" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="363,679 377,679 370,689" fill="#2563eb"/>
+  <text x="390" y="670" font-size="10" class="text-secondary" font-style="italic">JDBC / ORM / Encrypted Queries</text>
+
+  <!-- ══════════════════════════════════════
+       LAYER 4: DATA
+  ══════════════════════════════════════ -->
+  <rect x="30" y="689" width="680" height="140" rx="12" class="bg-card" stroke="#16a34a" stroke-width="2" filter="url(#sh)"/>
+  <rect x="30" y="689" width="680" height="34"  rx="12" fill="#16a34a"/>
+  <rect x="30" y="709" width="680" height="14"        fill="#16a34a"/>
+  <text x="50" y="713" font-size="13" font-weight="700" class="text-white">DATA LAYER (Persistence)</text>
+
+  <rect x="44"  y="736" width="148" height="78" rx="8" class="bg-green-tint" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="118" y="762" text-anchor="middle" font-size="12" font-weight="700" fill="#16a34a">Oracle DB</text>
+  <text x="118" y="778" text-anchor="middle" font-size="10" class="text-secondary">Core Tax Records</text>
+  <text x="118" y="792" text-anchor="middle" font-size="9"  class="text-muted">PAN | ITR | Payments</text>
+
+  <rect x="204" y="736" width="148" height="78" rx="8" class="bg-green-tint" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="278" y="762" text-anchor="middle" font-size="12" font-weight="700" fill="#16a34a">ITR Archive</text>
+  <text x="278" y="778" text-anchor="middle" font-size="10" class="text-secondary">Filed Returns Store</text>
+  <text x="278" y="792" text-anchor="middle" font-size="9"  class="text-muted">All AYs history</text>
+
+  <rect x="364" y="736" width="148" height="78" rx="8" class="bg-green-tint" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="438" y="762" text-anchor="middle" font-size="12" font-weight="700" fill="#16a34a">AIS Data Store</text>
+  <text x="438" y="778" text-anchor="middle" font-size="10" class="text-secondary">SFT | TDS | Cap Gains</text>
+  <text x="438" y="792" text-anchor="middle" font-size="9"  class="text-muted">Annual Info Stmt</text>
+
+  <rect x="524" y="736" width="174" height="78" rx="8" class="bg-green-tint" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="611" y="762" text-anchor="middle" font-size="12" font-weight="700" fill="#16a34a">Audit Logs</text>
+  <text x="611" y="778" text-anchor="middle" font-size="10" class="text-secondary">Immutable Event Trail</text>
+  <text x="611" y="792" text-anchor="middle" font-size="9"  class="text-muted">Compliance | CERT-In</text>
+
+  <!-- Arrow 4 -->
+  <line x1="370" y1="829" x2="370" y2="865" stroke="#2563eb" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="363,861 377,861 370,871" fill="#2563eb"/>
+  <text x="390" y="852" font-size="10" class="text-secondary" font-style="italic">NIC Managed Infrastructure</text>
+
+  <!-- ══════════════════════════════════════
+       LAYER 5: INFRASTRUCTURE
+  ══════════════════════════════════════ -->
+  <rect x="30" y="871" width="680" height="140" rx="12" class="bg-card" stroke="#64748b" stroke-width="2" filter="url(#sh)"/>
+  <rect x="30" y="871" width="680" height="34"  rx="12" fill="#475569"/>
+  <rect x="30" y="891" width="680" height="14"        fill="#475569"/>
+  <text x="50" y="895" font-size="13" font-weight="700" class="text-white">INFRASTRUCTURE — NIC / GI Cloud (MeghRaj)</text>
+
+  <rect x="44"  y="918" width="148" height="78" rx="8" class="bg-gray-tint" stroke="#64748b" stroke-width="1.5"/>
+  <text x="118" y="944" text-anchor="middle" font-size="12" font-weight="700" fill="#64748b">NIC / MeghRaj</text>
+  <text x="118" y="960" text-anchor="middle" font-size="10" class="text-secondary">GovCloud | India</text>
+  <text x="118" y="974" text-anchor="middle" font-size="9"  class="text-muted">Data residency: IN</text>
+
+  <rect x="204" y="918" width="148" height="78" rx="8" class="bg-gray-tint" stroke="#64748b" stroke-width="1.5"/>
+  <text x="278" y="944" text-anchor="middle" font-size="12" font-weight="700" fill="#64748b">CDN / Load Balancer</text>
+  <text x="278" y="960" text-anchor="middle" font-size="10" class="text-secondary">Static Asset Delivery</text>
+  <text x="278" y="974" text-anchor="middle" font-size="9"  class="text-muted">High availability</text>
+
+  <rect x="364" y="918" width="148" height="78" rx="8" class="bg-gray-tint" stroke="#64748b" stroke-width="1.5"/>
+  <text x="438" y="944" text-anchor="middle" font-size="12" font-weight="700" fill="#64748b">WAF / Firewall</text>
+  <text x="438" y="960" text-anchor="middle" font-size="10" class="text-secondary">CERT-In Compliant</text>
+  <text x="438" y="974" text-anchor="middle" font-size="9"  class="text-muted">DDoS protection</text>
+
+  <rect x="524" y="918" width="174" height="78" rx="8" class="bg-gray-tint" stroke="#64748b" stroke-width="1.5"/>
+  <text x="611" y="944" text-anchor="middle" font-size="12" font-weight="700" fill="#64748b">SSL Termination</text>
+  <text x="611" y="960" text-anchor="middle" font-size="10" class="text-secondary">TLS 1.2+ enforced</text>
+  <text x="611" y="974" text-anchor="middle" font-size="9"  class="text-muted">HTTPS mandatory</text>
+
+  <!-- ══════════════════════════════════════
+       RIGHT: EXTERNAL INTEGRATIONS
+  ══════════════════════════════════════ -->
+  <rect x="730" y="130" width="340" height="375" rx="12" class="bg-card" stroke="#d97706" stroke-width="2" filter="url(#sh)"/>
+  <rect x="730" y="130" width="340" height="34"  rx="12" fill="#d97706"/>
+  <rect x="730" y="150" width="340" height="14"        fill="#d97706"/>
+  <text x="750" y="154" font-size="13" font-weight="700" class="text-white">EXTERNAL INTEGRATIONS</text>
+
+  <rect x="744" y="178" width="312" height="70" rx="8" class="bg-amber-tint" stroke="#d97706" stroke-width="1.5"/>
+  <text x="756" y="200" font-size="12" font-weight="700" class="text-primary">NSDL / Protean</text>
+  <text x="756" y="218" font-size="10" class="text-secondary">PAN issuance, TAN management</text>
+  <text x="756" y="234" font-size="10" class="text-secondary">Real-time PAN verification API</text>
+
+  <rect x="744" y="258" width="312" height="70" rx="8" class="bg-amber-tint" stroke="#d97706" stroke-width="1.5"/>
+  <text x="756" y="280" font-size="12" font-weight="700" class="text-primary">UIDAI / Aadhaar</text>
+  <text x="756" y="298" font-size="10" class="text-secondary">e-KYC, OTP Auth, Instant e-PAN</text>
+  <text x="756" y="314" font-size="10" class="text-secondary">Aadhaar linking and ITR e-Verify</text>
+
+  <rect x="744" y="338" width="312" height="70" rx="8" class="bg-amber-tint" stroke="#d97706" stroke-width="1.5"/>
+  <text x="756" y="360" font-size="12" font-weight="700" class="text-primary">RBI Approved Banks</text>
+  <text x="756" y="378" font-size="10" class="text-secondary">e-Pay Tax | Challan 280 payments</text>
+  <text x="756" y="394" font-size="10" class="text-secondary">Refund credits | NPCI / NEFT / IMPS</text>
+
+  <rect x="744" y="418" width="312" height="70" rx="8" class="bg-amber-tint" stroke="#d97706" stroke-width="1.5"/>
+  <text x="756" y="440" font-size="12" font-weight="700" class="text-primary">TRACES (TDS CPC)</text>
+  <text x="756" y="458" font-size="10" class="text-secondary">TDS/TCS filing | Form 26AS | AIS data</text>
+  <text x="756" y="474" font-size="10" class="text-secondary">CSI download | tdscpc.gov.in API</text>
+
+  <!-- ══════════════════════════════════════
+       RIGHT: TECH STACK
+  ══════════════════════════════════════ -->
+  <rect x="730" y="525" width="340" height="310" rx="12" class="bg-card" stroke="#334155" stroke-width="2" filter="url(#sh)"/>
+  <rect x="730" y="525" width="340" height="34"  rx="12" fill="#334155"/>
+  <rect x="730" y="545" width="340" height="14"        fill="#334155"/>
+  <text x="750" y="549" font-size="13" font-weight="700" class="text-white">TECH STACK SUMMARY</text>
+
+  <rect x="744" y="570" width="76" height="22" rx="4" class="bg-blue-tint"/>
+  <text x="782" y="586" text-anchor="middle" font-size="10" font-weight="700" fill="#2563eb">CMS</text>
+  <text x="930" y="586" text-anchor="middle" font-size="11" class="text-primary">Drupal 9/10 (PHP 8)</text>
+  <line x1="744" y1="597" x2="1056" y2="597" class="sep-line" stroke-width="1" fill="none"/>
+
+  <rect x="744" y="603" width="76" height="22" rx="4" class="bg-purple-tint"/>
+  <text x="782" y="619" text-anchor="middle" font-size="10" font-weight="700" fill="#7c3aed">SPA</text>
+  <text x="930" y="619" text-anchor="middle" font-size="11" class="text-primary">Angular / TypeScript</text>
+  <line x1="744" y1="630" x2="1056" y2="630" class="sep-line" stroke-width="1" fill="none"/>
+
+  <rect x="744" y="636" width="76" height="22" rx="4" class="bg-orange-tint"/>
+  <text x="782" y="652" text-anchor="middle" font-size="10" font-weight="700" fill="#ea580c">Backend</text>
+  <text x="930" y="652" text-anchor="middle" font-size="11" class="text-primary">Java / Spring Boot</text>
+  <line x1="744" y1="663" x2="1056" y2="663" class="sep-line" stroke-width="1" fill="none"/>
+
+  <rect x="744" y="669" width="76" height="22" rx="4" class="bg-green-tint"/>
+  <text x="782" y="685" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">Database</text>
+  <text x="930" y="685" text-anchor="middle" font-size="11" class="text-primary">Oracle DB</text>
+  <line x1="744" y1="696" x2="1056" y2="696" class="sep-line" stroke-width="1" fill="none"/>
+
+  <rect x="744" y="702" width="76" height="22" rx="4" class="bg-gray-tint"/>
+  <text x="782" y="718" text-anchor="middle" font-size="10" font-weight="700" fill="#64748b">Hosting</text>
+  <text x="930" y="718" text-anchor="middle" font-size="11" class="text-primary">NIC / GI Cloud (MeghRaj)</text>
+  <line x1="744" y1="729" x2="1056" y2="729" class="sep-line" stroke-width="1" fill="none"/>
+
+  <rect x="744" y="735" width="76" height="22" rx="4" class="bg-red-tint"/>
+  <text x="782" y="751" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">Auth</text>
+  <text x="930" y="751" text-anchor="middle" font-size="11" class="text-primary">OTP + Aadhaar + DSC</text>
+  <line x1="744" y1="762" x2="1056" y2="762" class="sep-line" stroke-width="1" fill="none"/>
+
+  <rect x="744" y="768" width="76" height="22" rx="4" class="bg-teal-tint"/>
+  <text x="782" y="784" text-anchor="middle" font-size="10" font-weight="700" fill="#0d9488">API</text>
+  <text x="930" y="784" text-anchor="middle" font-size="11" class="text-primary">REST / JSON / HTTPS</text>
+  <line x1="744" y1="795" x2="1056" y2="795" class="sep-line" stroke-width="1" fill="none"/>
+
+  <rect x="744" y="801" width="76" height="22" rx="4" class="bg-amber-tint"/>
+  <text x="782" y="817" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">Vendor</text>
+  <text x="930" y="817" text-anchor="middle" font-size="11" class="text-primary">Infosys (2021 revamp)</text>
+
+  <!-- ══════════════════════════════════════
+       RIGHT: ARCHITECTURE PATTERN
+  ══════════════════════════════════════ -->
+  <rect x="730" y="855" width="340" height="156" rx="12" class="bg-card" stroke="#2563eb" stroke-width="2" filter="url(#sh)"/>
+  <rect x="730" y="855" width="340" height="34"  rx="12" fill="#2563eb"/>
+  <rect x="730" y="875" width="340" height="14"        fill="#2563eb"/>
+  <text x="750" y="879" font-size="13" font-weight="700" class="text-white">ARCHITECTURE PATTERN</text>
+  <text x="750" y="908" font-size="11" font-weight="700" class="text-primary">Decoupled / Headless Architecture</text>
+  <text x="750" y="928" font-size="10" class="text-secondary">Drupal CMS = public informational layer (PHP SSR)</text>
+  <text x="750" y="945" font-size="10" class="text-secondary">Angular SPA = authenticated transactional layer</text>
+  <text x="750" y="962" font-size="10" class="text-secondary">Both share domain, operate independently</text>
+  <text x="750" y="979" font-size="10" class="text-secondary">Microservices backend exposed via REST APIs</text>
+  <text x="750" y="996" font-size="10" class="text-secondary">External systems via secure government APIs</text>
+
+  <!-- ══════════════════════════════════════
+       BOTTOM: DATA FLOW
+  ══════════════════════════════════════ -->
+  <rect x="30" y="1035" width="1040" height="185" rx="12" class="bg-card" stroke="#1e3a5f" stroke-width="2" filter="url(#sh)"/>
+  <rect x="30" y="1035" width="1040" height="34"  rx="12" fill="#1e3a5f"/>
+  <rect x="30" y="1055" width="1040" height="14"        fill="#1e3a5f"/>
+  <text x="50" y="1059" font-size="13" font-weight="700" class="text-white">END-TO-END DATA FLOW — Filing an ITR</text>
+
+  <rect x="50"  y="1083" width="140" height="118" rx="8" class="bg-teal-tint"   stroke="#0d9488" stroke-width="1.5"/>
+  <text x="120" y="1108" text-anchor="middle" font-size="11" font-weight="700" fill="#0d9488">1. User Visits</text>
+  <text x="120" y="1126" text-anchor="middle" font-size="9"  class="text-secondary">incometax.gov.in</text>
+  <text x="120" y="1142" text-anchor="middle" font-size="9"  class="text-secondary">Drupal serves</text>
+  <text x="120" y="1158" text-anchor="middle" font-size="9"  class="text-secondary">landing/info page</text>
+  <text x="120" y="1174" text-anchor="middle" font-size="9"  class="text-secondary">Public access</text>
+
+  <text x="210" y="1148" text-anchor="middle" font-size="20" fill="#2563eb">&#8594;</text>
+
+  <rect x="228" y="1083" width="140" height="118" rx="8" class="bg-red-tint"    stroke="#dc2626" stroke-width="1.5"/>
+  <text x="298" y="1108" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">2. Authenticate</text>
+  <text x="298" y="1126" text-anchor="middle" font-size="9"  class="text-secondary">OTP / Aadhaar OTP</text>
+  <text x="298" y="1142" text-anchor="middle" font-size="9"  class="text-secondary">Redirected to</text>
+  <text x="298" y="1158" text-anchor="middle" font-size="9"  class="text-secondary">Angular SPA at</text>
+  <text x="298" y="1174" text-anchor="middle" font-size="9"  class="text-secondary">eportal domain</text>
+
+  <text x="388" y="1148" text-anchor="middle" font-size="20" fill="#2563eb">&#8594;</text>
+
+  <rect x="406" y="1083" width="140" height="118" rx="8" class="bg-purple-tint" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="476" y="1108" text-anchor="middle" font-size="11" font-weight="700" fill="#7c3aed">3. File ITR</text>
+  <text x="476" y="1126" text-anchor="middle" font-size="9"  class="text-secondary">Angular SPA</text>
+  <text x="476" y="1142" text-anchor="middle" font-size="9"  class="text-secondary">calls REST API</text>
+  <text x="476" y="1158" text-anchor="middle" font-size="9"  class="text-secondary">Spring Boot svc</text>
+  <text x="476" y="1174" text-anchor="middle" font-size="9"  class="text-secondary">validates return</text>
+
+  <text x="566" y="1148" text-anchor="middle" font-size="20" fill="#2563eb">&#8594;</text>
+
+  <rect x="584" y="1083" width="140" height="118" rx="8" class="bg-green-tint"  stroke="#16a34a" stroke-width="1.5"/>
+  <text x="654" y="1108" text-anchor="middle" font-size="11" font-weight="700" fill="#16a34a">4. Persist</text>
+  <text x="654" y="1126" text-anchor="middle" font-size="9"  class="text-secondary">Oracle DB stores</text>
+  <text x="654" y="1142" text-anchor="middle" font-size="9"  class="text-secondary">ITR + AIS data</text>
+  <text x="654" y="1158" text-anchor="middle" font-size="9"  class="text-secondary">Audit logged</text>
+  <text x="654" y="1174" text-anchor="middle" font-size="9"  class="text-secondary">NIC infra</text>
+
+  <text x="744" y="1148" text-anchor="middle" font-size="20" fill="#2563eb">&#8594;</text>
+
+  <rect x="762" y="1083" width="140" height="118" rx="8" class="bg-orange-tint" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="832" y="1108" text-anchor="middle" font-size="11" font-weight="700" fill="#ea580c">5. CPC Process</text>
+  <text x="832" y="1126" text-anchor="middle" font-size="9"  class="text-secondary">ITR validated</text>
+  <text x="832" y="1142" text-anchor="middle" font-size="9"  class="text-secondary">TRACES synced</text>
+  <text x="832" y="1158" text-anchor="middle" font-size="9"  class="text-secondary">26AS matched</text>
+  <text x="832" y="1174" text-anchor="middle" font-size="9"  class="text-secondary">Refund triggered</text>
+
+  <text x="922" y="1148" text-anchor="middle" font-size="20" fill="#2563eb">&#8594;</text>
+
+  <rect x="940" y="1083" width="110" height="118" rx="8" class="bg-amber-tint"  stroke="#d97706" stroke-width="1.5"/>
+  <text x="995" y="1108" text-anchor="middle" font-size="11" font-weight="700" fill="#d97706">6. Refund</text>
+  <text x="995" y="1126" text-anchor="middle" font-size="9"  class="text-secondary">Bank credit</text>
+  <text x="995" y="1142" text-anchor="middle" font-size="9"  class="text-secondary">via NPCI</text>
+  <text x="995" y="1158" text-anchor="middle" font-size="9"  class="text-secondary">NEFT / IMPS</text>
+  <text x="995" y="1174" text-anchor="middle" font-size="9"  class="text-secondary">to taxpayer</text>
+
+  <!-- Footer -->
+  <text x="550" y="1248" text-anchor="middle" font-size="10" class="text-muted">Architecture inferred from publicly observable signals | For research purposes only | incometax.gov.in</text>
+
+</svg>
