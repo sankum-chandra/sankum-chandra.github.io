@@ -1,0 +1,29 @@
+Hi Santhosh.
+
+I might not be able to give a complete list of issues, on short notice, but, these are some I’d like you to mention:
+
+CAQ:
+1)	For the CAQ process, there are many questions we have to answer and ultimately, I question the value of many of them.  Could we streamline the questions to only the ones that are needed for triage purposes (and leave the Candidate Architecture to capture additional information)
+2)	The process for filling in the CAQ, the automations where it gets uploaded to the teams site (which is extremely slow), then we have to copy response files and stuff into LeanIX etc, is way too laborious and requires following a guide to do it right (if you don’t do it frequently).   Would really like this to be streamlined to make it super easy for us PA’s to fill out (not needing us to keep all these formal pieces, save responses, save emails and upload them to LeanIX.
+CA:
+       1)    The initiative overview seems like a repeat of the CAQ.  Perhaps a link to the CAQ artifact / triage (if we continue to build it) would be sufficient (instead of rewriting it again in the CA).
+2)	The business capability model and journey maps are sourced from where? Are these models accepted across the org?  Do they align to what we have in LeanIX?  Can we ensure we have an authoritative source of that (like the one in LeanIX)?
+3)	The CA could benefit from being an independent artifact from the E2E artifact.  Currently, the SA’s get confused about which sections to fill out when, etc,
+4)	In the Current State, we ask for a System Context, Logical Architecture, Physical Architecture, Information Model, Logical DataFlow, Physical DataFlow.  Doesn’t feel like we need this much detail in a candidate architecture.  Feels like we could reduce this to two maybe three slides.  Would also benefit if we provide an example of the level of detail required for CA purposes (vs. what is needed later in the E2E)
+5)	In the Cand Arch section, the Solution Characteristics, does anybody ever really scrutinize that and provide feedback?  Isn’t most of this already answered in the CAQ?  Why repeat, just link to it instead?
+6)	In Cand Arch section, do we need separate Customer Journey and Employee Journey slides?  Do we need to document journeys if they do not impact architecture design?  If required, can we just have a Journeys Slide (and the journeys can describe if it is customer or employee related)
+7)	Same as point 4) why so many different perspectives for Cand Arch.  Can we reduce to 1 or 2?
+
+E2E Sketch:
+1)	Feels like we’re light on these sections (where there is more detail and refinement)
+
+Supporting Information:
+1)	Haven’t really seen the APIs / Events section used effectively to date on most CA-E2E docs.  Perhaps it isn’t worth capturing this detail here (and is instead reflected in solution architecture)
+2)	NFR’s section should probably be replaced with NFR framework to ensure proper alignment
+
+Centralized location with self-care ability:
+All aspects of CA/E2E (being in Powerpoint) likely require the use of Sharepoint.  I constantly don’t have access to the documents that I’m reviewing and have to request.  Often, I don’t get that right away which I then don’t get back to.  Can this process please be done in a centralized tool / platform where this information is entered once and maintained in the same place (and can be evolved there as well).  Chasing CA’s/E2E’s in people personal onedrive’s or groups team oriented sites make it slow and cumbersome and inefficient.
+
+
+That’s all I can share on short notice.  Would have to put more thinking into it for additional refinement.
+Main thing, no duplication of any information, we should be able to reference / link them.

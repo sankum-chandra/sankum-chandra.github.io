@@ -1,0 +1,24 @@
+Here it is from my side.
+Section	Response
+Title (challenge)	Lack of Integration of CAQ with LeanIX and no official triage process for CAQ responses received 
+
+
+Gap – what’s not working?	Guidance: 
+•	What’s the gap? CAQ form submission goes to inbox and no official triage review to understand the project.
+•	What’s the root cause? Lack of integration with LeanIX and workflow along with triage process
+•	Consider a singular factor here for clarity.  Is it process or artifact, governance, role clarity, timing, etc? Process and tool
+
+
+Enterprise impact
+	Scope and consequence if unresolved ? I don’t believe anyone in our area truly read and validate and triage each CAQ being submitted, so I don’t know what is the purpose of CAQ submission at present. 
+Also after more than a year of LeanIX being productionized and promise of integrating CAQ to LeanIX it’s still missing hence many Solution Architect just submit the form and no entry being created in LeanIX so additional effort for PA every time  to cross check and keep asking SA to create fact sheet in LeanIX
+
+
+Recommendation	What the specific succinct change that addresses this for the enterprise ?
+If CAQ is truly required, then it must be integrated to LeanIX and there should be a triage with requestor fully automated through a workflow
+
+Adoption risk	Guidance: 
+•	Where would you anticipate resistance for the recommendation, and why?
+•	Mitigation (action) - concrete step that supports the organizational outcome
+•	As recommended above
+
