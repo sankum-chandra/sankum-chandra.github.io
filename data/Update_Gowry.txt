@@ -1,0 +1,18 @@
+Hi Santhosh,
+
+Ali and Paul covered it very well.
+
+Sharing my point of view around this process.
+
+At a high level, CAQ, CA, and E2E are still very much waterfall processes. Tech teams are trying to deliver in an agile way, so what actually gets built often doesn’t resemble what was documented and approved. Once approvals are done, the process stops, there’s no loop back to see how the solution evolved or whether it’s still aligned.
+
+The heavy CA and E2E documents don’t help. They’re massive, take a lot of effort to produce, and are only accurate on the day they’re approved. Everything that changes after that shows up later as misalignment.
+
+ADR is a big pain point in this whole flow. It’s currently treated as a separate artifact and exercise when things go off track. That adds a lot of overhead and frustration. ADRs should be part of the CAQ-CA-E2E process itself; not a parallel thing teams have to deal with later.  Please include ADR into your questionnaire to get others' feedback.
+
+What would help is evolving this into a single, continuous process:
+•	Start with CAQ for initial intent and carry it through Gates 1 - 4.
+•	Don’t stop at approval - continue tracking solution evolution through delivery.
+•	Lean more on reference and pattern architectures instead of long narrative CA and E2E docs.
+•	Capture architectural decisions (ADR) as part of the process as the solution changes. 
+•	Close the process only when the project is delivered/completed. 
