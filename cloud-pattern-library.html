@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enterprise Cloud Solution Pattern Library — ARB Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&family=IBM+Plex+Serif:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c10;
+    --surface: #111318;
+    --surface2: #181c24;
+    --surface3: #1e2330;
+    --border: #252c3a;
+    --border2: #2e3847;
+    --text: #d4dce8;
+    --text-muted: #7a8ba0;
+    --text-dim: #4a5568;
+    --accent: #3b82f6;
+    --accent2: #06b6d4;
+    --accent3: #8b5cf6;
+    --accent4: #10b981;
+    --accent5: #f59e0b;
+    --accent6: #ef4444;
+    --accent7: #ec4899;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --serif: 'IBM Plex Serif', serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-left { display: flex; align-items: center; gap: 24px; }
+  .logo {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--accent);
+    padding: 4px 10px;
+  }
+  .header-title {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+  .header-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    display: flex;
+    gap: 20px;
+  }
+  .header-meta span { display: flex; align-items: center; gap: 6px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent4); display: inline-block; }
+
+  /* ─── HERO ─── */
+  .hero {
+    border-bottom: 1px solid var(--border);
+    padding: 48px 40px 40px;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 400px; height: 400px;
+    background: radial-gradient(ellipse, rgba(59,130,246,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+    max-width: 640px;
+    margin-bottom: 16px;
+  }
+  .hero-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    max-width: 680px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+  }
+  .stat { display: flex; flex-direction: column; gap: 2px; }
+  .stat-num {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── LAYOUT ─── */
+  .layout { display: flex; min-height: calc(100vh - 56px); }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    width: 280px;
+    min-width: 280px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    position: sticky;
+    top: 56px;
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+  }
+  .sidebar-section-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 0 20px 10px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 20px;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-left: 2px solid transparent;
+  }
+  .sidebar-item:hover { background: var(--surface2); }
+  .sidebar-item.active {
+    background: var(--surface2);
+    border-left-color: var(--accent);
+  }
+  .sidebar-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    min-width: 20px;
+  }
+  .sidebar-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.3;
+  }
+  .sidebar-item.active .sidebar-label { color: var(--text); }
+  .sidebar-tag {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ─── MAIN CONTENT ─── */
+  .main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+  }
+
+  /* ─── PATTERN CARD ─── */
+  .pattern {
+    border-bottom: 1px solid var(--border);
+    display: none;
+  }
+  .pattern.visible { display: block; }
+
+  .pattern-header {
+    padding: 32px 40px 28px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+    position: relative;
+  }
+  .pattern-number {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .pattern-name {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .pattern-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 3px 9px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1px solid;
+  }
+  .tag-blue { color: var(--accent); border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.08); }
+  .tag-cyan { color: var(--accent2); border-color: rgba(6,182,212,0.3); background: rgba(6,182,212,0.08); }
+  .tag-purple { color: var(--accent3); border-color: rgba(139,92,246,0.3); background: rgba(139,92,246,0.08); }
+  .tag-green { color: var(--accent4); border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.08); }
+  .tag-amber { color: var(--accent5); border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.08); }
+  .tag-red { color: var(--accent6); border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.08); }
+  .tag-pink { color: var(--accent7); border-color: rgba(236,72,153,0.3); background: rgba(236,72,153,0.08); }
+
+  /* ─── SECTIONS ─── */
+  .sections { padding: 0; }
+  .section {
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px;
+  }
+  .section:last-child { border-bottom: none; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-title {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  p { color: var(--text-muted); line-height: 1.7; margin-bottom: 10px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ─── GRID LAYOUTS ─── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+  }
+  .card-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .card p { font-size: 13px; }
+
+  /* ─── ARCH DIAGRAM ─── */
+  .arch-diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+    margin: 16px 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    overflow-x: auto;
+  }
+  .arch-line { display: flex; align-items: center; gap: 0; margin: 4px 0; }
+  .arch-box {
+    border: 1px solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+    font-size: 11px;
+  }
+  .arch-box-blue { border-color: rgba(59,130,246,0.5); color: var(--accent); background: rgba(59,130,246,0.08); }
+  .arch-box-cyan { border-color: rgba(6,182,212,0.5); color: var(--accent2); background: rgba(6,182,212,0.08); }
+  .arch-box-green { border-color: rgba(16,185,129,0.5); color: var(--accent4); background: rgba(16,185,129,0.08); }
+  .arch-box-amber { border-color: rgba(245,158,11,0.5); color: var(--accent5); background: rgba(245,158,11,0.08); }
+  .arch-box-purple { border-color: rgba(139,92,246,0.5); color: var(--accent3); background: rgba(139,92,246,0.08); }
+  .arch-box-red { border-color: rgba(239,68,68,0.5); color: var(--accent6); background: rgba(239,68,68,0.08); }
+  .arch-arrow { color: var(--text-dim); padding: 0 6px; font-size: 14px; }
+  .arch-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 6px 0; }
+  .arch-label { font-size: 10px; color: var(--text-dim); margin: 8px 0 4px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ─── LIST STYLES ─── */
+  ul.pattern-list { list-style: none; padding: 0; }
+  ul.pattern-list li {
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  ul.pattern-list li:last-child { border-bottom: none; }
+  ul.pattern-list li::before {
+    content: '▸';
+    color: var(--accent);
+    font-size: 10px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ─── TABLE ─── */
+  table.pattern-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  table.pattern-table th {
+    text-align: left;
+    padding: 8px 12px;
+    background: var(--surface);
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--border2);
+    border-right: 1px solid var(--border);
+  }
+  table.pattern-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    color: var(--text-muted);
+    vertical-align: top;
+  }
+  table.pattern-table tr:last-child td { border-bottom: none; }
+  .td-key { color: var(--text); font-weight: 600; white-space: nowrap; }
+  .td-service { font-family: var(--mono); font-size: 11px; color: var(--accent2); }
+
+  /* ─── NFR GRID ─── */
+  .nfr-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .nfr-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px;
+  }
+  .nfr-icon { font-size: 18px; margin-bottom: 8px; }
+  .nfr-title { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--mono); }
+  .nfr-text { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ─── ANTI-PATTERN ─── */
+  .antipattern-item {
+    background: rgba(239,68,68,0.05);
+    border: 1px solid rgba(239,68,68,0.2);
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 10px;
+  }
+  .antipattern-item:last-child { margin-bottom: 0; }
+  .anti-icon { color: var(--accent6); font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+  .anti-title { font-size: 12px; font-weight: 600; color: var(--accent6); margin-bottom: 3px; }
+  .anti-text { font-size: 12px; color: var(--text-muted); }
+
+  /* ─── VARIANTS ─── */
+  .variant-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .variant-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+  }
+  .variant-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .variant-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+  .variant-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ─── REUSABILITY ─── */
+  .reuse-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .reuse-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+  }
+  .reuse-block-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent4);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── NAV TABS ─── */
+  .nav-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    padding: 0 40px;
+    overflow-x: auto;
+  }
+  .nav-tab {
+    padding: 12px 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.15s;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .nav-tab:hover { color: var(--text-muted); }
+  .nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ─── PATTERN NAV ─── */
+  .pattern-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 40px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .pnav-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: transparent;
+    transition: all 0.15s;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .pnav-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .pnav-btn:disabled { opacity: 0.3; cursor: default; }
+  .pnav-counter {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .pnav-counter strong { color: var(--text); }
+
+  /* ─── OVERVIEW TABLE ─── */
+  .overview-table-wrap { padding: 32px 40px; }
+  .overview-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .overview-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+  .ov-table { width: 100%; border-collapse: collapse; }
+  .ov-table th {
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--surface2);
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: 1px solid var(--border);
+  }
+  .ov-table td {
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 13px;
+    vertical-align: top;
+  }
+  .ov-table tr:hover td { background: var(--surface2); }
+  .ov-link {
+    color: var(--accent);
+    cursor: pointer;
+    font-weight: 600;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  .ov-link:hover { text-decoration: underline; }
+  .ov-num { font-family: var(--mono); font-size: 11px; color: var(--text-dim); }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+  @media (max-width: 1100px) {
+    .sidebar { display: none; }
+    .nfr-grid { grid-template-columns: repeat(3, 1fr); }
+    .three-col { grid-template-columns: 1fr 1fr; }
+    .variant-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .hero, .section, .pattern-header { padding-left: 20px; padding-right: 20px; }
+    .two-col, .three-col, .nfr-grid, .variant-grid, .reuse-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 20px; }
+    .nav-tabs { padding: 0 20px; }
+    .pattern-nav { padding: 12px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-left">
+    <div class="logo">ARB</div>
+    <div class="header-title">Enterprise Cloud Solution Pattern Library</div>
+  </div>
+  <div class="header-meta">
+    <span><span class="dot"></span> v2.1 — April 2026</span>
+    <span>DAP BU · Architecture Review Board</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-kicker">Portfolio-Level Architecture Reference</div>
+  <h1>Cloud Solution Pattern Library</h1>
+  <p class="hero-desc">
+    A curated set of battle-tested, cloud-agnostic architecture patterns validated by the Architecture Review Board. 
+    Each pattern is designed to be reusable across 100+ teams, templatizable as IaC, and governed through enterprise guardrails. 
+    Select a pattern from the sidebar or overview to begin.
+  </p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">10</span><span class="stat-label">Solution Patterns</span></div>
+    <div class="stat"><span class="stat-num">6</span><span class="stat-label">Architecture Styles</span></div>
+    <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Arch Patterns Used</span></div>
+    <div class="stat"><span class="stat-num">AWS</span><span class="stat-label">Primary Cloud</span></div>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-section-title">Overview</div>
+    <div class="sidebar-item active" onclick="showOverview()">
+      <span class="sidebar-num">—</span>
+      <span class="sidebar-label">Pattern Index</span>
+    </div>
+    <div style="height:12px;"></div>
+    <div class="sidebar-section-title">Solution Patterns</div>
+    <div class="sidebar-item" onclick="showPattern(0)">
+      <span class="sidebar-num">01</span>
+      <span class="sidebar-label">API-Led Connectivity</span>
+      <span class="tag tag-blue sidebar-tag">HTTP</span>
+    </div>
+    <div class="sidebar-item" onclick="showPattern(1)">
+      <span class="sidebar-num">02</span>
+      <span class="sidebar-label">Event-Driven Processing</span>
+      <span class="tag tag-cyan sidebar-tag">EDA</span>
+    </div>
+    <div class="sidebar-item" onclick="showPattern(2)">
+      <span class="sidebar-num">03</span>
+      <span class="sidebar-label">CQRS + Event Sourcing</span>
+      <span class="tag tag-purple sidebar-tag">Data</span>
+    </div>
+    <div class="sidebar-item" onclick="showPattern(3)">
+      <span class="sidebar-num">04</span>
+      <span class="sidebar-label">Serverless Compute</span>
+      <span class="tag tag-green sidebar-tag">FaaS</span>
+    </div>
+    <div class="sidebar-item" onclick="showPattern(4)">
+      <span class="sidebar-num">05</span>
+      <span class="sidebar-label">Data Lakehouse</span>
+      <span class="tag tag-amber sidebar-tag">Data</span>
+    </div>
+    <div class="sidebar-item" onclick="showPattern(5)">
+      <span class="sidebar-num">06</span>
+      <span class="sidebar-label">Saga Orchestration</span>
+      <span class="tag tag-red sidebar-tag">Tx</span>
+    </div>
+    <div class="sidebar-item" onclick="showPattern(6)">
+      <span class="sidebar-num">07</span>
+      <span class="sidebar-label">Zero Trust Mesh</span>
+      <span class="tag tag-pink sidebar-tag">Sec</span>
+    </div>
+    <div class="sidebar-item" onclick="showPattern(7)">
+      <span class="sidebar-num">08</span>
+      <span class="sidebar-label">Strangler Fig Migration</span>
+      <span class="tag tag-blue sidebar-tag">Mig</span>
+    </div>
+    <div class="sidebar-item" onclick="showPattern(8)">
+      <span class="sidebar-num">09</span>
+      <span class="sidebar-label">ML Model Serving</span>
+      <span class="tag tag-purple sidebar-tag">AI</span>
+    </div>
+    <div class="sidebar-item" onclick="showPattern(9)">
+      <span class="sidebar-num">10</span>
+      <span class="sidebar-label">Batch & Bulk Processing</span>
+      <span class="tag tag-amber sidebar-tag">ETL</span>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- OVERVIEW -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="overview" class="overview-table-wrap">
+      <div class="overview-title">Pattern Index</div>
+      <div class="overview-sub">Select a pattern to view the full architecture specification.</div>
+      <table class="ov-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Pattern Name</th>
+            <th>Architecture Style</th>
+            <th>Primary Use Cases</th>
+            <th>Key AWS Services</th>
+            <th>Complexity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ov-num">01</td>
+            <td><span class="ov-link" onclick="showPattern(0)">API-Led Connectivity</span></td>
+            <td><span class="tag tag-blue">REST / GraphQL</span></td>
+            <td>Digital channels, B2B integration, mobile backends</td>
+            <td>API GW, Lambda, ECS, Cognito</td>
+            <td>Medium</td>
+          </tr>
+          <tr>
+            <td class="ov-num">02</td>
+            <td><span class="ov-link" onclick="showPattern(1)">Event-Driven Processing</span></td>
+            <td><span class="tag tag-cyan">EDA / Pub-Sub</span></td>
+            <td>Real-time integrations, domain decoupling, audit trails</td>
+            <td>EventBridge, SNS, SQS, MSK</td>
+            <td>Medium</td>
+          </tr>
+          <tr>
+            <td class="ov-num">03</td>
+            <td><span class="ov-link" onclick="showPattern(2)">CQRS + Event Sourcing</span></td>
+            <td><span class="tag tag-purple">Microservices</span></td>
+            <td>High-write systems, audit logs, temporal queries</td>
+            <td>DynamoDB, RDS, Kinesis, Lambda</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td class="ov-num">04</td>
+            <td><span class="ov-link" onclick="showPattern(3)">Serverless Compute</span></td>
+            <td><span class="tag tag-green">Serverless / FaaS</span></td>
+            <td>Sporadic workloads, glue logic, lightweight APIs</td>
+            <td>Lambda, Step Functions, API GW</td>
+            <td>Low–Medium</td>
+          </tr>
+          <tr>
+            <td class="ov-num">05</td>
+            <td><span class="ov-link" onclick="showPattern(4)">Data Lakehouse</span></td>
+            <td><span class="tag tag-amber">Lambda Architecture</span></td>
+            <td>Analytics at scale, BI, ML feature stores</td>
+            <td>S3, Glue, Athena, Redshift, LF</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td class="ov-num">06</td>
+            <td><span class="ov-link" onclick="showPattern(5)">Saga Orchestration</span></td>
+            <td><span class="tag tag-red">Choreography / Orch</span></td>
+            <td>Distributed transactions, multi-service workflows</td>
+            <td>Step Functions, SQS, EventBridge</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td class="ov-num">07</td>
+            <td><span class="ov-link" onclick="showPattern(6)">Zero Trust Service Mesh</span></td>
+            <td><span class="tag tag-pink">Mesh / Zero Trust</span></td>
+            <td>Service-to-service auth, lateral movement prevention</td>
+            <td>App Mesh, ACM PCA, WAF, IAM</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td class="ov-num">08</td>
+            <td><span class="ov-link" onclick="showPattern(7)">Strangler Fig Migration</span></td>
+            <td><span class="tag tag-blue">Hybrid / Incremental</span></td>
+            <td>Legacy modernisation, monolith decomposition</td>
+            <td>API GW, CloudFront, ECS, RDS</td>
+            <td>Medium–High</td>
+          </tr>
+          <tr>
+            <td class="ov-num">09</td>
+            <td><span class="ov-link" onclick="showPattern(8)">ML Model Serving</span></td>
+            <td><span class="tag tag-purple">Inference / Pipeline</span></td>
+            <td>Real-time & batch ML inference, A/B model testing</td>
+            <td>SageMaker, Lambda, ECS, S3</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td class="ov-num">10</td>
+            <td><span class="ov-link" onclick="showPattern(9)">Batch & Bulk Processing</span></td>
+            <td><span class="tag tag-amber">Batch / ETL</span></td>
+            <td>Nightly jobs, large-scale ETL, report generation</td>
+            <td>Batch, Glue, Step Functions, S3</td>
+            <td>Low–Medium</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- PATTERN 01: API-Led Connectivity -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="pattern-0" class="pattern">
+      <div class="pattern-header">
+        <div class="pattern-number">PATTERN — 01 / 10</div>
+        <div class="pattern-name">API-Led Connectivity Pattern</div>
+        <div class="pattern-tags">
+          <span class="tag tag-blue">REST / GraphQL</span>
+          <span class="tag tag-cyan">API Gateway</span>
+          <span class="tag tag-green">BFF</span>
+          <span class="tag tag-purple">Microservices</span>
+        </div>
+      </div>
+      <div class="nav-tabs">
+        <div class="nav-tab active" onclick="switchTab(this, 'p0')">Problem</div>
+        <div class="nav-tab" onclick="switchTab(this, 'p0')">Architecture Style</div>
+        <div class="nav-tab" onclick="switchTab(this, 'p0')">Design</div>
+        <div class="nav-tab" onclick="switchTab(this, 'p0')">AWS Mapping</div>
+        <div class="nav-tab" onclick="switchTab(this, 'p0')">NFRs</div>
+        <div class="nav-tab" onclick="switchTab(this, 'p0')">Anti-Patterns</div>
+        <div class="nav-tab" onclick="switchTab(this, 'p0')">Variants</div>
+        <div class="nav-tab" onclick="switchTab(this, 'p0')">Reusability</div>
+      </div>
+      <div class="sections">
+        <div class="section">
+          <div class="section-label">01 — Problem Statement</div>
+          <p>Enterprises with multiple consumer channels (web, mobile, partner APIs, IoT) need a structured, governed approach to expose capabilities without creating point-to-point integration spaghetti. Without a clear API tier, each team builds its own entry point, duplicating concerns like auth, rate limiting, logging, and versioning.</p>
+          <p>This pattern applies when: (a) you have 3+ consumer types accessing the same backend capabilities, (b) you need consumer-specific contract isolation, (c) you need centralised policy enforcement without coupling it into every service, or (d) you are onboarding external partners needing controlled capability exposure.</p>
+        </div>
+        <div class="section">
+          <div class="section-label">02 — Architecture Style</div>
+          <div class="two-col">
+            <div class="card">
+              <div class="card-title">Primary Style: Layered API Architecture</div>
+              <p>Three-tier API model: Experience APIs (consumer-specific), Process APIs (orchestration), System APIs (data/core systems). Justified because it separates consumption concerns from system implementation — consumers are isolated from backend churn.</p>
+            </div>
+            <div class="card">
+              <div class="card-title">Trade-offs</div>
+              <p>Adds latency per tier (typically 5–15ms per hop). Governance overhead requires an API registry and contract lifecycle tooling. Risk of "API proliferation" if not governed — address via mandatory registration in the API catalogue.</p>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">03 — Architecture Patterns Used</div>
+          <table class="pattern-table">
+            <thead><tr><th>Pattern</th><th>Role in This Solution</th></tr></thead>
+            <tbody>
+              <tr><td class="td-key">API Gateway</td><td>Central entry point; handles auth, rate limiting, routing, TLS termination</td></tr>
+              <tr><td class="td-key">Backend for Frontend (BFF)</td><td>Consumer-tailored experience APIs; avoids over-fetching on mobile channels</td></tr>
+              <tr><td class="td-key">Strangler Fig</td><td>Allows legacy systems to be gradually wrapped and eventually replaced</td></tr>
+              <tr><td class="td-key">Circuit Breaker</td><td>Prevents cascade failures when downstream system APIs degrade</td></tr>
+              <tr><td class="td-key">Request Aggregator</td><td>Process API tier composes multiple system API calls into single consumer response</td></tr>
+              <tr><td class="td-key">Sidecar (OAuth)</td><td>Token introspection decoupled from service logic via sidecar or policy engine</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <div class="section-label">04 — Solution Pattern Design</div>
+          <div class="arch-diagram">
+            <div class="arch-label">Consumer Tier</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-blue">Web App</div>
+              <div class="arch-box arch-box-blue">Mobile App</div>
+              <div class="arch-box arch-box-blue">Partner / B2B</div>
+              <div class="arch-box arch-box-blue">IoT Device</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓  CDN / WAF / DDoS Protection</div></div>
+            <div class="arch-label">Experience API Tier (BFF)</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-cyan">API Gateway (Auth, Rate, Log)</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-cyan">Web BFF</div>
+              <div class="arch-box arch-box-cyan">Mobile BFF</div>
+              <div class="arch-box arch-box-cyan">Partner API</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓  Internal network</div></div>
+            <div class="arch-label">Process API Tier (Orchestration)</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-green">Order Process API</div>
+              <div class="arch-box arch-box-green">Customer Process API</div>
+              <div class="arch-box arch-box-green">Inventory Process API</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓</div></div>
+            <div class="arch-label">System API Tier (Core)</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-amber">ERP Adapter</div>
+              <div class="arch-box arch-box-amber">CRM Adapter</div>
+              <div class="arch-box arch-box-amber">Inventory DB</div>
+              <div class="arch-box arch-box-amber">Payment Connector</div>
+            </div>
+          </div>
+          <p>Data flow: Consumer → CDN/WAF → API Gateway (JWT validation, rate limiting) → BFF (consumer-tailored response shaping) → Process API (business orchestration, aggregation) → System API (single-responsibility adapter per backend). Each tier is independently deployable and versioned.</p>
+        </div>
+        <div class="section">
+          <div class="section-label">05 — Cloud Mapping (AWS)</div>
+          <table class="pattern-table">
+            <thead><tr><th>Component</th><th>AWS Service</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="td-key">CDN / WAF</td><td class="td-service">CloudFront + AWS WAF</td><td>Edge protection, geo-blocking, rate limiting at L7</td></tr>
+              <tr><td class="td-key">API Gateway</td><td class="td-service">Amazon API Gateway (REST/HTTP)</td><td>Use HTTP API for low-latency; REST API for full gateway features</td></tr>
+              <tr><td class="td-key">BFF / Process APIs</td><td class="td-service">ECS Fargate / Lambda</td><td>Fargate for long-running BFFs; Lambda for stateless process APIs</td></tr>
+              <tr><td class="td-key">Auth / Token</td><td class="td-service">Amazon Cognito + AWS IAM</td><td>Cognito for B2C; IAM + STS for service-to-service</td></tr>
+              <tr><td class="td-key">Service Registry</td><td class="td-service">AWS Cloud Map</td><td>Logical service discovery across ECS tasks</td></tr>
+              <tr><td class="td-key">Circuit Breaker</td><td class="td-service">App Mesh (Envoy)</td><td>Outlier detection and retry policies at mesh layer</td></tr>
+              <tr><td class="td-key">API Catalogue</td><td class="td-service">Amazon API Gateway Developer Portal / Backstage</td><td>Prefer open standards; self-hosted Backstage avoids lock-in</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <div class="section-label">06 — Non-Functional Considerations</div>
+          <div class="nfr-grid">
+            <div class="nfr-card"><div class="nfr-icon">⚡</div><div class="nfr-title">Scalability</div><div class="nfr-text">API GW scales automatically. BFF tier on Fargate with horizontal scaling via ECS Service Auto Scaling. Target &lt;200ms p99 at gateway.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🛡️</div><div class="nfr-title">Resilience</div><div class="nfr-text">Circuit breakers at process→system tier. Retry with exponential backoff. Graceful degradation returning partial responses.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🔐</div><div class="nfr-title">Security</div><div class="nfr-text">Mutual TLS between tiers. JWT with short TTL (15min). API keys for partner tier. OWASP Top 10 mitigated at WAF.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">📊</div><div class="nfr-title">Observability</div><div class="nfr-text">Distributed tracing via X-Ray. Correlation ID propagated across all three tiers. CloudWatch dashboards per tier.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">💰</div><div class="nfr-title">Cost</div><div class="nfr-text">Cache at API GW layer (TTL tuned per endpoint). Spot for BFF compute. Lambda for low-traffic system adapters.</div></div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">07 — Anti-Patterns</div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">God API Gateway</div><div class="anti-text">Putting business logic into the gateway (transformations, orchestration). Gateway should only handle cross-cutting concerns — routing, auth, rate limiting.</div></div></div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Bypassing the API Tier</div><div class="anti-text">Services calling each other directly, bypassing the gateway layer. Enforced via network segmentation — only the gateway CIDR should be allowed to call BFFs.</div></div></div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Chatty Process APIs</div><div class="anti-text">Process APIs making 10–20 downstream calls per request. This signals missing aggregation. Address with GraphQL federation or a dedicated composition layer.</div></div></div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Unversioned APIs</div><div class="anti-text">No contract versioning strategy leads to breaking consumers silently. Mandate semantic versioning in the API gateway path (/v1/, /v2/) from day one.</div></div></div>
+        </div>
+        <div class="section">
+          <div class="section-label">08 — Variants</div>
+          <div class="variant-grid">
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent)">Variant A</div><div class="variant-name">GraphQL Federation</div><div class="variant-desc">Replace REST BFF with a federated GraphQL gateway (Apollo Federation). Ideal when consumers need flexible querying and over-fetching is a real problem. Higher operational complexity — requires schema governance.</div></div>
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent2)">Variant B</div><div class="variant-name">Lightweight Internal API Mesh</div><div class="variant-desc">For internal service-to-service only (no external consumers). Removes CDN/WAF, simplifies auth to IAM SigV4 or SPIFFE/SPIRE. Lower cost, higher throughput. Not suitable for external-facing workloads.</div></div>
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent4)">Variant C</div><div class="variant-name">Partner API Marketplace</div><div class="variant-desc">Extends the standard pattern with an API Developer Portal, OAuth2 client credentials per partner, tiered rate limits, and usage billing hooks (AWS Marketplace / custom). Adds API monetisation capability.</div></div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">09 — Reusability Guidance</div>
+          <div class="reuse-grid">
+            <div class="reuse-block">
+              <div class="reuse-block-title">🔧 IaC Template (Terraform Module)</div>
+              <ul class="pattern-list">
+                <li>Module: <code>api-gateway-standard</code> — deploys API GW + WAF + CloudFront with standard rules</li>
+                <li>Module: <code>bff-fargate</code> — ECS service, ALB, auto-scaling, X-Ray daemon</li>
+                <li>Module: <code>cognito-userpool</code> — standard user pool with MFA, social IdP hooks</li>
+              </ul>
+            </div>
+            <div class="reuse-block">
+              <div class="reuse-block-title">📋 Guardrails & Governance</div>
+              <ul class="pattern-list">
+                <li>SCP: No direct internet-facing ECS/Lambda without API GW in front</li>
+                <li>Mandatory: Correlation-ID header propagation enforced at gateway policy</li>
+                <li>API registration in internal Backstage catalogue before go-live</li>
+                <li>Rate limits defined per tier: 10k/min (web), 1k/min (partner)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- PATTERN 02: Event-Driven Processing -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="pattern-1" class="pattern">
+      <div class="pattern-header">
+        <div class="pattern-number">PATTERN — 02 / 10</div>
+        <div class="pattern-name">Event-Driven Processing Pattern</div>
+        <div class="pattern-tags">
+          <span class="tag tag-cyan">EDA</span>
+          <span class="tag tag-blue">Pub-Sub</span>
+          <span class="tag tag-green">Async</span>
+          <span class="tag tag-amber">Decoupled</span>
+        </div>
+      </div>
+      <div class="sections">
+        <div class="section">
+          <div class="section-label">01 — Problem Statement</div>
+          <p>Synchronous, point-to-point integrations create tight coupling: if Service B is slow, Service A blocks. If Service C doesn't exist yet, Service A cannot be deployed. This forces deployments to be coordinated across teams, creating organisational bottlenecks and fragility under load.</p>
+          <p>Apply when: (a) multiple consumers need to react to the same business event, (b) producers should not know about consumers, (c) workloads have bursty traffic that would overwhelm synchronous calls, (d) cross-domain integrations require audit trails, or (e) eventual consistency is acceptable (SLA &gt; seconds).</p>
+        </div>
+        <div class="section">
+          <div class="section-label">02 — Architecture Style</div>
+          <div class="two-col">
+            <div class="card">
+              <div class="card-title">Primary Style: Event-Driven Architecture (EDA)</div>
+              <p>Services communicate exclusively via events. Producers emit domain events to a broker; consumers subscribe independently. This eliminates temporal coupling — producer and consumer don't need to be alive simultaneously. Enables open/closed principle at the platform level.</p>
+            </div>
+            <div class="card">
+              <div class="card-title">Trade-offs</div>
+              <p>Debugging and tracing is harder — requires distributed tracing end-to-end. Eventual consistency requires consumers to be idempotent. Dead-letter queue management is mandatory, not optional. Schema evolution requires backward/forward compatibility governance.</p>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">03 — Architecture Patterns Used</div>
+          <table class="pattern-table">
+            <thead><tr><th>Pattern</th><th>Role</th></tr></thead>
+            <tbody>
+              <tr><td class="td-key">Pub/Sub</td><td>Fan-out — one event, many consumers. Decouples producers from specific consumer knowledge</td></tr>
+              <tr><td class="td-key">Event Sourcing</td><td>Broker as system of record for event stream; enables replay and temporal queries</td></tr>
+              <tr><td class="td-key">Outbox Pattern</td><td>Guarantees exactly-once event emission from transactional services without distributed commits</td></tr>
+              <tr><td class="td-key">Dead Letter Queue</td><td>Isolates poison messages; enables ops team to inspect, replay, or discard failed events</td></tr>
+              <tr><td class="td-key">Competing Consumers</td><td>Multiple instances of same consumer processing events from a queue in parallel (scale-out)</td></tr>
+              <tr><td class="td-key">Event Schema Registry</td><td>Centralised contract governance; prevents schema drift across teams</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <div class="section-label">04 — Solution Pattern Design</div>
+          <div class="arch-diagram">
+            <div class="arch-label">Producers (Domain Services)</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-blue">Order Service</div>
+              <div class="arch-box arch-box-blue">Payment Service</div>
+              <div class="arch-box arch-box-blue">Inventory Service</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓  Outbox Table → CDC / Transactional publish</div></div>
+            <div class="arch-label">Event Broker</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-cyan">Schema Registry (Avro/JSON Schema)</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-cyan">Event Bus / Topic per Domain</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-red">DLQ per Consumer</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓  Fan-out to subscribed consumers</div></div>
+            <div class="arch-label">Consumers</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-green">Notification Service</div>
+              <div class="arch-box arch-box-green">Analytics Pipeline</div>
+              <div class="arch-box arch-box-green">Audit Log Service</div>
+              <div class="arch-box arch-box-green">Fulfilment Service</div>
+            </div>
+          </div>
+          <p>Producers write to an Outbox table in the same transaction as the business operation. A CDC agent (Debezium or native DB streaming) picks up changes and publishes to the schema-validated event broker. Consumers subscribe to topics, process idempotently, and write failures to their DLQ.</p>
+        </div>
+        <div class="section">
+          <div class="section-label">05 — Cloud Mapping (AWS)</div>
+          <table class="pattern-table">
+            <thead><tr><th>Component</th><th>AWS Service</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="td-key">Event Bus (lightweight)</td><td class="td-service">Amazon EventBridge</td><td>Best for cross-account routing, scheduled events, SaaS integrations</td></tr>
+              <tr><td class="td-key">Event Streaming (high-throughput)</td><td class="td-service">Amazon MSK (Kafka) or Kinesis</td><td>MSK for full Kafka ecosystem; Kinesis for managed, lower ops overhead</td></tr>
+              <tr><td class="td-key">Queue (point-to-point)</td><td class="td-service">Amazon SQS (Standard/FIFO)</td><td>FIFO for ordered processing; Standard for at-least-once at scale</td></tr>
+              <tr><td class="td-key">DLQ</td><td class="td-service">SQS DLQ + CloudWatch Alarm</td><td>Mandatory — alarm on DLQ depth &gt; 0 for any production queue</td></tr>
+              <tr><td class="td-key">Schema Registry</td><td class="td-service">AWS Glue Schema Registry</td><td>Integrates natively with MSK, Kinesis; enforces Avro/JSON Schema</td></tr>
+              <tr><td class="td-key">Outbox / CDC</td><td class="td-service">DMS + RDS (or MSK Connect)</td><td>DMS for relational Outbox; MSK Connect for Debezium-based CDC</td></tr>
+              <tr><td class="td-key">Consumer</td><td class="td-service">Lambda (event trigger) or ECS</td><td>Lambda for simple consumers; ECS for stateful or high-throughput</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <div class="section-label">06 — Non-Functional Considerations</div>
+          <div class="nfr-grid">
+            <div class="nfr-card"><div class="nfr-icon">⚡</div><div class="nfr-title">Scalability</div><div class="nfr-text">Broker handles burst natively. Competing consumers on SQS scale horizontally. Kinesis shards can be split for throughput.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🛡️</div><div class="nfr-title">Resilience</div><div class="nfr-text">DLQ isolation. Idempotency keys on all consumers. At-least-once delivery with deduplication via idempotency table (DynamoDB).</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🔐</div><div class="nfr-title">Security</div><div class="nfr-text">Encryption at rest (KMS) and in transit (TLS). Resource-based policies on SQS/SNS. Cross-account publishing via EventBridge resource policies.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">📊</div><div class="nfr-title">Observability</div><div class="nfr-text">Correlation ID in event envelope (mandatory). X-Ray segment per consumer invocation. DLQ depth alarm critical.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">💰</div><div class="nfr-title">Cost</div><div class="nfr-text">EventBridge for low-volume; SQS for medium; MSK reserved instances for high-volume streams. Avoid per-message overhead on Kinesis for small payloads.</div></div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">07 — Anti-Patterns</div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Event as Command</div><div class="anti-text">Naming events as commands ("SendEmail") couples consumers to producer intent. Events should describe what happened ("OrderPlaced") — consumers decide what to do.</div></div></div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Fat Events with Full Payload</div><div class="anti-text">Including the entire entity in every event creates coupling to a data model and inflates broker storage. Prefer thin events (entity ID + change type) and let consumers fetch if they need full data.</div></div></div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">No DLQ Strategy</div><div class="anti-text">Deploying queues without DLQs means failed messages are silently discarded after max retries. Every consumer queue in production must have a DLQ with an alarm.</div></div></div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Non-Idempotent Consumers</div><div class="anti-text">At-least-once delivery means duplicate events are possible. Consumers that write without checking for prior processing will corrupt state. Idempotency is not optional.</div></div></div>
+        </div>
+        <div class="section">
+          <div class="section-label">08 — Variants</div>
+          <div class="variant-grid">
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent)">Variant A</div><div class="variant-name">High-Throughput Streaming</div><div class="variant-desc">Replace EventBridge/SQS with MSK (Kafka). Suitable for &gt;10k events/sec. Adds consumer group management and offset tracking. Higher ops overhead but full Kafka ecosystem (Connect, Streams).</div></div>
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent2)">Variant B</div><div class="variant-name">Cross-Account Event Bus</div><div class="variant-desc">EventBridge with cross-account event bus rules. Producer account publishes to its bus; a cross-account rule forwards to consumer account bus. Ideal for multi-account landing zones with domain isolation.</div></div>
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent4)">Variant C</div><div class="variant-name">CDC-Driven Integration</div><div class="variant-desc">Remove producer code changes entirely. MSK Connect + Debezium reads the DB transaction log, emits events automatically. Zero producer-side change needed — ideal for legacy modernisation.</div></div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">09 — Reusability Guidance</div>
+          <div class="reuse-grid">
+            <div class="reuse-block">
+              <div class="reuse-block-title">🔧 IaC Modules</div>
+              <ul class="pattern-list">
+                <li>Module: <code>eventbridge-domain-bus</code> — bus + cross-account rules + archive</li>
+                <li>Module: <code>sqs-consumer-standard</code> — queue + DLQ + CloudWatch alarm + IAM policy</li>
+                <li>Module: <code>msk-cluster-standard</code> — MSK cluster + Schema Registry + MSK Connect</li>
+              </ul>
+            </div>
+            <div class="reuse-block">
+              <div class="reuse-block-title">📋 Guardrails</div>
+              <ul class="pattern-list">
+                <li>Mandatory: All events must include <code>correlationId</code>, <code>eventType</code>, <code>sourceService</code>, <code>timestamp</code> in envelope</li>
+                <li>SCP: SQS queues without DLQs blocked in prod accounts</li>
+                <li>Schema must be registered in Glue Schema Registry before topic creation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- PATTERN 03: CQRS + Event Sourcing -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="pattern-2" class="pattern">
+      <div class="pattern-header">
+        <div class="pattern-number">PATTERN — 03 / 10</div>
+        <div class="pattern-name">CQRS + Event Sourcing Pattern</div>
+        <div class="pattern-tags">
+          <span class="tag tag-purple">CQRS</span>
+          <span class="tag tag-cyan">Event Sourcing</span>
+          <span class="tag tag-blue">Microservices</span>
+          <span class="tag tag-amber">Audit</span>
+        </div>
+      </div>
+      <div class="sections">
+        <div class="section">
+          <div class="section-label">01 — Problem Statement</div>
+          <p>Systems with high write/read asymmetry struggle when a single data model tries to serve both transactional mutations and complex read queries. An order management system might write 1k orders/sec but serve 50 different read projections (order status, audit history, fulfilment view, finance view) — a single CRUD model cannot scale or evolve to serve all these consumers without degrading write performance or coupling read models to write schema.</p>
+          <p>Apply when: (a) write and read patterns have significantly different performance characteristics, (b) regulatory compliance requires tamper-proof, replayable audit history, (c) the domain is complex enough that multiple projections of the same data are needed, or (d) temporal queries ("what was the state at time T") are a business requirement.</p>
+        </div>
+        <div class="section">
+          <div class="section-label">02 — Architecture Style</div>
+          <div class="two-col">
+            <div class="card">
+              <div class="card-title">CQRS + Event Sourcing</div>
+              <p>CQRS separates the write model (Command side) from the read model (Query side). Event Sourcing persists state as an append-only sequence of domain events rather than mutable rows. The current state is derived by replaying events. This is the most powerful data pattern for audit-heavy, compliance-driven domains.</p>
+            </div>
+            <div class="card">
+              <div class="card-title">Trade-offs</div>
+              <p>Significant complexity overhead. Read projections are eventually consistent. Event schema evolution requires versioning strategies (upcasters). Not appropriate for simple CRUD domains. Teams require deep DDD knowledge. Start here only if audit/temporal requirements are explicit.</p>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">03 — Architecture Patterns Used</div>
+          <table class="pattern-table">
+            <thead><tr><th>Pattern</th><th>Role</th></tr></thead>
+            <tbody>
+              <tr><td class="td-key">CQRS</td><td>Separates command (write) and query (read) models — different APIs, different data stores</td></tr>
+              <tr><td class="td-key">Event Sourcing</td><td>Event store is the golden record; state derived by replaying events — enables time travel</td></tr>
+              <tr><td class="td-key">Projection / Read Model</td><td>Materialised views built from event stream; each consumer gets its own optimised read model</td></tr>
+              <tr><td class="td-key">Snapshot</td><td>Periodic snapshots of aggregate state to avoid full event replay on every read</td></tr>
+              <tr><td class="td-key">Aggregate Root</td><td>Domain boundary that emits events; enforces invariants; owns its own event store partition</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <div class="section-label">04 — Solution Pattern Design</div>
+          <div class="arch-diagram">
+            <div class="arch-label">Write Side (Command)</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-blue">Command API</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-cyan">Command Handler</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-cyan">Aggregate Root</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-amber">Event Store (append-only)</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓  Events published to stream after commit</div></div>
+            <div class="arch-label">Projection Layer</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-green">Order Status Projector</div>
+              <div class="arch-box arch-box-green">Audit Projector</div>
+              <div class="arch-box arch-box-green">Finance Projector</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓  Write to optimised read stores</div></div>
+            <div class="arch-label">Read Side (Query)</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-purple">Query API</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-purple">Read DB (NoSQL / Search / DW)</div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">05 — Cloud Mapping (AWS)</div>
+          <table class="pattern-table">
+            <thead><tr><th>Component</th><th>AWS Service</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="td-key">Event Store</td><td class="td-service">DynamoDB (append-only partition)</td><td>Partition key = aggregateId, sort key = sequenceNumber. Enable Streams for projection fan-out</td></tr>
+              <tr><td class="td-key">Command API</td><td class="td-service">API GW + Lambda</td><td>Command handlers as Lambda functions; stateless</td></tr>
+              <tr><td class="td-key">Event Stream</td><td class="td-service">DynamoDB Streams → Kinesis</td><td>DynamoDB Streams for low latency; Kinesis for durable, replayable fan-out</td></tr>
+              <tr><td class="td-key">Projector (processor)</td><td class="td-service">Lambda (Kinesis trigger)</td><td>One Lambda per projection; idempotent writes</td></tr>
+              <tr><td class="td-key">Read Store (operational)</td><td class="td-service">DynamoDB / Aurora (read replica)</td><td>DynamoDB for key-value reads; Aurora for complex relational queries</td></tr>
+              <tr><td class="td-key">Read Store (analytical)</td><td class="td-service">OpenSearch / Redshift</td><td>Full-text search projections to OpenSearch; finance aggregations to Redshift</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <div class="section-label">06 — Non-Functional Considerations</div>
+          <div class="nfr-grid">
+            <div class="nfr-card"><div class="nfr-icon">⚡</div><div class="nfr-title">Scalability</div><div class="nfr-text">Write throughput scales with DynamoDB partitions. Read models scale independently. Projectors fan out to N read stores without affecting write path.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🛡️</div><div class="nfr-title">Resilience</div><div class="nfr-text">Event store is immutable — no data loss. Projections can be rebuilt from scratch by replaying the event log. Resilience by design.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🔐</div><div class="nfr-title">Security</div><div class="nfr-text">Event store must be write-once, never-delete (WORM). Use DynamoDB with IAM denying DeleteItem on event table. Compliance-grade audit trail.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">📊</div><div class="nfr-title">Observability</div><div class="nfr-text">Track projection lag (event timestamp vs projection timestamp). Alert on lag &gt;5s in near-real-time projections. Full event replay time is an SRE metric.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">💰</div><div class="nfr-title">Cost</div><div class="nfr-text">DynamoDB on-demand for event store (write-heavy bursts). Reserve capacity on read stores once baseline is established. Snapshots reduce replay compute cost.</div></div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">07 — Anti-Patterns</div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Applying CQRS Everywhere</div><div class="anti-text">CQRS adds significant complexity. For simple CRUD services with no audit requirements or read asymmetry, a standard relational model with read replicas is sufficient. Don't over-architect.</div></div></div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Mutable Event Store</div><div class="anti-text">The event store is the system of truth — it must never be mutated. Applying UPDATE/DELETE to events destroys the audit trail and breaks projection replay. Enforce at IAM level.</div></div></div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">No Snapshot Strategy</div><div class="anti-text">An aggregate with 10,000 events requires replaying all 10,000 to derive current state on every write. Without periodic snapshots, write latency grows unboundedly over time.</div></div></div>
+        </div>
+        <div class="section">
+          <div class="section-label">08 — Variants</div>
+          <div class="variant-grid">
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent)">Variant A</div><div class="variant-name">CQRS without Event Sourcing</div><div class="variant-desc">Separate write DB (normalised relational) from read DB (denormalised DynamoDB). Simpler to implement. Loses time-travel and full replay capability but suitable for most teams new to CQRS.</div></div>
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent2)">Variant B</div><div class="variant-name">EventStoreDB / Purpose-Built Store</div><div class="variant-desc">Replace DynamoDB event store with EventStoreDB or Axon. Native event sourcing features (subscriptions, projections, snapshotting). Higher ops burden but better developer ergonomics.</div></div>
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent4)">Variant C</div><div class="variant-name">Regulatory Audit Pattern</div><div class="variant-desc">Extend the base pattern with event encryption at field level (KMS envelope), immutability enforcement (S3 Object Lock for event archive), and compliance reporting projections. Designed for FSBP, GDPR, SOX.</div></div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">09 — Reusability Guidance</div>
+          <div class="reuse-grid">
+            <div class="reuse-block">
+              <div class="reuse-block-title">🔧 IaC Modules</div>
+              <ul class="pattern-list">
+                <li>Module: <code>event-store-dynamodb</code> — table with stream, WORM IAM deny policy, TTL disabled</li>
+                <li>Module: <code>projection-lambda</code> — Kinesis-triggered Lambda with idempotency table</li>
+                <li>Module: <code>snapshot-schedule</code> — EventBridge rule triggering snapshot Lambda per aggregate</li>
+              </ul>
+            </div>
+            <div class="reuse-block">
+              <div class="reuse-block-title">📋 Guardrails</div>
+              <ul class="pattern-list">
+                <li>IAM SCP: Deny DeleteItem/UpdateItem on tables tagged <code>event-store=true</code></li>
+                <li>All events must carry a schema version field — breaking changes require a new version</li>
+                <li>Mandatory architecture review before adopting this pattern (complexity gate)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- PATTERN 04: Serverless Compute -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="pattern-3" class="pattern">
+      <div class="pattern-header">
+        <div class="pattern-number">PATTERN — 04 / 10</div>
+        <div class="pattern-name">Serverless Compute Pattern</div>
+        <div class="pattern-tags">
+          <span class="tag tag-green">FaaS</span>
+          <span class="tag tag-blue">Serverless</span>
+          <span class="tag tag-cyan">Step Functions</span>
+          <span class="tag tag-amber">Event-Triggered</span>
+        </div>
+      </div>
+      <div class="sections">
+        <div class="section">
+          <div class="section-label">01 — Problem Statement</div>
+          <p>Many enterprise workloads are sporadic: a document processing job triggered by an S3 upload, a scheduled report, a webhook handler, lightweight API routes, or glue logic between systems. Provisioning long-running containers or VMs for these workloads wastes compute budget and adds operational overhead (patching, scaling, monitoring idle capacity).</p>
+          <p>Apply when: (a) request patterns are bursty or intermittent (not sustained), (b) function execution time is under 15 minutes, (c) teams lack operational maturity for container fleet management, or (d) you need to optimise cost for long-tail, low-frequency operations.</p>
+        </div>
+        <div class="section">
+          <div class="section-label">02 — Architecture Style</div>
+          <div class="two-col">
+            <div class="card">
+              <div class="card-title">Serverless / FaaS</div>
+              <p>No server management. Compute scales from 0 to thousands of concurrent executions in seconds. Pay per invocation, not idle time. Functions are stateless units of business logic — state is externalised to managed stores (DynamoDB, S3, ElastiCache).</p>
+            </div>
+            <div class="card">
+              <div class="card-title">Trade-offs</div>
+              <p>Cold start latency (mitigated by provisioned concurrency for latency-sensitive paths). 15-minute execution limit. Harder to debug locally. Not suited for long-running, CPU-intensive, or memory-heavy workloads (&gt;10GB). Vendor coupling is real — abstract with SAM/CDK.</p>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">03 — Architecture Patterns Used</div>
+          <table class="pattern-table">
+            <thead><tr><th>Pattern</th><th>Role</th></tr></thead>
+            <tbody>
+              <tr><td class="td-key">Function-as-a-Service</td><td>Stateless compute unit; triggered by events; auto-scales and auto-terminates</td></tr>
+              <tr><td class="td-key">Choreography (EDA)</td><td>S3 events → Lambda → downstream; no orchestrator needed for simple linear flows</td></tr>
+              <tr><td class="td-key">Saga (Step Functions)</td><td>For multi-step workflows with compensating transactions — externalises orchestration state</td></tr>
+              <tr><td class="td-key">Fan-out / Fan-in</td><td>Parallel Lambda invocations via Step Functions Map state; results aggregated post-parallel</td></tr>
+              <tr><td class="td-key">Strangler Fig</td><td>Incrementally replace legacy batch jobs with event-triggered Lambda equivalents</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <div class="section-label">04 — Solution Pattern Design</div>
+          <div class="arch-diagram">
+            <div class="arch-label">Triggers (Event Sources)</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-blue">API Gateway (HTTP)</div>
+              <div class="arch-box arch-box-blue">S3 Event</div>
+              <div class="arch-box arch-box-blue">SQS Queue</div>
+              <div class="arch-box arch-box-blue">EventBridge</div>
+              <div class="arch-box arch-box-blue">Schedule (cron)</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓</div></div>
+            <div class="arch-label">Compute (Lambda)</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-cyan">Lambda fn (stateless business logic)</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-cyan">Step Functions (multi-step)</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓  Read/Write state externally</div></div>
+            <div class="arch-label">State Stores</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-green">DynamoDB</div>
+              <div class="arch-box arch-box-green">S3</div>
+              <div class="arch-box arch-box-green">ElastiCache (Redis)</div>
+              <div class="arch-box arch-box-green">RDS Proxy</div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">05 — Cloud Mapping (AWS)</div>
+          <table class="pattern-table">
+            <thead><tr><th>Component</th><th>AWS Service</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="td-key">Function Runtime</td><td class="td-service">AWS Lambda</td><td>Use ARM64 (Graviton) — ~20% cheaper, often faster for most runtimes</td></tr>
+              <tr><td class="td-key">Workflow Orchestration</td><td class="td-service">AWS Step Functions (Standard/Express)</td><td>Standard for &lt;1yr workflows with audit; Express for &lt;5min high-throughput</td></tr>
+              <tr><td class="td-key">HTTP Trigger</td><td class="td-service">API Gateway HTTP API</td><td>HTTP API is 70% cheaper than REST API for simple Lambda proxies</td></tr>
+              <tr><td class="td-key">Async Trigger</td><td class="td-service">SQS + Lambda Event Source Mapping</td><td>Batch size tuned per workload; DLQ mandatory</td></tr>
+              <tr><td class="td-key">Scheduled</td><td class="td-service">EventBridge Scheduler</td><td>Replaces CloudWatch Events; supports one-time and recurring; timezone-aware</td></tr>
+              <tr><td class="td-key">State</td><td class="td-service">DynamoDB (idempotency / state)</td><td>DynamoDB Accelerator (DAX) for sub-millisecond reads in latency-sensitive flows</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <div class="section-label">06 — Non-Functional Considerations</div>
+          <div class="nfr-grid">
+            <div class="nfr-card"><div class="nfr-icon">⚡</div><div class="nfr-title">Scalability</div><div class="nfr-text">Lambda scales to 1000 concurrent by default (request limit increase available). Reserved concurrency caps per function to prevent noisy-neighbour throttling.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🛡️</div><div class="nfr-title">Resilience</div><div class="nfr-text">Lambda automatically retries async invocations twice. Step Functions handles retries and catch blocks. DLQ for all async paths.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🔐</div><div class="nfr-title">Security</div><div class="nfr-text">Least-privilege Lambda execution role. No Lambda in public subnets. VPC endpoints for private service access. Secrets via AWS Secrets Manager (never env vars).</div></div>
+            <div class="nfr-card"><div class="nfr-icon">📊</div><div class="nfr-title">Observability</div><div class="nfr-text">Lambda Powertools (structured logging, tracing, metrics) is mandatory for all production functions. CloudWatch Lambda Insights for memory/duration anomalies.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">💰</div><div class="nfr-title">Cost</div><div class="nfr-text">ARM64/Graviton saves ~20%. Right-size memory (use Lambda Power Tuning tool). Avoid large VPC Lambda deployments for cold-start-sensitive paths.</div></div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">07 — Anti-Patterns</div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Stateful Lambda</div><div class="anti-text">Relying on in-memory state across invocations. Lambda instances may be reused or recycled unpredictably. All state must be externalised — DynamoDB, ElastiCache, S3.</div></div></div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Lambda Monolith</div><div class="anti-text">A single Lambda handling 20 routes via an internal router. Defeats the purpose. Leads to large deployment packages, slow cold starts, and impossible fine-grained scaling. One function = one responsibility.</div></div></div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Synchronous Chain of Lambdas</div><div class="anti-text">Lambda A calls Lambda B synchronously which calls Lambda C. This creates latency compounding and brittle chains. Use Step Functions for orchestration or SQS for async chaining.</div></div></div>
+        </div>
+        <div class="section">
+          <div class="section-label">08 — Variants & Reusability</div>
+          <div class="variant-grid">
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent)">Variant A</div><div class="variant-name">Serverless API (HTTP)</div><div class="variant-desc">API GW (HTTP API) + Lambda + DynamoDB. Minimal API for CRUD operations. Use AWS SAM or CDK constructs. Sub-day deployment to production for new APIs.</div></div>
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent2)">Variant B</div><div class="variant-name">Serverless Workflow</div><div class="variant-desc">Step Functions (Standard) + multiple Lambda states. For multi-step business processes with compensation logic. Replace legacy job schedulers gradually with this pattern.</div></div>
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent4)">Variant C</div><div class="variant-name">Serverless Event Processor</div><div class="variant-desc">SQS/Kinesis → Lambda. For bulk async processing. Tune batch size and concurrency per workload. Idempotency table in DynamoDB mandatory.</div></div>
+          </div>
+          <div style="margin-top:16px;">
+            <div class="reuse-grid">
+              <div class="reuse-block"><div class="reuse-block-title">🔧 IaC Modules</div><ul class="pattern-list"><li>Module: <code>lambda-standard</code> — function + IAM role + X-Ray + Powertools layer + DLQ</li><li>Module: <code>step-functions-workflow</code> — state machine + CloudWatch log group + X-Ray</li></ul></div>
+              <div class="reuse-block"><div class="reuse-block-title">📋 Guardrails</div><ul class="pattern-list"><li>Lambda Powertools mandatory in all production functions</li><li>No hardcoded secrets in function code — Secrets Manager integration enforced</li><li>Reserved concurrency must be set on all production functions</li></ul></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- PATTERN 05: Data Lakehouse -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="pattern-4" class="pattern">
+      <div class="pattern-header">
+        <div class="pattern-number">PATTERN — 05 / 10</div>
+        <div class="pattern-name">Data Lakehouse Pattern</div>
+        <div class="pattern-tags">
+          <span class="tag tag-amber">Analytics</span>
+          <span class="tag tag-green">Delta Lake</span>
+          <span class="tag tag-blue">Lambda Architecture</span>
+          <span class="tag tag-purple">ML Ready</span>
+        </div>
+      </div>
+      <div class="sections">
+        <div class="section">
+          <div class="section-label">01 — Problem Statement</div>
+          <p>Enterprises accumulate data across dozens of systems — ERP, CRM, IoT, transactional databases — and need a unified platform for analytics, BI reporting, and ML feature engineering. Traditional data warehouses are expensive and rigid; traditional data lakes lack ACID transactions and fine-grained access control. Neither alone satisfies the full spectrum of analytical requirements.</p>
+          <p>Apply when: (a) raw data from multiple systems needs to coexist with curated analytical datasets, (b) self-service analytics for business teams is required, (c) ML teams need a governed feature store, or (d) data retention and compliance require tiered storage with audit controls.</p>
+        </div>
+        <div class="section">
+          <div class="section-label">02 — Architecture Style + Design</div>
+          <div class="arch-diagram">
+            <div class="arch-label">Ingestion</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-blue">Batch (S3 / SFTP)</div>
+              <div class="arch-box arch-box-blue">Streaming (Kinesis/MSK)</div>
+              <div class="arch-box arch-box-blue">CDC (DMS)</div>
+              <div class="arch-box arch-box-blue">APIs (AppFlow)</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓</div></div>
+            <div class="arch-label">Storage Zones (S3)</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-cyan">Raw Zone (Bronze)</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-green">Curated Zone (Silver)</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-amber">Consumption Zone (Gold)</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓  Catalogued via Glue Data Catalog + Lake Formation</div></div>
+            <div class="arch-label">Consumption</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-purple">Athena (SQL)</div>
+              <div class="arch-box arch-box-purple">Redshift Spectrum</div>
+              <div class="arch-box arch-box-purple">SageMaker (ML)</div>
+              <div class="arch-box arch-box-purple">QuickSight (BI)</div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">03 — Cloud Mapping (AWS)</div>
+          <table class="pattern-table">
+            <thead><tr><th>Layer</th><th>AWS Service</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="td-key">Storage</td><td class="td-service">Amazon S3 (Intelligent-Tiering)</td><td>Medallion architecture: Bronze/Silver/Gold prefixes. Lifecycle policies per zone</td></tr>
+              <tr><td class="td-key">Table Format</td><td class="td-service">Apache Iceberg on S3</td><td>ACID transactions, time travel, schema evolution. Preferred over Parquet-only</td></tr>
+              <tr><td class="td-key">Cataloguing</td><td class="td-service">AWS Glue Data Catalog + Lake Formation</td><td>Lake Formation for column/row-level security; replaces legacy IAM bucket policies</td></tr>
+              <tr><td class="td-key">ETL</td><td class="td-service">AWS Glue (PySpark) + Step Functions</td><td>Glue for heavy transforms; Lambda for lightweight enrichment</td></tr>
+              <tr><td class="td-key">Ad-hoc Query</td><td class="td-service">Amazon Athena (v3, Iceberg)</td><td>Serverless SQL on S3; Workgroup-level cost controls per team</td></tr>
+              <tr><td class="td-key">DW / Semantic Layer</td><td class="td-service">Amazon Redshift (Serverless)</td><td>Gold zone data loaded into Redshift for low-latency BI queries</td></tr>
+              <tr><td class="td-key">Streaming Ingest</td><td class="td-service">Kinesis Data Firehose</td><td>Buffered delivery to S3 with automatic Parquet conversion</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <div class="section-label">04 — NFRs, Anti-Patterns & Reusability</div>
+          <div class="nfr-grid">
+            <div class="nfr-card"><div class="nfr-icon">⚡</div><div class="nfr-title">Scalability</div><div class="nfr-text">S3 scales unboundedly. Glue auto-scales workers. Athena scales query concurrency. Partition strategy critical for query performance.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🔐</div><div class="nfr-title">Security</div><div class="nfr-text">Lake Formation column-level security. PII tagging via Macie. KMS encryption on all zones. No direct S3 bucket access — all via Lake Formation grants.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">📊</div><div class="nfr-title">Data Quality</div><div class="nfr-text">AWS Glue Data Quality rules at Silver layer. Quarantine bad records to error zone. Data quality score tracked in CloudWatch.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">💰</div><div class="nfr-title">Cost</div><div class="nfr-text">Intelligent-Tiering on S3. Athena workgroup query limits per team. Glue job bookmarks to avoid reprocessing. Compress to Parquet/Iceberg always.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🛡️</div><div class="nfr-title">Governance</div><div class="nfr-text">All datasets registered in Glue Catalog. Data lineage via Glue or Apache Atlas. No unregistered datasets in Gold zone.</div></div>
+          </div>
+          <div style="margin-top:16px;">
+            <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Data Swamp</div><div class="anti-text">Ingesting all data to S3 without cataloguing, tagging, or quality gates. Produces a lake nobody trusts. Enforce schema registration before Bronze zone entry.</div></div></div>
+            <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">One Zone Fits All</div><div class="anti-text">Serving raw, uncurated data directly to BI tools. Raw zone is for engineering, not consumption. Gold zone is the only zone BI tools should access.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- PATTERN 06: Saga Orchestration -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="pattern-5" class="pattern">
+      <div class="pattern-header">
+        <div class="pattern-number">PATTERN — 06 / 10</div>
+        <div class="pattern-name">Saga Orchestration Pattern</div>
+        <div class="pattern-tags">
+          <span class="tag tag-red">Distributed Tx</span>
+          <span class="tag tag-cyan">Orchestration</span>
+          <span class="tag tag-blue">Compensation</span>
+          <span class="tag tag-amber">Long-Running</span>
+        </div>
+      </div>
+      <div class="sections">
+        <div class="section">
+          <div class="section-label">01 — Problem Statement</div>
+          <p>Microservices architectures prohibit distributed two-phase commits (2PC) — they are slow, blocking, and create cross-service coupling at the database level. Yet business transactions often span multiple services: an order flow touches inventory reservation, payment processing, and fulfilment scheduling. If payment succeeds but fulfilment fails, the system must compensate — automatically.</p>
+          <p>Apply when: (a) a business transaction spans 3+ microservices with distinct data stores, (b) each step must either succeed or be explicitly rolled back via compensating action, (c) transactions can be long-running (seconds to hours), or (d) you need full audit visibility over distributed workflow state.</p>
+        </div>
+        <div class="section">
+          <div class="section-label">02 — Architecture Style + Design</div>
+          <div class="arch-diagram">
+            <div class="arch-label">Orchestrator (Step Functions)</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-cyan">Step 1: Reserve Inventory</div>
+              <div class="arch-arrow">→ success</div>
+              <div class="arch-box arch-box-cyan">Step 2: Process Payment</div>
+              <div class="arch-arrow">→ success</div>
+              <div class="arch-box arch-box-cyan">Step 3: Schedule Fulfilment</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓ on failure at Step 3</div></div>
+            <div class="arch-label">Compensation Path</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-red">Compensate: Refund Payment</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-red">Compensate: Release Inventory</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓ each step calls downstream via SQS or direct Lambda invocation</div></div>
+            <div class="arch-label">Participant Services</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-green">Inventory Service</div>
+              <div class="arch-box arch-box-green">Payment Service</div>
+              <div class="arch-box arch-box-green">Fulfilment Service</div>
+              <div class="arch-box arch-box-green">Notification Service</div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">03 — Cloud Mapping (AWS)</div>
+          <table class="pattern-table">
+            <thead><tr><th>Component</th><th>AWS Service</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="td-key">Orchestrator</td><td class="td-service">AWS Step Functions (Standard)</td><td>Persists state for each execution; full audit trail; up to 1 year execution</td></tr>
+              <tr><td class="td-key">Task Invocation</td><td class="td-service">Lambda + SQS (async tasks)</td><td>Use .waitForTaskToken for long-running steps that need async callback</td></tr>
+              <tr><td class="td-key">Compensating Actions</td><td class="td-service">Lambda (compensation handlers)</td><td>Dedicated Lambda per compensating action — do not reuse forward action</td></tr>
+              <tr><td class="td-key">Idempotency</td><td class="td-service">DynamoDB (idempotency table)</td><td>Each participant checks idempotency key before executing — handles retries</td></tr>
+              <tr><td class="td-key">Failure Notification</td><td class="td-service">EventBridge + SNS</td><td>Publish saga failure events for downstream alerting and ops dashboards</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <div class="section-label">04 — NFRs & Anti-Patterns</div>
+          <div class="nfr-grid">
+            <div class="nfr-card"><div class="nfr-icon">🛡️</div><div class="nfr-title">Resilience</div><div class="nfr-text">Step Functions retries with backoff per state. Compensations are guaranteed to run on failure. State is durable — survives Lambda restarts.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🔐</div><div class="nfr-title">Idempotency</div><div class="nfr-text">Critical. Each participant must check idempotency key (sagaId + stepId) before acting. Prevents double-charge, double-fulfilment on retry.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">📊</div><div class="nfr-title">Observability</div><div class="nfr-text">Step Functions execution history in CloudWatch. Custom EventBridge events at saga start/complete/fail. X-Ray across all Lambda participants.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">⚡</div><div class="nfr-title">Scalability</div><div class="nfr-text">Step Functions supports thousands of concurrent executions. Participant services scale independently. No shared lock between services.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">💰</div><div class="nfr-title">Cost</div><div class="nfr-text">Step Functions Standard charged per state transition. For &lt;5min high-volume sagas, use Express Workflows — ~2000x cheaper per execution.</div></div>
+          </div>
+          <div style="margin-top:16px;">
+            <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Saga Without Compensation</div><div class="anti-text">Defining a saga without explicit compensating actions for every forward step. If payment succeeds and fulfilment fails, you need a refund path — always design compensation upfront.</div></div></div>
+            <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Non-Idempotent Participants</div><div class="anti-text">Step Functions will retry failed states. If the payment service charges twice on retry without idempotency checking, the saga is broken. Idempotency is participant-side, not orchestrator-side.</div></div></div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">05 — Variants & Reusability</div>
+          <div class="variant-grid">
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent)">Variant A</div><div class="variant-name">Choreography-Based Saga</div><div class="variant-desc">No central orchestrator. Each service listens for events and emits success/failure events. More decoupled but harder to debug. Prefer for simple 2-3 step flows.</div></div>
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent2)">Variant B</div><div class="variant-name">Human-in-the-Loop Saga</div><div class="variant-desc">Saga pauses at a decision step awaiting human approval (TaskToken pattern). Use for high-value orders, compliance gates, or exception handling requiring manual review.</div></div>
+            <div class="variant-card"><div class="variant-label" style="color:var(--accent4)">Variant C</div><div class="variant-name">Express Workflow Saga</div><div class="variant-desc">For high-volume, short-duration sagas (&lt;5min). Step Functions Express. No execution history persistence — log all state transitions to CloudWatch explicitly.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- PATTERN 07: Zero Trust Service Mesh -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="pattern-6" class="pattern">
+      <div class="pattern-header">
+        <div class="pattern-number">PATTERN — 07 / 10</div>
+        <div class="pattern-name">Zero Trust Service Mesh Pattern</div>
+        <div class="pattern-tags">
+          <span class="tag tag-pink">Zero Trust</span>
+          <span class="tag tag-red">mTLS</span>
+          <span class="tag tag-purple">Service Mesh</span>
+          <span class="tag tag-blue">SPIFFE/SPIRE</span>
+        </div>
+      </div>
+      <div class="sections">
+        <div class="section">
+          <div class="section-label">01 — Problem Statement</div>
+          <p>Traditional perimeter security assumes that traffic inside a VPC or data centre is trusted. Modern threat models invalidate this: a compromised container can move laterally to any service on the same network segment without any authentication challenge. Regulatory frameworks (PCI DSS, ISO 27001, NIST SP 800-207) now mandate that every service call be authenticated, authorised, encrypted in transit, and logged — regardless of network position.</p>
+          <p>Apply when: (a) you have 5+ microservices calling each other in production, (b) compliance requires service-level authentication (not just network-level), (c) you need to enforce traffic policies (retries, timeouts, circuit breaking) uniformly, or (d) you are operating a multi-tenant platform where workload isolation is critical.</p>
+        </div>
+        <div class="section">
+          <div class="section-label">02 — Architecture Style + Design</div>
+          <div class="arch-diagram">
+            <div class="arch-label">Identity Plane</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-pink">Certificate Authority (ACM PCA / SPIRE)</div>
+              <div class="arch-arrow">→ issues SPIFFE SVIDs to each workload</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓</div></div>
+            <div class="arch-label">Data Plane (Envoy Sidecar per Service)</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-cyan">Service A + Envoy</div>
+              <div class="arch-arrow">←mTLS→</div>
+              <div class="arch-box arch-box-cyan">Service B + Envoy</div>
+              <div class="arch-arrow">←mTLS→</div>
+              <div class="arch-box arch-box-cyan">Service C + Envoy</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓ all traffic policies enforced by sidecar</div></div>
+            <div class="arch-label">Control Plane</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-green">Traffic Policy</div>
+              <div class="arch-box arch-box-green">Auth Policy (AuthN/AuthZ)</div>
+              <div class="arch-box arch-box-green">Observability (metrics/traces)</div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">03 — Cloud Mapping (AWS)</div>
+          <table class="pattern-table">
+            <thead><tr><th>Component</th><th>AWS Service</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="td-key">Service Mesh</td><td class="td-service">AWS App Mesh (Envoy)</td><td>Managed Envoy control plane. Alternatively: EKS with Istio for Kubernetes-native teams</td></tr>
+              <tr><td class="td-key">Certificate Authority</td><td class="td-service">ACM Private CA</td><td>Issues short-lived certs (24h) for mTLS. Automated rotation via App Mesh integration</td></tr>
+              <tr><td class="td-key">Workload Identity</td><td class="td-service">IAM Roles for Service Accounts (IRSA)</td><td>IRSA for EKS; ECS Task Roles for Fargate; eliminates credential storage</td></tr>
+              <tr><td class="td-key">AuthZ Policy</td><td class="td-service">App Mesh + OPA (Open Policy Agent)</td><td>OPA as external authorizer for fine-grained ABAC policies per route</td></tr>
+              <tr><td class="td-key">Network Baseline</td><td class="td-service">VPC Security Groups + NACLs</td><td>Layer 4 baseline; mesh handles Layer 7. Defense in depth — both layers active</td></tr>
+              <tr><td class="td-key">Observability</td><td class="td-service">X-Ray + CloudWatch Container Insights</td><td>Envoy emits request metrics; X-Ray traces full service call graphs</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <div class="section-label">04 — NFRs, Anti-Patterns & Variants</div>
+          <div class="nfr-grid">
+            <div class="nfr-card"><div class="nfr-icon">🔐</div><div class="nfr-title">Zero Trust</div><div class="nfr-text">Every service call authenticated via mTLS SVID. Deny-by-default AuthZ. No implicit trust from network position alone.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">⚡</div><div class="nfr-title">Latency</div><div class="nfr-text">Sidecar adds ~1–2ms per hop (Envoy overhead). Acceptable for internal services. Not suitable for ultra-low-latency (&lt;1ms) data plane paths.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🛡️</div><div class="nfr-title">Resilience</div><div class="nfr-text">Envoy enforces circuit breaking, retries, timeouts uniformly — removes the burden from service code. Consistent policy across all services.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">📊</div><div class="nfr-title">Observability</div><div class="nfr-text">Full service topology map from Envoy metrics. Immediate visibility into which service is the latency source without code changes.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">💰</div><div class="nfr-title">Cost</div><div class="nfr-text">Sidecar adds ~64MB memory overhead per task. ACM PCA has monthly CA cost — share one CA per environment, not per service.</div></div>
+          </div>
+          <div style="margin-top:16px;">
+            <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Permissive Default Policy</div><div class="anti-text">Deploying a mesh with a default "allow-all" AuthZ policy. This provides observability only, not Zero Trust. Start in audit mode, then switch to deny-by-default with explicit allow rules per route.</div></div></div>
+            <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Long-Lived Certificates</div><div class="anti-text">Issuing 1-year certificates defeats mTLS rotation benefits. Certificates should be short-lived (24–72h) and automatically rotated by the mesh control plane.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- PATTERN 08: Strangler Fig -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="pattern-7" class="pattern">
+      <div class="pattern-header">
+        <div class="pattern-number">PATTERN — 08 / 10</div>
+        <div class="pattern-name">Strangler Fig Migration Pattern</div>
+        <div class="pattern-tags">
+          <span class="tag tag-blue">Modernisation</span>
+          <span class="tag tag-cyan">Incremental</span>
+          <span class="tag tag-green">Hybrid</span>
+          <span class="tag tag-amber">Legacy</span>
+        </div>
+      </div>
+      <div class="sections">
+        <div class="section">
+          <div class="section-label">01 — Problem Statement</div>
+          <p>Big-bang legacy rewrites are high-risk and frequently fail. A 3-year "replace everything" project typically delivers nothing for 2 years and then scrambles. The business cannot pause — legacy systems must remain operational during modernisation. The challenge is migrating capability incrementally without disrupting consumers or requiring a hard cutover date.</p>
+          <p>Apply when: (a) decomposing a monolith into microservices while keeping the monolith live, (b) migrating a legacy on-prem application to cloud services in phases, (c) the monolith has no downtime tolerance for a full rewrite, or (d) teams need to build confidence and competency before full migration.</p>
+        </div>
+        <div class="section">
+          <div class="section-label">02 — Architecture Style + Design</div>
+          <div class="arch-diagram">
+            <div class="arch-label">Phase 1: Intercept Traffic</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-blue">All Traffic</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-cyan">Routing Layer (API GW / CloudFront)</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-amber">Legacy Monolith (100%)</div>
+            </div>
+            <div class="arch-label" style="margin-top:12px;">Phase 2: Redirect Migrated Capabilities</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-blue">All Traffic</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-cyan">Routing Layer</div>
+            </div>
+            <div class="arch-row">
+              <div style="width:40px;"></div>
+              <div class="arch-arrow">→ /orders/*</div>
+              <div class="arch-box arch-box-green">New Order Microservice (Cloud)</div>
+            </div>
+            <div class="arch-row">
+              <div style="width:40px;"></div>
+              <div class="arch-arrow">→ /legacy/*</div>
+              <div class="arch-box arch-box-amber">Legacy Monolith (remaining)</div>
+            </div>
+            <div class="arch-label" style="margin-top:12px;">Phase N: Legacy Retired</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-blue">All Traffic</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-cyan">API Gateway</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-green">Cloud Microservices (100%)</div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">03 — Cloud Mapping (AWS)</div>
+          <table class="pattern-table">
+            <thead><tr><th>Component</th><th>AWS Service</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="td-key">Routing Layer</td><td class="td-service">Amazon API Gateway + CloudFront</td><td>Path-based routing rules changed per migration phase; no consumer change required</td></tr>
+              <tr><td class="td-key">Legacy Backend</td><td class="td-service">Direct Connect / VPN to on-prem</td><td>Legacy remains on-prem; routed via API GW VPC Link to NLB</td></tr>
+              <tr><td class="td-key">New Services</td><td class="td-service">ECS Fargate / EKS</td><td>Each extracted capability deployed as a container; independent CI/CD pipeline</td></tr>
+              <tr><td class="td-key">Database Migration</td><td class="td-service">DMS + AWS SCT</td><td>Incremental schema migration; dual-write during transition period</td></tr>
+              <tr><td class="td-key">Feature Flags</td><td class="td-service">AWS AppConfig</td><td>Gradual traffic shifting without code deployments; rollback in seconds</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <div class="section-label">04 — Anti-Patterns & Reusability</div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Migrating Without the Routing Layer</div><div class="anti-text">Trying to migrate without a controlled routing layer means consumers must update URLs/clients simultaneously with migration. Always intercept first, then shift gradually.</div></div></div>
+          <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Keeping the Monolith Permanently</div><div class="anti-text">The strangler fig requires discipline to eventually kill the legacy system. Without a retirement deadline per capability, teams run dual systems indefinitely — doubling operational cost.</div></div></div>
+          <div style="margin-top:16px;">
+            <div class="reuse-grid">
+              <div class="reuse-block"><div class="reuse-block-title">🔧 IaC Modules</div><ul class="pattern-list"><li>Module: <code>routing-layer</code> — API GW with path rules + feature flag integration via AppConfig</li><li>Module: <code>hybrid-connectivity</code> — VPN/Direct Connect + NLB + VPC Link for legacy routing</li></ul></div>
+              <div class="reuse-block"><div class="reuse-block-title">📋 Governance</div><ul class="pattern-list"><li>Mandatory: migration tracker per capability with target retirement date</li><li>Dual-write strategy documented and approved before database migration begins</li><li>Canary release percentage tracked in CloudWatch dashboard</li></ul></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- PATTERN 09: ML Model Serving -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="pattern-8" class="pattern">
+      <div class="pattern-header">
+        <div class="pattern-number">PATTERN — 09 / 10</div>
+        <div class="pattern-name">ML Model Serving Pattern</div>
+        <div class="pattern-tags">
+          <span class="tag tag-purple">MLOps</span>
+          <span class="tag tag-blue">Inference</span>
+          <span class="tag tag-cyan">A/B Testing</span>
+          <span class="tag tag-green">Model Registry</span>
+        </div>
+      </div>
+      <div class="sections">
+        <div class="section">
+          <div class="section-label">01 — Problem Statement</div>
+          <p>Training an ML model is only 20% of the problem. The other 80% is serving it reliably in production with low latency, handling model versioning, managing A/B experiments between model versions, detecting model drift, and retraining on schedule. Most enterprise ML projects fail at serving — not training.</p>
+          <p>Apply when: (a) a trained model needs to serve predictions to production systems (real-time or batch), (b) multiple model versions need to coexist for A/B testing, (c) model drift monitoring is a compliance or business requirement, or (d) ML inference cost needs to be optimised at scale.</p>
+        </div>
+        <div class="section">
+          <div class="section-label">02 — Architecture Style + Design</div>
+          <div class="arch-diagram">
+            <div class="arch-label">Training & Registry</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-purple">Feature Store</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-purple">Training Pipeline</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-cyan">Model Registry (versioned)</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓ approved models promoted to serving</div></div>
+            <div class="arch-label">Real-Time Serving</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-blue">API Gateway</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-cyan">Routing (A/B / Shadow)</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-green">Model Endpoint v1 (80%)</div>
+            </div>
+            <div class="arch-row">
+              <div style="width:240px;"></div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-amber">Model Endpoint v2 (20%)</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓ drift monitoring + retraining trigger</div></div>
+            <div class="arch-label">Batch Serving</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-blue">S3 Input</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-cyan">Batch Transform Job</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-green">S3 Predictions Output</div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">03 — Cloud Mapping (AWS)</div>
+          <table class="pattern-table">
+            <thead><tr><th>Component</th><th>AWS Service</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="td-key">Feature Store</td><td class="td-service">SageMaker Feature Store</td><td>Online store for real-time inference; offline store (S3/Glue) for training</td></tr>
+              <tr><td class="td-key">Model Registry</td><td class="td-service">SageMaker Model Registry</td><td>Version approval gates; approval triggers deployment pipeline</td></tr>
+              <tr><td class="td-key">Real-Time Endpoint</td><td class="td-service">SageMaker Real-Time Inference</td><td>Multi-model endpoints for cost optimisation across many models on same instance</td></tr>
+              <tr><td class="td-key">A/B / Shadow</td><td class="td-service">SageMaker Production Variants</td><td>Traffic splitting per variant; shadow mode logs challenger predictions without serving them</td></tr>
+              <tr><td class="td-key">Batch Inference</td><td class="td-service">SageMaker Batch Transform</td><td>Triggered by Step Functions; results to S3 for downstream consumption</td></tr>
+              <tr><td class="td-key">Drift Monitoring</td><td class="td-service">SageMaker Model Monitor</td><td>Data quality + model quality + bias detection; alerts via CloudWatch</td></tr>
+              <tr><td class="td-key">Serverless Inference</td><td class="td-service">SageMaker Serverless Inference</td><td>For sporadic inference traffic — scales to 0; pay per request</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <div class="section-label">04 — NFRs, Anti-Patterns & Variants</div>
+          <div class="nfr-grid">
+            <div class="nfr-card"><div class="nfr-icon">⚡</div><div class="nfr-title">Latency</div><div class="nfr-text">Real-time endpoint p99 &lt;100ms for most models. Use c-series instances for CPU inference; g-series for GPU. Warm pool to eliminate cold start.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🛡️</div><div class="nfr-title">Model Safety</div><div class="nfr-text">No model deployed to production without Registry approval gate. Shadow testing before A/B. Automatic rollback on metric threshold breach.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">📊</div><div class="nfr-title">Drift Detection</div><div class="nfr-text">Model Monitor checks data distribution shift weekly. Prediction quality monitored against ground truth labels (delayed feedback loop).</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🔐</div><div class="nfr-title">Data Privacy</div><div class="nfr-text">PII must be stripped before feature store. Inference logs must respect data retention policies. VPC endpoints for SageMaker — no traffic on public internet.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">💰</div><div class="nfr-title">Cost</div><div class="nfr-text">Multi-model endpoints amortise instance cost across model portfolio. Serverless for low-frequency. Graviton instances for CPU inference save ~20%.</div></div>
+          </div>
+          <div style="margin-top:16px;">
+            <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">No Model Registry</div><div class="anti-text">Deploying models directly from training scripts without versioning, approval, or lineage tracking. Impossible to audit what model is in production or roll back safely.</div></div></div>
+            <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Training/Serving Skew</div><div class="anti-text">Feature engineering code in training is not identical to serving. This is the most common cause of model degradation in production. Feature Store enforces a single feature pipeline for both.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- PATTERN 10: Batch & Bulk Processing -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="pattern-9" class="pattern">
+      <div class="pattern-header">
+        <div class="pattern-number">PATTERN — 10 / 10</div>
+        <div class="pattern-name">Batch & Bulk Processing Pattern</div>
+        <div class="pattern-tags">
+          <span class="tag tag-amber">Batch / ETL</span>
+          <span class="tag tag-blue">Scheduled</span>
+          <span class="tag tag-green">High-Volume</span>
+          <span class="tag tag-cyan">Map-Reduce</span>
+        </div>
+      </div>
+      <div class="sections">
+        <div class="section">
+          <div class="section-label">01 — Problem Statement</div>
+          <p>Not all workloads are real-time. A significant proportion of enterprise compute is batch: end-of-day financial reconciliation, monthly billing generation, bulk data exports to partners, overnight ETL jobs feeding the data warehouse, and PDF/report generation at scale. These workloads have predictable timing, high data volume, tolerance for minutes-to-hours latency, and no user interaction.</p>
+          <p>Apply when: (a) processing millions of records on a schedule, (b) overnight or end-of-period financial/compliance processing, (c) bulk data transformations between systems, or (d) large-scale report generation without interactive latency requirements.</p>
+        </div>
+        <div class="section">
+          <div class="section-label">02 — Architecture Style + Design</div>
+          <div class="arch-diagram">
+            <div class="arch-label">Trigger</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-blue">EventBridge Scheduler (cron)</div>
+              <div class="arch-arrow">→ or →</div>
+              <div class="arch-box arch-box-blue">S3 Event (file drop)</div>
+              <div class="arch-arrow">→ or →</div>
+              <div class="arch-box arch-box-blue">API (on-demand)</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓</div></div>
+            <div class="arch-label">Orchestration (Step Functions)</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-cyan">Pre-check / Validation</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-cyan">Batch Job Submission</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-cyan">Poll → Complete/Fail</div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-box arch-box-cyan">Post-processing</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓</div></div>
+            <div class="arch-label">Compute Options</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-green">AWS Batch (containers)</div>
+              <div class="arch-box arch-box-green">Glue Spark (ETL)</div>
+              <div class="arch-box arch-box-green">Lambda (lightweight)</div>
+              <div class="arch-box arch-box-green">EMR (big data)</div>
+            </div>
+            <div class="arch-row"><div class="arch-arrow">↓</div></div>
+            <div class="arch-label">Output</div>
+            <div class="arch-row">
+              <div class="arch-box arch-box-amber">S3 (results)</div>
+              <div class="arch-box arch-box-amber">RDS / DynamoDB (records)</div>
+              <div class="arch-box arch-box-amber">SES / SNS (notifications)</div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-label">03 — Cloud Mapping (AWS)</div>
+          <table class="pattern-table">
+            <thead><tr><th>Component</th><th>AWS Service</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="td-key">Container Batch</td><td class="td-service">AWS Batch (Fargate or EC2)</td><td>Fargate for &lt;16 vCPU; EC2 Spot for large jobs. Auto-manages job queues and compute environments</td></tr>
+              <tr><td class="td-key">ETL / Spark</td><td class="td-service">AWS Glue (PySpark)</td><td>Serverless Spark; Glue job bookmarks for incremental processing; auto-scales DPUs</td></tr>
+              <tr><td class="td-key">Big Data</td><td class="td-service">Amazon EMR (Serverless)</td><td>EMR Serverless for ad-hoc large jobs; EMR on EKS for Kubernetes-native teams</td></tr>
+              <tr><td class="td-key">Orchestration</td><td class="td-service">AWS Step Functions Standard</td><td>Polls for Batch/Glue job completion; handles branching on success/fail</td></tr>
+              <tr><td class="td-key">Trigger</td><td class="td-service">EventBridge Scheduler</td><td>Cron expressions with timezone support; rate-based for retry intervals</td></tr>
+              <tr><td class="td-key">Checkpointing</td><td class="td-service">DynamoDB (checkpoint table)</td><td>Track last-processed record for resumable jobs after failure</td></tr>
+              <tr><td class="td-key">Alerts</td><td class="td-service">SNS + CloudWatch Alarms</td><td>Alarm on job failure, duration breach, or missed schedule window</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <div class="section-label">04 — NFRs, Anti-Patterns & Variants</div>
+          <div class="nfr-grid">
+            <div class="nfr-card"><div class="nfr-icon">⚡</div><div class="nfr-title">Scalability</div><div class="nfr-text">Partition input data for parallel processing. Glue DPU autoscaling. AWS Batch scales from 0 to 1000s of containers. Design for data parallelism from day one.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🛡️</div><div class="nfr-title">Resilience</div><div class="nfr-text">Idempotent jobs with checkpointing. Failed jobs auto-retry with backoff. Step Functions compensates on terminal failure. Dead-letter output bucket for bad records.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">🔐</div><div class="nfr-title">Security</div><div class="nfr-text">No long-lived credentials in job definitions. ECS Task Roles / IAM for Batch containers. S3 output encrypted (KMS). Sensitive data masked in CloudWatch logs.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">📊</div><div class="nfr-title">Observability</div><div class="nfr-text">Job duration tracked in CloudWatch. Record count emitted as custom metric. Missed schedule window alarm critical for financial batch jobs.</div></div>
+            <div class="nfr-card"><div class="nfr-icon">💰</div><div class="nfr-title">Cost</div><div class="nfr-text">EC2 Spot for Batch (60–80% saving). Glue workers scaled to job size. EMR Serverless scales to 0 between jobs. Schedule outside peak hours to avoid on-demand contention.</div></div>
+          </div>
+          <div style="margin-top:16px;">
+            <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Non-Idempotent Batch Jobs</div><div class="anti-text">A batch job that cannot be safely re-run after failure will corrupt data on retry. All batch jobs must be designed to be restartable from a checkpoint without duplicating output.</div></div></div>
+            <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">Treating Batch as Streaming</div><div class="anti-text">Running batch jobs every minute to simulate "near real-time." If the business need is sub-minute, use the Event-Driven pattern instead. Batch overhead per invocation is non-trivial.</div></div></div>
+            <div class="antipattern-item"><div class="anti-icon">✕</div><div><div class="anti-title">No Missed-Schedule Alert</div><div class="anti-text">A batch job that silently fails to trigger (e.g. Scheduler bug, Lambda throttle) will go undetected without a heartbeat alarm. Every scheduled batch job needs a "did it start?" alarm.</div></div></div>
+          </div>
+          <div style="margin-top:16px;">
+            <div class="reuse-grid">
+              <div class="reuse-block"><div class="reuse-block-title">🔧 IaC Modules</div><ul class="pattern-list"><li>Module: <code>batch-job-standard</code> — Job definition + compute env + job queue + IAM role</li><li>Module: <code>scheduled-etl</code> — EventBridge Scheduler + Step Functions + Glue job + SNS alert</li></ul></div>
+              <div class="reuse-block"><div class="reuse-block-title">📋 Guardrails</div><ul class="pattern-list"><li>All scheduled jobs must have a missed-schedule CloudWatch alarm</li><li>Idempotency design must be documented in job README before production deploy</li><li>Spot interruption handling mandatory for Batch EC2 compute environments</li></ul></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PATTERN NAV (bottom) -->
+    <div id="pattern-nav-bottom" class="pattern-nav" style="display:none;">
+      <button class="pnav-btn" id="prev-btn" onclick="navigatePattern(-1)">← Previous Pattern</button>
+      <div class="pnav-counter">Pattern <strong id="current-num">1</strong> of <strong>10</strong></div>
+      <button class="pnav-btn" id="next-btn" onclick="navigatePattern(1)">Next Pattern →</button>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  let currentPattern = -1; // -1 = overview
+
+  function showOverview() {
+    // Hide all patterns
+    document.querySelectorAll('.pattern').forEach(p => p.classList.remove('visible'));
+    document.getElementById('overview').style.display = 'block';
+    document.getElementById('pattern-nav-bottom').style.display = 'none';
+    currentPattern = -1;
+    // Update sidebar
+    document.querySelectorAll('.sidebar-item').forEach((item, i) => {
+      item.classList.toggle('active', i === 0);
+    });
+  }
+
+  function showPattern(idx) {
+    document.getElementById('overview').style.display = 'none';
+    document.querySelectorAll('.pattern').forEach(p => p.classList.remove('visible'));
+    const target = document.getElementById('pattern-' + idx);
+    if (target) target.classList.add('visible');
+    document.getElementById('pattern-nav-bottom').style.display = 'flex';
+    document.getElementById('current-num').textContent = idx + 1;
+    document.getElementById('prev-btn').disabled = idx === 0;
+    document.getElementById('next-btn').disabled = idx === 9;
+    currentPattern = idx;
+    // Update sidebar
+    document.querySelectorAll('.sidebar-item').forEach((item, i) => {
+      item.classList.toggle('active', i === idx + 1);
+    });
+    // Scroll to top of main
+    document.querySelector('.main').scrollTop = 0;
+  }
+
+  function navigatePattern(dir) {
+    const next = currentPattern + dir;
+    if (next >= 0 && next <= 9) showPattern(next);
+  }
+
+  function switchTab(el, group) {
+    const parent = el.closest('.nav-tabs');
+    parent.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (currentPattern === -1) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navigatePattern(1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') navigatePattern(-1);
+  });
+</script>
+</body>
+</html>
