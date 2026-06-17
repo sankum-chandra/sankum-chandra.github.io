@@ -1,15 +1,441 @@
-Hi Anupama,
+Service Name
 
-Thanks for the follow-up. Here's consolidated feedback on the BackInt Backup Agent for SAP HANA (Restricted) onboarding documentation — Jerry's points plus a few additions from an architecture/governance perspective. Happy to walk through any of these before you finalise for approvals.
+AZU - BackInt Agent for SAP HANA
 
-From Jerry's review:
+Offering : Name of the service offering
 
-1. Service/Product Owner – update to Jason Rogowsky; the backup service sits under Jason.
+Service Code
 
-2. Standard Service Offering (Restricted):
-   - State explicitly in this section that the offering supports SAP HANA only (it's implied throughout but needs to be called out here).
-   - Add that this is an interim solution, in place only until Veeam Backup is deployed and operational in Azure, with the intent to transition to Veeam as the standard backup solution.
+bia
 
-3. Azure Backup dependency – the doc leans on the Azure Backup Vault catalog item for some details, which is currently thin. Either add detail directly here or fix the Azure Backup item. Specifically cover: offsite replication (required for DR, primary or secondary), immutability (required), and data retention policies (currently missing).
+ 
 
-4. SCP section – clarify the AWS reference, since this solution runs in Azure.
+Short Description
+
+Azure Backup Agent for SAP HANA is the SAP Backint–certified agent installed on SAP HANA databases running on Azure VMs that enables Azure Backup to perform application‑consistent HANA database backups and restores.
+
+Short Description : Provide short description of the service
+
+Cloud Provider
+
+AZR
+
+Cloud Provider : Specify from list - AWS, GCP , AZU, Private Cloud, N/A
+
+Service/Product Owner
+
+@Chris Farrell 
+
+Service/Product Owner : Provide the service/product owner (using "@" for the name i.e. @username) 
+
+Status
+
+DRAFT
+
+Status : Default status is DRAFT when page is created from template. Status values are : ACTIVE(Green), DRAFT(Dark Grey), RETIRED(Orange/Yellow)
+
+Type
+
+Infrastructure
+
+Service Offering Classification : Type as per TBM Taxonomy Structure
+
+Refer link for the value list Technology Business Management (TBM) Taxonomy Structure
+
+Category
+
+Storage
+
+Service Offering Classification : Category for given type as per TBM Taxonomy Structure
+
+Refer link for the value list Technology Business Management (TBM) Taxonomy Structure
+
+Name
+
+Backup & Archive
+
+Service Offering Classification : Name for given type & category as per TBM Taxonomy Structure
+
+Refer link for the value list Technology Business Management (TBM) Taxonomy Structure
+
+Production Date
+
+ 
+
+Production Date : Date the service was released in production . Use "//" to specify the date
+
+Operational Date
+
+ 
+
+Operational Date : Date the service was operational . Use "//" to specify the date
+
+Standard Service Offering
+
+Restricted
+
+Standard Service Offering : Specify from list - Yes, Restricted 
+
+If restricted, include ADR link/document in the ADR section
+
+Self-Service Available
+
+No  
+
+Is this offering available in our self-service module? Y/N
+
+Cloud Service Model
+
+IAAS
+
+Cloud Service Model :  Specify from list - PAAS, IAAS, SAAS, N/A
+
+IaC Ready
+
+No
+
+IaC Ready : Specify from list - No, Yes
+
+Availability SLA
+
+ 
+
+Reference Links - Availability Service Level Agreement (SLA) : AWS - SLA, GCP - SLA , Azure - SLA
+
+Multi-AZ Supported
+
+N/A
+
+Multi-AZ Supported : Specify from list - No, Yes, N/A
+
+Private Endpoint Supported
+
+N/A
+
+Private Endpoint Supported : Specify from list - No, Yes, N/A
+
+Reference links - Private Endpoint Supported : Azure - Private Link Availability ,  AWS - AWS Services That Integrate With AWS PrivateLink , GCP - Private Service Connect
+
+Region(s)
+
+AZ - Canada (Central), AZ - Canada (East)
+
+Region(s) : Specify from list 
+
+AWS - Canada (Central), AWS - Canada (West), AZ - Canada (Central), AZ - Canada (East), GCP - North America (Toronto), GCP - North America (Montreal), Global, Other, N/A
+
+Region - Other
+
+ 
+
+Region - Other : Specify the details if region(s) selected as Other
+
+Design Pattern
+
+ 
+
+For given service offering, provide the CL design pattern name/link (e.g. EDP-Engineering Design pattern link)
+
+Solution Architect
+
+@Anupama Varma 
+
+Solution architect for the design pattern/service offering (use "@" for the name i.e. @username)
+
+Reviewer(s)
+
+@Daniel Caruso , @Jason Rogowsky 
+
+Reviewer(s) for the service offering (use "@" for the name i.e. @username)
+
+Approver(s)
+
+ 
+
+Name of stakeholder(s) approving the service offering - PO/Service Owner, Portfolio Architect(s) for given capability of the service (use "@" for the name i.e. @username)
+
+Reference Link : PO/Service Owner(s), Capability Portfolio Architects
+
+Approver - EA
+
+ 
+
+Name of approver from Enterprise Architecture(EA) - Management & Governance approving the service offering (use "@" for the name i.e. @username) 
+
+Reference Link :  EA -  Management & Governance 
+
+Approver - Security EA
+
+@Jason Pruden 
+
+Name of approver from Security Enterprise Architecture Team approving the service offering (use "@" for the name i.e. @username) 
+
+Approved Date
+
+ 
+
+Date the service offering was approved. Use "//" to specify the date
+
+Service Overview
+The backup tools used for SAP HANA (in-memory database) fall under 2 categories 
+
+SAP-native backups managed entirely by SAP HANA, and 
+
+3rd party backup tools via SAP HANA BackInt API
+
+Backint for SAP HANA is an API that enables 3rd party tool vendors to directly connect their backup agents to the backup and recovery capabilities of the SAP HANA database.
+
+Azure Backup plugin/agent for SAP HANA is the SAP Backint–certified agent installed on SAP HANA databases running on Azure VMs that enables the Azure’s native backup service Azure Backup to perform application‑consistent HANA database backups and restores. Data and log backups can be individually configured to be created and recovered using this BackInt agent in Azure.
+
+Backups are transferred via pipe/stream from the SAP HANA database to the Azure backup agent for HANA, which runs on the SAP HANA database server.
+
+Azure Backup architecture for SAP HANA Backup - Azure Backup
+
+image-20260424-174341.png
+SAP HANA Backup Architecture in Azure
+Features/Optional Features
+Note: The agent itself is lightweight and fixed; optional features are relevant only from the perspective of Azure Backup service capabilities.
+
+Azure BackInt agent works seamlessly with Azure backup service; 
+
+Supports Full, Differential, Incremental and Log backups, Snapshots - (with daily maximum limits)
+
+OOTB Standard 15-minute Recovery Point Objective (RPO): Recovery of critical data of up to 15 minutes is possible using Azure Backup service. FAQ — Back up SAP HANA databases on Azure VMs - Azure Backup
+
+Optional: One-click, point-in-time restores via HANA Studio: Restore of production data can be done on alternate HANA servers. Chaining of backups and catalogs to perform restores is all managed by Azure behind the scenes.
+About the SAP HANA database backup on Azure VMs - Azure Backup
+Restore SAP HANA databases on Azure VMs - Azure Backup
+
+By Design, Azure Backint agent always uses secure (TLS) communication even if SSL Enforce is disabled in HANA. 
+
+SAP HANA can encrypt the Backint backup data streams using TLS/SSL (TLS 1.2 in transit, encrypted at rest using MMK). 
+
+As of May 2026, Microsoft confirmed there is no official documentation stating Azure Backup for SAP HANA supports or is validated with TLS 1.3
+
+Optional: SSL Enforce is an SAP HANA setting, not an Azure requirement; Azure Backup does not require SSL Enforce to be enabled
+
+Best Practices/Industry Standards
+SAP Requirements
+
+SAP HANA backup supported matrix
+
+Azure Backup’s Backint agent requires 
+
+the use of an SAP supported RHEL/SLES VM OS versions from Azure, and
+
+that SAP HANA version is at the supported SPS level/revision for the chosen OS
+
+HANA backups be done using Backint‑Certified Backup Tools and use native HANA backup logic
+
+Log Backups (managed by BackInt) must be enabled - This needs to align with the CL standards as well
+
+As per SAP, it's mandatory to have weekly full snapshots for all the databases within an instance - This needs to align with the CL standards as well
+
+HSR awareness is mandatory in “Replicated Landscapes”
+
+SAP Best practice recommendations
+
+Note: These need to align with the CL standards for different environments.
+
+Full backup at least daily
+
+Log backup every 15 minutes (minimum RPO)
+
+Encryption in transit and at rest is mandatory in cloud platforms
+
+Use Cases
+Azure Backup’s Backint agent is used for backup of SAP HANA databases only
+
+When To Use
+Azure Backup’s Backint agent is for backup of SAP HANA databases only
+
+How It Works
+Pre-requisites: Tutorial - Back up SAP HANA databases in Azure VMs - Azure Backup
+
+Steps for set up: Azure Backup architecture for SAP HANA Backup - Azure Backup
+
+image-20260428-155805.png
+Backup Flow
+Supported automation
+
+Azure Backup BackInt plugin installation requires an explicit preregistration step on the HANA VM and this can be automated to be run as part of SAP HANA VM provisioning.
+
+Backup policies for SAP HANA on Azure can be fully automated using infrastructure-as-code tools
+
+azure-docs/articles/backup/backup-azure-sap-hana-database.md at main · MicrosoftDocs/azure-docs · GitHub
+
+How To Use It
+The Agent does not need any configuration - configure Azure Backup and SAP HANA settings, not the agent itself.
+
+Goals & Benefits
+Goal: Meet SAP’s strict requirements for application‑consistent, database‑aware backup and recovery for HANA DB.
+
+Goal: Protection from Data loss & corruption for SAP HANA workloads
+
+Benefit: BackInt Agent Enables Point‑in‑Time Recovery of SAP HANA databases using Azure Backups 
+
+Limitations
+Scope is limited by design to only SAP HANA database backup in Azure
+
+Strictly requires the use of supported SAP HANA versions, Linux OS Versions
+
+Operational Instrumentation & Monitoring
+The Azure Backint plugin generates local agent (technical only) logs within the HANA VM for agent execution (activities & errors) and troubleshooting.
+
+log name: backint.log in trace directory per DB (tenant)
+
+The agent execution logs need to be added to the sink to eventually go to Splunk
+
+Splunk can be requested and used for monitoring.
+
+Customer responsibility to work with monitoring team to setup metrics or log collection if needed
+
+CI Management
+Not Applicable to this service offering.
+
+Security
+Embedded Security Controls
+Most security controls are embedded through the Azure Backup service and Azure platform, not through configurable agent features.
+
+The Backint agent does not store usernames or passwords. Authentication to Azure Backup uses mechanisms like Azure Managed Identity and/or Azure RBAC.
+
+By Design, Azure Backint agent always uses secure (TLS) communication even if SSL Enforce is disabled in HANA. This is derived understanding from the following documentation.
+
+Encryption in Azure Backup - Azure Backup - “all your backup data in transit is transferred over HTTPS. It always remains on the Azure backbone network.”
+
+By Design, Azure Backint agent always uses secure (TLS) communication even if SSL Enforce is disabled in HANA. 
+
+SAP HANA can encrypt the Backint backup data streams using TLS/SSL (TLS 1.2 in transit, encrypted at rest using MMK). 
+
+As of May 2026, Microsoft confirmed there is no official documentation stating Azure Backup for SAP HANA supports or is validated with TLS 1.3
+
+Optional: SSL Enforce is an SAP HANA setting, not an Azure requirement; Azure Backup does not require SSL Enforce to be enabled
+
+Security/Policy
+The Backint agent itself is intentionally lightweight; most security controls are embedded through the Azure Backup service and Azure platform, not through configurable agent features.
+
+Security Logging/SIEM
+Backup logs are captured in the Enterprise Log Layer and shipped to SIEM
+
+Backup Metrics are captured in Splunk, this can be viewed under the following base queries. 
+
+
+
+## Prod Logs
+index="microsoftcloud"
+## NonProd Logs
+index="microsoftcloud"
+Networking Considerations
+Requires outbound HTTPS from SAP HANA VM to the Azure Backup endpoints - automatic when Azure Backup is configured
+
+Use Private Endpoints for Recovery Services vaults
+
+Data Protection
+Data protection is embedded through the Azure Backup service and Azure platform, not through configurable agent features.
+
+Access Management
+The Backint agent does not use usernames or passwords, and operates with least privilege. 
+
+Access management is enforced through Azure Managed Identity, RBAC, and SAP HANA authorizations to the Azure Backup
+
+MS comment : If we use a backup administrator role to backup all your DBs, then need to configure Azure RBAC and also create a user with access for only backups on the SAP side as a backup administrator or DB administrator. SAP BASIS will be responsible for the set up of back up for SAP HANA DB, the infra back up will be cloud team/HCL.
+
+Application / Supply Chain Integration
+Azure Backint agent lifecycle is fully managed by Azure Backup with installation of the agent
+
+Customer will need to work with Cloud team to operationalize Azure Backint agent; work with Customer SAP team to confirm Azure Backint is restoring and backing up to Azure Backup Recovery Services Vault
+
+Lifecycle Management
+Lifecycle management of the Azure BackInt agent is controlled by Microsoft and is done continuously, not just at the time of installation
+
+Every time a backup operation is orchestrated, Azure Backup validates:
+
+SAP HANA version (SPS + revision)
+
+OS version (RHEL/SLES + minor level)
+
+HSR role (primary/secondary)
+
+Azure Backup BackInt version
+
+Backint Agent compatible metadata (specific to SAP products like HANA, ECC , Solution Manager etc.)
+
+Azure’s BackInt agent version is automatically chosen, updated and patched based on the parameters mentioned above, unless the Customer wants to use an older/specific version of Agent to support an older/specific HANA version for example. However, the version of the Azure BackInt Agent used must be the standard across the organization.
+
+Note: 
+
+SAP outlines Azure Backup BackInt version requirements in the SAP Note: 2756788 - Support Process Microsoft Azure Backup BackInt
+
+SAP outlines the Azure BackInt Agent version 1.1 as the last approved/certified & still supported by SAP in the SAP Note: 3639106 - Certification on MS Azure backup 2.0
+
+Cost Management
+Cost Model
+
+Disclaimer
+Actual cost may significantly vary from the below estimated base cost.
+
+Actual cost depends on accurate volumetrics of cloud services usage. During detail solution and design discussions, any changes in design may impact the costing.
+
+This estimated cost does not include cloud engineering deployment hours, application software installation, configuration and licenses cost (if any).
+
+There is no separate license or software cost for the Azure Backint agent itself.
+
+Costs are incurred on the Azure Backup service consumption for SAP HANA workloads in Azure. 
+
+This includes costs from Recovery Services vault - depending on backup size, retention, and storage redundancy.
+
+Note:  SAP HANA protected instance fee is not applicable and necessary to the CL SAP HANA workloads as confirmed by MS.
+
+Vulnerability Monitoring
+Azure BackInt Agent will be visible to the standard Cloud VM vulnerability monitoring process
+
+Availability Options
+Availability is not applicable to the Azure BackInt Agent itself as a standalone service, but to the SAP HANA VMs and Azure Backup service set up.
+
+Architecture Decision Request (ADR)
+Not Applicable
+
+DR Options
+DR is not applicable to the Azure BackInt Agent itself as a standalone service, but to the SAP HANA VMs and Azure Backup service set up.
+
+Support
+For any issue related to Azure VMs and Azure Backup Service contact the Cloud team (Cloud Technology - Cloud Operations)
+
+For issues that are app specific, contact (customer) SAP BASIS team
+
+ For any issue related to Backint for SAP HANA and Azure Backup Backint agent contact the (customer) SAP BASIS team
+
+examples: for log/backup catalog/HANA app related issues contact the (customer) SAP BASIS team
+
+If the (Customer) SAP BASIS team is unable to resolve the issue, SAP Support ticket might be required
+
+If analysis by SAP Support determines issue caused by Azure Backup BackInt agent, incident is typically sent back to customer with an advise to open ticket/SR with “Azure Backup BackInt for SAP HANA Customer Support”.
+
+Service Level Expectation
+Not Applicable to be defined for the Azure BackInt Agent as a standalone service.
+
+Operating Level Agreement
+Not Applicable to be defined for the Azure BackInt Agent as a standalone service.
+
+Site Continuity Plan (SCP)
+SCP for Azure SAP Backint Agent would be the AWS SAP Backint Agent
+
+SCP Recovery Service Provider
+AWS
+
+SCP Recovery Service
+AWS SAP Backint Agent
+
+Summary of Customer Responsibilities and Actions Required
+Customers are expected to reach out to the Azure Cloud team to provision the HANA VMs as well as install Azure Backint agent
+
+Customers are expected to work with SAP BASIS team to validate the Azure Backint is working and backing up to Azure Recovery Services Vault
+
+Customers are expected to reach out to the SAP or Azure for issues related to Azure Backint depending on the nature of the issue.
+
+Customers are expected to reach out to the Azure Cloud team for any issues related to SAP HANA VMs
+
+Request Service
+To request for given service please submit engineering intake request. Intake Link Engineering Intake Request
+
+In the intake request please include as much information along with the Service Name
