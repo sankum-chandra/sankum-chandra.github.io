@@ -1,0 +1,15 @@
+Hi Anupama,
+
+Thanks for the follow-up. Here's consolidated feedback on the BackInt Backup Agent for SAP HANA (Restricted) onboarding documentation — Jerry's points plus a few additions from an architecture/governance perspective. Happy to walk through any of these before you finalise for approvals.
+
+From Jerry's review:
+
+1. Service/Product Owner – update to Jason Rogowsky; the backup service sits under Jason.
+
+2. Standard Service Offering (Restricted):
+   - State explicitly in this section that the offering supports SAP HANA only (it's implied throughout but needs to be called out here).
+   - Add that this is an interim solution, in place only until Veeam Backup is deployed and operational in Azure, with the intent to transition to Veeam as the standard backup solution.
+
+3. Azure Backup dependency – the doc leans on the Azure Backup Vault catalog item for some details, which is currently thin. Either add detail directly here or fix the Azure Backup item. Specifically cover: offsite replication (required for DR, primary or secondary), immutability (required), and data retention policies (currently missing).
+
+4. SCP section – clarify the AWS reference, since this solution runs in Azure.
