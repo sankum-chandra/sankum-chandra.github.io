@@ -1,24 +1,33 @@
-Here it is from my side.
-Section	Response
-Title (challenge)	Lack of Integration of CAQ with LeanIX and no official triage process for CAQ responses received 
+You are reviewing a first-time "Database Services Roadmap" PowerPoint deck for Canada Life 
+(an OSFI-regulated insurer). I'm the EA Portfolio Architect who built it, and it's structured 
+as a deliberate section-for-section mirror of our already-approved "I&O Cloud Foundations 
+Roadmap" — same slide skeleton, same Canada Life brand style, same narrative arc (Vision → 
+Value Chain → Guiding Principles → Domain Overview → Strategic Focus Areas → Current State → 
+Target State → Work Packages/Initiatives → Appendix). This is a working draft headed for 
+review with the CTO/SVP I&O and Chief Enterprise Architect before formal sign-off.
 
+Review it as a skeptical but constructive EA/CTO-level reviewer and tell me:
 
-Gap – what’s not working?	Guidance: 
-•	What’s the gap? CAQ form submission goes to inbox and no official triage review to understand the project.
-•	What’s the root cause? Lack of integration with LeanIX and workflow along with triage process
-•	Consider a singular factor here for clarity.  Is it process or artifact, governance, role clarity, timing, etc? Process and tool
+1. Structural fidelity — does it actually read as a peer to an approved cloud roadmap, or 
+   are there slides/sections that feel bolted-on, thin, or inconsistent with the rest?
+2. Narrative flow — does the story (current state → gaps → target state → initiatives → 
+   sequencing → outcomes) hold together end to end, or are there logic gaps / non-sequiturs 
+   between slides?
+3. CTO-readiness of tone — flag anything that reads as internal working notes, named 
+   individuals' opinions, or team debate rather than institutional, decision-ready content.
+4. Evidence discipline — I use a visual convention (sand/tan = confirmed fact, red = 
+   illustrative/hypothesis, "TBD — pending baseline" for un-agreed dates/costs). Check 
+   whether that distinction is applied consistently, and flag any claim that reads as 
+   confirmed but isn't clearly sourced.
+5. Internal consistency — cross-check facts repeated across slides (e.g., platform targets, 
+   dates, cost figures, initiative codes D1–D9) for contradictions.
+6. Executive digestibility — flag any slide that's too dense, too table-heavy, or would lose 
+   a CTO in the first 10 seconds. Suggest what to cut or simplify.
+7. Gaps — what would a CTO or Chief EA ask that this deck doesn't yet answer (e.g., 
+   quantified risk of inaction, total cost of the roadmap, resourcing, governance/OSFI 
+   framing, dependencies on other roadmaps)?
+8. Anything that looks like an overclaim, an unverified assumption presented as settled, or 
+   a domain/grouping I invented without stakeholder validation.
 
-
-Enterprise impact
-	Scope and consequence if unresolved ? I don’t believe anyone in our area truly read and validate and triage each CAQ being submitted, so I don’t know what is the purpose of CAQ submission at present. 
-Also after more than a year of LeanIX being productionized and promise of integrating CAQ to LeanIX it’s still missing hence many Solution Architect just submit the form and no entry being created in LeanIX so additional effort for PA every time  to cross check and keep asking SA to create fact sheet in LeanIX
-
-
-Recommendation	What the specific succinct change that addresses this for the enterprise ?
-If CAQ is truly required, then it must be integrated to LeanIX and there should be a triage with requestor fully automated through a workflow
-
-Adoption risk	Guidance: 
-•	Where would you anticipate resistance for the recommendation, and why?
-•	Mitigation (action) - concrete step that supports the organizational outcome
-•	As recommended above
-
+Give me feedback slide-by-slide where specific, plus a short list of the top 3–5 things to 
+fix before this goes in front of leadership.
